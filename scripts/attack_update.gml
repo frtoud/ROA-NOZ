@@ -236,11 +236,38 @@ case AT_DAIR:
 //==============================================================
 case AT_FAIR:
 {
+    if (window == 1) 
+    {
+        if (window_timer <= 1)
+        {
+            reset_num_hitboxes(AT_FAIR);
+        }
+        else if (!attack_down)
+        {
+            set_num_hitboxes(AT_FAIR, 1);
+        }
+    }
+
     //half the recovery animation can be skipped
     if (window == 4 
     && window_timer >= get_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH) / 2)
     {
         iasa_script();
+    }
+} break;
+//==============================================================
+case AT_BAIR:
+{
+    if (window == 1 && !noz_rune_flags.bair_strong)
+    {
+        if (window_timer <= 1)
+        {
+            reset_num_hitboxes(AT_BAIR);
+        }
+        else if (!attack_down)
+        {
+            set_num_hitboxes(AT_BAIR, 1);
+        }
     }
 } break;
 //==============================================================
