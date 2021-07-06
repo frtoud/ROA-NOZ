@@ -393,13 +393,13 @@ case AT_DSPECIAL:
     	} break;
     	case 7: //Instaparry window
     	{
-            window = 2;
+            window = 6;
             window_timer = 0;
             init_shader();
     	}
     	case 8: //Vulnerable window
     	{
-            window = 2;
+            window = 6;
             window_timer = 0;
     	} break;
     	case 9: //Counter Endlag window
