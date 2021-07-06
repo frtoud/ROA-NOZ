@@ -49,7 +49,7 @@ set_color_profile_slot_range(5,  8,  5, 10);
 set_color_profile_slot(0, 6, 162, 211, 211); //VFX
 set_color_profile_slot_range(6,  8, 60, 25);
 
-set_num_palettes(15);
+set_num_palettes(16);
 
 //Beloved Tomboyish Girl
 set_color_profile_slot( 1, 0, 135, 200, 255); //Hair
@@ -169,13 +169,19 @@ set_color_profile_slot(13, 5, 212,   0,   0 ); //Leggings
 set_color_profile_slot(13, 6, 255, 225, 215 ); //VFX
 
 //Noble Haltmann
-//[REDACTED]
+set_color_profile_slot(14, 0, 142,  94, 156 ); //Hair
+set_color_profile_slot(14, 1, 114, 115, 140 ); //Skin
+set_color_profile_slot(14, 2,  86, 193, 246 ); //Bow
+set_color_profile_slot(14, 3,  44,  65, 101 ); //Shirt
+set_color_profile_slot(14, 4,  75, 188, 250 ); //Skirt
+set_color_profile_slot(14, 5,  28,  30,  29 ); //Leggings
+set_color_profile_slot(14, 6,  98, 198, 198 ); //VFX
 
 //Stone Halation
-set_color_profile_slot(14, 0,  12,  95, 220); //Hair
-set_color_profile_slot(14, 1, 255, 255, 255); //Skin
-set_color_profile_slot(14, 2, 240, 160,  30); //Bow
-set_color_profile_slot(14, 3, 120,  15,   0); //Shirt
-set_color_profile_slot(14, 4, 255, 140, 100); //Skirt
-set_color_profile_slot(14, 5, 255, 140, 100); //Leggings
-set_color_profile_slot(14, 6, 240, 160,  30); //VFX
+set_color_profile_slot(15, 0,  12,  95, 220); //Hair
+set_color_profile_slot(15, 1, 255, 255, 255); //Skin
+set_color_profile_slot(15, 2, 240, 160,  30); //Bow
+set_color_profile_slot(15, 3, 120,  15,   0); //Shirt
+set_color_profile_slot(15, 4, 255, 140, 100); //Skirt
+set_color_profile_slot(15, 5, 255, 140, 100); //Leggings
+set_color_profile_slot(15, 6, 240, 160,  30); //VFX
