@@ -372,6 +372,7 @@ pkmn_stadium_name_override = "Nozomi";
 
 //Mt. Dedede Stadium
 arena_title = "Idol Figment";
+arena_short_name = "Smol Nozomi";
 
 //Trial Grounds
 guiltySprite = sprite_get("cmp_trial_grounds");
@@ -398,3 +399,23 @@ nname = "Smol Nozomi"
 ncode1 = "Class: Figment     Reward: $1000";
 ncode2 = "Can fly with her twintails. Exhibits cryokinetic powers.";
 ncode3 = "Wanted by 'Haltmann Works' for 'being weaboo trash'...?";
+
+//=================================================
+// JE7K compatibility
+if (joke_explainer_mode)
+{
+    pkmn_stadium_name_override = "JK-EX-7000";
+    
+    //Mt. Dedede Stadium
+    arena_title = "Mechanical Assistant";
+    arena_short_name = "JK-EX-7000";
+    
+    //Hikaru
+    Hikaru_Title = "Joke Explainer";
+
+    //Agent N
+    nname = "Joke-Explainer 7000"
+    ncode1 = "Compelled to explain 'The Joke' to the nearest person.";
+    ncode2 = "Highly mobile, never seems to turn off.";
+    ncode3 = "Capture and return to Dr. Andonuts immediately. ";
+}
