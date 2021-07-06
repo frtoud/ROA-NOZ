@@ -275,6 +275,7 @@ if (anim_fakeparry_timer > 0)
 if (joke_explainer_mode)
 {
     change_anim(jokex_spr_idle, sprite_get("idle"));
+    change_anim(jokex_spr_hurt, sprite_get("hurt"));
     
     //Looping animations
     if (sprite_index == jokex_spr_idle)

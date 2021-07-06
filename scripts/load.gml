@@ -1,6 +1,7 @@
 sprite_change_offset("idle", 28, 50);
 sprite_change_offset("idle_bot", 28, 60);
 sprite_change_offset("hurt", 26, 50);
+sprite_change_offset("hurt_bot", 28, 60);
 sprite_change_offset("spinhurt", 30, 52);
 sprite_change_offset("crouch", 34, 48);
 sprite_change_offset("walk", 32, 50);
