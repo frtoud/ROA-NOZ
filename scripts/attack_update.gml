@@ -105,6 +105,7 @@ case AT_FSTRONG:
     if (window == 2 && window_timer < 6)
     {
     	//first windbox does not count as a "hit"
+        has_hit = false;
         has_hit_player = false;
     }
     else if (window == 2 && !has_hit_player
@@ -123,6 +124,13 @@ case AT_FSTRONG:
 //==============================================================
 case AT_DSTRONG:
 {
+    if (window == 2 && window_timer < 3)
+    {
+    	//first windbox does not count as a "hit"
+        has_hit = false;
+        has_hit_player = false;
+    }
+
     if (has_hit) { can_jump = true; }
     
     //dstrong spreads through ice
