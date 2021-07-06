@@ -112,6 +112,7 @@ if (joke_explainer_mode)
     //Hurt
     jokex_spr_hurt = sprite_get("hurt_bot");
     //Attack sprites: change straight at the source!
+    //see animation.gml
 }
 //==================================================
 // SFX

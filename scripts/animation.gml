@@ -280,8 +280,18 @@ if (joke_explainer_mode)
     //Looping animations
     if (sprite_index == jokex_spr_idle)
     { image_index = floor(state_timer * idle_anim_speed) % image_number; }
+    
+    //Apply cosmetic changes to the attack grid
+    if (!jokex_attack_grid_initialized)
+    {
+        set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utilt_bot"));
+        set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_med"));
+        set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 125);
+        set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
+    }
 }
 
+//===========================================================
 #define change_anim(spr_to, spr_from)
 {
     if (sprite_index == spr_from) sprite_index = spr_to;
