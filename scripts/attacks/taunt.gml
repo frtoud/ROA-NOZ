@@ -31,7 +31,7 @@ set_window_value(AT_TAUNT, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.03);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAMES, 12);
 set_window_value(AT_TAUNT, 3, AG_WINDOW_ANIM_FRAME_START, 6);
 
-set_window_value(AT_TAUNT, 4, AG_WINDOW_TYPE, 10);
+set_window_value(AT_TAUNT, 4, AG_WINDOW_TYPE, 8); //next window if grounded
 set_window_value(AT_TAUNT, 4, AG_WINDOW_LENGTH, 16);
 set_window_value(AT_TAUNT, 4, AG_WINDOW_CUSTOM_GRAVITY, gravity_speed);
 set_window_value(AT_TAUNT, 4, AG_WINDOW_ANIM_FRAMES, 3);
