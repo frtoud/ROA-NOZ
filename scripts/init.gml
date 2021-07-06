@@ -104,7 +104,9 @@ air_dodge_sound = asset_get("sfx_quick_dodge");
 
 //==================================================
 //JokeExplainer Alt setup
-joke_explainer_mode = (get_player_color(player) == 14);
+joke_explainer_mode = (get_player_color(player) == 14) 
+                   || (get_player_hud_color(player) == 0x808080);
+
 jokex_attack_grid_initialized = false;
 if (joke_explainer_mode)
 {
