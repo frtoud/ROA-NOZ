@@ -47,12 +47,22 @@ if (attack == AT_NSPECIAL && (window > 1) &&
              : 100);
     
     draw_sprite_ext(vfx_nspecial_spr, 
-       floor(get_gameplay_time() / 5 ) % 4, x, y-24, scale, scale, 
-       floor(get_gameplay_time() * 5 ) % 360, c_white,
-       (alpha) * 0.01 * 0.7 );
+                    floor(get_gameplay_time() / 5 ) % 4, x, y-(char_height/2), scale, scale, 
+                    floor(get_gameplay_time() * 5 ) % 360, c_white,
+                    (alpha) * 0.01 * 0.7 );
+    
+    if (get_match_setting(SET_HITBOX_VIS) && (window == 2 || window == 4))
+    {
+        //show effective range of Sing
+        var alpha = draw_get_alpha();
+        draw_set_alpha(0.5);
+        shader_end();
+        draw_circle_color(x, y-(char_height/2), noz_nspecial_radius, c_red, c_red, false);
+        shader_start();
+        draw_set_alpha(alpha);
+    }
 }
 //===================================================================
-
 shader_end();
 
 //===================================================================

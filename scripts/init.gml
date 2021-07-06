@@ -266,6 +266,7 @@ noz_dspecial_damage_min = 10;
 noz_dspecial_recharge_rate = 0.05;
 noz_dspecial_dmg_mult = 1.5;
 
+noz_nspecial_radius = 50;
 noz_nspecial_mashing_bonus = 1;
 noz_nspecial_sleep_base = floor(75 * noz_nspecial_mashing_bonus);
 noz_nspecial_sleep_early = floor(25 * noz_nspecial_mashing_bonus);
