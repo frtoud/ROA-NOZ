@@ -90,6 +90,7 @@ sprite_change_offset("ustrong", 16, 26, true);
 sprite_change_offset("dstrong", 14, 30, true);
  
 sprite_change_offset("nspecial", 14, 28, true);
+sprite_change_offset("nspecial_bot", 14, 30);
 sprite_change_offset("nspecial_air", 14, 28);
 sprite_change_offset("fspecial", 17, 33, true);
 sprite_change_offset("uspecial", 23, 30, true);
