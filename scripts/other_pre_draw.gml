@@ -13,6 +13,7 @@ if (noz_sleep_mashanim_timer > 0 && noz_sleep_timer > 0)
 //Freeze rotation-animation effect
 else if (noz_freeze_timer > 0) 
 { 
+    var scale = 1 + other_player_id.small_sprites;
     //Rotation effect while frozen
     if (free && (noz_freeze_anim_rotate != 0))
     {
@@ -24,7 +25,7 @@ else if (noz_freeze_timer > 0)
     //Icicle sprite (back)
     with (other_player_id) { shader_start(); }
     draw_sprite_ext(other_player_id.vfx_frozen_sprite, 0,
-                    x, y-(char_height / 2), -spr_dir, 1, spr_angle, c_white, 1);
+                    x, y-(char_height / 2), -scale*spr_dir, scale, noz_freeze_anim_rotate, c_white, 1);
     with (other_player_id) { shader_end(); }
 }
 
