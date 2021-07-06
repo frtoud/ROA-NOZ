@@ -245,7 +245,6 @@ noz_freeze_base_stun = 45;
 noz_freeze_base_vsp = 5;
 noz_freeze_mult_vsp = 0.010;
 noz_freeze_max_hsp = 5;
-noz_freeze_anim_speed = 6; //degrees per frame
 
 noz_pratfall_max_vsp = 7;
 
@@ -360,6 +359,7 @@ noz_freeze_timer = 0;
 noz_freeze_vsp = 0;
 noz_freeze_hsp = 0;
 noz_freeze_anim_rotate = 0;
+noz_freeze_anim_rotate_speed = 5;
 //Kirby-specific
 noz_has_kirby_ability = false;
 
