@@ -28,7 +28,6 @@ set_window_value(AT_BAIR, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
 set_num_hitboxes(AT_BAIR, 2);
 
-set_hitbox_value(AT_BAIR, 1, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 4);
@@ -43,14 +42,11 @@ set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .75);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .50);
-set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
-set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_BAIR, 1, HG_HIT_LOCKOUT, 12);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_GROUP, 1);
 
 //Lingering hitbox
-set_hitbox_value(AT_BAIR, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_BAIR, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 2, HG_WINDOW_CREATION_FRAME, 2);
@@ -67,8 +63,6 @@ set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, 0);
 set_hitbox_value(AT_BAIR, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .1);
 set_hitbox_value(AT_BAIR, 2, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_X_OFFSET, 0);
-set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
 set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 6);
 

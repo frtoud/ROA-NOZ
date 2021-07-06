@@ -50,7 +50,6 @@ set_hitbox_value(AT_DSTRONG, 1, HG_VISUAL_EFFECT, 1); //none
 set_hitbox_value(AT_DSTRONG, 1, HG_FORCE_FLINCH, 2); //none
 set_hitbox_value(AT_DSTRONG, 1, HG_THROWS_ROCK, 2); //ignore
 
-set_hitbox_value(AT_DSTRONG, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_DSTRONG, 2, HG_WINDOW_CREATION_FRAME, 3);
@@ -73,7 +72,6 @@ set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, 10);
 set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_icehit_heavy1"));
 set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 1);
 
-set_hitbox_value(AT_DSTRONG, 3, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW, 2);
 set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW_CREATION_FRAME, 4);
@@ -98,7 +96,6 @@ set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, 1);
 set_hitbox_value(AT_DSTRONG, 3, HG_MUNO_OBJECT_LAUNCH_ANGLE, -1);
 
 //not actually a hitbox just a vfx
-set_hitbox_value(AT_DSTRONG, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSTRONG, 4, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSTRONG, 4, HG_WINDOW, 2);
 set_hitbox_value(AT_DSTRONG, 4, HG_WINDOW_CREATION_FRAME, 3);
