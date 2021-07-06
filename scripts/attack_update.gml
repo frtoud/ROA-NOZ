@@ -657,7 +657,8 @@ case AT_USPECIAL:
 case AT_TAUNT:
 {
     can_move = false;
-    if (window == 4 && window_timer == get_window_value(AT_TAUNT, 4, AG_WINDOW_LENGTH))
+    if (window == 4 && window_timer == get_window_value(AT_TAUNT, 4, AG_WINDOW_LENGTH)
+    && !respawn_taunt)
     {
         //This taunt preserves momentum or could be performed on a moving platform.
         //Nozomi should usually reach the ground before the end of this window.
