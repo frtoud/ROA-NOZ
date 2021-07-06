@@ -4,6 +4,7 @@ sprite_change_offset("hurt", 13, 25);
 sprite_change_offset("hurt_bot", 13, 30);
 sprite_change_offset("spinhurt", 15, 26);
 sprite_change_offset("crouch", 17, 24, true);
+sprite_change_offset("crouch_bot", 17, 29);
 sprite_change_offset("walk", 16, 25);
 sprite_change_offset("walk_bot", 16, 30);
 sprite_change_offset("walkturn", 14, 24);
