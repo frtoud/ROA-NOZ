@@ -193,6 +193,8 @@ article1_col_spr = sprite_get("article1_col");
 anim_hairblink_timer = 0;
 anim_hairblink_max = anim_hud_timers_max;
 
+anim_jab_window_order = [4, 5, 6, 4, 6, 4, 5, 4, 6, 5, 4, 5];
+
 anim_indicatorflash_timer = 0;
 anim_indicatorflash_max = anim_hud_timers_max;
 indicator_spr = sprite_get("indicator_triangle");
@@ -306,9 +308,7 @@ noz_cloud_hit_restore_time = 30;
 //=================================================
 // Move variables/flags initialized here
 
-at_jab_infinite = false;
-at_jab_inf_count = 3;
-at_jab_finisher = false;
+at_jab_timesthrough = 0;
 at_dtilt_proj_cooldown = 0;
 at_nair_hover_need_grid_adjust = false;
 at_dair_early_cancel = false;

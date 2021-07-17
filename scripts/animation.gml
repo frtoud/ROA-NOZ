@@ -135,6 +135,21 @@ switch (state)
         switch (attack)
         {
 //==================================================================
+            case AT_JAB:
+            {
+                if (window == 4 || window == 5 || window == 6)
+                {
+                    var anim_window = 
+                        anim_jab_window_order[at_jab_timesthrough % array_length(anim_jab_window_order)];
+                    
+                    //borrow the target window's animation frames
+                    var start_frame = get_window_value(AT_JAB, anim_window, AG_WINDOW_ANIM_FRAME_START);
+                    var num_frames = get_window_value(AT_JAB, anim_window, AG_WINDOW_ANIM_FRAMES);
+                    var window_length = get_window_value(AT_JAB, window, AG_WINDOW_LENGTH);
+                    image_index = start_frame + floor(num_frames * window_timer / window_length);
+                }
+            } break;
+//==================================================================
             case AT_FSTRONG:
             {
                 if (window == 1 && strong_charge > 0)
