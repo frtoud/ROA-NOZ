@@ -139,6 +139,7 @@ if (joke_explainer_mode)
 
 //=================================================
 //Custom Frame Data indices
+AG_NOZ_HOVER_SPRITE = 55; //Sprites to use while hovering (for aerial attacks)
 HG_MUNO_OBJECT_LAUNCH_ANGLE = 77; //Thanks Muno
 // Special values:
 //  0: use normal angles

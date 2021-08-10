@@ -6,7 +6,7 @@ set_attack_value(AT_BAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_BAIR, AG_LANDING_LAG, 4);
 
 //Used for hovermode sprites in animation.gml
-set_attack_value(AT_BAIR, 55, sprite_get("bair_hover"));
+set_attack_value(AT_BAIR, AG_NOZ_HOVER_SPRITE, sprite_get("bair_hover"));
 
 set_window_value(AT_BAIR, 1, AG_WINDOW_TYPE, 0);
 set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 10);
