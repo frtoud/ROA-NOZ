@@ -202,10 +202,14 @@ case AT_FAIR:
         if (window_timer <= 1)
         {
             reset_num_hitboxes(AT_FAIR);
+            reset_hitbox_value(AT_FAIR, 1, HG_DAMAGE);
+            reset_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING);
         }
         else if (!attack_down)
         {
             set_num_hitboxes(AT_FAIR, 1);
+            set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 9);
+            set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0.9);
         }
     }
 
@@ -224,10 +228,14 @@ case AT_BAIR:
         if (window_timer <= 1)
         {
             reset_num_hitboxes(AT_BAIR);
+            reset_hitbox_value(AT_BAIR, 1, HG_DAMAGE);
+            reset_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING);
         }
         else if (!attack_down)
         {
             set_num_hitboxes(AT_BAIR, 1);
+            set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 11);
+            set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 1);
         }
     }
 } break;
