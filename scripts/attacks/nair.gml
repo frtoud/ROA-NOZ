@@ -4,7 +4,7 @@ set_attack_value(AT_NAIR, AG_NUM_WINDOWS, 4);
 set_attack_value(AT_NAIR, AG_HURTBOX_SPRITE, sprite_get("nair_hurt"));
 
 //Used for hovermode sprites in animation.gml
-set_attack_value(AT_NAIR, 55, sprite_get("nair_hover"));
+set_attack_value(AT_NAIR, AG_NOZ_HOVER_SPRITE, sprite_get("nair_hover"));
 
 set_window_value(AT_NAIR, 1, AG_WINDOW_TYPE, 0);
 set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 6);

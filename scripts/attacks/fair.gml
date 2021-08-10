@@ -6,7 +6,7 @@ set_attack_value(AT_FAIR, AG_LANDING_LAG, 4);
 set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 
 //Used for hovermode sprites in animation.gml
-set_attack_value(AT_FAIR, 55, sprite_get("fair_hover"));
+set_attack_value(AT_FAIR, AG_NOZ_HOVER_SPRITE, sprite_get("fair_hover"));
 
 set_window_value(AT_FAIR, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 10);

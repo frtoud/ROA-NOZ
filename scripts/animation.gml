@@ -243,16 +243,22 @@ switch (state)
             }break;
 //==================================================================
             case AT_NAIR:
-                if !(at_uspecial_hovering && !at_uspecial_exhausted) 
-                    break; // Landed NAIR case
+            {
+                //Landed NAIR case: don't use hover sprites
+                if (at_uspecial_hovering && !at_uspecial_exhausted) 
+                { use_hover_sprite(); } 
+            }break;
             case AT_FAIR:
+            {
+                use_hover_sprite();
+            }break;
             case AT_BAIR:
+            {
+                use_hover_sprite();
+            }break;
             case AT_UAIR:
             {
-                //Hover-Aerial variants!
-                //Uses index 55 to generalize logic
-                if (at_uspecial_hovering) 
-                { sprite_index = get_attack_value(attack, 55); }
+                use_hover_sprite();
             }break;
 //==================================================================
             default:
@@ -281,4 +287,13 @@ if (anim_fakeparry_timer > 0)
     {
         k.depth = depth - 1;
     }
+}
+//===========================================================
+#define use_hover_sprite()
+{
+    //Hover-Aerial sprite variants!
+    //Uses an attack index to generalize logic
+    var alt_sprite = get_attack_value(attack, AG_NOZ_HOVER_SPRITE);
+    if (at_uspecial_hovering && alt_sprite != 0) 
+    { sprite_index = alt_sprite; }
 }
