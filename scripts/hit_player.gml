@@ -25,8 +25,10 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
         }
     }
     // Strong attacks: apply ice effects
-    else if ((hit_player_obj.noz_snowstack_timer > 0) && (
-               (my_hitboxID.attack == AT_USTRONG)
+    else if ((hit_player_obj.noz_snowstack_timer > 0  || 
+            //Standing on ice forces freeze on victims (if not immune)
+             (hit_player_obj.noz_snowimmune_timer == 0 && at_fspecial_on_ice_timer > 0) )
+            &&((my_hitboxID.attack == AT_USTRONG)
             || (my_hitboxID.attack == AT_FSTRONG && (my_hitboxID.hbox_num == 4))
             || (my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num != 1))
             // [RUNE B] -- BAIR with STRONG effects
@@ -39,6 +41,9 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
         hit_player_obj.noz_snowimmune_timer = noz_snowimmune_timer_max;
         hit_player_obj.noz_freeze_timer = -1; //signal for initial ice effect
         hit_player_obj.noz_handler_id = self;
+        //animation
+        hit_player_obj.noz_freeze_anim_rotate = 0;
+        hit_player_obj.noz_freeze_anim_rotate_speed = 2 + random_func(2, 10, true);
     }
     // FSTRONG needs to make sure you stay chilly until the end of the move
     else if ( (my_hitboxID.attack == AT_FSTRONG) 

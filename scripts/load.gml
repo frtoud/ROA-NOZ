@@ -100,6 +100,7 @@ sprite_change_offset("dspecial_shine", 18, 18);
  
 sprite_change_offset("taunt", 20, 34);
 sprite_change_offset("plat", 18, 7);
+sprite_change_offset("smol_mask", 19, 44);
 
 set_victory_theme(sound_get("victory"));
 set_victory_bg(sprite_get("victory"));

@@ -135,6 +135,21 @@ switch (state)
         switch (attack)
         {
 //==================================================================
+            case AT_JAB:
+            {
+                if (window == 4 || window == 5 || window == 6)
+                {
+                    var anim_window = 
+                        anim_jab_window_order[at_jab_timesthrough % array_length(anim_jab_window_order)];
+                    
+                    //borrow the target window's animation frames
+                    var start_frame = get_window_value(AT_JAB, anim_window, AG_WINDOW_ANIM_FRAME_START);
+                    var num_frames = get_window_value(AT_JAB, anim_window, AG_WINDOW_ANIM_FRAMES);
+                    var window_length = get_window_value(AT_JAB, window, AG_WINDOW_LENGTH);
+                    image_index = start_frame + floor(num_frames * window_timer / window_length);
+                }
+            } break;
+//==================================================================
             case AT_FSTRONG:
             {
                 if (window == 1 && strong_charge > 0)
@@ -243,16 +258,34 @@ switch (state)
             }break;
 //==================================================================
             case AT_NAIR:
-                if !(at_uspecial_hovering && !at_uspecial_exhausted) 
-                    break; // Landed NAIR case
+            {
+                //Landed NAIR case: don't use hover sprites
+                if (at_uspecial_hovering && !at_uspecial_exhausted) 
+                { use_hover_sprite(); } 
+            }break;
             case AT_FAIR:
+            {
+                use_hover_sprite();
+                if (get_num_hitboxes(AT_FAIR) == 1)
+                && (window == get_hitbox_value(AT_FAIR, 2, HG_WINDOW))
+                && (window_timer <= get_hitbox_value(AT_FAIR, 2, HG_WINDOW_CREATION_FRAME))
+                {
+                    spawn_twinkle(vfx_snow_twinkle, x + (spr_dir * 32), y - 24, 24, false)
+                }
+            }break;
             case AT_BAIR:
+            {
+                use_hover_sprite();
+                if (get_num_hitboxes(AT_BAIR) == 1)
+                && (window == get_hitbox_value(AT_BAIR, 2, HG_WINDOW))
+                && (window_timer <= get_hitbox_value(AT_BAIR, 2, HG_WINDOW_CREATION_FRAME))
+                {
+                    spawn_twinkle(vfx_snow_twinkle, x + (spr_dir * -32), y - 24, 24, false)
+                }
+            }break;
             case AT_UAIR:
             {
-                //Hover-Aerial variants!
-                //Uses index 55 to generalize logic
-                if (at_uspecial_hovering) 
-                { sprite_index = get_attack_value(attack, 55); }
+                use_hover_sprite();
             }break;
 //==================================================================
             default:
@@ -336,4 +369,13 @@ if (joke_explainer_mode)
     {
         k.depth = depth - 1;
     }
+}
+//===========================================================
+#define use_hover_sprite()
+{
+    //Hover-Aerial sprite variants!
+    //Uses an attack index to generalize logic
+    var alt_sprite = get_attack_value(attack, AG_NOZ_HOVER_SPRITE);
+    if (at_uspecial_hovering && alt_sprite != 0) 
+    { sprite_index = alt_sprite; }
 }

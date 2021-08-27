@@ -6,7 +6,7 @@ set_attack_value(AT_FAIR, AG_LANDING_LAG, 4);
 set_attack_value(AT_FAIR, AG_HURTBOX_SPRITE, sprite_get("fair_hurt"));
 
 //Used for hovermode sprites in animation.gml
-set_attack_value(AT_FAIR, 55, sprite_get("fair_hover"));
+set_attack_value(AT_FAIR, AG_NOZ_HOVER_SPRITE, sprite_get("fair_hover"));
 
 set_window_value(AT_FAIR, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FAIR, 1, AG_WINDOW_LENGTH, 10);
@@ -36,17 +36,17 @@ set_num_hitboxes(AT_FAIR, 2);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FAIR, 1, HG_LIFETIME, 3);
-set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 18);
+set_hitbox_value(AT_FAIR, 1, HG_HITBOX_X, 20);
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_Y, -25);
-set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 40);
+set_hitbox_value(AT_FAIR, 1, HG_WIDTH, 44);
 set_hitbox_value(AT_FAIR, 1, HG_HEIGHT, 55);
 set_hitbox_value(AT_FAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 7);
 set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 35);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .65);
+set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .75);
 set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 6);
-set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .25);
+set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .6);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT_Y_OFFSET, 0);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));

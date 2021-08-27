@@ -101,12 +101,12 @@ else
     var victim = instance_position(x, y-2, oPlayer)
     if (victim != noone && !victim.free && victim.noz_snowimmune_timer < 1)
     {
-        if (victim == player_id)
+        same_team = get_player_team(player_id.player) == get_player_team(victim.player);
+        if (victim == player_id || ("url" in victim && same_team)) 
         {
             player_id.at_fspecial_on_ice_timer = 3;
         }
-        else if (get_player_team(player_id.player) != get_player_team(victim.player)
-             && (victim.noz_snowimmune_timer < 1))
+        else if (!same_team && (victim.noz_snowimmune_timer < 1))
         {
             if (victim.noz_snowstack_timer < 5)
             {

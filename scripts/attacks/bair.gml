@@ -6,7 +6,7 @@ set_attack_value(AT_BAIR, AG_HAS_LANDING_LAG, 1);
 set_attack_value(AT_BAIR, AG_LANDING_LAG, 4);
 
 //Used for hovermode sprites in animation.gml
-set_attack_value(AT_BAIR, 55, sprite_get("bair_hover"));
+set_attack_value(AT_BAIR, AG_NOZ_HOVER_SPRITE, sprite_get("bair_hover"));
 
 set_window_value(AT_BAIR, 1, AG_WINDOW_TYPE, 0);
 set_window_value(AT_BAIR, 1, AG_WINDOW_LENGTH, 10);
@@ -31,17 +31,17 @@ set_num_hitboxes(AT_BAIR, 2);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_BAIR, 1, HG_LIFETIME, 4);
-set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -15);
-set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -15);
-set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 40);
-set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 30);
+set_hitbox_value(AT_BAIR, 1, HG_HITBOX_X, -18);
+set_hitbox_value(AT_BAIR, 1, HG_HITBOX_Y, -16);
+set_hitbox_value(AT_BAIR, 1, HG_WIDTH, 44);
+set_hitbox_value(AT_BAIR, 1, HG_HEIGHT, 32);
 set_hitbox_value(AT_BAIR, 1, HG_PRIORITY, 2);
 set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 9);
 set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 145);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);
-set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .75);
+set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_BAIR, 1, HG_BASE_HITPAUSE, 8);
-set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .50);
+set_hitbox_value(AT_BAIR, 1, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_BAIR, 1, HG_HIT_LOCKOUT, 12);
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_GROUP, 1);

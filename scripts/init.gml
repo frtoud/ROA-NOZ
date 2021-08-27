@@ -1,6 +1,6 @@
 hurtbox_spr = sprite_get("idle_hurt");
 crouchbox_spr = sprite_get("crouch_hurt");
-air_hurtbox_spr = -1;
+mask_index = sprite_get("smol_mask");
 hitstun_hurtbox_spr = -1;
 
 char_height = 52;
@@ -139,6 +139,7 @@ if (joke_explainer_mode)
 
 //=================================================
 //Custom Frame Data indices
+AG_NOZ_HOVER_SPRITE = 55; //Sprites to use while hovering (for aerial attacks)
 HG_MUNO_OBJECT_LAUNCH_ANGLE = 77; //Thanks Muno
 // Special values:
 //  0: use normal angles
@@ -193,6 +194,8 @@ article1_col_spr = sprite_get("article1_col");
 anim_hairblink_timer = 0;
 anim_hairblink_max = anim_hud_timers_max;
 
+anim_jab_window_order = [4, 5, 6, 4, 6, 4, 5, 4, 6, 5, 4, 5];
+
 anim_indicatorflash_timer = 0;
 anim_indicatorflash_max = anim_hud_timers_max;
 indicator_spr = sprite_get("indicator_triangle");
@@ -245,7 +248,6 @@ noz_freeze_base_stun = 45;
 noz_freeze_base_vsp = 5;
 noz_freeze_mult_vsp = 0.010;
 noz_freeze_max_hsp = 5;
-noz_freeze_anim_speed = 6; //degrees per frame
 
 noz_pratfall_max_vsp = 7;
 
@@ -307,9 +309,7 @@ noz_cloud_hit_restore_time = 30;
 //=================================================
 // Move variables/flags initialized here
 
-at_jab_infinite = false;
-at_jab_inf_count = 3;
-at_jab_finisher = false;
+at_jab_timesthrough = 0;
 at_dtilt_proj_cooldown = 0;
 at_nair_hover_need_grid_adjust = false;
 at_dair_early_cancel = false;
@@ -360,6 +360,7 @@ noz_freeze_timer = 0;
 noz_freeze_vsp = 0;
 noz_freeze_hsp = 0;
 noz_freeze_anim_rotate = 0;
+noz_freeze_anim_rotate_speed = 5;
 //Kirby-specific
 noz_has_kirby_ability = false;
 
