@@ -213,9 +213,9 @@ case AT_FAIR:
         }
     }
 
-    //half the recovery animation can be skipped
-    if (window == 4 
-    && window_timer >= get_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH) / 2)
+    //recovery animation can be skipped (unless parried)
+    if (!was_parried && window == 4)
+    && (window_timer >= get_window_value(AT_FAIR, 4, AG_WINDOW_CANCEL_FRAME))
     {
         iasa_script();
     }
