@@ -188,7 +188,7 @@ case AT_NAIR:
     		vsp -= 1.5;
     	}
     }
-    else if (window == 4 && (has_hit || !free))
+    else if (window == 4 && (has_hit || !free) && !was_parried)
     {
     	iasa_script();
     }
@@ -209,12 +209,12 @@ case AT_DAIR:
     can_move = (window > 3);
     
     //Can cancel early if any hitbox hit
-    if (has_hit && (window == 4))
+    if (has_hit && (window == 4) && !was_parried)
     { 
         iasa_script();
     }
     //Can jump-cancel if the strong hitbox hit something
-    else if ( (has_hit && window == 2) || at_dair_early_cancel)
+    else if ((has_hit && window == 2) || at_dair_early_cancel) && !was_parried
     {
         at_dair_early_cancel = true;
         can_jump = true;
