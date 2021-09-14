@@ -402,6 +402,12 @@ ncode1 = "Class: Figment     Reward: $1000";
 ncode2 = "Can fly with her twintails. Exhibits cryokinetic powers.";
 ncode3 = "Wanted by 'Haltmann Works' for 'being weaboo trash'...?";
 
+//Hypercam
+uhc_victory_quote = "helo youtub welcom 2 my compatability tuotorial :) sucribe 4 more";
+
+sprite_change_offset("cmp_uhc", 11, 8);
+uhc_taunt_videos[0] = { sprite:sprite_get("cmp_uhc"), song:sound_get("cmp_uhc"), fps:12 };
+
 //=================================================
 // JE7K compatibility
 if (joke_explainer_mode)
