@@ -157,7 +157,7 @@ case AT_NAIR:
     		vsp -= 1.5;
     	}
     }
-    else if (window == 4 && (has_hit || !free))
+    else if (window == 4 && (has_hit || !free) && !was_parried)
     {
     	iasa_script();
     }
@@ -178,12 +178,12 @@ case AT_DAIR:
     can_move = (window > 3);
     
     //Can cancel early if any hitbox hit
-    if (has_hit && (window == 4))
+    if (has_hit && (window == 4) && !was_parried)
     { 
         iasa_script();
     }
     //Can jump-cancel if the strong hitbox hit something
-    else if ( (has_hit && window == 2) || at_dair_early_cancel)
+    else if ((has_hit && window == 2) || at_dair_early_cancel) && !was_parried
     {
         at_dair_early_cancel = true;
         can_jump = true;
@@ -205,7 +205,7 @@ case AT_FAIR:
             reset_hitbox_value(AT_FAIR, 1, HG_DAMAGE);
             reset_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING);
         }
-        else if (!attack_down)
+        else if (!attack_down && !strong_down)
         {
             set_num_hitboxes(AT_FAIR, 1);
             set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 9);
@@ -213,9 +213,9 @@ case AT_FAIR:
         }
     }
 
-    //half the recovery animation can be skipped
-    if (window == 4 
-    && window_timer >= get_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH) / 2)
+    //recovery animation can be skipped (unless parried)
+    if (!was_parried && window == 4)
+    && (window_timer >= get_window_value(AT_FAIR, 4, AG_WINDOW_CANCEL_FRAME))
     {
         iasa_script();
     }
@@ -231,7 +231,7 @@ case AT_BAIR:
             reset_hitbox_value(AT_BAIR, 1, HG_DAMAGE);
             reset_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING);
         }
-        else if (!attack_down)
+        else if (!attack_down && !strong_down)
         {
             set_num_hitboxes(AT_BAIR, 1);
             set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 11);
