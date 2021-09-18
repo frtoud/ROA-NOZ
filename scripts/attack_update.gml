@@ -205,7 +205,7 @@ case AT_FAIR:
             reset_hitbox_value(AT_FAIR, 1, HG_DAMAGE);
             reset_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING);
         }
-        else if (!attack_down)
+        else if (!attack_down && !strong_down)
         {
             set_num_hitboxes(AT_FAIR, 1);
             set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 9);
@@ -231,7 +231,7 @@ case AT_BAIR:
             reset_hitbox_value(AT_BAIR, 1, HG_DAMAGE);
             reset_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING);
         }
-        else if (!attack_down)
+        else if (!attack_down && !strong_down)
         {
             set_num_hitboxes(AT_BAIR, 1);
             set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 11);
