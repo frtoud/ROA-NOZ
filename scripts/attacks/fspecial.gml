@@ -79,6 +79,7 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 28);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);
 
+//rune: Ice drips
 set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 200);
 set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 15);

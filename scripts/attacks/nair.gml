@@ -31,7 +31,6 @@ set_window_value(AT_NAIR, 4, AG_WINDOW_ANIM_FRAME_START, 13);
 
 set_num_hitboxes(AT_NAIR, 7);
 
-set_hitbox_value(AT_NAIR, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_NAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 1, HG_WINDOW_CREATION_FRAME, 0);
@@ -70,7 +69,6 @@ set_hitbox_value(AT_NAIR, 3, HG_HITBOX_GROUP, 3);
 set_hitbox_value(AT_NAIR, 3, HG_MUNO_OBJECT_LAUNCH_ANGLE, -1);
 
 //Launcher hit
-set_hitbox_value(AT_NAIR, 4, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_NAIR, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 4, HG_WINDOW, 3);
 set_hitbox_value(AT_NAIR, 4, HG_WINDOW_CREATION_FRAME, 4);
@@ -90,7 +88,6 @@ set_hitbox_value(AT_NAIR, 4, HG_HITBOX_GROUP, -1);
 
 //Feet hitboxes
 //Should mirror hitboxes 1 through 3; with a higher angle
-set_hitbox_value(AT_NAIR, 5, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_NAIR, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_NAIR, 5, HG_WINDOW, 2);
 set_hitbox_value(AT_NAIR, 5, HG_WINDOW_CREATION_FRAME, 0);

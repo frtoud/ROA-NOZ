@@ -69,7 +69,6 @@ set_window_value(AT_DSPECIAL, 9, AG_WINDOW_ANIM_FRAME_START, 5);
 set_num_hitboxes(AT_DSPECIAL, 3);
 
 //Shine
-set_hitbox_value(AT_DSPECIAL, 1, HG_PARENT_HITBOX, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DSPECIAL, 1, HG_LIFETIME, 2);

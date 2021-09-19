@@ -33,7 +33,6 @@ set_window_value(AT_FSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 set_num_hitboxes(AT_FSTRONG, 4);
 
 //Windbox to help connect
-set_hitbox_value(AT_FSTRONG, 1, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_FSTRONG, 1, HG_LIFETIME, 2);
@@ -54,7 +53,6 @@ set_hitbox_value(AT_FSTRONG, 1, HG_FORCE_FLINCH, 2); //none
 set_hitbox_value(AT_FSTRONG, 1, HG_THROWS_ROCK, 2); //ignore
 set_hitbox_value(AT_FSTRONG, 1, HG_HITBOX_GROUP, -1);
 
-set_hitbox_value(AT_FSTRONG, 2, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_FSTRONG, 2, HG_WINDOW_CREATION_FRAME, 8);
@@ -89,7 +87,7 @@ set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_Y, -20);
 set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_FSTRONG, 3, HG_MUNO_OBJECT_LAUNCH_ANGLE, 1);
 
-set_hitbox_value(AT_FSTRONG, 4, HG_PARENT_HITBOX, 0);
+//Finisher
 set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FSTRONG, 4, HG_WINDOW, 3);
 set_hitbox_value(AT_FSTRONG, 4, HG_WINDOW_CREATION_FRAME, 1);

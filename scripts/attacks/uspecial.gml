@@ -53,7 +53,6 @@ set_window_value(AT_USPECIAL, 6, AG_WINDOW_CUSTOM_GRAVITY, 0.4);
 set_num_hitboxes(AT_USPECIAL, 8);
 
 //Looping rising hits
-set_hitbox_value(AT_USPECIAL, 1, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_USPECIAL, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_USPECIAL, 1, HG_WINDOW_CREATION_FRAME, 0);
@@ -119,7 +118,6 @@ set_hitbox_value(AT_USPECIAL, 7, HG_HITBOX_Y, -25);
 set_hitbox_value(AT_USPECIAL, 7, HG_HITBOX_GROUP, -1);
 
 //Final hit
-set_hitbox_value(AT_USPECIAL, 8, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_USPECIAL, 8, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_USPECIAL, 8, HG_WINDOW, 4);
 set_hitbox_value(AT_USPECIAL, 8, HG_WINDOW_CREATION_FRAME, 3);
