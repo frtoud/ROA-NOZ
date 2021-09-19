@@ -99,7 +99,6 @@ with (oPlayer)
 						noz_freeze_timer = other.noz_freeze_base_stun
 						 + floor(noz_freeze_vsp / -other.noz_freeze_grav);
 						hitstun = noz_freeze_timer;
-						noz_anim_freeze_rotate = 0;
 					}
 					else if (free)
 					{
@@ -121,7 +120,7 @@ with (oPlayer)
 						vsp = noz_freeze_vsp;
 						noz_freeze_vsp += other.noz_freeze_grav;
 						hsp = noz_freeze_hsp;
-						noz_freeze_anim_rotate += other.noz_freeze_anim_speed;
+						noz_freeze_anim_rotate += noz_freeze_anim_rotate_speed;
 					}
 					else
 					{

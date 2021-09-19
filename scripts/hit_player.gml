@@ -41,6 +41,9 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
         hit_player_obj.noz_snowimmune_timer = noz_snowimmune_timer_max;
         hit_player_obj.noz_freeze_timer = -1; //signal for initial ice effect
         hit_player_obj.noz_handler_id = self;
+        //animation
+        hit_player_obj.noz_freeze_anim_rotate = 0;
+        hit_player_obj.noz_freeze_anim_rotate_speed = 2 + random_func(2, 10, true);
     }
     // FSTRONG needs to make sure you stay chilly until the end of the move
     else if ( (my_hitboxID.attack == AT_FSTRONG) 
