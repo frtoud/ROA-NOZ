@@ -11,7 +11,7 @@ if (radius > 0)
     if (shine_cooldown > shine_cooldown_max - 8)
     {
         var shine_frame = floor((shine_cooldown_max - shine_cooldown) / 2);
-        var shine_scale = flake_scale;
+        var shine_scale = flake_scale*2;
         draw_sprite_ext(shine_spr, shine_frame, x, y, shine_scale, shine_scale, draw_angle, c_white, alpha)
     }
 }
