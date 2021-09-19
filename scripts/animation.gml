@@ -308,6 +308,7 @@ if (anim_fakeparry_timer > 0)
 if (joke_explainer_mode)
 {
     change_anim(jokex_spr_idle, sprite_get("idle"));
+    change_anim(jokex_spr_crouch, sprite_get("crouch"));
     change_anim(jokex_spr_walk, sprite_get("walk"));
     change_anim(jokex_spr_walkturn, sprite_get("walkturn"));
     change_anim(jokex_spr_hurt, sprite_get("hurt"));
