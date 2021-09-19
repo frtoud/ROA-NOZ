@@ -7,6 +7,21 @@
 
 var color_alt = get_player_color(player);
 
+if ("joke_explainer_mode" in self && joke_explainer_mode
+    && color_alt != ALT_ROBOT)
+{
+    color_alt = ALT_ROBOT;
+    for (i = 0; i < 8; i++)
+    {
+        set_character_color_slot( i, get_color_profile_slot_r(color_alt, i), 
+                                     get_color_profile_slot_g(color_alt, i), 
+                                     get_color_profile_slot_b(color_alt, i));
+        set_article_color_slot( i, get_color_profile_slot_r(color_alt, i), 
+                                   get_color_profile_slot_g(color_alt, i), 
+                                   get_color_profile_slot_b(color_alt, i));
+    }
+}
+
 //==========================================================================
 //Unshaded alts
 if ( (color_alt == ALT_GAMEBOY) 
