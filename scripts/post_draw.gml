@@ -1,3 +1,5 @@
+//post_draw.gml
+var scale = 1 + small_sprites;
 
 shader_start();
 //=============================================================================
@@ -6,14 +8,14 @@ if (attack == AT_DSPECIAL && (window == 3 || (window >= 6 && window < 9))
    && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) )
 {
     var vfxframe = (get_gameplay_time() / 3 ) % 4;
-    draw_set_alpha(0.5 * ease_quadOut(1, 2, floor(at_dspecial_damage_block), noz_dspecial_damage_max));
-    draw_sprite(sprite_get("dspecial_shine"), vfxframe, x, y-(char_height/2));
-    draw_set_alpha(1);
+    var alpha = (0.5 * ease_quadOut(1, 2, floor(at_dspecial_damage_block), noz_dspecial_damage_max));
+    draw_sprite_ext(vfx_dspecial_shine_spr, vfxframe, 
+                    x, y-(char_height/2), scale, scale, 0, c_white, alpha);
 }
 if (anim_dspecial_shockwave_frame > 0)
 { 
-    draw_sprite(vfx_shine_spr, 4 - min(anim_dspecial_shockwave_frame, 4),
-                x, y-(char_height/2)); 
+    draw_sprite_ext(vfx_dspecial_shockwave_spr, 4 - min(anim_dspecial_shockwave_frame, 4),
+                    x, y-(char_height/2), scale, scale, 0, c_white, 1); 
 }
 
 
@@ -21,7 +23,7 @@ if (anim_dspecial_shockwave_frame > 0)
 //force-show the parry frame instead of being greyed out
 if (state == PS_PARRY && image_index == dodge_startup_frames)
 {
-    draw_sprite_ext(sprite_index, image_index, x, y, spr_dir, 1, 0, c_white, 1);
+    draw_sprite_ext(sprite_index, image_index, x, y, spr_dir*scale, scale, 0, c_white, 1);
 }
 
 //Skip drawing indicators if not needed
