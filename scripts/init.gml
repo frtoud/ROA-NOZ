@@ -375,6 +375,7 @@ pkmn_stadium_name_override = "Nozomi";
 
 //Mt. Dedede Stadium
 arena_title = "Idol Figment";
+arena_short_name = "Smol Nozomi";
 
 //Trial Grounds
 guiltySprite = sprite_get("cmp_trial_grounds");
@@ -408,3 +409,22 @@ uhc_victory_quote = "sno whalation remix (2014 ver) subsribe 4 more amv ^_^";
 sprite_change_offset("cmp_uhc", 11, 8);
 uhc_taunt_videos[0] = { sprite:sprite_get("cmp_uhc"), song:sound_get("cmp_uhc"), fps:12 };
 
+//=================================================
+// JE7K compatibility
+if (joke_explainer_mode)
+{
+    pkmn_stadium_name_override = "JK-EX-7000";
+    
+    //Mt. Dedede Stadium
+    arena_title = "Mechanical Assistant";
+    arena_short_name = "JK-EX-7000";
+    
+    //Hikaru
+    Hikaru_Title = "Joke Explainer";
+
+    //Agent N
+    nname = "Joke-Explainer 7000"
+    ncode1 = "Compelled to explain 'The Joke' to the nearest person.";
+    ncode2 = "Highly mobile, never seems to turn off.";
+    ncode3 = "Capture and return to Dr. Andonuts immediately. ";
+}
