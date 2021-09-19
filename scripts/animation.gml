@@ -327,7 +327,6 @@ if (joke_explainer_mode)
     //Apply cosmetic changes to the attack grid
     if (!jokex_attack_grid_initialized)
     {
-        
         set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("ftilt_bot"));
         
         set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utilt_bot"));
@@ -336,6 +335,20 @@ if (joke_explainer_mode)
         set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
         
         set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair_bot"));
+        
+        set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_bot"))
+        set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_bot"));
+        set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
+        set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
+        set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+        set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
+        set_window_value(AT_NSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 2);
+        set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAMES, 1);
+        set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 2);
+        set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, -2);
+        set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 2);
+        set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX, sound_get("sfx_noz_bot_todo"));
+        set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX, sound_get("sfx_noz_bot_kete"));
     }
 }
 
