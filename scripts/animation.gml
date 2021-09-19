@@ -312,6 +312,11 @@ if (joke_explainer_mode)
     change_anim(jokex_spr_walkturn, sprite_get("walkturn"));
     change_anim(jokex_spr_hurt, sprite_get("hurt"));
     
+    change_anim(jokex_spr_jumpstart, sprite_get("jumpstart"));
+    change_anim(jokex_spr_jump, sprite_get("jump"));
+    change_anim(jokex_spr_land, sprite_get("land"));
+    change_anim(jokex_spr_land, sprite_get("landinglag"));
+    
     //Looping animations
     if (sprite_index == jokex_spr_idle)
     { image_index = floor(state_timer * idle_anim_speed) % image_number; }

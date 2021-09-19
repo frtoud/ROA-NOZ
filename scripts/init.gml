@@ -94,6 +94,17 @@ bubble_x = 0;
 bubble_y = 4;
 
 //==================================================
+// SFX
+
+land_sound = asset_get("sfx_land_light");
+landing_lag_sound = asset_get("sfx_land");
+waveland_sound = asset_get("sfx_waveland_zet");
+jump_sound = asset_get("sfx_jumpground");
+djump_sound = asset_get("sfx_jumpair");
+air_dodge_sound = asset_get("sfx_quick_dodge");
+
+//==================================================
+//JokeExplainer Alt setup
 joke_explainer_mode = (get_player_color(player) == 14);
 jokex_attack_grid_initialized = false;
 if (joke_explainer_mode)
@@ -109,22 +120,20 @@ if (joke_explainer_mode)
     //jokex_spr_dashstop = 
     //jokex_spr_dashturn = 
     //Air sprites
+    jokex_spr_jumpstart = sprite_get("jumpstart_bot");
+    jokex_spr_jump = sprite_get("jump_bot");
+    jokex_spr_land = sprite_get("land_bot");
     //Dodge
     //Hurt
     jokex_spr_hurt = sprite_get("hurt_bot");
     //Attack sprites: change straight at the source!
     //see animation.gml
+    
+    //Sound effects
+    jump_sound = sound_get("bot_jumpground");
+    land_sound = asset_get("sfx_land_heavy");
+    landing_lag_sound = asset_get("sfx_land_heavy");
 }
-//==================================================
-// SFX
-
-land_sound = asset_get("sfx_land_light");
-landing_lag_sound = asset_get("sfx_land");
-waveland_sound = asset_get("sfx_waveland_zet");
-jump_sound = asset_get("sfx_jumpground");
-djump_sound = asset_get("sfx_jumpair");
-air_dodge_sound = asset_get("sfx_quick_dodge");
-
 
 //=================================================
 //Custom Frame Data indices
