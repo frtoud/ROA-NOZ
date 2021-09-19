@@ -321,6 +321,9 @@ if (joke_explainer_mode)
     //Apply cosmetic changes to the attack grid
     if (!jokex_attack_grid_initialized)
     {
+        
+        set_attack_value(AT_FTILT, AG_SPRITE, sprite_get("ftilt_bot"));
+        
         set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utilt_bot"));
         set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_med"));
         set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 125);

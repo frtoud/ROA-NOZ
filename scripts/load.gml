@@ -32,6 +32,7 @@ sprite_change_offset("tech", 16, 27);
 sprite_change_offset("jab", 19, 24, true);
 sprite_change_offset("dattack", 20, 28, true);
 sprite_change_offset("ftilt", 18, 24, true);
+sprite_change_offset("ftilt_bot", 18, 29,);
 sprite_change_offset("dtilt", 16, 23, true);
 sprite_change_offset("utilt", 20, 37, true);
 sprite_change_offset("utilt_bot", 20, 37);
