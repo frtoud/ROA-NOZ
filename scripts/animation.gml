@@ -302,8 +302,24 @@ if (anim_dspecial_shockwave_frame > 0)
     { anim_dspecial_shockwave_frame -= 1; }
 if (anim_fakeparry_timer > 0) 
     { anim_fakeparry_timer -= 1; }
-   
-//===========================================================     
+    
+//===========================================================
+// JE7k alt switch -- thanks Muno
+if (joke_explainer_mode)
+{
+    change_anim(jokex_spr_idle, sprite_get("idle"));
+    
+    //Looping animations
+    if (sprite_index == jokex_spr_idle)
+    { image_index = floor(state_timer * idle_anim_speed) % image_number; }
+}
+
+#define change_anim(spr_to, spr_from)
+{
+    if (sprite_index == spr_from) sprite_index = spr_to;
+}
+
+//===========================================================
 #define spawn_twinkle(vfx, pos_x, pos_y, width, front)
 {
     var kx = pos_x - (width / 2) + anim_rand_x * width;

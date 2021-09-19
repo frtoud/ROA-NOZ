@@ -9,8 +9,7 @@ char_height = 52;
 idle_anim_speed = 0.15;
 walk_anim_speed = 0.15;
 dash_anim_speed = .3;
-
-crouch_anim_speed = 2;
+crouch_anim_speed = 0; //unused
 pratfall_anim_speed = .2;
 
 walk_speed = 3.25;
@@ -90,6 +89,34 @@ roll_back_recovery_frames = 3;
 roll_forward_max = 9; //roll speed
 roll_backward_max = 9;
 
+//visual offsets for when you're in Ranno's bubble
+bubble_x = 0;
+bubble_y = 4;
+
+//==================================================
+joke_explainer_mode = (get_player_color(player) == 14);
+jokex_attack_grid_initialized = false;
+if (joke_explainer_mode)
+{
+    //Looping sprites
+    jokex_spr_idle = sprite_get("idle_bot");
+    //jokex_spr_dash = 
+    //jokex_spr_walk = 
+    //Basic movement sprites
+    //jokex_spr_crouch = 
+    //jokex_spr_walkturn = 
+    //jokex_spr_dashstart = 
+    //jokex_spr_dashstop = 
+    //jokex_spr_dashturn = 
+    //Air sprites
+    //Dodge
+    //Hurt
+    jokex_spr_hurt = sprite_get("hurt_bot");
+    //Attack sprites: change straight at the source!
+}
+//==================================================
+// SFX
+
 land_sound = asset_get("sfx_land_light");
 landing_lag_sound = asset_get("sfx_land");
 waveland_sound = asset_get("sfx_waveland_zet");
@@ -97,9 +124,6 @@ jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
 
-//visual offsets for when you're in Ranno's bubble
-bubble_x = 0;
-bubble_y = 4;
 
 //=================================================
 //Custom Frame Data indices
