@@ -100,11 +100,11 @@ if (joke_explainer_mode)
 {
     //Looping sprites
     jokex_spr_idle = sprite_get("idle_bot");
+    jokex_spr_walk = sprite_get("walk_bot");
     //jokex_spr_dash = 
-    //jokex_spr_walk = 
     //Basic movement sprites
     //jokex_spr_crouch = 
-    //jokex_spr_walkturn = 
+    jokex_spr_walkturn = sprite_get("walkturn_bot");
     //jokex_spr_dashstart = 
     //jokex_spr_dashstop = 
     //jokex_spr_dashturn = 

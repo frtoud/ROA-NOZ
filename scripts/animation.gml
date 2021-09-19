@@ -308,11 +308,15 @@ if (anim_fakeparry_timer > 0)
 if (joke_explainer_mode)
 {
     change_anim(jokex_spr_idle, sprite_get("idle"));
+    change_anim(jokex_spr_walk, sprite_get("walk"));
+    change_anim(jokex_spr_walkturn, sprite_get("walkturn"));
     change_anim(jokex_spr_hurt, sprite_get("hurt"));
     
     //Looping animations
     if (sprite_index == jokex_spr_idle)
     { image_index = floor(state_timer * idle_anim_speed) % image_number; }
+    else if (sprite_index == jokex_spr_walk)
+    { image_index = floor(state_timer * walk_anim_speed) % image_number; }
     
     //Apply cosmetic changes to the attack grid
     if (!jokex_attack_grid_initialized)
