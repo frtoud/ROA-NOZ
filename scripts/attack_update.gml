@@ -13,81 +13,42 @@ case AT_JAB:
     {
         case 1: 
         {
-            if (window_timer == 1)
-            {
-                at_jab_infinite = false;
-                at_jab_inf_count = 3;
-                at_jab_finisher = false;
-                clear_button_buffer(PC_ATTACK_PRESSED);
-            }
-            else if (attack_pressed)
-            { 
-                at_jab_infinite = true;
-            }
+        	if (window_timer == 1)
+        	{
+        		at_jab_timesthrough = 0;
+        	}
         } break;
-        case 2: 
-        {
-            if (at_jab_infinite && 
-            window_timer > get_window_value(AT_JAB, 2, AG_WINDOW_CANCEL_FRAME))
-            {
-                window = 3;
-                window_timer = 0;
-                //Manually applying HSP from move data
-                hsp += spr_dir * get_window_value(AT_JAB, 3, AG_WINDOW_HSPEED);
-            }
-            else if (attack_pressed)
-            { 
-                at_jab_infinite = true;
-            }
-        } break;
-        case 3:
-        case 4:
-        case 5: 
-        {
+    	case 4:
+    	case 5:
+    	case 6:
+    	{
             move_cooldown[AT_JAB] = 8;
-            can_attack = has_hit && (at_jab_inf_count < 2);
-            if (window_timer == get_window_value(AT_JAB, 3, AG_WINDOW_LENGTH))
+            can_attack = has_hit && (at_jab_timesthrough >= 2);
+
+    		if (window_timer == get_window_value(AT_JAB, 4, AG_WINDOW_LENGTH))
             {
-                window_timer = 0;
-                if (at_jab_inf_count > 0)
-                { 
-                    at_jab_inf_count--;
-                    // Windows 3, 4, 5 loop into each other
-                    window += (window == 5) ? -2 : 1;
+                at_jab_timesthrough++;
+                if (attack_down || attack_pressed)
+                {
+                    //Force loop back to window 4
+                    window = 4;
                 }
-                else
-                { 
-                    window = 6; 
-                    at_jab_finisher = has_hit;
-                }
-            }
-            else if (at_jab_inf_count < 2 && (attack_pressed || attack_down))
-            { 
-                at_jab_inf_count++;
-            }
-        } break;
-        case 6:
+    		}
+    	} break;
+        case 7: 
         {
             can_attack = true;
             move_cooldown[AT_JAB] = 1;
-            if ((at_jab_finisher)
-            || (attack_pressed && window_timer > 6))
-            {
-                window = 7;
-                window_timer = 0;
-                //Manually applying HSP from move data
-                hsp += spr_dir * get_window_value(AT_JAB, 7, AG_WINDOW_HSPEED);
-            }
-        } break;
-        case 7:
-        {
-            if (window_timer == get_window_value(AT_JAB, 7, AG_WINDOW_LENGTH))
+
+            if (has_hit && window_timer > get_window_value(AT_JAB, 7, AG_WINDOW_CANCEL_FRAME))
             {
                 window = 8;
                 window_timer = 0;
+                //Window not switched by Rivals: manually applying HSP from move data
+                hsp += spr_dir * get_window_value(AT_JAB, 8, AG_WINDOW_HSPEED);
             }
         } break;
-        default: break;
+    	default: break;
     }
 } break;
 //==============================================================
