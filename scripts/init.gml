@@ -363,7 +363,7 @@ ncode2 = "Can fly with her twintails. Exhibits cryokinetic powers.";
 ncode3 = "Wanted by 'Haltmann Works' for 'being weaboo trash'...?";
 
 //Hypercam
-uhc_victory_quote = "sno whalation remix (2014 ver) subsribe 4 more amvs ^_^";
+uhc_victory_quote = "sno whalation remix (2014 ver) subsribe 4 more amv ^_^";
 
 sprite_change_offset("cmp_uhc", 11, 8);
 uhc_taunt_videos[0] = { sprite:sprite_get("cmp_uhc"), song:sound_get("cmp_uhc"), fps:12 };
