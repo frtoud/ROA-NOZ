@@ -175,7 +175,7 @@ set_color_profile_slot(14, 2,  86, 193, 246 ); //Bow
 set_color_profile_slot(14, 3,  44,  65, 101 ); //Shirt
 set_color_profile_slot(14, 4,  75, 188, 250 ); //Skirt
 set_color_profile_slot(14, 5,  28,  30,  29 ); //Leggings
-set_color_profile_slot(14, 6,  98, 198, 198 ); //VFX
+set_color_profile_slot(14, 6, 132, 221, 221 ); //VFX
 
 //Stone Halation
 set_color_profile_slot(15, 0,  12,  95, 220); //Hair
