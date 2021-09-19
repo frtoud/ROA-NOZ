@@ -418,12 +418,16 @@ case AT_NSPECIAL:
     
     if (window == 2 || window == 4)
     {
+        var sleep_zone_x = x;
+        var sleep_zone_y = y - (char_height/2);
+
     	// use a collision test because singing somehow hurts RockWall's pillars
     	with (oPlayer)
     	{
     	    if (self != other && (get_player_team(self.player) != get_player_team(other.player))
     	        && (!free || other.noz_rune_flags.air_sleep) && noz_sleepimmune_timer == 0 && 
-    	    	hurtboxID == collision_circle(other.x, other.y-25, 50, hurtboxID, true, false))
+    	    	hurtboxID == collision_circle(sleep_zone_x, sleep_zone_y, 
+                             other.noz_nspecial_radius, hurtboxID, true, false))
     	    {
 		        noz_handler_id = other;
 				noz_sleep_anim_timer = 0;
