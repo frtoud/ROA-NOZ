@@ -46,6 +46,7 @@ sprite_change_offset("fair", 16, 34, true);
 sprite_change_offset("bair", 19, 34, true);
 sprite_change_offset("uair", 19, 38, true);
 sprite_change_offset("dair", 15, 36, true);
+sprite_change_offset("dair_bot", 15, 36);
 
 //should match 1:1 with the regular variant offsets above
 sprite_change_offset("nair_hover", 24, 34);

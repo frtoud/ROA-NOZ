@@ -334,6 +334,8 @@ if (joke_explainer_mode)
         set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_med"));
         set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 125);
         set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
+        
+        set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair_bot"));
     }
 }
 
