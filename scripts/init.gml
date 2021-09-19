@@ -1,5 +1,6 @@
 hurtbox_spr = sprite_get("idle_hurt");
 crouchbox_spr = sprite_get("crouch_hurt");
+mask_index = sprite_get("smol_mask");
 air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
