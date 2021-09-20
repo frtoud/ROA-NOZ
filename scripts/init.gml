@@ -168,6 +168,9 @@ anim_fakeparry_timer = 0;
 //anim_fakeparry_fg = asset_get("new_dodge_spr");
 anim_fakeparry_bg = asset_get("fx_parry_new");
 
+noz_anim_back_flipping = false;
+noz_anim_backflip_spr = sprite_get("doublejump_back");
+
 //=================================================
 //Rune flags
 noz_rune_flags = 

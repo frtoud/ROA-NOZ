@@ -121,6 +121,14 @@ switch (state)
             image_index = 5;
         }
     } break;
+    case PS_DOUBLE_JUMP:
+    {
+        if (state_timer <= 1) 
+        { noz_anim_back_flipping = (hsp * spr_dir) < 0; }
+        
+        if (noz_anim_back_flipping)
+        { sprite_index = noz_anim_backflip_spr; }
+    } break;
     case PS_WALL_JUMP:
     {
         if (state_timer < 4)
