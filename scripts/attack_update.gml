@@ -235,7 +235,7 @@ case AT_BAIR:
         {
             set_num_hitboxes(AT_BAIR, 1);
             set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 11);
-            set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 1);
+            set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.6);
         }
     }
 } break;
