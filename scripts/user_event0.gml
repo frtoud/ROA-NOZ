@@ -186,6 +186,10 @@ with (oPlayer)
 						state = (free ? PS_PRATFALL : PS_PRATLAND);
 						//avoid sfx/vfx
 						state_timer = 1;
+
+                        //prevent slippery fellas from being slid to their doom
+                        if (abs(hsp) > 5) hsp *= 0.85;
+
 						if ((noz_sleep_anim_timer % 45) == 10)
 						{
 							var kx = x + other.anim_rand_x * char_height - (char_height / 2);
