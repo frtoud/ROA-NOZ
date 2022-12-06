@@ -1,7 +1,7 @@
 //shader shenanigans
 //Update this if color.gml changes
 #macro ALT_GAMEBOY  7
-#macro ALT_CELESTE 12
+#macro ALT_CELESTE 14
 #macro ALT_BOOTLEG 15
 
 var color_alt = get_player_color(player);
