@@ -237,7 +237,7 @@ noz_dspecial_dmg_mult = 1.5;
 
 noz_nspecial_radius = 50;
 noz_nspecial_mashing_bonus = 1;
-noz_nspecial_sleep_base = floor(75 * noz_nspecial_mashing_bonus);
+noz_nspecial_sleep_base = floor(95 * noz_nspecial_mashing_bonus);
 noz_nspecial_sleep_early = floor(25 * noz_nspecial_mashing_bonus);
 noz_nspecial_sleep_mult = 0.2 * noz_nspecial_mashing_bonus;
 noz_nspecial_sleep_max = floor(180 * noz_nspecial_mashing_bonus);
