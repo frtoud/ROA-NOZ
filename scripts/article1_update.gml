@@ -102,7 +102,8 @@ else
     if (victim != noone && !victim.free && victim.noz_snowimmune_timer < 1)
     {
         same_team = get_player_team(player_id.player) == get_player_team(victim.player);
-        if (victim == player_id || ("url" in victim && same_team)) 
+        if (victim == player_id 
+        || ("url" in victim && (victim.url == player_id.url) && same_team)) 
         {
             player_id.at_fspecial_on_ice_timer = 3;
         }

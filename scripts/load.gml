@@ -1,30 +1,23 @@
 sprite_change_offset("idle", 14, 25, true);
-sprite_change_offset("idle_bot", 14, 30);
 sprite_change_offset("hurt", 13, 25);
-sprite_change_offset("hurt_bot", 13, 30);
 sprite_change_offset("spinhurt", 15, 26);
 sprite_change_offset("crouch", 17, 24, true);
-sprite_change_offset("crouch_bot", 17, 29);
 sprite_change_offset("walk", 16, 25);
-sprite_change_offset("walk_bot", 16, 30);
 sprite_change_offset("walkturn", 14, 24);
-sprite_change_offset("walkturn_bot", 14, 29);
 sprite_change_offset("dash", 16, 30);
 sprite_change_offset("dashstart", 17, 26);
 sprite_change_offset("dashstop", 18, 28);
 sprite_change_offset("dashturn", 16, 33);
 
 sprite_change_offset("jumpstart", 15, 22);
-sprite_change_offset("jumpstart_bot", 12, 25);
 sprite_change_offset("jump", 15, 34);
-sprite_change_offset("jump_bot", 15, 34);
 sprite_change_offset("doublejump", 15, 30);
+sprite_change_offset("doublejump_back", 15, 30);
 sprite_change_offset("walljump", 16, 26);
 sprite_change_offset("pratfall", 16, 31);
 sprite_change_offset("pratland", 16, 22);
 sprite_change_offset("land", 14, 22);
 sprite_change_offset("landinglag", 14, 22);
-sprite_change_offset("land_bot", 14, 27);
 
 sprite_change_offset("parry", 15, 26);
 sprite_change_offset("roll_forward", 14, 24);
@@ -36,17 +29,14 @@ sprite_change_offset("tech", 16, 27);
 sprite_change_offset("jab", 19, 24, true);
 sprite_change_offset("dattack", 20, 28, true);
 sprite_change_offset("ftilt", 18, 24, true);
-sprite_change_offset("ftilt_bot", 18, 29,);
 sprite_change_offset("dtilt", 16, 23, true);
 sprite_change_offset("utilt", 20, 37, true);
-sprite_change_offset("utilt_bot", 20, 37);
 
 sprite_change_offset("nair", 24, 34, true);
 sprite_change_offset("fair", 16, 34, true);
 sprite_change_offset("bair", 19, 34, true);
 sprite_change_offset("uair", 19, 38, true);
 sprite_change_offset("dair", 15, 36, true);
-sprite_change_offset("dair_bot", 15, 36);
 
 //should match 1:1 with the regular variant offsets above
 sprite_change_offset("nair_hover", 24, 34);
@@ -90,7 +80,6 @@ sprite_change_offset("ustrong", 16, 26, true);
 sprite_change_offset("dstrong", 14, 30, true);
  
 sprite_change_offset("nspecial", 14, 28, true);
-sprite_change_offset("nspecial_bot", 14, 30);
 sprite_change_offset("nspecial_air", 14, 28);
 sprite_change_offset("fspecial", 17, 33, true);
 sprite_change_offset("uspecial", 23, 30, true);

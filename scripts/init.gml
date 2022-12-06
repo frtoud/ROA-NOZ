@@ -1,6 +1,7 @@
 hurtbox_spr = sprite_get("idle_hurt");
 crouchbox_spr = sprite_get("crouch_hurt");
 mask_index = sprite_get("smol_mask");
+air_hurtbox_spr = -1;
 hitstun_hurtbox_spr = -1;
 
 char_height = 52;
@@ -204,6 +205,9 @@ anim_fakeparry_timer = 0;
 //anim_fakeparry_fg = asset_get("new_dodge_spr");
 anim_fakeparry_bg = asset_get("fx_parry_new");
 
+noz_anim_back_flipping = false;
+noz_anim_backflip_spr = sprite_get("doublejump_back");
+
 //=================================================
 //Rune flags
 noz_rune_flags = 
@@ -403,7 +407,7 @@ ncode2 = "Can fly with her twintails. Exhibits cryokinetic powers.";
 ncode3 = "Wanted by 'Haltmann Works' for 'being weaboo trash'...?";
 
 //Hypercam
-uhc_victory_quote = "sno whalation remix (2014 ver) subsribe 4 more amvs ^_^";
+uhc_victory_quote = "sno whalation remix (2014 ver) subsribe 4 more amv ^_^";
 
 sprite_change_offset("cmp_uhc", 11, 8);
 uhc_taunt_videos[0] = { sprite:sprite_get("cmp_uhc"), song:sound_get("cmp_uhc"), fps:12 };
