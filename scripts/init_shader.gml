@@ -1,12 +1,11 @@
 //shader shenanigans
 //Update this if color.gml changes
 #macro ALT_GAMEBOY  7
-#macro ALT_CELESTE 12
-#macro ALT_ROBOT   14
+#macro ALT_CELESTE 14
 #macro ALT_BOOTLEG 15
 
 var color_alt = get_player_color(player);
-
+/*
 if ("joke_explainer_mode" in self && joke_explainer_mode
     && color_alt != ALT_ROBOT)
 {
@@ -20,7 +19,7 @@ if ("joke_explainer_mode" in self && joke_explainer_mode
                                    get_color_profile_slot_g(color_alt, i), 
                                    get_color_profile_slot_b(color_alt, i));
     }
-}
+}*/
 
 //==========================================================================
 //Unshaded alts
@@ -35,9 +34,9 @@ if ( (color_alt == ALT_GAMEBOY)
     set_character_color_shading( 5, 0.0 );
     set_character_color_shading( 6, 0.5 );
 }
-else if (color_alt == ALT_ROBOT)
+//else if (color_alt == ALT_ROBOT)
 {
-    set_character_color_shading( 6, 2.0 );
+    //set_character_color_shading( 6, 2.0 );
 }
 //==========================================================================
 //Hair color effects (only for Madeline)
