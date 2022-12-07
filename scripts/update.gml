@@ -57,7 +57,6 @@ if (state == PS_PRATFALL && vsp > noz_pratfall_max_vsp)
 //==============================================================================
 if (at_uspecial_hovering)
 {
-	//TODO: disallow fastfalling but make it fallthrough platforms?
 	fall_through = false;
 	
 	//Those states pull you out of Hover
@@ -72,8 +71,7 @@ if (at_uspecial_hovering)
 		!( state == PS_ATTACK_AIR && attack == AT_USPECIAL && 
 		  (window == 5 || (window == 6 && window_timer < 6))) )
 	{
-		if (fast_falling) || (noz_rune_flags.enhanced_hover
-		                  && up_down && special_pressed)
+		if (special_pressed)
 		{
 			at_uspecial_exhausted = true;
 			at_nair_hover_need_grid_adjust = true;
@@ -81,6 +79,8 @@ if (at_uspecial_hovering)
 		}
 		else
 		{
+            do_a_fast_fall = false; //prevents weird hover-fastfall
+            
 			//Hovermode movement logic!
 			var target_hsp = 0;
 			var target_vsp = 0;
