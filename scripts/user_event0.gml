@@ -181,7 +181,7 @@ with (oPlayer)
 					
 					if ( state_cat == SC_GROUND_NEUTRAL || state == PS_PRATLAND)
 					|| ( state_cat == SC_AIR_NEUTRAL || state == PS_PRATFALL)
-					|| (noz_sleep_interrupt_timer >= other.noz_nspecial_interruption_time)
+					|| (noz_sleep_interrupt_timer >= other.noz_nspecial_interruption_time) //TODO: if Noz is hit during that time, prevent falling asleep?
 					{
 						state = (free ? PS_PRATFALL : PS_PRATLAND);
 						//avoid sfx/vfx
