@@ -19,7 +19,6 @@ init_shader();
 outline_color = [0, 0, 0];
 
 var scale = 1 + small_sprites;
-shader_start();
 
 //===================================================================
 // Hovering hair
@@ -30,9 +29,11 @@ if (at_uspecial_hovering && state != PS_PRATFALL &&
     || (attack == AT_UAIR && image_index > 0 && image_index < 5 )
     || (attack == AT_NAIR && at_uspecial_exhausted)) ))
 {
+    shader_start();
     draw_sprite_ext(at_uspecial_exhausted ? vfx_hair_exhausted_spr : vfx_hair_hover_spr, 
                     floor(anim_hover_hair_frame), x - (spr_dir * 4), y - 44, 
                     spr_dir*scale, scale, 0, c_white, 1);
+    shader_end();
 }
 
 //===================================================================
@@ -46,24 +47,23 @@ if (attack == AT_NSPECIAL && (window > 1) &&
                        get_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH)) 
              : 100);
     
+    shader_start();
     draw_sprite_ext(vfx_nspecial_spr, 
                     floor(get_gameplay_time() / 5 ) % 4, x, y-(char_height/2), scale, scale, 
                     floor(get_gameplay_time() * 5 ) % 360, c_white,
                     (alpha) * 0.01 * 0.7 );
+    shader_end();
     
     if (get_match_setting(SET_HITBOX_VIS) && (window == 2 || window == 4))
     {
         //show effective range of Sing
         var alpha = draw_get_alpha();
         draw_set_alpha(0.5);
-        shader_end();
-        draw_circle_color(x, y-(char_height/2), noz_nspecial_radius, c_red, c_red, false);
-        shader_start();
+        draw_circle_color(x, y-(char_height/2), noz_nspecial_radius, c_blue, c_blue, false);
         draw_set_alpha(alpha);
     }
 }
 //===================================================================
-shader_end();
 
 //===================================================================
 //Simulate parry VFX
