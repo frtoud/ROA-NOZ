@@ -155,19 +155,13 @@ switch (state)
                                       y - 20, 10, true);
                     }
                 }
-                else if (window == 2 && 
-                (  window_timer == get_hitbox_value(AT_FSTRONG, 2, HG_WINDOW_CREATION_FRAME) -1
-                || window_timer == get_hitbox_value(AT_FSTRONG, 3, HG_WINDOW_CREATION_FRAME) -1 ))
-                { 
-                    spawn_hit_fx(x + (32 * spr_dir), y-20, vfx_ice_small);
-                    sound_play(sound_get("sfx_noz_ice_small"));
-                }
-                else if (!hitstop && window == 3 && window_timer == 0)
+                else if !hitstop && (window == 3) && (window_timer == 0)
                 {
-                    spawn_hit_fx(x + (40 * spr_dir), y-20, vfx_ice_big);
+                    var xpos = x + get_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X) * spr_dir;
+                    var ypos = y + get_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y);
+                    spawn_hit_fx(xpos, ypos, vfx_ice_big);
                 }
-                else if ((get_gameplay_time() % 2 == 0) && ( window == 3 || (window == 2 && 
-                window_timer > get_hitbox_value(AT_FSTRONG, 2, HG_WINDOW_CREATION_FRAME)) ))
+                else if (get_gameplay_time() % 2 == 0) && (window == 3)
                 {
                     spawn_twinkle(vfx_snow_twinkle, x + (32 * spr_dir), y - 20, 
                                   get_hitbox_value(AT_FSTRONG, 2, HG_WIDTH), false);

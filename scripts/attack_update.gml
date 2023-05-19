@@ -76,15 +76,7 @@ case AT_FSTRONG:
         has_hit = false;
         has_hit_player = false;
     }
-    else if (window == 2 && !has_hit_player
-    && window_timer == get_window_value(AT_FSTRONG, 2, AG_WINDOW_LENGTH))
-    {
-        //Skip window 3
-        //Final hit only happens if the previous two hits connected
-        window = 4;
-        window_timer = 0;
-    }
-    else if (window == 4 && has_hit_player)
+    else if (window == 3 && has_hit_player)
     {
         can_jump = true;
     }
