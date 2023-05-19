@@ -21,7 +21,7 @@ if (anim_dspecial_shockwave_frame > 0)
 
 //=============================================================================
 //force-show the parry frame instead of being greyed out
-if (state == PS_PARRY && image_index == dodge_startup_frames)
+if (state == PS_PARRY && window == 1)
 {
     draw_sprite_ext(sprite_index, image_index, x, y, spr_dir*scale, scale, 0, c_white, 1);
 }
