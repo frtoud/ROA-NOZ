@@ -11,41 +11,48 @@ case AT_JAB:
 {
     switch (window)
     {
-        case 1: 
+        case 4: 
         {
-        	if (window_timer == 1)
-        	{
-        		at_jab_timesthrough = 0;
-        	}
+            has_hit = false; //reset for this to be accurate about the infinite
+            at_jab_timesthrough = 0;
         } break;
-    	case 4:
-    	case 5:
-    	case 6:
+        //INFINITES
+    	case 5: case 6: case 7:
+    	case 8: case 9: case 10:
     	{
             move_cooldown[AT_JAB] = 8;
-            can_attack = has_hit && (at_jab_timesthrough >= 2);
+            can_attack = has_hit && (at_jab_timesthrough >= 3);
 
-    		if (window_timer == get_window_value(AT_JAB, 4, AG_WINDOW_LENGTH))
+            if (window_timer == get_window_value(AT_JAB, window, AG_WINDOW_LENGTH))
             {
                 at_jab_timesthrough++;
                 if (attack_down || attack_pressed)
                 {
-                    //Force loop back to window 4
-                    window = 4;
+                    //Force loop back
+                    at_jab_timesthrough = min(at_jab_timesthrough, 3);
                 }
-    		}
+                else if (at_jab_timesthrough >= 6)
+                {
+                    window = 11; window_timer = 0;
+                }
+                
+                if (window == 10) 
+                {
+                    window = 5; window_timer = 0;
+                }
+            }
     	} break;
-        case 7: 
+        case 11: 
         {
             can_attack = true;
             move_cooldown[AT_JAB] = 1;
 
-            if (has_hit && window_timer > get_window_value(AT_JAB, 7, AG_WINDOW_CANCEL_FRAME))
+            if (has_hit && window_timer > get_window_value(AT_JAB, window, AG_WINDOW_CANCEL_FRAME))
             {
-                window = 8;
-                window_timer = 0;
+                window++;
+                window_timer = 1;
                 //Window not switched by Rivals: manually applying HSP from move data
-                hsp += spr_dir * get_window_value(AT_JAB, 8, AG_WINDOW_HSPEED);
+                hsp += spr_dir * get_window_value(AT_JAB, window, AG_WINDOW_HSPEED);
             }
         } break;
     	default: break;
