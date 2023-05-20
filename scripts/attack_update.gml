@@ -21,17 +21,17 @@ case AT_JAB:
     	case 8: case 9: case 10:
     	{
             move_cooldown[AT_JAB] = 8;
-            can_attack = has_hit && (at_jab_timesthrough >= 3);
+            can_attack = has_hit && (at_jab_timesthrough >= 2);
 
             if (window_timer == get_window_value(AT_JAB, window, AG_WINDOW_LENGTH))
             {
                 at_jab_timesthrough++;
-                if (attack_down || attack_pressed)
+                if (attack_down || attack_pressed) && !was_parried
                 {
                     //Force loop back
-                    at_jab_timesthrough = min(at_jab_timesthrough, 3);
+                    at_jab_timesthrough = min(at_jab_timesthrough, 2);
                 }
-                else if (at_jab_timesthrough >= 6)
+                else if (at_jab_timesthrough >= 4)
                 {
                     window = 11; window_timer = 0;
                 }
@@ -47,7 +47,8 @@ case AT_JAB:
             can_attack = true;
             move_cooldown[AT_JAB] = 1;
 
-            if (has_hit && window_timer > get_window_value(AT_JAB, window, AG_WINDOW_CANCEL_FRAME))
+            if (window_timer > get_window_value(AT_JAB, window, AG_WINDOW_CANCEL_FRAME))
+            && (has_hit || was_parried)
             {
                 window++;
                 window_timer = 1;

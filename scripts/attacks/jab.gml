@@ -39,10 +39,11 @@ set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 
 
 //Infinites
-set_window_value(AT_JAB, 4, AG_WINDOW_LENGTH, 3);
+set_window_value(AT_JAB, 4, AG_WINDOW_LENGTH, 2);
 set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_JAB, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_JAB, 4, AG_WINDOW_HSPEED, 4.4);
+set_window_value(AT_JAB, 4, AG_WINDOW_GOTO, 7);
 
 //Defines WINDOWS 5-10 and HITBOXES 2-7
 for (var i = 0; i < 6; i++)
@@ -86,7 +87,7 @@ for (var i = 0; i < 6; i++)
 
 
 //Endlag
-set_window_value(AT_JAB, 11, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_JAB, 11, AG_WINDOW_LENGTH, 15);
 set_window_value(AT_JAB, 11, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 11, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_JAB, 11, AG_WINDOW_CANCEL_TYPE, 1);
