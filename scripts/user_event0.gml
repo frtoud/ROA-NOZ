@@ -86,7 +86,7 @@ with (oPlayer)
 			{
 				if (!hitpause)
 				{
-					if (noz_freeze_timer == -1)
+					if (noz_freeze_timer == -8)
 					{
 						noz_snowimmune_timer = other.noz_snowimmune_timer_max;
 						//Prevents frozen players from being catapulted offstage
@@ -95,6 +95,11 @@ with (oPlayer)
 						                             other.noz_freeze_max_hsp);
 						noz_freeze_vsp = -(other.noz_freeze_base_vsp
 						 + get_player_damage(player) * other.noz_freeze_mult_vsp);
+
+                        old_vsp = 0; 
+                        old_hsp = 0;
+						vsp = noz_freeze_vsp;
+						hsp = noz_freeze_hsp;
 						
 						noz_freeze_timer = other.noz_freeze_base_stun
 						 + floor(noz_freeze_vsp / -other.noz_freeze_grav);
@@ -116,6 +121,23 @@ with (oPlayer)
 						{
 						  	noz_freeze_vsp = 0;
 						}
+
+                        //incorporate some additional knockback from further hits
+                        if (old_vsp != 0) || (old_hsp != 0)
+                        {
+                            //noz_freeze_hsp += 0.25 * old_hsp;
+                            //noz_freeze_vsp -= min(0.08 * abs(old_vsp), 1 + get_player_damage(player) * other.noz_freeze_mult_vsp);
+
+                            var angle = point_direction(0, 0, old_hsp, old_vsp);
+                            var force = point_distance(0, 0, noz_freeze_hsp, noz_freeze_vsp)
+                            noz_freeze_hsp = lengthdir_x(force, angle);
+                            noz_freeze_vsp = -abs(lengthdir_y(force, angle));
+
+                            noz_freeze_timer += 3;
+                        }
+
+                        old_vsp = 0; 
+                        old_hsp = 0;
 						
 						vsp = noz_freeze_vsp;
 						noz_freeze_vsp += other.noz_freeze_grav;

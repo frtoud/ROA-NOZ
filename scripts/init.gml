@@ -326,6 +326,8 @@ noz_sleep_mashanim_timer = 0;
 noz_freeze_timer = 0;
 noz_freeze_vsp = 0;
 noz_freeze_hsp = 0;
+noz_freeze_anim_sprite = noone;
+noz_freeze_anim_index = 0;
 noz_freeze_anim_rotate = 0;
 noz_freeze_anim_rotate_speed = 5;
 //Kirby-specific

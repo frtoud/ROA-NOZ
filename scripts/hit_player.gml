@@ -39,9 +39,12 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
         hit_player_obj.orig_knock = 3;
         hit_player_obj.noz_snowstack_timer = 0;
         hit_player_obj.noz_snowimmune_timer = noz_snowimmune_timer_max;
-        hit_player_obj.noz_freeze_timer = -1; //signal for initial ice effect
+        hit_player_obj.noz_freeze_timer = -8; //signal for initial ice effect
         hit_player_obj.noz_handler_id = self;
+
         //animation
+        hit_player_obj.noz_freeze_anim_sprite = hit_player_obj.sprite_index;
+        hit_player_obj.noz_freeze_anim_index = hit_player_obj.image_index;
         hit_player_obj.noz_freeze_anim_rotate = 0;
         hit_player_obj.noz_freeze_anim_rotate_speed = 2 + random_func(2, 10, true);
     }
