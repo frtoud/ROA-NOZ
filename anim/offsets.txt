@@ -3,7 +3,7 @@ sprite_change_offset("hurt", 12, 25);
 sprite_change_offset("spinhurt", 14, 26);
 sprite_change_offset("crouch", 17, 24);
 sprite_change_offset("walk", 16, 25);
-sprite_change_offset("walkturn", 13, 24);
+sprite_change_offset("walkturn", 14, 24);
 sprite_change_offset("dash", 15, 30);
 sprite_change_offset("dashstart", 17, 26);
 sprite_change_offset("dashstop", 19, 28);
@@ -30,7 +30,7 @@ sprite_change_offset("jab", 17, 24, true);
 sprite_change_offset("ftilt", 17, 24, true);
 
 sprite_change_offset("utilt", 20, 37, true);
-
+sprite_change_offset("dattack", 21, 30, true);
 sprite_change_offset("fstrong", 16, 24, true);
 sprite_change_offset("dstrong", 14, 30, true);
 sprite_change_offset("ustrong", 16, 26, true);

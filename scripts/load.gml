@@ -27,7 +27,7 @@ sprite_change_offset("waveland", 14, 22);
 sprite_change_offset("tech", 14, 27);
 
 sprite_change_offset("jab", 17, 24, true);
-sprite_change_offset("dattack", 20, 28, true);
+sprite_change_offset("dattack", 21, 30, true);
 sprite_change_offset("ftilt", 17, 24, true);
 sprite_change_offset("dtilt", 16, 23, true);
 sprite_change_offset("utilt", 20, 37, true);
