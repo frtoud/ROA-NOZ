@@ -471,10 +471,8 @@ case AT_FSPECIAL:
             }
         }
         
-        if (free) 
-        { y = at_fspecial_ylock; }
-        else
-        { at_fspecial_ylock = y; }
+        y = at_fspecial_ylock;
+        fall_through = true;
         
         if (!joy_pad_idle)
 		{
@@ -492,27 +490,29 @@ case AT_FSPECIAL:
 		}
         
         //Create new ice as you go
-        var plat = collision_line(x, y-1, x, y+1, obj_article1, false, true);
-        if (plat != noone && plat.player_id == self && !plat.should_die)
+        // try find existing ice if possible
+        var existingplat = find_ice_platform("obj_article1", x)
+                        || find_ice_platform("obj_article_platform", x);
+
+        if (!existingplat)
         {
-            plat.article_timer = 0;
-        }
-        else if (plat == noone || !at_fspecial_on_soft_cooldown)
-        {
-            plat = instance_create(x + 8 - (x % 16), y, "obj_article1");
-            if (noz_rune_flags.ice_dripping)
+            //check if grounded or not (free stops being accurate once platforms spawn)
+            var col = collision_line(x, y-1, x, y+1, asset_get("par_block"), false, true);
+            if (col == noone)
+                col = collision_line(x, y-1, x, y+1, asset_get("par_jumpthrough"), false, true);
+
+            var x_pos = x + 8 - (x % 16); //centered on a 16x16 grid
+            if (col == noone)
             {
-            	plat.has_proj = true;
+                if (at_fspecial_started_free && at_fspecial_on_soft_cooldown)
+                    spawn_hit_fx(x_pos, floor(y), vfx_article_despawn);
+                else
+                    instance_create(x_pos, floor(y), "obj_article_platform");
             }
-            if (noz_rune_flags.ice_longer)
-            { 
-            	plat.does_not_decay = true;
-            	plat.random_proj_timer = noz_fspecial_airtime + 
-            	random_func(5, noz_fspecial_lifetime-noz_fspecial_airtime, true);
-            }
-            else if (at_fspecial_on_soft_cooldown)
+            else
             {
-            	plat.should_die = at_fspecial_started_free;
+                x_pos = x + 8 - ((1600 + x - get_instance_x(col)) % 16);
+                instance_create(x_pos, floor(y), "obj_article1");
             }
         }
         
@@ -670,15 +670,42 @@ var is_aerial = (attack == AT_NAIR || attack == AT_DAIR || attack == AT_UAIR
               || attack == AT_FAIR || attack == AT_BAIR)
 if (noz_rune_flags.jumpcancels && is_aerial && has_hit_player)
 {
-	can_jump = true;
-	if (jump_pressed && djumps >= max_djumps)
-	{
-		//free simulated jump
-		set_state(PS_DOUBLE_JUMP);
-		move_cooldown[attack] = 5;
-		if (hitpause) old_vsp = -djump_speed;
-		else vsp = -djump_speed;
-	}
+    can_jump = true;
+    if (jump_pressed && djumps >= max_djumps)
+    {
+        //free simulated jump
+        set_state(PS_DOUBLE_JUMP);
+        move_cooldown[attack] = 5;
+        if (hitpause) old_vsp = -djump_speed;
+        else vsp = -djump_speed;
+    }
 }
 
+//==============================================================
+#define find_ice_platform(asset_name, xpos)
+{
+    //same function used in both contexts, simplified here
+    var existingplat = false;
+
+    with (asset_get(asset_name)) if (player_id.url == other.url)
+    //x check: formalize width? also relevant for modulo operation...
+    && (abs(y - other.y) < 2) && (x-8 <= xpos) && (x+8 >= xpos)
+    {
+        if (player_id == other)
+        {
+            article_timer = 0;
+            spr_dir = other.spr_dir;
+            existingplat = true;
+            break;
+        }
+        else
+        {
+            should_die = true;
+            mask_index = asset_get("empty_sprite");//needed to turn this collider off
+            break;
+        }
+    }
+
+    return existingplat;
+}
 

@@ -62,11 +62,11 @@ sprite_change_offset("dspecial", 16, 28, true);
 sprite_change_offset("dspecial_air", 16, 28);
 sprite_change_offset("dspecial_shine", 18, 18);
  
-sprite_change_offset("article1", 8, 2);
-sprite_change_offset("article1_spike", 3, 8);
-sprite_change_offset("article1_spawn", 9, -2);
+sprite_change_offset("article1", 18, 0);
+sprite_change_collision_mask( "article1", false, 2, 10, -2, 26, 0, 1 );
+sprite_change_offset("article1_despawn", 8, 0);
 sprite_change_offset("article1_col", 8, 0);
-sprite_change_collision_mask( "article1", false, 2, 0, 0, 16, 2, 1 );
+sprite_change_offset("article1_spike", 3, 8);
 
 sprite_change_offset("cloud_proj_small", 32, 32);
 sprite_change_offset("cloud_proj_big", 28, 26);

@@ -1,137 +1,138 @@
 //article1_update
 
-//======================================================================
-if (should_die && !dying)
+if (free)
 {
-    dying = true;
-    article_timer = 0;
-    
-    //farewell to the neighbors
-    if (instance_exists(left_plat))
-    { left_plat.right_plat = noone; }
-    if (instance_exists(right_plat))
-    { right_plat.left_plat = noone; }
-    
-    instance_destroy(plat_collider);
-}
-//======================================================================
-if (dying)
-{
-    if (has_proj && was_airborne)
+    if (article_timer < player_id.noz_fspecial_airtime)
     {
-        spawn_projectile();
-        has_proj = false;
+        with (player_id) 
+        {
+           var new = instance_create(other.x, floor(other.y), "obj_article_platform");
+           new.article_timer = other.article_timer;
+           new.spr_dir = other.spr_dir;
+        }
+        instance_destroy(self); exit;
     }
-    
-    if (article_timer >= 12)
-    {
-        instance_destroy(); exit;
-    }
-    
-    image_index = 3 + floor(article_timer / 4);
+    else should_die = true;
 }
-//======================================================================
-else
-{
-    image_index = 3 - 
-    (spr_dir < 1 ? (2*(left_plat != noone) + (right_plat != noone))
-                 : ((left_plat != noone) + 2*(right_plat != noone)) );
 
-    //=====================================================================
-    //dstrong spikes
-    if (spike_timer > 0)
-    {
-        if (spike_timer == spike_hitbox_frame)
-        {
-            sound_play(asset_get("sfx_ice_end"), false, noone, 0.5, 1.5);
-            create_hitbox(AT_DSTRONG, 5, x + spike_dir * 6, y-10);
-        }
-        if (spike_timer == spike_spread_frame)
-        {
-            var neighbor = spike_dir > 0 ? right_plat : left_plat;
-            if (instance_exists(neighbor) && !neighbor.should_die)
-            {
-                neighbor.spike_timer = spike_timer_max;
-                neighbor.spike_dir = spike_dir;
-                //earlier platforms were updated first; correction needed
-                if (neighbor.article_timer < article_timer)
-                { neighbor.spike_timer--; }
-            }
-        }
-        spike_timer--;
-    }
-    //=====================================================================
-    else if (does_not_decay)
-    {
-        //prevents death by natural causes
-        if (has_proj && was_airborne && random_proj_timer != 0
-                     && random_proj_timer <= article_timer)
-        {
-            spawn_projectile();
-            has_proj = false;
-        }
-    }
-    else if (article_timer >= player_id.noz_fspecial_lifetime)
-    {
-        should_die = true;
-    }
-    else if (plat_collider != noone && article_timer >= player_id.noz_fspecial_airtime)
-    {
-        should_die = true;
-    }
+if (article_timer > player_id.noz_fspecial_lifetime) || should_die
+{
+    //delete self
+    //take time to unhook the neighbors tho, to be nice
+    if instance_exists(left_segment) 
+        left_segment.right_segment = noone;
+    if instance_exists(right_segment) 
+        right_segment.left_segment = noone;
     
-    //Sync collider article if you weren't spawned on top of something
-    if (free && plat_collider == noone)
-    { 
-        //partnered Platform collider
-        plat_collider = instance_create(x, y, "obj_article_platform");
-        plat_collider.player_id = player_id;
-        plat_collider.visible = false;
-        plat_collider.sprite_index = player_id.article1_col_spr;
-        plat_collider.through_platforms = true;
-        
-        //override regular article physics
-        can_be_grounded = false;
-        ignores_walls = true;
-        through_platforms = true;
-        was_airborne = true;
-    }
-    
-    //frosty debuffs
-    var victim = instance_position(x, y-2, oPlayer)
-    if (victim != noone && !victim.free && victim.noz_snowimmune_timer < 1)
+    var k = spawn_hit_fx(x, y, despawn_vfx);
+    k.spr_dir = spr_dir;
+    instance_destroy(self); exit;
+}
+
+//test existence of neighbors
+var neighborflags = 3; //1 front, 2 back. depends on spr_dir
+
+//if moved, doublecheck surrounding articles
+var has_moved = (prev_x != x);
+prev_x = x;
+
+if !instance_exists(right_segment)
+{
+    neighborflags -= (spr_dir ? 1 : 2);
+    right_segment = noone;
+    if (has_moved)
     {
-        same_team = get_player_team(player_id.player) == get_player_team(victim.player);
-        if (victim == player_id 
-        || ("url" in victim && (victim.url == player_id.url) && same_team)) 
-        {
-            player_id.at_fspecial_on_ice_timer = 3;
-        }
-        else if (!same_team && (victim.noz_snowimmune_timer < 1))
-        {
-            if (victim.noz_snowstack_timer < 5)
-            {
-                victim.noz_snowstack_timer = 5;
-                victim.noz_handler_id = player_id;
-            }
-    
-            // Frostbite debuff
-            if (player_id.noz_rune_flags.frostbite
-                && victim.noz_snow_frostbite_timer < 5)
-            { victim.noz_snow_frostbite_timer = 5; }
-        }
-    }
-    
-    //sparkles randomly
-    if (player_id.anim_do_draw_twinkle &&
-        player_id.anim_rand_twinkle == random_twinkle)
-    {
-        spawn_twinkle(player_id.vfx_snow_twinkle, x, y-8, 12);
+        right_segment = find_neighbor_platform(x+16, y);
+        if instance_exists(right_segment)
+            right_segment.left_segment = self;
     }
 }
+else if (has_moved) 
+     && ((abs(right_segment.x - (x+16)) > 2) || (right_segment.y - y) > 2)
+{
+    //lose neighbor if too distant
+    neighborflags -= (spr_dir ? 1 : 2);
+    right_segment.left_segment = noone;
+    right_segment = noone;
+}
+
+if !instance_exists(left_segment)
+{
+    neighborflags -= (spr_dir ? 2 : 1);
+    left_segment = noone;
+    if (has_moved)
+    {
+        left_segment = find_neighbor_platform(x-16, y);
+        if instance_exists(left_segment)
+            left_segment.right_segment = self;
+    }
+}
+else if (has_moved) 
+     && ((abs(left_segment.x - (x-16)) > 2) || (left_segment.y - y) > 2)
+{
+    //lose neighbor if too distant
+    neighborflags -= (spr_dir ? 2 : 1);
+    left_segment.right_segment = noone;
+    left_segment = noone;
+}
+
+if !instance_exists(left_segment)
+{
+    //go down the chain all the way to the right to perform player check
+    var rightmost_plat = self;
+    while instance_exists(rightmost_plat.right_segment)
+    { rightmost_plat = rightmost_plat.right_segment; }
+
+    with (oPlayer) 
+    if collision_line(other.x - 8, other.y - 2, 
+       rightmost_plat.x + 8, rightmost_plat.y - 2, self, false, false)
+    {
+        if (get_player_team(player) != get_player_team(other.player_id.player))
+        {
+            if (noz_snowimmune_timer < 1)
+            {
+                noz_snowstack_timer = max(noz_snowstack_timer, 5)
+                noz_handler_id = other.player_id;
+            }
+        }
+        else if (url == other.player_id.url)
+        {
+            at_fspecial_on_ice_timer = 5;
+        }
+    }
+}
+
+//adjust image_index based on lifetime & neighbors. see sheet.
+image_index = clamp(article_timer/3, 0, 3) + 4*neighborflags;
 article_timer++;
-anim_timer++;
 
+//sparkles randomly
+if (player_id.anim_do_draw_twinkle &&
+    player_id.anim_rand_twinkle == random_twinkle)
+{
+    spawn_twinkle(player_id.vfx_snow_twinkle, x, y-8, 12);
+}
+
+//======================================================================
+#define find_neighbor_platform(xpos, ypos)
+{
+    var found = noone;
+
+    with (asset_get("obj_article1"))
+    if (self != other) && (player_id == other.player_id)
+    && (abs(x - xpos) < 2) && (abs(y - ypos) < 2)
+    {
+        found = self; break;
+    }
+    if (found == noone) with (asset_get("obj_article_platform"))
+    if (self != other) && (player_id == other.player_id)
+    && (abs(x - xpos) < 2) && (abs(y - ypos) < 2)
+    {
+        found = self; break;
+    }
+
+    return found;
+}
 //======================================================================
 #define spawn_twinkle(vfx, pos_x, pos_y, radius)
 with (player_id)
@@ -141,8 +142,29 @@ with (player_id)
     
     var k = spawn_hit_fx(kx, ky, vfx);
 }
-//======================================================================
-#define spawn_projectile()
+
+
+//=====================================================================
+//dstrong spikes
+/*
+if (spike_timer > 0)
 {
-    create_hitbox(AT_FSPECIAL, 3, x, y+5);
-}
+    if (spike_timer == spike_hitbox_frame)
+    {
+        sound_play(asset_get("sfx_ice_end"), false, noone, 0.5, 1.5);
+        create_hitbox(AT_DSTRONG, 5, x + spike_dir * 6, y-10);
+    }
+    if (spike_timer == spike_spread_frame)
+    {
+        var neighbor = spike_dir > 0 ? right_plat : left_plat;
+        if (instance_exists(neighbor) && !neighbor.should_die)
+        {
+            neighbor.spike_timer = spike_timer_max;
+            neighbor.spike_dir = spike_dir;
+            //earlier platforms were updated first; correction needed
+            if (neighbor.article_timer < article_timer)
+            { neighbor.spike_timer--; }
+        }
+    }
+    spike_timer--;
+}*/

@@ -21,7 +21,6 @@ set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED, 8);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HSPEED_TYPE, 2);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_VSPEED_TYPE, 1);
-//Replace with better sfx... eventually?
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_FSPECIAL, 2, AG_WINDOW_SFX, asset_get("sfx_orca_snow_evaporate"));
 
@@ -31,7 +30,7 @@ set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAMES, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 0.15);
-set_window_value(AT_FSPECIAL, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.35);
+set_window_value(AT_FSPECIAL, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.3);
 set_window_value(AT_FSPECIAL, 3, AG_WINDOW_VSPEED_TYPE, 1);
 
 set_window_value(AT_FSPECIAL, 4, AG_WINDOW_TYPE, 1);
@@ -78,26 +77,3 @@ set_hitbox_value(AT_FSPECIAL, 2, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_FSPECIAL, 2, HG_VISUAL_EFFECT, 28);
 set_hitbox_value(AT_FSPECIAL, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
 set_hitbox_value(AT_FSPECIAL, 2, HG_IGNORES_PROJECTILES, 1);
-
-//rune: Ice drips
-set_hitbox_value(AT_FSPECIAL, 3, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_FSPECIAL, 3, HG_LIFETIME, 200);
-set_hitbox_value(AT_FSPECIAL, 3, HG_WIDTH, 15);
-set_hitbox_value(AT_FSPECIAL, 3, HG_HEIGHT, 15);
-set_hitbox_value(AT_FSPECIAL, 3, HG_PRIORITY, 4);
-set_hitbox_value(AT_FSPECIAL, 3, HG_DAMAGE, 1);
-set_hitbox_value(AT_FSPECIAL, 3, HG_ANGLE, 90);
-set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_KNOCKBACK, 5);
-set_hitbox_value(AT_FSPECIAL, 3, HG_KNOCKBACK_SCALING, 0);
-set_hitbox_value(AT_FSPECIAL, 3, HG_BASE_HITPAUSE, 5);
-set_hitbox_value(AT_FSPECIAL, 3, HG_VISUAL_EFFECT, 28);
-set_hitbox_value(AT_FSPECIAL, 3, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
-set_hitbox_value(AT_FSPECIAL, 3, HG_IGNORES_PROJECTILES, 1);
-set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_SPRITE, sprite_get("drip_proj"));
-set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_GRAVITY, 0.6);
-set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_WALL_BEHAVIOR, 0);
-set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_GROUND_BEHAVIOR, 0);
-set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_DESTROY_EFFECT, 27);
-set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
-set_hitbox_value(AT_FSPECIAL, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);

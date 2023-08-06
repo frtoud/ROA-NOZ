@@ -151,14 +151,12 @@ hud_hovermeter_spr = sprite_get("hud_hovermeter");
 pratland_spr = sprite_get("pratland");
 
 article1_spr = sprite_get("article1");
-article1_spawn_spr = sprite_get("article1_spawn");
 article1_spike_spr = sprite_get("article1_spike");
 article1_col_spr = sprite_get("article1_col");
+vfx_article_despawn = hit_fx_create(sprite_get("article1_despawn"), 12);
 
 anim_hairblink_timer = 0;
 anim_hairblink_max = anim_hud_timers_max;
-
-anim_jab_window_order = [4, 5, 6, 4, 6, 4, 5, 4, 6, 5, 4, 5];
 
 anim_indicatorflash_timer = 0;
 anim_indicatorflash_max = anim_hud_timers_max;
@@ -244,7 +242,7 @@ noz_nspecial_sleep_max = floor(180 * noz_nspecial_mashing_bonus);
 noz_nspecial_sleepimmune_max = 90;
 noz_nspecial_interruption_time = 16; //how long before sleeping if a move is in progress
 
-noz_fspecial_airtime = 120;
+noz_fspecial_airtime = 140;
 noz_fspecial_lifetime = 600;
 noz_fspecial_cooldown = 180;
 noz_fspecial_ylock_max = 160; //lower value means higher position -- Y=0 is at the top of the screen

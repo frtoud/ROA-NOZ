@@ -1,8 +1,8 @@
-//article1_init
+//article1_init: platform version
 
 //Rendering
 sprite_index = player_id.article1_spr;
-mask_index = player_id.article1_spr;
+mask_index = player_id.article1_col_spr;
 image_index = 3;
 spr_dir = player_id.spr_dir;
 uses_shader = true;
@@ -13,11 +13,11 @@ despawn_vfx = player_id.vfx_article_despawn;
 hitstop = 0;
 hsp = 0;
 vsp = 0;
-can_be_grounded = true;
+can_be_grounded = false;
 //free = true;
-ignores_walls = false;
+ignores_walls = true; //possibly irrelevant?
 hit_wall = false;
-through_platforms = false;
+through_platforms = true;  //possibly irrelevant?
 
 //platform-variables
 should_die = false; //set to trigger removal
@@ -25,8 +25,6 @@ article_timer = 0;
 
 left_segment = noone;
 right_segment = noone;
-
-prev_x = x; //detects movement
 
 random_twinkle = player_id.anim_rand_twinkle;
 
@@ -69,17 +67,3 @@ with (asset_get("obj_article_platform")) if (self != other)
 //animation sync
 image_index = 3 + 4* (spr_dir ? (2*(!needleft) + (!needright))
                               : ((!needleft) + 2*(!needright)) );
-
-/*
-//Runes
-does_not_decay = false;
-was_airborne = false;
-
-/RUNE: DStrong spread spike
-sprite_spike = player_id.article1_spike_spr;
-spike_timer = 0; //controls the DSTRONG spike; going down
-spike_timer_max = 3 * 8; 
-spike_hitbox_frame = spike_timer_max - 3;
-spike_spread_frame = spike_timer_max - 1;
-spike_dir = 1; //direction (-1 for left 1 for right)
-*/
