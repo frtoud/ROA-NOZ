@@ -58,7 +58,7 @@ if !instance_exists(left_segment)
         }
         else if (url == other.player_id.url)
         {
-            at_fspecial_on_ice_timer = 5;
+            noz_frostzone_timer = 15;
         }
     }
 }

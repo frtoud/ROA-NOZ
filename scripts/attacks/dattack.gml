@@ -68,7 +68,7 @@ set_hitbox_value(AT_DATTACK, 2, HG_VISUAL_EFFECT, 6);
 set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_SPRITE, sprite_get("cloud_proj_small"));
 set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_ANIM_SPEED, 1.0/6);
 set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_HSPEED, 2);
+set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_HSPEED, 3);
 set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_AIR_FRICTION, 3);

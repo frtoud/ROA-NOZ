@@ -283,6 +283,17 @@ switch (state)
     break;
 };
 
+//===========================================================
+//Ice-empowered visuals
+if (noz_frostzone_timer > 0)
+{
+    if (strong_flashing) manual_flash = 8;
+    if (get_gameplay_time() % 2 == 0)
+    {
+        spawn_twinkle(vfx_snow_twinkle, x, y - 24, 48, false)
+    }
+}
+
 //===========================================================    
 // DSPECIAL Reflect effects
 if (anim_dspecial_shockwave_frame > 0) 

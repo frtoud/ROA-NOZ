@@ -2,11 +2,18 @@
 // Lingering projectile for DTILT has a cooldown; avoids spamming too many at once
 if (at_dtilt_proj_cooldown > 0)
 {
-	at_dtilt_proj_cooldown--;
-	if (at_dtilt_proj_cooldown == 0)
-	{ 
-		set_num_hitboxes(AT_DTILT, 2); 
-	}
+    at_dtilt_proj_cooldown--;
+    if (at_dtilt_proj_cooldown == 0)
+    { 
+        set_num_hitboxes(AT_DTILT, 2); 
+    }
+}
+
+//Frostzone (Ice, Cloud) bonus
+//==============================================================================
+if (noz_frostzone_timer > 0)
+{
+    noz_frostzone_timer--;
 }
 
 //FSPECIAL soft cooldown
@@ -22,27 +29,27 @@ if (move_cooldown[AT_FSPECIAL] < 1 &&
 
 //For friction overrides
 //==============================================================================
-if (at_fspecial_on_ice_timer > 0)
-{
-	if (noz_rune_flags.ice_boost && abs(hsp) < abs(prev_hsp) && abs(hsp) > 0.2)
-	{
-		//force-restore hsp and apply only 25% of friction
-		hsp = prev_hsp - (prev_hsp - hsp) * 0.25;
-	}
-	at_fspecial_on_ice_timer--;
-}
-prev_hsp = hsp;
+//if (at_fspecial_on_ice_timer > 0)
+//{
+//	if (noz_rune_flags.ice_boost && abs(hsp) < abs(prev_hsp) && abs(hsp) > 0.2)
+//	{
+//		//force-restore hsp and apply only 25% of friction
+//		hsp = prev_hsp - (prev_hsp - hsp) * 0.25;
+//	}
+//	at_fspecial_on_ice_timer--;
+//}
+//prev_hsp = hsp;
 
 //Extra landing hitbox for DAIR
 //==============================================================================
 if (state == PS_LANDING_LAG)
 { 
-	off_edge = false;
+    off_edge = false;
     //Extra landing hitbox for DAIR when landing (if needed)
     if (attack == AT_DAIR && at_dair_need_landing_lag_hitbox)
     { 
-    	create_hitbox(AT_DAIR, 4, 0, 0); 
-    	at_dair_need_landing_lag_hitbox = false;
+        create_hitbox(AT_DAIR, 4, 0, 0); 
+        at_dair_need_landing_lag_hitbox = false;
     }
 }
 
@@ -50,7 +57,7 @@ if (state == PS_LANDING_LAG)
 //==============================================================================
 if (state == PS_PRATFALL && vsp > noz_pratfall_max_vsp)
 { 
-	vsp = noz_pratfall_max_vsp;
+    vsp = noz_pratfall_max_vsp;
 }
 
 //USPECIAL hover logic
@@ -211,25 +218,25 @@ user_event(0);
 //Wall-e
 if (walle_taunt_playing)
 {
-	walle_taunt_buffer = 60 * 12;
+    walle_taunt_buffer = 60 * 12;
 }
 if (walle_taunt_buffer > 0)
 {
-	walle_taunt_buffer--;
-	suppress_stage_music(0.1, 0.2);
+    walle_taunt_buffer--;
+    suppress_stage_music(0.1, 0.2);
 }
 
 //Kirby
 if (swallowed && instance_exists(enemykirby))
 {
-	var ability_spr = sprite_get("cmp_kirby");
-	var ability_hurt = sprite_get("cmp_kirby_hurt")
-	var ability_icon = sprite_get("cmp_kirby_icon")
-	var kirby_sleep_sfx = sound_get("cmp_kirby_sleep")
-	with (enemykirby) 
-	{
-		//Define AT_EXTRA_3 for Kirby
-		set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
+    var ability_spr = sprite_get("cmp_kirby");
+    var ability_hurt = sprite_get("cmp_kirby_hurt")
+    var ability_icon = sprite_get("cmp_kirby_icon")
+    var kirby_sleep_sfx = sound_get("cmp_kirby_sleep")
+    with (enemykirby) 
+    {
+        //Define AT_EXTRA_3 for Kirby
+        set_attack_value(AT_EXTRA_3, AG_CATEGORY, 2);
         set_attack_value(AT_EXTRA_3, AG_SPRITE, ability_spr);
         set_attack_value(AT_EXTRA_3, AG_AIR_SPRITE, ability_spr);
         set_attack_value(AT_EXTRA_3, AG_NUM_WINDOWS, 3);
@@ -249,27 +256,27 @@ if (swallowed && instance_exists(enemykirby))
         set_window_value(AT_EXTRA_3, 2, AG_WINDOW_SFX, kirby_sleep_sfx);
         set_window_value(AT_EXTRA_3, 2, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
         set_window_value(AT_EXTRA_3, 2, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.5);
-        
+
         set_window_value(AT_EXTRA_3, 3, AG_WINDOW_TYPE, 0);
         set_window_value(AT_EXTRA_3, 3, AG_WINDOW_LENGTH, 40);
         set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAMES, 8);
         set_window_value(AT_EXTRA_3, 3, AG_WINDOW_ANIM_FRAME_START, 6);
         set_window_value(AT_EXTRA_3, 3, AG_WINDOW_HAS_CUSTOM_FRICTION, 1);
         set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.5);
-        
+
         //absurd values, but prevents movement during the move
         //can_move cannot be set to false for kirby... I suspect update order is at fault
         set_window_value(AT_EXTRA_3, 2, AG_WINDOW_CUSTOM_AIR_FRICTION, 999);
         set_window_value(AT_EXTRA_3, 3, AG_WINDOW_CUSTOM_AIR_FRICTION, 999);
-        
+
         set_num_hitboxes(AT_EXTRA_3, 0);
-		
-		newicon = ability_icon;
-		//Nozomi will track this Kirby to handle sleep debuff shenanigans
-		noz_handler_id = other;
-		noz_has_kirby_ability = true;
-	}
-	swallowed = false;
+
+        newicon = ability_icon;
+        //Nozomi will track this Kirby to handle sleep debuff shenanigans
+        noz_handler_id = other;
+        noz_has_kirby_ability = true;
+    }
+    swallowed = false;
 }
 
 //DEFINES
@@ -280,4 +287,4 @@ return !free &&
     noone != collision_rectangle( bbox_left, bbox_bottom, bbox_right, bbox_bottom + 1, asset_get("obj_stage_article_solid"), false, true) ||
     noone != collision_rectangle( bbox_left, bbox_bottom, bbox_right, bbox_bottom + 1, asset_get("obj_stage_article_platform"), false, true) ||
     noone != collision_rectangle( bbox_left, bbox_bottom, bbox_right, bbox_bottom + 1, asset_get("jumpthrough_32_obj"), false, true) );
-        
+

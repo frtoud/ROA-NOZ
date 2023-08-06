@@ -27,7 +27,7 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
     // Strong attacks: apply ice effects
     else if ((hit_player_obj.noz_snowstack_timer > 0  || 
             //Standing on ice forces freeze on victims (if not immune)
-             (hit_player_obj.noz_snowimmune_timer == 0 && at_fspecial_on_ice_timer > 0) )
+             (hit_player_obj.noz_snowimmune_timer == 0 && noz_frostzone_timer > 0) )
             &&((my_hitboxID.attack == AT_USTRONG)
             || (my_hitboxID.attack == AT_FSTRONG && (my_hitboxID.hbox_num != 1))
             || (my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num != 1))

@@ -242,8 +242,8 @@ noz_nspecial_sleep_max = floor(180 * noz_nspecial_mashing_bonus);
 noz_nspecial_sleepimmune_max = 90;
 noz_nspecial_interruption_time = 16; //how long before sleeping if a move is in progress
 
-noz_fspecial_airtime = 140;
-noz_fspecial_lifetime = 600;
+noz_fspecial_airtime = 150;
+noz_fspecial_lifetime = 800;
 noz_fspecial_cooldown = 180;
 noz_fspecial_ylock_max = 160; //lower value means higher position -- Y=0 is at the top of the screen
 noz_fspecial_soft_cooldown_max = 240 * (!noz_rune_flags.ice_longer); //platforms created during this cooldown have no colliders
@@ -303,8 +303,9 @@ at_uspecial_hover_meter = noz_uspecial_hover_max;
 at_fspecial_cooldown_override = false;
 at_uspecial_cooldown_override = false;
 
+noz_frostzone_timer = 0; //wether you are empowered by the ice
+noz_frostzone_cache = false; //for individual attacks to track additional properties
 //frictionless ice rune
-at_fspecial_on_ice_timer = 0;
 prev_hsp = 0;
 
 //=================================================

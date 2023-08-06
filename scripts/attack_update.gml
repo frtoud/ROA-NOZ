@@ -472,7 +472,6 @@ case AT_FSPECIAL:
         }
         
         y = at_fspecial_ylock;
-        fall_through = true;
         
         if (!joy_pad_idle)
 		{
@@ -499,7 +498,11 @@ case AT_FSPECIAL:
             //check if grounded or not (free stops being accurate once platforms spawn)
             var col = collision_line(x, y-1, x, y+1, asset_get("par_block"), false, true);
             if (col == noone)
+            {
                 col = collision_line(x, y-1, x, y+1, asset_get("par_jumpthrough"), false, true);
+                if instance_exists(col) && (y != get_instance_y(col)) 
+                    col = noone; //underside-of-platform false-positive
+            }
 
             var x_pos = x + 8 - (x % 16); //centered on a 16x16 grid
             if (col == noone)
