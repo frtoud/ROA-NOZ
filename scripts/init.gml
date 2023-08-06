@@ -102,6 +102,12 @@ bubble_x = 0;
 bubble_y = 4;
 
 //=================================================
+// Stat reset flags
+joke_explainer_mode = false; //Toggles JE7k Echo mode
+request_bot_update = false;
+request_rune_update = false;
+
+//=================================================
 //Custom Frame Data indices
 AG_NOZ_HOVER_SPRITE = 55; //Sprites to use while hovering (for aerial attacks)
 HG_MUNO_OBJECT_LAUNCH_ANGLE = 77; //Thanks Muno
@@ -193,14 +199,7 @@ noz_rune_flags =
     enhanced_hover: has_rune("N")
 }
 
-//Extra air speed
-if (noz_rune_flags.air_control)
-{
-    air_accel = 0.5;
-    jump_change = 5;
-    max_jump_hsp = 7;
-    air_max_speed = 7;
-}
+request_rune_update = true;
 
 //=================================================
 //Balancing variables

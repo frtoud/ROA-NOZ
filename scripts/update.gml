@@ -9,6 +9,14 @@ if (at_dtilt_proj_cooldown > 0)
     }
 }
 
+//==============================================================================
+if (request_bot_update || request_rune_update)
+{
+    user_event(7);
+}
+
+
+
 //Frostzone (Ice, Cloud) bonus
 //==============================================================================
 if (noz_frostzone_timer > 0)
