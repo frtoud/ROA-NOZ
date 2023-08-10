@@ -3,7 +3,7 @@ if (request_bot_update)
 {
     if (joke_explainer_mode) //Enable JokeExplainer Echo
     {
-        //jump_sound = sound_get("bot_jumpground");
+        jump_sound = sound_get("bot_jumpground");
         land_sound = asset_get("sfx_land_heavy");
         landing_lag_sound = asset_get("sfx_land_heavy");
         
@@ -23,8 +23,8 @@ if (request_bot_update)
         set_window_value(AT_NSPECIAL, 4, AG_WINDOW_ANIM_FRAME_START, 2);
         set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAMES, -2);
         set_window_value(AT_NSPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 2);
-        //set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX, sound_get("sfx_noz_bot_todo"));
-        //set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX, sound_get("sfx_noz_bot_kete"));
+        set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX, sound_get("sfx_noz_bot_todo"));
+        set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX, sound_get("sfx_noz_bot_kete"));
 
         //=================================
         //Pokémon Stadium
