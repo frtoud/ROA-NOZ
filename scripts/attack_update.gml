@@ -17,9 +17,9 @@ case AT_JAB:
             at_jab_timesthrough = 0;
         } break;
         //INFINITES
-    	case 5: case 6: case 7:
-    	case 8: case 9: case 10:
-    	{
+        case 5: case 6: case 7:
+        case 8: case 9: case 10:
+        {
             move_cooldown[AT_JAB] = 8;
             can_attack = has_hit && (at_jab_timesthrough >= 2);
 
@@ -41,7 +41,7 @@ case AT_JAB:
                     window = 5; window_timer = 0;
                 }
             }
-    	} break;
+        } break;
         case 11: 
         {
             can_attack = true;
@@ -56,14 +56,14 @@ case AT_JAB:
                 hsp += spr_dir * get_window_value(AT_JAB, window, AG_WINDOW_HSPEED);
             }
         } break;
-    	default: break;
+        default: break;
     }
 } break;
 //==============================================================
 case AT_DTILT: 
 {
     if (has_hit && window == 3)
-    { 
+    {
         move_cooldown[AT_DTILT] = 2;
         can_attack = true;
     }
@@ -73,7 +73,7 @@ case AT_FSTRONG:
 {
     if (window == 2 && window_timer < 6)
     {
-    	//first windbox does not count as a "hit"
+        //first windbox does not count as a "hit"
         has_hit = false;
         has_hit_player = false;
     }
@@ -87,7 +87,7 @@ case AT_DSTRONG:
 {
     if (window == 2 && window_timer < 3)
     {
-    	//first windbox does not count as a "hit"
+        //first windbox does not count as a "hit"
         has_hit = false;
         has_hit_player = false;
     }
@@ -99,23 +99,23 @@ case AT_DSTRONG:
     && window ==  get_hitbox_value(AT_DSTRONG, 3, HG_WINDOW)
     && window_timer == get_hitbox_value(AT_DSTRONG, 3, HG_WINDOW_CREATION_FRAME))
     {
-    	var half_width = get_hitbox_value(AT_DSTRONG, 3, HG_WIDTH) / 2;
-    	//try finding ice
-    	var left_ice = collision_line(x - half_width, y+2, x - half_width, y-2, 
-    	                              obj_article1, false, true);
-    	if (left_ice != noone && left_ice.player_id == self)
-    	{
-    		left_ice.spike_timer = left_ice.spike_timer_max;
-    		left_ice.spike_dir = -1;
-    	}
-    	
-    	var right_ice = collision_line(x + half_width, y+2, x + half_width, y-2, 
-    		                           obj_article1, false, true);
-    	if (right_ice != noone && right_ice.player_id == self)
-    	{
-    		right_ice.spike_timer = right_ice.spike_timer_max;
-    		right_ice.spike_dir = +1;
-    	}
+        var half_width = get_hitbox_value(AT_DSTRONG, 3, HG_WIDTH) / 2;
+        //try finding ice
+        var left_ice = collision_line(x - half_width, y+2, x - half_width, y-2, 
+                                      obj_article1, false, true);
+        if (left_ice != noone && left_ice.player_id == self)
+        {
+            left_ice.spike_timer = left_ice.spike_timer_max;
+            left_ice.spike_dir = -1;
+        }
+
+        var right_ice = collision_line(x + half_width, y+2, x + half_width, y-2, 
+                                       obj_article1, false, true);
+        if (right_ice != noone && right_ice.player_id == self)
+        {
+            right_ice.spike_timer = right_ice.spike_timer_max;
+            right_ice.spike_dir = +1;
+        }
     }
 } break;
 //==============================================================
@@ -149,13 +149,13 @@ case AT_NAIR:
     //Slightly slows fall
     if (free && window == 2 && attack_down)
     { 
-    	vsp *= (vsp > 2) ? 0.8 : 1; 
-    	
-    	if (noz_rune_flags.nair_boost
-    	    && !hitpause && vsp > -5)
-    	{
-    		vsp -= 1.5;
-    	}
+        vsp *= (vsp > 2) ? 0.8 : 1; 
+        
+        if (noz_rune_flags.nair_boost
+            && !hitpause && vsp > -5)
+        {
+            vsp -= 1.5;
+        }
     }
     else if (window == 4 && (has_hit || !free) && !was_parried)
     {
@@ -165,12 +165,12 @@ case AT_NAIR:
 //==============================================================
 case AT_DAIR: 
 {
-	if (window == 1)
-	{
-	    //Cancels hover!
-	    at_uspecial_hovering = false;
-	    at_dair_early_cancel = false;
-	}
+    if (window == 1)
+    {
+        //Cancels hover!
+        at_uspecial_hovering = false;
+        at_dair_early_cancel = false;
+    }
     
     //see update.gml for the extra hitbox when landing.
     at_dair_need_landing_lag_hitbox = (window == 2 || window == 3);
@@ -240,144 +240,6 @@ case AT_BAIR:
     }
 } break;
 //==============================================================
-case AT_DSPECIAL:
-{
-    switch (window)
-    {
-    	case 1: //Startup
-    	{
-    		if (window_timer == get_window_value(AT_DSPECIAL, 1, AG_WINDOW_LENGTH))
-        	{
-	            at_dspecial_has_reflected = false;
-                at_dspecial_counter_target = noone;
-                at_dspecial_countered_damage = 0;
-	            at_dspecial_damage_block = floor(at_dspecial_damage_block);
-	            
-	            if (special_down && (at_dspecial_zone_timer < 1)
-	            && (at_dspecial_damage_block > noz_dspecial_damage_min))
-	            {
-	                window = 3;
-	                window_timer = 0;
-	            }
-	            else
-	            {
-	                anim_dspecial_shockwave_frame = 6;
-	            }
-        	}
-    	} break;
-    	case 2: //Shine
-    	{
-    		if (at_dspecial_zone.radius > 0) && (at_dspecial_zone.shine_cooldown == 0)
-    		&& window_timer == get_hitbox_value(AT_DSPECIAL, 5, HG_WINDOW_CREATION_FRAME)
-    		{
-    			//Remote shining
-    			var hb = create_hitbox(AT_DSPECIAL, 5, at_dspecial_zone.x, at_dspecial_zone.y);
-                hb.image_xscale = at_dspecial_zone.radius/100;
-                hb.image_yscale = hb.image_xscale;
-    			at_dspecial_zone.shine_cooldown = noz_dspecial_remote_shine_cooldown;
-    			with (at_dspecial_zone) 
-    			{ sound_play(asset_get("sfx_zetter_shine_charged"), false, noone, 0.9, 1.4); }
-    		}
-    		
-	        //Dampen momentum
-	        hsp *= 0.8;
-	        vsp *= (vsp > 0) ? 0.2 : 0.9;
-    	} break;
-    	case 3: //Counter
-    	{
-	        can_move = false;
-	        can_fast_fall = false;
-	        
-	        if (window_timer < 6)
-	        {
-		        //Dampen momentum
-		        hsp *= 0.8;
-		        vsp *= (vsp > 0) ? 0.2 : 0.9;
-	        }
-	        
-    		user_event(2);
-	        
-    		
-    		if (window_timer == get_window_value(AT_DSPECIAL, 3, AG_WINDOW_LENGTH))
-    		{
-    		   window = (special_down && noz_rune_flags.reflector) ? 6 : 9; // >:]
-    		   window_timer = 0;
-    		}
-    	} break;
-    	case 4: //Shine Endlag window
-    	{
-    		can_jump = !was_parried;
-            can_attack = !was_parried && 
-                         (at_dspecial_has_reflected || has_hit_player);
-    	} break;
-    	case 5: //Counter success
-    	{
-	        can_fast_fall = false;
-	        if (window_timer == get_hitbox_value(AT_DSPECIAL, 4, HG_WINDOW_CREATION_FRAME))
-	        {
-	        	//Helps visuals
-	            invincible = true;
-	            invince_time = noz_dspecial_invince_time;
-	            at_dspecial_zone_timer = noz_dspecial_zone_time;
-	            at_dspecial_zone_position.x = x;
-	            at_dspecial_zone_position.y = y - (char_height/2);
-	            
-	        	if (at_dspecial_countered_damage > 0)
-	        	{
-	                sound_play(asset_get("sfx_may_arc_hit"), false, noone, 2, 1.1);
-		        	//spawn ring of projectiles
-		        	for (var i = 0; i < 6; i++)
-		        	{
-		        		var angle = 30 + (i * 60);
-		        		var k = create_hitbox(AT_DSPECIAL, 4, x, y - 24);
-		        		k.hsp = lengthdir_x(noz_dspecial_top_speed, angle);
-		        		k.vsp = lengthdir_y(noz_dspecial_top_speed, angle);
-		        		k.x += k.hsp;
-		        		k.y += k.vsp;
-		        		k.damage = 1 + floor(at_dspecial_countered_damage/6);
-		        		k.depth = depth + 1;
-		        		k.spr_dir = 1;
-		        		
-		        		k.homing_target = at_dspecial_counter_target;
-		        	}
-		        	at_dspecial_countered_damage = 0;
-	            }
-	        }
-    	} break;
-    	case 6: //Reflector
-    	{
-            can_move = false;
-            can_fast_fall = false;
-    		user_event(1);
-    		
-            if (!special_down)
-            {
-                window = 4;
-                window_timer = 0; 
-            }
-            else if (window_timer == get_window_value(AT_DSPECIAL, 2, AG_WINDOW_LENGTH))
-            {
-                window_timer = 0; 
-            }
-    	} break;
-    	case 7: //Instaparry window
-    	{
-            window = 6;
-            window_timer = 0;
-            init_shader();
-    	}
-    	case 8: //Vulnerable window
-    	{
-            window = 6;
-            window_timer = 0;
-    	} break;
-    	case 9: //Counter Endlag window
-    	default:
-    	break;
-    }
-    
-} break;
-//==============================================================
 case AT_NSPECIAL: 
 {
     can_move = false;
@@ -390,25 +252,25 @@ case AT_NSPECIAL:
         var sleep_zone_x = x;
         var sleep_zone_y = y - (char_height/2);
 
-    	// use a collision test because singing somehow hurts RockWall's pillars
-    	with (oPlayer)
-    	{
-    	    if (self != other && (get_player_team(self.player) != get_player_team(other.player))
-    	        && (!free || other.noz_rune_flags.air_sleep) && noz_sleepimmune_timer == 0 && 
-    	    	hurtboxID == collision_circle(sleep_zone_x, sleep_zone_y, 
+        // use a collision test because singing somehow hurts RockWall's pillars
+        with (oPlayer)
+        {
+            if (self != other && (get_player_team(self.player) != get_player_team(other.player))
+                && (!free || other.noz_rune_flags.air_sleep) && noz_sleepimmune_timer == 0 && 
+                hurtboxID == collision_circle(sleep_zone_x, sleep_zone_y,
                              other.noz_nspecial_radius, hurtboxID, true, false))
-    	    {
-		        noz_handler_id = other;
-				noz_sleep_anim_timer = 0;
-				noz_sleepimmune_timer = other.noz_nspecial_sleepimmune_max;
-				
-				// base + early hit bonus + (damage * mult) & capped
-		        noz_sleep_timer = floor( min( (other.noz_nspecial_sleep_base 
-		           + (other.window == 2 ? other.noz_nspecial_sleep_early : 0)
-		           + get_player_damage(player) * other.noz_nspecial_sleep_mult)
-		           , other.noz_nspecial_sleep_max) );
-    	    }
-    	}
+            {
+                noz_handler_id = other;
+                noz_sleep_anim_timer = 0;
+                noz_sleepimmune_timer = other.noz_nspecial_sleepimmune_max;
+
+                // base + early hit bonus + (damage * mult) & capped
+                noz_sleep_timer = floor( min( (other.noz_nspecial_sleep_base
+                   + (other.window == 2 ? other.noz_nspecial_sleep_early : 0)
+                   + get_player_damage(player) * other.noz_nspecial_sleep_mult)
+                   , other.noz_nspecial_sleep_max) );
+            }
+        }
     }
 } break;
 //==============================================================
@@ -436,10 +298,10 @@ case AT_FSPECIAL:
             //remove previous ice
             if (noz_rune_flags.ice_longer)
             {
-				with (obj_article1) if (player_id == other)
-				{
-				    should_die = true;
-				}
+                with (obj_article1) if (player_id == other)
+                {
+                    should_die = true;
+                }
             }
         }
         else if (free)
@@ -452,8 +314,8 @@ case AT_FSPECIAL:
             }
             else
             {
-	            y = ease_linear(y, at_fspecial_ylock, window_timer, 
-	            get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH));
+                y = ease_linear(y, at_fspecial_ylock, window_timer, 
+                get_window_value(AT_FSPECIAL, 1, AG_WINDOW_LENGTH));
             }
         }
     }
@@ -483,10 +345,10 @@ case AT_FSPECIAL:
             }
             else
             {
-            	//reverse direction
+                //reverse direction
                 hsp += hsp_mult * 0.6;
             }
-		}
+        }
         
         //Create new ice as you go
         // try find existing ice if possible
@@ -521,28 +383,28 @@ case AT_FSPECIAL:
         
         if (window == 3 && was_parried)
         {
-        	window = 4;
-        	window_timer = 0;
+            window = 4;
+            window_timer = 0;
         }
     }
     else if (!was_parried) //window 4
     {
-    	if (window_timer == 5) && (free && hsp * spr_dir >= 0) ||
-    	   (hsp == 0 && !joy_pad_idle && (spr_dir * lengthdir_x(1, joy_dir)) > 0)
-    	{
-    		set_state(PS_IDLE_AIR); //set hurtbox
-    	    state = PS_DOUBLE_JUMP;
-    	    state_timer = 1; //avoid doublejump SFX
-    	    vsp = -3;
-    	    hsp = spr_dir * 3;
-    	    off_edge = true;
-    	}
-    	else if (window_timer >= 5)
-    	{
-    		iasa_script();
-    	}
+        if (window_timer == 5) && (free && hsp * spr_dir >= 0) ||
+           (hsp == 0 && !joy_pad_idle && (spr_dir * lengthdir_x(1, joy_dir)) > 0)
+        {
+            set_state(PS_IDLE_AIR); //set hurtbox
+            state = PS_DOUBLE_JUMP;
+            state_timer = 1; //avoid doublejump SFX
+            vsp = -3;
+            hsp = spr_dir * 3;
+            off_edge = true;
+        }
+        else if (window_timer >= 5)
+        {
+            iasa_script();
+        }
     }
-    
+
 } break;
 //==============================================================
 case AT_USPECIAL: 
@@ -565,9 +427,9 @@ case AT_USPECIAL:
                     vsp += get_window_value(AT_USPECIAL, window, AG_WINDOW_VSPEED);
                     
                     if (at_uspecial_was_hovering) 
-                    { 
-                    	at_uspecial_hover_meter -= noz_uspecial_short_cost; 
-                    	at_uspecial_exhausted = false;
+                    {
+                        at_uspecial_hover_meter -= noz_uspecial_short_cost; 
+                        at_uspecial_exhausted = false;
                     }
                 }
                 else
@@ -625,10 +487,10 @@ case AT_USPECIAL:
             //See update.gml for the rest of this logic
             if (window_timer <= 1)
             {
-	            at_uspecial_hovering = true;
-	            at_uspecial_was_hovering = true;
-	            at_uspecial_cooldown_override = true;
-	            at_nair_hover_need_grid_adjust = true;
+                at_uspecial_hovering = true;
+                at_uspecial_was_hovering = true;
+                at_uspecial_cooldown_override = true;
+                at_nair_hover_need_grid_adjust = true;
             }
         }break;
         case 6:
@@ -641,15 +503,53 @@ case AT_USPECIAL:
             //See update.gml for the rest of this logic
             else if (window_timer <= 1)
             {
-	            at_uspecial_hovering = true;
-	            at_uspecial_was_hovering = true;
-	            at_uspecial_cooldown_override = true;
-	            at_nair_hover_need_grid_adjust = true;
-	            clear_button_buffer(PC_SPECIAL_PRESSED);
+                at_uspecial_hovering = true;
+                at_uspecial_was_hovering = true;
+                at_uspecial_cooldown_override = true;
+                at_nair_hover_need_grid_adjust = true;
+                clear_button_buffer(PC_SPECIAL_PRESSED);
             }
             
         }break;
         default: break;
+    }
+} break;
+//==============================================================
+case AT_NTHROW: //Reflector
+{
+    can_jump = (window <= 2);
+    switch (window)
+    {
+        case 1: //Reflector
+        {
+            can_move = false;
+            can_fast_fall = false;
+
+            user_event(1); //reflection logic here
+            if (!shield_down)
+            {
+                window = 2;
+                window_timer = 0; 
+            }
+            else if (window_timer == get_window_value(AT_NTHROW, 2, AG_WINDOW_LENGTH))
+            {
+                window_timer = 0; 
+            }
+        } break;
+        case 3: //Instaparry window
+        {
+            window = 1;
+            window_timer = 0;
+            init_shader();
+        }
+        case 4: //Vulnerable window
+        {
+            window = 1;
+            window_timer = 0;
+        } break;
+        case 2: //Counter Endlag window
+        default:
+        break;
     }
 } break;
 //==============================================================

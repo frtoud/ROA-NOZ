@@ -3,18 +3,18 @@ var scale = 1 + small_sprites;
 
 shader_start();
 //=============================================================================
-//DSPECIAL: Ice Shine
-if (attack == AT_DSPECIAL && (window == 3 || (window >= 6 && window < 9))
+//Reflector Rune
+if (attack == AT_NTHROW && (window != 2)
    && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) )
 {
     var vfxframe = (get_gameplay_time() / 3 ) % 4;
-    var alpha = (0.5 * ease_quadOut(1, 2, floor(at_dspecial_damage_block), noz_dspecial_damage_max));
-    draw_sprite_ext(vfx_dspecial_shine_spr, vfxframe, 
+    var alpha = (0.5 * ease_quadOut(1, 2, floor(at_reflector_damage_block), noz_reflector_damage_max));
+    draw_sprite_ext(vfx_reflect_shine_spr, vfxframe, 
                     x, y-(char_height/2), scale, scale, 0, c_white, alpha);
 }
-if (anim_dspecial_shockwave_frame > 0)
+if (anim_reflector_shockwave_frame > 0)
 { 
-    draw_sprite_ext(vfx_dspecial_shockwave_spr, 4 - min(anim_dspecial_shockwave_frame, 4),
+    draw_sprite_ext(vfx_reflect_shockwave_spr, 4 - min(anim_reflector_shockwave_frame, 4),
                     x, y-(char_height/2), scale, scale, 0, c_white, 1); 
 }
 

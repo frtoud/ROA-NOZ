@@ -58,9 +58,10 @@ sprite_change_offset("nspecial", 13, 24, true);
 sprite_change_offset("nspecial_air", 14, 28);
 sprite_change_offset("fspecial", 17, 33, true);
 sprite_change_offset("uspecial", 22, 30, true);
-sprite_change_offset("dspecial", 16, 28, true);
-sprite_change_offset("dspecial_air", 16, 28);
-sprite_change_offset("dspecial_shine", 18, 18);
+
+sprite_change_offset("reflect", 16, 28, true);
+sprite_change_offset("reflect_shine", 18, 18);
+sprite_change_offset("reflect_shock", 23, 23);
  
 sprite_change_offset("article1", 18, 0);
 sprite_change_collision_mask( "article1", false, 2, 10, -2, 26, 0, 1 );
@@ -83,9 +84,6 @@ sprite_change_offset("vfx_nspecial", 26, 26);
 sprite_change_offset("vfx_nspecial_notes_left", 52, 52);
 sprite_change_offset("vfx_nspecial_notes_right", 52, 52);
 sprite_change_offset("vfx_sleep", 24, 38);
-sprite_change_offset("vfx_shine", 23, 23);
-sprite_change_offset("vfx_dspecial_flake", 60, 60);
-sprite_change_offset("vfx_dspecial_zone", 60, 60);
  
  
 sprite_change_offset("taunt", 20, 32);

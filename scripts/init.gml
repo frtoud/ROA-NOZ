@@ -119,7 +119,7 @@ HG_MUNO_OBJECT_LAUNCH_ANGLE = 77; //Thanks Muno
 //=================================================
 //Custom vfx & sprites
 
-anim_dspecial_shockwave_frame = 0;
+anim_reflector_shockwave_frame = 0;
 anim_do_draw_twinkle = false;
 anim_rand_twinkle = 0;
 anim_rand_x = 0;
@@ -143,10 +143,8 @@ idle_hover_spr = sprite_get("idle_hover");
 vfx_hair_hover_spr = sprite_get("vfx_hair_hover");
 vfx_hair_exhausted_spr = sprite_get("vfx_hair_exhausted");
 
-vfx_dspecial_shine_spr = sprite_get("dspecial_shine");
-vfx_dspecial_shockwave_spr = sprite_get("vfx_shine"); //no relation to Sunshine
-vfx_dspecial_flake_spr = sprite_get("vfx_dspecial_flake");
-vfx_dspecial_zone_spr = sprite_get("vfx_dspecial_zone");
+vfx_reflect_shine_spr = sprite_get("reflect_shine");
+vfx_reflect_shockwave_spr = sprite_get("reflect_shock");
 
 anim_hud_rollin = 0;
 anim_hud_fadeout = 0;
@@ -215,20 +213,11 @@ noz_pratfall_max_vsp = 7;
 
 noz_dtilt_proj_cooldown_max = 24;
 
-//counter
-noz_dspecial_invince_time = 60;
-noz_dspecial_top_speed = 12;
-noz_dspecial_pre_homing_time = 8;
-noz_dspecial_homing_time = 40;
-noz_dspecial_homing_distance = 300;
-noz_dspecial_zone_time = 600;
-noz_dspecial_zone_radius = 120;
-noz_dspecial_remote_shine_cooldown = 60;
-//reflect
-noz_dspecial_damage_max = 40;
-noz_dspecial_damage_min = 10;
-noz_dspecial_recharge_rate = 0.05;
-noz_dspecial_dmg_mult = 1.5;
+//reflector rune 
+noz_reflector_damage_max = 40;
+noz_reflector_damage_min = 10;
+noz_reflector_recharge_rate = 0.05;
+noz_reflector_dmg_mult = 1.5;
 
 noz_nspecial_radius = 50;
 noz_nspecial_mashing_bonus = 1;
@@ -277,15 +266,8 @@ at_nair_hover_need_grid_adjust = false;
 at_dair_early_cancel = false;
 at_dair_need_landing_lag_hitbox = false;
 
-at_dspecial_has_reflected = false;
-//local object to simulate a player position if no appropriate target can be found
-at_dspecial_target_object = { x:0, y:0, char_height:0 };
-at_dspecial_zone = noone;
-at_dspecial_zone_timer = 0;
-at_dspecial_zone_position = { x:0, y:0 };
-at_dspecial_counter_target = noone;
-at_dspecial_countered_damage = 0;
-at_dspecial_damage_block = noz_dspecial_damage_max;
+//reflector rune
+at_reflector_damage_block = noz_reflector_damage_max;
 
 at_fspecial_started_free = false;
 at_fspecial_on_soft_cooldown = 0;

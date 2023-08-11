@@ -167,23 +167,25 @@ if (at_uspecial_exhausted && at_uspecial_hover_meter == 0)
     && at_uspecial_hovering && (state != PS_PRATFALL)
     && !(state == PS_ATTACK_AIR && attack == AT_USPECIAL)
 {
-	set_state(PS_PRATFALL);
+    set_state(PS_PRATFALL);
 }
 
 //==============================================================================
-//DSPECIAL Counter: frost zone
-if (at_dspecial_zone_timer > 0) { at_dspecial_zone_timer--; }
-
-//ensure article exists
-if (!instance_exists(at_dspecial_zone)) 
-{ at_dspecial_zone = instance_create(0, 0, "obj_article2"); }
-
 //Reflector recharging
-if ( (at_dspecial_damage_block <= noz_dspecial_damage_max) &&
-    !((attack == AT_DSPECIAL) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)))
+if ( (at_reflector_damage_block <= noz_reflector_damage_max) &&
+    !((attack == AT_NTHROW) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)))
 {
-	//recharges the damage buffer for DSPECIAL
-	at_dspecial_damage_block += noz_dspecial_recharge_rate;
+	at_reflector_damage_block += noz_reflector_recharge_rate;
+}
+//Reflector-out-of-parry
+if (noz_rune_flags.reflector) && shield_down 
+&& (state == PS_PARRY) && (window == 2) && (window_timer == 0)
+{
+    set_attack(AT_NTHROW);
+    window = 1; window_timer = 1;
+    at_reflector_damage_block = max(noz_reflector_damage_min, 
+                                    floor(at_reflector_damage_block));
+    user_event(1);
 }
 
 //Cooldown overrides

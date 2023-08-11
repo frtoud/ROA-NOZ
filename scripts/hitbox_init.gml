@@ -58,10 +58,3 @@ if ( (attack == AT_DTILT && hbox_num == 2) )
         set_num_hitboxes(AT_DTILT, 1);
     }
 }
-//DSPECIAL's counter shards
-if (attack == AT_DSPECIAL && hbox_num == 4)
-{
-	do_homing = true;
-	if ("homing_target" not in self) 
-       { homing_target = noone; }
-}

@@ -128,7 +128,7 @@ else
         set_hitbox_value(AT_BAIR, 3, HG_HIT_SFX, sound_get("sfx_noz_ice_medium"));
         set_hitbox_value(AT_BAIR, 3, HG_VISUAL_EFFECT, 1);
         
-        set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_SPRITE, sprite_get("vfx_shine"));
+        set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_SPRITE, sprite_get("vfx_ice_big"));
         set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_ANIM_SPEED, 0.5);
         set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_MASK, -1);
         set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);

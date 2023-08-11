@@ -1,7 +1,7 @@
 //USER EVENT 1 - Ice Reflector
 
-#macro VULN_WINDOW 8
-#macro PARRY_WINDOW 7
+#macro PARRY_WINDOW 3
+#macro VULN_WINDOW 4
 
 
 if (instance_place(x, y+5, asset_get("bubble_obj")) != noone)
@@ -35,11 +35,11 @@ with (hurtboxID)
     // Here ShovelKnight is being especially annoying
     found_moving_article = (noone != instance_place(x, y, asset_get("mobile_gear_obj")))
                         || (noone != instance_place(x, y, asset_get("treasure_rock_obj")))
-                        || find_moving_article(obj_article1)
-                        || find_moving_article(obj_article2)
-                        || find_moving_article(obj_article3)
-                        || find_moving_article(obj_article_solid)
-                        || find_moving_article(obj_article_platform);
+                        || find_moving_article(asset_get("obj_article1"))
+                        || find_moving_article(asset_get("obj_article2"))
+                        || find_moving_article(asset_get("obj_article3"))
+                        || find_moving_article(asset_get("obj_article_solid"))
+                        || find_moving_article(asset_get("obj_article_platform"));
 }
 
 //Detect hitboxes. (only projectiles that could have damaged you)
@@ -97,7 +97,7 @@ with (pHitBox)
         total_damage_reflected += damage;
         var has_dmg_bonus = true;
         
-        if (other.at_dspecial_damage_block <= total_damage_reflected)
+        if (other.at_reflector_damage_block <= total_damage_reflected)
         {
         	need_vulnerable = true;
         }
@@ -154,16 +154,16 @@ with (pHitBox)
         }
         
         if (has_dmg_bonus)
-        { damage = floor(damage * other.noz_dspecial_dmg_mult); }
+        { damage = floor(damage * other.noz_reflector_dmg_mult); }
 	}
 }
 
-at_dspecial_damage_block -= total_damage_reflected;
-if (at_dspecial_damage_block <= 0)
+at_reflector_damage_block -= total_damage_reflected;
+if (at_reflector_damage_block <= 0)
 {
     //You've broken this reflector!
     //SFX?
-    at_dspecial_damage_block = 0;
+    at_reflector_damage_block = 0;
     sound_play(asset_get("sfx_absa_orb_miss"), 0, -1, 1.5, 1);
     set_state(free ? PS_PRATFALL : PS_PRATLAND);
 }
@@ -173,14 +173,13 @@ else if (need_parry)
     window = PARRY_WINDOW;
     window_timer = 0;
     perfect_dodging = true;
-    anim_dspecial_shockwave_frame = 6;
+    anim_reflector_shockwave_frame = 6;
 }
 else if (need_parry_fx)
 {
 	anim_fakeparry_timer = 20;
 	sound_play(asset_get("sfx_parry_success"));
-	at_dspecial_has_reflected = true;
-	anim_dspecial_shockwave_frame = 6;
+	anim_reflector_shockwave_frame = 6;
 }
 else if (need_vulnerable)
 {

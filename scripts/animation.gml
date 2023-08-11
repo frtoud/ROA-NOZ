@@ -237,13 +237,6 @@ switch (state)
                 { image_index = 22; } //Exhausted frame; going to pratfall
             }break;
 //==================================================================
-            case AT_DSPECIAL:
-            {
-                //Counter success hitpause frame
-                if (window == 5 && window_timer < 1) 
-                   { image_index = 8; }
-            }break;
-//==================================================================
             case AT_NAIR:
             {
                 //Landed NAIR case: don't use hover sprites
@@ -275,6 +268,14 @@ switch (state)
                 use_hover_sprite();
             }break;
 //==================================================================
+            case AT_NTHROW: //Reflector Rune
+            {
+                if free && ((image_index == 5) || (image_index == 6))
+                {
+                    //Aerial sprites
+                    image_index += 2;
+                }
+            }break;
             default:
             break;
         }
@@ -295,9 +296,9 @@ if (noz_frostzone_timer > 0)
 }
 
 //===========================================================    
-// DSPECIAL Reflect effects
-if (anim_dspecial_shockwave_frame > 0) 
-    { anim_dspecial_shockwave_frame -= 1; }
+// Reflector effects
+if (anim_reflector_shockwave_frame > 0) 
+    { anim_reflector_shockwave_frame -= 1; }
 if (anim_fakeparry_timer > 0) 
     { anim_fakeparry_timer -= 1; }
    

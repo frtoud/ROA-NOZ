@@ -6,7 +6,6 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
     // BAIR with STRONG effects
     if ((( is_a_cloud )
     // Plus some specials!
-      || (my_hitboxID.attack == AT_DSPECIAL) 
       || (my_hitboxID.attack == AT_FSPECIAL) ))
     {
         if (hit_player_obj.noz_snowimmune_timer == 0)

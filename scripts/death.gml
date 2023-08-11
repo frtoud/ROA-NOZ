@@ -1,7 +1,6 @@
 //on death
 //reset status
-at_dspecial_damage_block = noz_dspecial_damage_max;
-at_dspecial_zone_timer = 0;
+at_reflector_damage_block = noz_reflector_damage_max;
 
 at_fspecial_soft_cooldown_timer = 0;
 
