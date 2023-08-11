@@ -22,3 +22,8 @@ with (obj_article1) if (player_id == other)
 {
     should_die = true;
 }
+
+with (obj_article_platform) if (player_id == other)
+{
+    should_die = true;
+}
