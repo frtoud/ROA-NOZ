@@ -188,8 +188,6 @@ noz_rune_flags =
     frostbite: has_rune("G"),
     jumpcancels: has_rune("J"),
     
-    ice_boost: has_rune("F"),
-    ice_dripping: has_rune("K"),
     ice_longer: has_rune("O"),
     
     cloud_kick: has_rune("H"),
@@ -304,8 +302,6 @@ at_uspecial_cooldown_override = false;
 
 noz_frostzone_timer = 0; //wether you are empowered by the ice
 noz_frostzone_cache = false; //for individual attacks to track additional properties
-//frictionless ice rune
-prev_hsp = 0;
 
 //=================================================
 // Copy of other_init

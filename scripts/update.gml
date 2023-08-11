@@ -35,19 +35,6 @@ if (move_cooldown[AT_FSPECIAL] < 1 &&
     { anim_indicatorflash_timer = anim_indicatorflash_max; }
 }
 
-//For friction overrides
-//==============================================================================
-//if (at_fspecial_on_ice_timer > 0)
-//{
-//	if (noz_rune_flags.ice_boost && abs(hsp) < abs(prev_hsp) && abs(hsp) > 0.2)
-//	{
-//		//force-restore hsp and apply only 25% of friction
-//		hsp = prev_hsp - (prev_hsp - hsp) * 0.25;
-//	}
-//	at_fspecial_on_ice_timer--;
-//}
-//prev_hsp = hsp;
-
 //Extra landing hitbox for DAIR
 //==============================================================================
 if (state == PS_LANDING_LAG)
