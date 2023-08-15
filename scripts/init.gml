@@ -188,8 +188,6 @@ noz_rune_flags =
     
     ice_longer: has_rune("O"),
     
-    cloud_kick: has_rune("H"),
-    cloud_longer: has_rune("I"),
     cloud_explode: has_rune("M"),
     
     enhanced_hover: has_rune("N")
@@ -251,10 +249,8 @@ noz_cloudkick_scale = 50;
 noz_cloudkick_friction = 0.33; //to lessen friction after a kick
 noz_cloudkick_speed = 8;
 //Extended clouds
-noz_long_cloud_big = 160;
-noz_long_cloud_small = 120;
-noz_long_cloud_big_kick = 36;
-noz_long_cloud_small_kick = 32;
+noz_long_cloud_big = 180;
+noz_long_cloud_small = 150;
 noz_cloud_hit_restore_time = 30;
 
 //=================================================

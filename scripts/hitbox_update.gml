@@ -35,9 +35,6 @@ if ( is_a_cloud )
                 air_friction = frict;
             }
         }
-    }
-    if (is_extended)
-    {
         //try restoring can_hit if nothing is close for long enough
         if (has_hit && !place_meeting(x, y, oPlayer))
         {
@@ -59,7 +56,7 @@ if ( is_a_cloud )
 
 //===================================================================
         //Snowing clouds
-        //try increasing range
+        //TODO: will move to article2
         if (noone == collision_line(x, y, x, y+snow_depth, asset_get("par_block"), false, true))
         { snow_depth += 8; }
         else

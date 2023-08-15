@@ -119,10 +119,9 @@ if (noz_rune_flags.cloud_explode)
     set_hitbox_value(AT_FAIR, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
     set_hitbox_value(AT_FAIR, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
     set_hitbox_value(AT_FAIR, 3, HG_MUNO_OBJECT_LAUNCH_ANGLE, -2);
-}
 
-// Cloud extensions
-var duration = get_hitbox_value(AT_FAIR, 2, HG_LIFETIME);
-if (noz_rune_flags.cloud_longer) { duration += noz_long_cloud_big; }
-if (noz_rune_flags.cloud_kick) { duration += noz_long_cloud_big_kick; }
-set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, duration);
+    // Cloud extension
+    var duration = get_hitbox_value(AT_FAIR, 2, HG_LIFETIME);
+    duration += noz_long_cloud_big;
+    set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, duration);
+}

@@ -32,7 +32,7 @@ if (is_a_cloud)
     if (attack == AT_DATTACK) { dattack_speedcheck_timer = 20; }
 
     // Kicking clouds
-    is_kickable = player_id.noz_rune_flags.cloud_kick;
+    is_kickable = player_id.noz_rune_flags.cloud_explode;
     if (is_kickable)
     {
         //save friction
@@ -42,8 +42,6 @@ if (is_a_cloud)
         kick_cooldown = 8;
         kick_boosted = 0;
     }
-    //Extended clouds
-    is_extended = player_id.noz_rune_flags.cloud_longer;
     snow_width = (attack == AT_FAIR || attack == AT_BAIR)? 20 : 12;
     snow_depth = 0;
     restore_hit_timer = 0;

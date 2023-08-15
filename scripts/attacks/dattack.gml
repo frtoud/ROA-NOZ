@@ -109,13 +109,13 @@ if (noz_rune_flags.cloud_explode)
     set_hitbox_value(AT_DATTACK, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
     set_hitbox_value(AT_DATTACK, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
     set_hitbox_value(AT_DATTACK, 3, HG_MUNO_OBJECT_LAUNCH_ANGLE, -2);
+
+    // Cloud extension
+    var duration = get_hitbox_value(AT_DATTACK, 2, HG_LIFETIME);
+    duration += noz_long_cloud_small;
+    set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, duration);
 }
 
-// Cloud extensions
-var duration = get_hitbox_value(AT_DATTACK, 2, HG_LIFETIME);
-if (noz_rune_flags.cloud_longer) { duration += noz_long_cloud_small; }
-if (noz_rune_flags.cloud_kick) { duration += noz_long_cloud_small_kick; }
-set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, duration);
 
 //Decorative snow-skid effect
 set_hitbox_value(AT_DATTACK, 5, HG_HITBOX_TYPE, 2);
