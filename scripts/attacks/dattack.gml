@@ -50,7 +50,7 @@ set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DATTACK, 2, HG_WINDOW, 2);
 set_hitbox_value(AT_DATTACK, 2, HG_WINDOW_CREATION_FRAME, 5);
 set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 32);
-set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_X, 30);
+set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_X, 44);
 set_hitbox_value(AT_DATTACK, 2, HG_HITBOX_Y, -18);
 set_hitbox_value(AT_DATTACK, 2, HG_WIDTH, 30);
 set_hitbox_value(AT_DATTACK, 2, HG_HEIGHT, 30);
@@ -116,3 +116,31 @@ var duration = get_hitbox_value(AT_DATTACK, 2, HG_LIFETIME);
 if (noz_rune_flags.cloud_longer) { duration += noz_long_cloud_small; }
 if (noz_rune_flags.cloud_kick) { duration += noz_long_cloud_small_kick; }
 set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, duration);
+
+//Decorative snow-skid effect
+set_hitbox_value(AT_DATTACK, 5, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DATTACK, 5, HG_LIFETIME, 12);
+set_hitbox_value(AT_DATTACK, 5, HG_HITBOX_X, 6);
+set_hitbox_value(AT_DATTACK, 5, HG_HITBOX_Y, 0);
+set_hitbox_value(AT_DATTACK, 5, HG_WIDTH, 1);
+set_hitbox_value(AT_DATTACK, 5, HG_HEIGHT, 1);
+set_hitbox_value(AT_DATTACK, 5, HG_SHAPE, 1);
+set_hitbox_value(AT_DATTACK, 5, HG_PRIORITY, 0);
+set_hitbox_value(AT_DATTACK, 5, HG_DAMAGE, 0);
+set_hitbox_value(AT_DATTACK, 5, HG_ANGLE, 0);
+set_hitbox_value(AT_DATTACK, 5, HG_GROUNDEDNESS, 2);
+set_hitbox_value(AT_DATTACK, 5, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_DATTACK, 5, HG_EXTRA_CAMERA_SHAKE, -1); //none
+set_hitbox_value(AT_DATTACK, 5, HG_VISUAL_EFFECT, 1); //none
+set_hitbox_value(AT_DATTACK, 5, HG_FORCE_FLINCH, 2); //none
+set_hitbox_value(AT_DATTACK, 5, HG_THROWS_ROCK, 2); //ignore
+
+set_hitbox_value(AT_DATTACK, 5, HG_PROJECTILE_SPRITE, sprite_get("vfx_scraping"));
+set_hitbox_value(AT_DATTACK, 5, HG_PROJECTILE_ANIM_SPEED, (4.0 / get_hitbox_value(AT_DATTACK, 5, HG_LIFETIME)));
+set_hitbox_value(AT_DATTACK, 5, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DATTACK, 5, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_DATTACK, 5, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_DATTACK, 5, HG_PROJECTILE_PARRY_STUN, 0);
+set_hitbox_value(AT_DATTACK, 5, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_DATTACK, 5, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+set_hitbox_value(AT_DATTACK, 5, HG_PROJECTILE_IS_TRANSCENDENT, 1);

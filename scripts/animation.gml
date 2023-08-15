@@ -143,6 +143,17 @@ switch (state)
         switch (attack)
         {
 //==================================================================
+            case AT_DTILT:
+            case AT_DATTACK:
+            {
+                if !hitstop && (window == 2) && (window_timer == 0)
+                {
+                    create_hitbox(AT_DATTACK, 5, x, y); //see hitbox_update for position
+                    sound_play(asset_get("sfx_waveland_eta"), false, noone, 1, 1.6);
+                }
+                
+            }break;
+//==================================================================
             case AT_FSTRONG:
             {
                 if (window == 1 && strong_charge > 0)
