@@ -18,7 +18,6 @@ if (anim_reflector_shockwave_frame > 0)
                     x, y-(char_height/2), scale, scale, 0, c_white, 1); 
 }
 
-
 //=============================================================================
 //force-show the parry frame instead of being greyed out
 if (state == PS_PARRY && window == 1)
@@ -26,8 +25,12 @@ if (state == PS_PARRY && window == 1)
     draw_sprite_ext(sprite_index, image_index, x, y, spr_dir*scale, scale, 0, c_white, 1);
 }
 
+shader_end();
+
 //Skip drawing indicators if not needed
 if (!draw_indicator) exit;
+
+shader_start();
 
 //=============================================================================
 //FSPECIAL cooldown on indicator
