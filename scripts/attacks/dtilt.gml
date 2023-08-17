@@ -110,6 +110,6 @@ if (noz_rune_flags.cloud_explode)
 
     // Cloud extension
     var duration = get_hitbox_value(AT_DTILT, 2, HG_LIFETIME);
-    duration += noz_long_cloud_small + noz_long_cloud_small_kick;
+    duration += noz_long_cloud_small;
     set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, duration);
 }
