@@ -86,8 +86,7 @@ sprite_change_offset("vfx_nspecial", 26, 26);
 sprite_change_offset("vfx_nspecial_notes_left", 52, 52);
 sprite_change_offset("vfx_nspecial_notes_right", 52, 52);
 sprite_change_offset("vfx_sleep", 24, 38);
- 
- 
+
 sprite_change_offset("taunt", 20, 32);
 sprite_change_offset("plat", 18, 7);
 sprite_change_offset("smol_mask", 19, 44);

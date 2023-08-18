@@ -4,19 +4,19 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
     var is_a_cloud = ("is_a_cloud" in my_hitboxID) && my_hitboxID.is_a_cloud;
     // Lingering projectile hitboxes: applies snow effects
     // BAIR with STRONG effects
-    if ((( is_a_cloud )
+    if (( ( is_a_cloud )
     // Plus some specials!
-      || (my_hitboxID.attack == AT_FSPECIAL) ))
+       || (my_hitboxID.attack == AT_FSPECIAL) ))
     {
         if (hit_player_obj.noz_snowimmune_timer == 0)
         {
             hit_player_obj.noz_snowstack_timer = noz_snowstack_timer_max;
             hit_player_obj.noz_handler_id = self;
-            
+
             if (noz_rune_flags.frostbite) // Frostbite debuff
             { hit_player_obj.noz_snow_frostbite_timer = noz_snowstack_timer_max; }
         }
-        
+
         // Exploding clouds
         if (is_a_cloud && noz_rune_flags.cloud_explode)
         {

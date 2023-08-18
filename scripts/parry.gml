@@ -16,5 +16,4 @@ if ((attack == AT_NTHROW) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUN
     invincible = false;
     perfect_dodged = false;
     perfect_dodging = false;
-    
 }

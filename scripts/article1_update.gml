@@ -125,8 +125,8 @@ if (player_id.anim_do_draw_twinkle &&
         found = self; break;
     }
     if (found == noone) with (asset_get("obj_article_platform"))
-    if (self != other) && (player_id == other.player_id)
-    && (abs(x - xpos) < 2) && (abs(y - ypos) < 2)
+                        if (self != other) && (player_id == other.player_id)
+                        && (abs(x - xpos) < 2) && (abs(y - ypos) < 2)
     {
         found = self; break;
     }
@@ -139,32 +139,6 @@ with (player_id)
 {
     var kx = pos_x - (radius / 2) + anim_rand_x * radius;
     var ky = pos_y - (radius / 2) + anim_rand_y * radius;
-    
+
     var k = spawn_hit_fx(kx, ky, vfx);
 }
-
-
-//=====================================================================
-//dstrong spikes
-/*
-if (spike_timer > 0)
-{
-    if (spike_timer == spike_hitbox_frame)
-    {
-        sound_play(asset_get("sfx_ice_end"), false, noone, 0.5, 1.5);
-        create_hitbox(AT_DSTRONG, 5, x + spike_dir * 6, y-10);
-    }
-    if (spike_timer == spike_spread_frame)
-    {
-        var neighbor = spike_dir > 0 ? right_plat : left_plat;
-        if (instance_exists(neighbor) && !neighbor.should_die)
-        {
-            neighbor.spike_timer = spike_timer_max;
-            neighbor.spike_dir = spike_dir;
-            //earlier platforms were updated first; correction needed
-            if (neighbor.article_timer < article_timer)
-            { neighbor.spike_timer--; }
-        }
-    }
-    spike_timer--;
-}*/

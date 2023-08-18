@@ -5,11 +5,11 @@
 if (noz_handler_id == self)
 {
     if (noz_snowstack_timer > 0) 
-    { 
+    {
         outline_color = [0,80,120]; 
     }
     else 
-    { 
+    {
         outline_color = [0, 0, 0]; 
     }
 }
@@ -46,14 +46,14 @@ if (attack == AT_NSPECIAL && (window > 1) &&
              : (window == 5 ? ease_sineInOut(100, 0, window_timer, 
                        get_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH)) 
              : 100);
-    
+
     shader_start();
     draw_sprite_ext(vfx_nspecial_spr, 
                     floor(get_gameplay_time() / 5 ) % 4, x, y-(char_height/2), scale, scale, 
                     floor(get_gameplay_time() * 5 ) % 360, c_white,
                     (alpha) * 0.01 * 0.7 );
     shader_end();
-    
+
     if (get_match_setting(SET_HITBOX_VIS) && (window == 2 || window == 4))
     {
         //show effective range of Sing

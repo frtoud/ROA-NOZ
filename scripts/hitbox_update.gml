@@ -95,7 +95,7 @@ if ( is_a_cloud )
     // sprites: 0-1 2-3-4 5-6
     if (hitbox_timer > length - anim_fade_frames) //end
     {
-    	image_index = max(5, image_index);
+        image_index = max(5, image_index);
     }
     else if (hitbox_timer > anim_fade_frames) && (image_index >= 5) //loop
     {

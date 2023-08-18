@@ -306,11 +306,11 @@ case AT_FSPECIAL:
         }
         else if (free)
         {
-        	//lengthen easing
+            //lengthen easing
             if (abs(y - at_fspecial_ylock) > 48)
             {
-            	y += 16 * sign(at_fspecial_ylock - y);
-            	window_timer--;
+                y += 16 * sign(at_fspecial_ylock - y);
+                window_timer--;
             }
             else
             {
@@ -336,11 +336,11 @@ case AT_FSPECIAL:
         y = at_fspecial_ylock;
         
         if (!joy_pad_idle)
-		{
+        {
             var hsp_mult = lengthdir_x(1, joy_dir);
             if (hsp_mult * spr_dir >= 0)
             {
-            	//dampen friction
+                //dampen friction
                 hsp += hsp_mult * 0.1;
             }
             else

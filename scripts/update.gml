@@ -4,7 +4,7 @@ if (at_dtilt_proj_cooldown > 0)
 {
     at_dtilt_proj_cooldown--;
     if (at_dtilt_proj_cooldown == 0)
-    { 
+    {
         set_num_hitboxes(AT_DTILT, 2); 
     }
 }
@@ -38,11 +38,11 @@ if (move_cooldown[AT_FSPECIAL] < 1 &&
 //Extra landing hitbox for DAIR
 //==============================================================================
 if (state == PS_LANDING_LAG)
-{ 
+{
     off_edge = false;
     //Extra landing hitbox for DAIR when landing (if needed)
     if (attack == AT_DAIR && at_dair_need_landing_lag_hitbox)
-    { 
+    {
         create_hitbox(AT_DAIR, 4, 0, 0); 
         at_dair_need_landing_lag_hitbox = false;
     }
@@ -59,105 +59,105 @@ if (state == PS_PRATFALL && vsp > noz_pratfall_max_vsp)
 //==============================================================================
 if (at_uspecial_hovering)
 {
-	fall_through = false;
-	
-	//Those states pull you out of Hover
-	if (!free || state == PS_HITSTUN   || state == PS_WALL_JUMP
-	          || state == PS_AIR_DODGE || state == PS_DOUBLE_JUMP)
-	{
-		at_uspecial_hovering = false;
-		at_nair_hover_need_grid_adjust = true;
-	}
-	else if ( !at_uspecial_exhausted &&
-	    //exception: no control during USPECIAL window 5 and 6
-		!( state == PS_ATTACK_AIR && attack == AT_USPECIAL && 
-		  (window == 5 || (window == 6 && window_timer < 6))) )
-	{
-		if (special_pressed)
-		{
-			at_uspecial_exhausted = true;
-			at_nair_hover_need_grid_adjust = true;
-		    clear_button_buffer(PC_SPECIAL_PRESSED);
-		}
-		else
-		{
+    fall_through = false;
+
+    //Those states pull you out of Hover
+    if (!free || state == PS_HITSTUN   || state == PS_WALL_JUMP
+              || state == PS_AIR_DODGE || state == PS_DOUBLE_JUMP)
+    {
+        at_uspecial_hovering = false;
+        at_nair_hover_need_grid_adjust = true;
+    }
+    else if ( !at_uspecial_exhausted &&
+        //exception: no control during USPECIAL window 5 and 6
+        !( state == PS_ATTACK_AIR && attack == AT_USPECIAL && 
+          (window == 5 || (window == 6 && window_timer < 6))) )
+    {
+        if (special_pressed)
+        {
+            at_uspecial_exhausted = true;
+            at_nair_hover_need_grid_adjust = true;
+            clear_button_buffer(PC_SPECIAL_PRESSED);
+        }
+        else
+        {
             do_a_fast_fall = false; //prevents weird hover-fastfall
-            
-			//Hovermode movement logic!
-			var target_hsp = 0;
-			var target_vsp = 0;
-			var hover_cost_mult = 1.1;
-			if (!joy_pad_idle)
-			{
-	            target_hsp = lengthdir_x(noz_uspecial_hover_hspeed, joy_dir);
-	            target_vsp = lengthdir_y(noz_uspecial_hover_vspeed, joy_dir);
-	            hover_cost_mult -= lengthdir_y(0.8, joy_dir);
-			}
-			
-			if (y < 0) //penalty if above camera view
-			{ hover_cost_mult -= (y / 16.0); }
-			
-			at_uspecial_hover_meter -= hover_cost_mult * 2;
-			
-			//dampen vertical control depending on meter level
-			var exhaustion_factor = 
-			   0.01 * ease_cubeOut(noz_uspecial_hover_exhaustion_base, 100,
-			                       floor(at_uspecial_hover_meter), noz_uspecial_hover_max);
-			 
-			target_vsp = (target_vsp * exhaustion_factor) 
-			           + noz_uspecial_hover_vspeed * (1 - exhaustion_factor);
-			
-			if (hsp > target_hsp)
-			{
-				hsp = (hsp - noz_uspecial_hover_hstrength > target_hsp) ? 
-				       hsp - noz_uspecial_hover_hstrength : target_hsp;
-			}
-			else
-			{
-				hsp = (hsp + noz_uspecial_hover_hstrength < target_hsp) ? 
-				       hsp + noz_uspecial_hover_hstrength : target_hsp;
-			}
-			
-			if (vsp > target_vsp)
-			{
-				vsp = (vsp - noz_uspecial_hover_vstrength > target_vsp) ? 
-				       vsp - noz_uspecial_hover_vstrength : target_vsp;
-			}
-			//else: gravity handles it
-		}
-	}
+
+            //Hovermode movement logic!
+            var target_hsp = 0;
+            var target_vsp = 0;
+            var hover_cost_mult = 1.1;
+            if (!joy_pad_idle)
+            {
+                target_hsp = lengthdir_x(noz_uspecial_hover_hspeed, joy_dir);
+                target_vsp = lengthdir_y(noz_uspecial_hover_vspeed, joy_dir);
+                hover_cost_mult -= lengthdir_y(0.8, joy_dir);
+            }
+
+            if (y < 0) //penalty if above camera view
+            { hover_cost_mult -= (y / 16.0); }
+
+            at_uspecial_hover_meter -= hover_cost_mult * 2;
+
+            //dampen vertical control depending on meter level
+            var exhaustion_factor = 
+               0.01 * ease_cubeOut(noz_uspecial_hover_exhaustion_base, 100,
+                                   floor(at_uspecial_hover_meter), noz_uspecial_hover_max);
+
+            target_vsp = (target_vsp * exhaustion_factor) 
+                       + noz_uspecial_hover_vspeed * (1 - exhaustion_factor);
+
+            if (hsp > target_hsp)
+            {
+                hsp = (hsp - noz_uspecial_hover_hstrength > target_hsp) ? 
+                       hsp - noz_uspecial_hover_hstrength : target_hsp;
+            }
+            else
+            {
+                hsp = (hsp + noz_uspecial_hover_hstrength < target_hsp) ? 
+                       hsp + noz_uspecial_hover_hstrength : target_hsp;
+            }
+
+            if (vsp > target_vsp)
+            {
+                vsp = (vsp - noz_uspecial_hover_vstrength > target_vsp) ? 
+                       vsp - noz_uspecial_hover_vstrength : target_vsp;
+            }
+            //else: gravity handles it
+        }
+    }
 }
 else if (!at_uspecial_was_hovering 
       && !(state == PS_ATTACK_AIR && attack == AT_USPECIAL))
 {
-	//recharges meter
-	at_uspecial_exhausted = false;
-	var recharge = (trueground() ? noz_uspecial_hover_recharge 
-	                             : noz_uspecial_hover_recharge_air);
-	at_uspecial_hover_meter = 
-	   (at_uspecial_hover_meter >= noz_uspecial_hover_max) ? 
-	    noz_uspecial_hover_max : at_uspecial_hover_meter + recharge;
+    //recharges meter
+    at_uspecial_exhausted = false;
+    var recharge = (trueground() ? noz_uspecial_hover_recharge 
+                                 : noz_uspecial_hover_recharge_air);
+    at_uspecial_hover_meter = 
+       (at_uspecial_hover_meter >= noz_uspecial_hover_max) ? 
+        noz_uspecial_hover_max : at_uspecial_hover_meter + recharge;
 }
 else if (!free || state == PS_HITSTUN || state == PS_WALL_JUMP)
 {
-	//reallows specials in those circumstances
+    //reallows specials in those circumstances
     at_uspecial_cooldown_override = false;
 }
 
 if (!free)
 {
     at_uspecial_cooldown_override = false;
-	if (trueground())
-	{
-		at_uspecial_was_hovering = false;
+    if (trueground())
+    {
+        at_uspecial_was_hovering = false;
         at_fspecial_cooldown_override = false;
-	}
+    }
 }
 
 if (at_uspecial_hover_meter < 0) 
 {
-	at_uspecial_hover_meter = 0;
-	at_uspecial_exhausted = true;
+    at_uspecial_hover_meter = 0;
+    at_uspecial_exhausted = true;
     at_nair_hover_need_grid_adjust = true; 
 }
 
@@ -175,7 +175,7 @@ if (at_uspecial_exhausted && at_uspecial_hover_meter == 0)
 if ( (at_reflector_damage_block <= noz_reflector_damage_max) &&
     !((attack == AT_NTHROW) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)))
 {
-	at_reflector_damage_block += noz_reflector_recharge_rate;
+    at_reflector_damage_block += noz_reflector_recharge_rate;
 }
 //Reflector-out-of-parry
 if (noz_rune_flags.reflector) && shield_down 
@@ -199,7 +199,7 @@ if (at_uspecial_cooldown_override)
     //Enhanced hover: can reactivate USPECIAL if not hovering/has hover
     if !(noz_rune_flags.enhanced_hover && at_uspecial_hover_meter > 0 
          && (!at_uspecial_hovering || at_uspecial_exhausted) )
-    	move_cooldown[AT_USPECIAL] += (move_cooldown[AT_USPECIAL] > 2) ? 0 : 2;
+        move_cooldown[AT_USPECIAL] += (move_cooldown[AT_USPECIAL] > 2) ? 0 : 2;
 }
 if (at_fspecial_cooldown_override)
 {

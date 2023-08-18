@@ -185,11 +185,11 @@ noz_rune_flags =
     air_sleep: has_rune("L"),
     frostbite: has_rune("G"),
     jumpcancels: has_rune("J"),
-    
+
     ice_longer: has_rune("O"),
-    
+
     cloud_explode: has_rune("M"),
-    
+
     enhanced_hover: has_rune("N")
 }
 

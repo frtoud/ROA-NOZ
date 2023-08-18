@@ -69,17 +69,3 @@ with (asset_get("obj_article_platform")) if (self != other)
 //animation sync
 image_index = 3 + 4* (spr_dir ? (2*(!needleft) + (!needright))
                               : ((!needleft) + 2*(!needright)) );
-
-/*
-//Runes
-does_not_decay = false;
-was_airborne = false;
-
-/RUNE: DStrong spread spike
-sprite_spike = player_id.article1_spike_spr;
-spike_timer = 0; //controls the DSTRONG spike; going down
-spike_timer_max = 3 * 8; 
-spike_hitbox_frame = spike_timer_max - 3;
-spike_spread_frame = spike_timer_max - 1;
-spike_dir = 1; //direction (-1 for left 1 for right)
-*/

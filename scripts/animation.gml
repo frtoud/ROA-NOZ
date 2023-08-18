@@ -33,7 +33,7 @@ if (anim_indicatorflash_timer > 0)
 if (at_uspecial_hovering)
 {
     var hair_animspeed_index = 0;
-    
+
     if (at_uspecial_exhausted)
     { hair_animspeed_index = 0; }
     else if (0.33 > at_uspecial_hover_meter/noz_uspecial_hover_max)
@@ -42,7 +42,7 @@ if (at_uspecial_hovering)
     { hair_animspeed_index = 2; }
     else 
     { hair_animspeed_index = 3; }
-    
+
     if (!at_uspecial_exhausted && !joy_pad_idle 
      && !(state == PS_ATTACK_AIR && attack == AT_USPECIAL))
     {
@@ -52,9 +52,9 @@ if (at_uspecial_hovering)
         else if (joy_dir > 220 && joy_dir < 310) 
         { hair_animspeed_index--; }
     }
-    
+
     anim_hover_hair_frame += anim_hover_hair_rates[hair_animspeed_index];
-    
+
     if (anim_hover_hair_frame >= 4)
     {
         anim_hover_hair_frame %= 4;
@@ -125,7 +125,7 @@ switch (state)
     {
         if (state_timer <= 1) 
         { noz_anim_back_flipping = (hsp * spr_dir) < 0; }
-        
+
         if (noz_anim_back_flipping)
         { sprite_index = noz_anim_backflip_spr; }
     } break;

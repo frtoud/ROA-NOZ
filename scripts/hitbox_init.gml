@@ -24,10 +24,10 @@ if (is_a_cloud)
 {
     //Save length (in timer) of 2 frames of animation
     anim_fade_frames = (2.0 / img_spd);
-    
+
     //inherit Nozomi's speed
     hsp += player_id.hsp * ((attack == AT_DTILT) ? 0.75 : 1);
-    
+
     //DATTACK cloud needs some help on platforms
     if (attack == AT_DATTACK) { dattack_speedcheck_timer = 20; }
 
@@ -38,7 +38,7 @@ if (is_a_cloud)
         //save friction
         saved_friction = frict;
         boosted_friction = frict * player_id.noz_cloudkick_friction;
-    
+
         kick_cooldown = 8;
         kick_boosted = 0;
     }
