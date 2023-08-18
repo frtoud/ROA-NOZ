@@ -515,6 +515,27 @@ case AT_USPECIAL:
     }
 } break;
 //==============================================================
+case AT_DSPECIAL: 
+{
+    if (window == 1)
+    {
+        can_move = false;
+        //Dampen fallspeeds
+        vsp *= (vsp > 3) ? 0.25 : 1;
+        set_window_value(AT_DSPECIAL, 2, AG_WINDOW_VSPEED, -(free ? 3 : 4.5));
+    }
+    else if (window == 2) && (window_timer == 1) && (!hitpause)
+    {
+        sound_play(asset_get("sfx_orca_snow_mouth"), false, noone, 0.5, 1.2);
+        //spawn cloud
+        var cloud = instance_create(x, floor(y) - 20, "obj_article2");
+        cloud.vsp = clamp(vsp - 4, -9, -4);
+        cloud.hsp = hsp;
+        
+        move_cooldown[AT_DSPECIAL] = noz_dspecial_cooldown;
+    }
+} break;
+//==============================================================
 case AT_NTHROW: //Reflector
 {
     can_jump = (window <= 2);

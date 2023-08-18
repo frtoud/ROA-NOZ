@@ -243,6 +243,8 @@ noz_uspecial_hover_hspeed = 1.5 + air_max_speed;
 noz_uspecial_hover_vstrength = 0.80;
 noz_uspecial_hover_hstrength = 1.5 * air_accel;
 
+noz_dspecial_cooldown = 180;
+
 //Cloudkick
 noz_cloudkick_mult = 0.33;
 noz_cloudkick_scale = 50;

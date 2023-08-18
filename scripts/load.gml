@@ -58,6 +58,7 @@ sprite_change_offset("nspecial", 13, 24, true);
 sprite_change_offset("nspecial_air", 14, 28);
 sprite_change_offset("fspecial", 17, 33, true);
 sprite_change_offset("uspecial", 22, 30, true);
+sprite_change_offset("dspecial", 16, 30, true);
 
 sprite_change_offset("reflect", 16, 28, true);
 sprite_change_offset("reflect_shine", 18, 18);
