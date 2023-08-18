@@ -62,7 +62,7 @@ case AT_JAB:
 //==============================================================
 case AT_DTILT: 
 {
-    if (has_hit && window == 3)
+    if (has_hit && window == 3) && !was_parried
     {
         move_cooldown[AT_DTILT] = 2;
         can_attack = true;
@@ -77,7 +77,7 @@ case AT_FSTRONG:
         has_hit = false;
         has_hit_player = false;
     }
-    else if (window == 3 && has_hit_player)
+    else if (window == 3 && has_hit_player) && !was_parried
     {
         can_jump = true;
     }
@@ -92,7 +92,7 @@ case AT_DSTRONG:
         has_hit_player = false;
     }
 
-    if (has_hit) { can_jump = true; }
+    if (has_hit_player && !was_parried) { can_jump = true; }
     
     //dstrong spreads through ice
     if (noz_rune_flags.dstrong_spread
@@ -121,7 +121,7 @@ case AT_DSTRONG:
 //==============================================================
 case AT_USTRONG:
 {
-    if (has_hit) { can_jump = true; }
+    if (has_hit_player && !was_parried) { can_jump = true; }
 } break;
 //==============================================================
 case AT_NAIR: 
@@ -592,7 +592,7 @@ default: break;
 //universal jumpcancelling
 var is_aerial = (attack == AT_NAIR || attack == AT_DAIR || attack == AT_UAIR
               || attack == AT_FAIR || attack == AT_BAIR)
-if (noz_rune_flags.jumpcancels && is_aerial && has_hit_player)
+if (noz_rune_flags.jumpcancels && is_aerial && has_hit_player && !was_parried)
 {
     can_jump = true;
     if (jump_pressed && djumps >= max_djumps)
