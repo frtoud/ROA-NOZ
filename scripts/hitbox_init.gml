@@ -18,7 +18,7 @@ else if (attack == AT_FAIR && hbox_num == 2)
     if (!is_a_cloud)
     {
        //still inherit Nozomi's speed
-       hsp += player_id.hsp; 
+       hsp += player_id.hsp;
     }
 }
 

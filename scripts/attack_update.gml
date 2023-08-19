@@ -5,6 +5,13 @@ if ( attack == AT_NSPECIAL || attack == AT_FSPECIAL
     trigger_b_reverse();
 }
 
+//Being in snow empowers certain attacks
+if (window == 1) && (window_timer <= 1)
+{
+    noz_frostzone_empowered = false;
+}
+noz_frostzone_empowered |= (noz_frostzone_timer > 0);
+
 switch (attack) {
 //==============================================================
 case AT_JAB:
@@ -62,10 +69,22 @@ case AT_JAB:
 //==============================================================
 case AT_DTILT: 
 {
-    if (has_hit && window == 3) && !was_parried
+    if (window == 1)
+    {
+        set_num_hitboxes(AT_DTILT, noz_frostzone_empowered ? 2 : 1);
+    }
+    else if (has_hit && window == 3) && !was_parried
     {
         move_cooldown[AT_DTILT] = 2;
         can_attack = true;
+    }
+} break;
+//==============================================================
+case AT_DATTACK: 
+{
+    if (window == 1)
+    {
+        set_num_hitboxes(AT_DATTACK, noz_frostzone_empowered ? 2 : 1);
     }
 } break;
 //==============================================================
@@ -197,19 +216,21 @@ case AT_DAIR:
 //==============================================================
 case AT_FAIR:
 {
-    if (window == 1 && !noz_rune_flags.aerial_strongs)
+    if (window == 1)
     {
-        if (window_timer <= 1)
+        if (noz_rune_flags.aerial_strongs)
         {
-            reset_num_hitboxes(AT_FAIR);
-            reset_hitbox_value(AT_FAIR, 1, HG_DAMAGE);
-            reset_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING);
+            set_num_hitboxes(AT_FAIR, 2);
+            if (strong_charge > 5) && !(at_uspecial_hovering)
+            {
+                can_move = false;
+                hsp *= 0.7;
+                vsp = min(vsp*0.7, 0);
+            }
         }
-        else if (!attack_down && !strong_down)
+        else
         {
-            set_num_hitboxes(AT_FAIR, 1);
-            set_hitbox_value(AT_FAIR, 1, HG_DAMAGE, 9);
-            set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 0.9);
+            set_num_hitboxes(AT_FAIR, noz_frostzone_empowered ? 2 : 1);
         }
     }
 
@@ -223,19 +244,21 @@ case AT_FAIR:
 //==============================================================
 case AT_BAIR:
 {
-    if (window == 1 && !noz_rune_flags.aerial_strongs)
+    if (window == 1)
     {
-        if (window_timer <= 1)
+        if (noz_rune_flags.aerial_strongs)
         {
-            reset_num_hitboxes(AT_BAIR);
-            reset_hitbox_value(AT_BAIR, 1, HG_DAMAGE);
-            reset_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING);
+            set_num_hitboxes(AT_BAIR, 2);
+            if (strong_charge > 5) && !(at_uspecial_hovering)
+            {
+                can_move = false;
+                hsp *= 0.7;
+                vsp = min(vsp*0.7, 0);
+            }
         }
-        else if (!attack_down && !strong_down)
+        else
         {
-            set_num_hitboxes(AT_BAIR, 1);
-            set_hitbox_value(AT_BAIR, 1, HG_DAMAGE, 11);
-            set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 0.6);
+            set_num_hitboxes(AT_BAIR, noz_frostzone_empowered ? 2 : 1);
         }
     }
 } break;

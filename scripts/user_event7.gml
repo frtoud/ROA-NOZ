@@ -131,6 +131,8 @@ if (request_rune_update)
         set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 199);
 
         set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 9);
+        set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 60);
+        set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 60);
         set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_SPRITE, sprite_get("vfx_ice_big"));
         set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_ANIM_SPEED, (3.0 / get_hitbox_value(AT_FAIR, 2, HG_LIFETIME)) );
         set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 6);
@@ -157,6 +159,8 @@ if (request_rune_update)
         set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 199);
 
         set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 9);
+        set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 60);
+        set_hitbox_value(AT_BAIR, 2, HG_HEIGHT, 60);
         set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_SPRITE, sprite_get("vfx_ice_big"));
         set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ANIM_SPEED, (3.0 / get_hitbox_value(AT_BAIR, 2, HG_LIFETIME)) );
         set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 6);
@@ -178,13 +182,15 @@ if (request_rune_update)
         set_attack_value(AT_FAIR, AG_STRONG_CHARGE_WINDOW, 0);
         set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 
-        set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 105);
-        set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 6);
-        set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .3);
-        set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+        set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);
+        set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 7);
+        set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .8);
+        set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
         set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 0);
 
         set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 36);
+        set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 40);
+        set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 40);
         set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_SPRITE, sprite_get("cloud_proj_big"));
         set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_ANIM_SPEED, (8.0 / get_hitbox_value(AT_BAIR, 2, HG_LIFETIME)) );
         set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 3);
@@ -206,11 +212,13 @@ if (request_rune_update)
 
         set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 105);
         set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);
-        set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .3);
+        set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .5);
         set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
         set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 0);
 
         set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 36);
+        set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 40);
+        set_hitbox_value(AT_BAIR, 2, HG_HEIGHT, 40);
         set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_SPRITE, sprite_get("cloud_proj_big"));
         set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ANIM_SPEED, (8.0 / get_hitbox_value(AT_BAIR, 2, HG_LIFETIME)) );
         set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 3);

@@ -146,7 +146,8 @@ switch (state)
             case AT_DTILT:
             case AT_DATTACK:
             {
-                if !hitstop && (window == 2) && (window_timer == 0)
+                if !hitpause && (window == 2) && (window_timer == 0)
+                && noz_frostzone_empowered
                 {
                     create_hitbox(AT_DATTACK, 5, x, y); //see hitbox_update for position
                     sound_play(asset_get("sfx_waveland_eta"), false, noone, 1, 1.6);
@@ -263,6 +264,11 @@ switch (state)
                 {
                     spawn_twinkle(vfx_snow_twinkle, x + (spr_dir * 32), y - 24, 24, false)
                 }
+
+                if (window == 1 && strong_charge > 0)
+                {
+                    image_index = get_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START);
+                }
             }break;
             case AT_BAIR:
             {
@@ -272,6 +278,11 @@ switch (state)
                 && (window_timer <= get_hitbox_value(AT_BAIR, 2, HG_WINDOW_CREATION_FRAME))
                 {
                     spawn_twinkle(vfx_snow_twinkle, x + (spr_dir * -32), y - 24, 24, false)
+                }
+
+                if (window == 1 && strong_charge > 0)
+                {
+                    image_index = get_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAME_START);
                 }
             }break;
             case AT_UAIR:
@@ -298,6 +309,7 @@ switch (state)
 //===========================================================
 //Ice-empowered visuals
 if (noz_frostzone_timer > 0)
+|| (noz_frostzone_empowered && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR))
 {
     if (strong_flashing) manual_flash = 8;
     if (get_gameplay_time() % 2 == 0)

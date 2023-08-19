@@ -281,7 +281,7 @@ at_fspecial_cooldown_override = false;
 at_uspecial_cooldown_override = false;
 
 noz_frostzone_timer = 0; //wether you are empowered by the ice
-noz_frostzone_cache = false; //for individual attacks to track additional properties
+noz_frostzone_empowered = false; //for individual attacks to track empowered properties
 
 //=================================================
 // Copy of other_init
