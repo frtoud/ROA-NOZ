@@ -53,42 +53,6 @@ if ( is_a_cloud )
         {
             restore_hit_timer = 0;
         }
-
-//===================================================================
-        //Snowing clouds
-        //TODO: will move to article2
-        if (noone == collision_line(x, y, x, y+snow_depth, asset_get("par_block"), false, true))
-        { snow_depth += 8; }
-        else
-        { snow_depth -= 16; }
-
-        var modulo = (snow_depth > 256) ? 1 : (snow_depth > 128) ? 2 : 3;
-        if (snow_depth > 32 && get_gameplay_time() % modulo == 0)
-        {
-            spawn_falling_twinkle(snow_width, snow_depth - 16);
-        }
-
-        //apply debuff
-        var cloud_player = player_id;
-        with (oPlayer)
-        {
-            if (self != cloud_player && noz_snowimmune_timer == 0
-            && (get_player_team(self.player) != get_player_team(cloud_player.player))
-            && (hurtboxID == collision_rectangle(other.x - other.snow_width, other.y,
-                other.x + other.snow_width, other.y + other.snow_depth, hurtboxID, false, false)) )
-            {
-                if (noz_snowstack_timer < 5)
-                {
-                    noz_snowstack_timer = 5;
-                    noz_handler_id = cloud_player;
-                }
-                // Frostbite debuff
-                if (cloud_player.noz_rune_flags.frostbite
-                    && victim.noz_snow_frostbite_timer < 5)
-                { noz_snow_frostbite_timer = 5; }
-            }
-        }
-//===================================================================
     }
 
     // Animating cloud
@@ -106,7 +70,8 @@ if ( is_a_cloud )
     spawn_twinkle();
 }
 //still needs snow flickers
-else if (attack == AT_BAIR && hbox_num == 2)
+else if (attack == AT_FAIR && hbox_num == 2)
+     || (attack == AT_BAIR && hbox_num == 2)
 {
     spawn_twinkle();
 }

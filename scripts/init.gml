@@ -178,7 +178,7 @@ noz_anim_backflip_spr = sprite_get("doublejump_back");
 noz_rune_flags = 
 {
     nair_boost: has_rune("A"),
-    bair_strong: has_rune("B"),
+    aerial_strongs: has_rune("B"),
     dstrong_spread: has_rune("C"),
     reflector: has_rune("D"),
     air_control: has_rune("E"),

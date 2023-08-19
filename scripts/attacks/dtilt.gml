@@ -76,40 +76,28 @@ set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
-// Exploding clouds
-if (noz_rune_flags.cloud_explode)
-{
-    set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 0);
-    set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-    set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_icehit_heavy1"));
-    
-    set_hitbox_value(AT_DTILT, 3, HG_HITBOX_TYPE, 2);
-    set_hitbox_value(AT_DTILT, 3, HG_LIFETIME, 8);
-    set_hitbox_value(AT_DTILT, 3, HG_WIDTH, 70);
-    set_hitbox_value(AT_DTILT, 3, HG_HEIGHT, 70);
-    set_hitbox_value(AT_DTILT, 3, HG_PRIORITY, 5);
-    set_hitbox_value(AT_DTILT, 3, HG_DAMAGE, 10);
-    set_hitbox_value(AT_DTILT, 3, HG_ANGLE, 55);
-    set_hitbox_value(AT_DTILT, 3, HG_BASE_KNOCKBACK, 6);
-    set_hitbox_value(AT_DTILT, 3, HG_KNOCKBACK_SCALING, 0.8);
-    set_hitbox_value(AT_DTILT, 3, HG_BASE_HITPAUSE, 10);
-    set_hitbox_value(AT_DTILT, 3, HG_HITPAUSE_SCALING, .5);
-    set_hitbox_value(AT_DTILT, 3, HG_HIT_SFX, sound_get("sfx_noz_ice_medium"));
-    set_hitbox_value(AT_DTILT, 3, HG_VISUAL_EFFECT, 1);
-    
-    set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_SPRITE, sprite_get("vfx_ice_big"));
-    set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_ANIM_SPEED, 0.7);
-    set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_MASK, -1);
-    set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
-    set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-    set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_PARRY_STUN, 0);
-    set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_UNBASHABLE, 1);
-    set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
-    set_hitbox_value(AT_DTILT, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
-    set_hitbox_value(AT_DTILT, 3, HG_MUNO_OBJECT_LAUNCH_ANGLE, -2);
+//Only for exploding cloud rune
+set_hitbox_value(AT_DTILT, 9, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DTILT, 9, HG_LIFETIME, 8);
+set_hitbox_value(AT_DTILT, 9, HG_WIDTH, 70);
+set_hitbox_value(AT_DTILT, 9, HG_HEIGHT, 70);
+set_hitbox_value(AT_DTILT, 9, HG_PRIORITY, 5);
+set_hitbox_value(AT_DTILT, 9, HG_DAMAGE, 10);
+set_hitbox_value(AT_DTILT, 9, HG_ANGLE, 55);
+set_hitbox_value(AT_DTILT, 9, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_DTILT, 9, HG_KNOCKBACK_SCALING, 0.8);
+set_hitbox_value(AT_DTILT, 9, HG_BASE_HITPAUSE, 10);
+set_hitbox_value(AT_DTILT, 9, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(AT_DTILT, 9, HG_HIT_SFX, sound_get("sfx_noz_ice_medium"));
+set_hitbox_value(AT_DTILT, 9, HG_VISUAL_EFFECT, 1);
 
-    // Cloud extension
-    var duration = get_hitbox_value(AT_DTILT, 2, HG_LIFETIME);
-    duration += noz_long_cloud_small;
-    set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, duration);
-}
+set_hitbox_value(AT_DTILT, 9, HG_PROJECTILE_SPRITE, sprite_get("vfx_ice_big"));
+set_hitbox_value(AT_DTILT, 9, HG_PROJECTILE_ANIM_SPEED, 0.7);
+set_hitbox_value(AT_DTILT, 9, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DTILT, 9, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_DTILT, 9, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_DTILT, 9, HG_PROJECTILE_PARRY_STUN, 0);
+set_hitbox_value(AT_DTILT, 9, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_DTILT, 9, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+set_hitbox_value(AT_DTILT, 9, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_DTILT, 9, HG_MUNO_OBJECT_LAUNCH_ANGLE, -2);

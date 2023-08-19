@@ -3,7 +3,6 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
 {
     var is_a_cloud = ("is_a_cloud" in my_hitboxID) && my_hitboxID.is_a_cloud;
     // Lingering projectile hitboxes: applies snow effects
-    // BAIR with STRONG effects
     if (( ( is_a_cloud )
     // Plus some specials!
        || (my_hitboxID.attack == AT_FSPECIAL) ))
@@ -20,7 +19,7 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
         // Exploding clouds
         if (is_a_cloud && noz_rune_flags.cloud_explode)
         {
-            create_hitbox(my_hitboxID.attack, 3, my_hitboxID.x, my_hitboxID.y);
+            create_hitbox(my_hitboxID.attack, 9, my_hitboxID.x, my_hitboxID.y);
         }
     }
     // Strong attacks: apply ice effects
@@ -30,8 +29,9 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
             &&((my_hitboxID.attack == AT_USTRONG)
             || (my_hitboxID.attack == AT_FSTRONG && (my_hitboxID.hbox_num != 1))
             || (my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num != 1))
-            // [RUNE B] -- BAIR with STRONG effects
-            || (my_hitboxID.attack == AT_BAIR && noz_rune_flags.bair_strong)
+            // RUNE: Aerials with STRONG effects
+            || (my_hitboxID.attack == AT_BAIR && noz_rune_flags.aerial_strongs)
+            || (my_hitboxID.attack == AT_BAIR && noz_rune_flags.aerial_strongs)
             ))
     {
         hit_player_obj.should_make_shockwave = false;

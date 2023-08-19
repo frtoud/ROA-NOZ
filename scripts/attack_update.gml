@@ -197,7 +197,7 @@ case AT_DAIR:
 //==============================================================
 case AT_FAIR:
 {
-    if (window == 1) 
+    if (window == 1 && !noz_rune_flags.aerial_strongs)
     {
         if (window_timer <= 1)
         {
@@ -214,8 +214,8 @@ case AT_FAIR:
     }
 
     //recovery animation can be skipped (unless parried)
-    if (!was_parried && window == 4)
-    && (window_timer >= get_window_value(AT_FAIR, 4, AG_WINDOW_CANCEL_FRAME))
+    if (!was_parried && window == 5)
+    && (window_timer >= get_window_value(AT_FAIR, 5, AG_WINDOW_CANCEL_FRAME))
     {
         iasa_script();
     }
@@ -223,7 +223,7 @@ case AT_FAIR:
 //==============================================================
 case AT_BAIR:
 {
-    if (window == 1 && !noz_rune_flags.bair_strong)
+    if (window == 1 && !noz_rune_flags.aerial_strongs)
     {
         if (window_timer <= 1)
         {

@@ -2,17 +2,19 @@ is_a_cloud = false;
 
 //====================================================================
 // Lingering projectile cloud hitboxes
-if (hbox_num == 2) && ( (attack == AT_FAIR)
-                     || (attack == AT_DTILT)
-                     || (attack == AT_DATTACK))
+if (attack == AT_DTILT && hbox_num == 2)
+|| (attack == AT_DATTACK && hbox_num == 2)
 {
     is_a_cloud = true;
 }
-else if ( (attack == AT_BAIR && hbox_num == 2) )
+else if (attack == AT_FAIR && hbox_num == 2)
+     || (attack == AT_BAIR && hbox_num == 2)
 {
-    is_a_cloud = !player_id.noz_rune_flags.bair_strong;
+    is_a_cloud = !player_id.noz_rune_flags.aerial_strongs;
+
     // Lingering projectile for BAIR needs to be flipped
-    spr_dir *= -1;
+    if (attack == AT_BAIR) spr_dir *= -1;
+
     if (!is_a_cloud)
     {
        //still inherit Nozomi's speed
@@ -42,17 +44,6 @@ if (is_a_cloud)
         kick_cooldown = 8;
         kick_boosted = 0;
     }
-    snow_width = (attack == AT_FAIR || attack == AT_BAIR)? 20 : 12;
-    snow_depth = 0;
     restore_hit_timer = 0;
 }
-//====================================================================
-// Lingering projectile for DTILT has a cooldown; avoids spamming too many at once
-if ( (attack == AT_DTILT && hbox_num == 2) )
-{ 
-    with (player_id)
-    {
-        at_dtilt_proj_cooldown = noz_dtilt_proj_cooldown_max; 
-        set_num_hitboxes(AT_DTILT, 1);
-    }
-}
+
