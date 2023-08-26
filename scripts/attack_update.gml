@@ -350,6 +350,7 @@ case AT_FSPECIAL:
             at_fspecial_on_soft_cooldown = at_fspecial_soft_cooldown_timer > 0;
             at_fspecial_started_free = free;
             
+            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, free ? 24 : 32);
             if (!at_fspecial_on_soft_cooldown)
             {
                 at_fspecial_soft_cooldown_timer = noz_fspecial_soft_cooldown_max;
