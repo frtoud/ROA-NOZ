@@ -72,7 +72,7 @@ set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_SPRITE, sprite_get("cloud_proj_big"))
 set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ANIM_SPEED, (8.0 / get_hitbox_value(AT_BAIR, 2, HG_LIFETIME)));
 set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_MASK, -1);
 set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_HSPEED, -1.25);
-set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_WALL_BEHAVIOR, 0);
+set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_WALL_BEHAVIOR, 2);
 set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_AIR_FRICTION, 0.3);
 set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_GROUND_FRICTION, 0.3);
