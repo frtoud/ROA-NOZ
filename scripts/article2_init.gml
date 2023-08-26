@@ -26,7 +26,7 @@ lifetime_max = 3000;
 snow_column_step = 2;
 snow_column_solid_distance = 120;
 snow_column_plat_distance = 80;
-snow_column_width = 30; //doubled; distance in both directions
+snow_column_width = 45; //doubled; distance in both directions
 snow_column_top = y; 
 snow_column_bottom = y; 
 

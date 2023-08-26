@@ -198,8 +198,9 @@ request_rune_update = true;
 //=================================================
 //Balancing variables
 
-noz_snowstack_timer_max = 60 * 5;
+noz_snowstack_timer_max = 60 * 6;
 noz_snowimmune_timer_max = 60 * 2;
+noz_frostzone_timer_max = 120; //maximum length of empoweredness
 
 noz_freeze_grav = 0.1;
 noz_freeze_base_stun = 45;
