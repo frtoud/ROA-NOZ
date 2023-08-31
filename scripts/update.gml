@@ -10,9 +10,10 @@ if (at_dtilt_proj_cooldown > 0)
 }
 
 //==============================================================================
-if (request_bot_update || request_rune_update)
+if (request_stats_update)
 {
     user_event(7);
+    request_stats_update = false;
 }
 
 

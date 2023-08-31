@@ -50,6 +50,14 @@ set_color_profile_slot_range(5,  8,  5, 10);
 set_color_profile_slot(0, 6, 162, 211, 211); //VFX
 set_color_profile_slot_range(6,  8, 60, 25);
 
+//RGB HSV
+//233:148: 19 -  36: 91: 91
+//255:201:  7 -  46: 97:100
+//255:223: 66 -  49: 74:100 - Main color
+//255:255:228 -  59: 10:100
+set_color_profile_slot(0, 7, 255, 223,  66); //Lights
+set_color_profile_slot_range(7, 14, 80, 10);
+
 set_num_palettes(16);
 
 //Beloved Tomboyish Girl
@@ -133,23 +141,23 @@ set_color_profile_slot( 9, 4,  70,  75,  80 ); //Skirt
 set_color_profile_slot( 9, 5,  25,  28,  30 ); //Leggings
 set_color_profile_slot( 9, 6, 110, 195, 215 ); //VFX
 
-//My Reality
-set_color_profile_slot(10, 0, 199, 111, 106); //Hair
-set_color_profile_slot(10, 1, 255, 201, 179); //Skin
-set_color_profile_slot(10, 2, 200,  20,  20); //Bow
-set_color_profile_slot(10, 3, 133,  88,  88); //Shirt
-set_color_profile_slot(10, 4,  49,  36, 171); //Skirt
-set_color_profile_slot(10, 5,  46,  32,  32); //Leggings
-set_color_profile_slot(10, 6,  14, 146,  74); //VFX
+//Reach for the Summit
+set_color_profile_slot(10, 0, 245, 120,  92); //Hair
+set_color_profile_slot(10, 1, 255, 188, 167); //Skin
+set_color_profile_slot(10, 2, 112,  60, 102); //Bow
+set_color_profile_slot(10, 3,  90, 115, 210); //Shirt
+set_color_profile_slot(10, 4,  85, 105, 210); //Skirt
+set_color_profile_slot(10, 5, 147,  64,  50); //Leggings
+set_color_profile_slot(10, 6, 178, 201, 241); //VFX
 
-//Koi No Mikuru Densetsu
-set_color_profile_slot(11, 0, 197, 115,  91 ); //Hair
-set_color_profile_slot(11, 1, 255, 188, 167 ); //Skin
-set_color_profile_slot(11, 2, 178,  65,  44 ); //Bow
-set_color_profile_slot(11, 3, 252, 151, 148 ); //Shirt
-set_color_profile_slot(11, 4, 249, 245, 236 ); //Skirt
-set_color_profile_slot(11, 5,  93,  68,  63 ); //Leggings
-set_color_profile_slot(11, 6, 131, 216, 131 ); //VFX
+//My Reality
+set_color_profile_slot(11, 0, 199, 111, 106); //Hair
+set_color_profile_slot(11, 1, 255, 201, 179); //Skin
+set_color_profile_slot(11, 2, 200,  20,  20); //Bow
+set_color_profile_slot(11, 3, 133,  88,  88); //Shirt
+set_color_profile_slot(11, 4,  49,  36, 171); //Skirt
+set_color_profile_slot(11, 5,  46,  32,  32); //Leggings
+set_color_profile_slot(11, 6,  14, 146,  74); //VFX
 
 //Go My Way!!
 set_color_profile_slot(12, 0, 115,  65,  45); //Hair
@@ -169,14 +177,15 @@ set_color_profile_slot(13, 4, 246, 246, 246); //Skirt
 set_color_profile_slot(13, 5, 212,   0,   0); //Leggings
 set_color_profile_slot(13, 6, 255, 225, 215); //VFX
 
-//Reach for the Summit
-set_color_profile_slot(14, 0, 245, 120,  92); //Hair
-set_color_profile_slot(14, 1, 255, 188, 167); //Skin
-set_color_profile_slot(14, 2, 112,  60, 102); //Bow
-set_color_profile_slot(14, 3,  90, 115, 210); //Shirt
-set_color_profile_slot(14, 4,  85, 105, 210); //Skirt
-set_color_profile_slot(14, 5, 147,  64,  50); //Leggings
-set_color_profile_slot(14, 6, 178, 201, 241); //VFX
+//Magolor's Shop
+set_color_profile_slot(14, 0, 142,  94, 156); //Hair
+set_color_profile_slot(14, 1, 114, 115, 140); //Skin
+set_color_profile_slot(14, 2,  86, 193, 246); //Bow
+set_color_profile_slot(14, 3,  44,  65, 101); //Shirt
+set_color_profile_slot(14, 4,  75, 188, 250); //Skirt
+set_color_profile_slot(14, 5,  28,  30,  29); //Leggings
+set_color_profile_slot(14, 6, 132, 221, 221); //VFX
+set_color_profile_slot(14, 7, 255, 223,  66); //Lights
 
 //Stone Halation
 set_color_profile_slot(15, 0,  12,  95, 220); //Hair
