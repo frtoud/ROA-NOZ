@@ -126,7 +126,7 @@ switch (state)
         if (state_timer <= 1) 
         { noz_anim_back_flipping = (hsp * spr_dir) < 0; }
 
-        if (noz_anim_back_flipping)
+        if (noz_anim_back_flipping) && !joke_explainer_mode
         { sprite_index = noz_anim_backflip_spr; }
     } break;
     case PS_WALL_JUMP:

@@ -96,6 +96,7 @@ waveland_sound = asset_get("sfx_waveland_zet");
 jump_sound = asset_get("sfx_jumpground");
 djump_sound = asset_get("sfx_jumpair");
 air_dodge_sound = asset_get("sfx_quick_dodge");
+small_djump = false;
 
 //visual offsets for when you're in Ranno's bubble
 bubble_x = 0;
@@ -352,7 +353,7 @@ uhc_taunt_videos[0] = { sprite:sprite_get("cmp_uhc"), song:sound_get("cmp_uhc"),
 // Joke Explainer Costume-like structure
 // The rest are handled by setting the sprites in the attack grid!
 var spritelist = [ "idle", "jumpstart", "jump", "doublejump", "walljump", "land", "crouch", 
-"walk", "walkturn", "dashstart", "dash", "dashturn", "dashstop", 
+"walk", "walkturn", "dashstart", "dash", "dashturn", "dashstop", "airdodge",
 "pratfall", "pratland", "hurt" ];
 noz_joke_explainer_sprites[array_length(spritelist)-1] = {};
 

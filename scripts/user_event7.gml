@@ -3,6 +3,7 @@
 if (joke_explainer_mode) //Enable JokeExplainer Echo
 {
     jump_sound = sound_get("bot_jumpground");
+    djump_sound = asset_get("sfx_ell_small_missile_ground");
     land_sound = asset_get("sfx_land_heavy");
     landing_lag_sound = asset_get("sfx_land_heavy");
     waveland_sound = asset_get("sfx_waveland_gus");
@@ -43,6 +44,7 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
 else //Restore Nozomi Data
 {
     jump_sound = asset_get("sfx_jumpground");
+    djump_sound = asset_get("sfx_jumpair");
     land_sound = asset_get("sfx_land_light");
     landing_lag_sound = asset_get("sfx_land");
     waveland_sound = asset_get("sfx_waveland_zet");
