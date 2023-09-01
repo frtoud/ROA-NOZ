@@ -5,14 +5,15 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     jump_sound = sound_get("bot_jumpground");
     land_sound = asset_get("sfx_land_heavy");
     landing_lag_sound = asset_get("sfx_land_heavy");
+    waveland_sound = asset_get("sfx_waveland_gus");
     
-    //set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utilt_bot"));
+    //set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("jex_utilt"));
     set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_med"));
     set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 125);
     set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
 
-    //set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial_bot"))
-    //set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_bot"));
+    set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("jex_nspecial"))
+    set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("jex_nspecial"));
     set_window_value(AT_NSPECIAL, 1, AG_WINDOW_ANIM_FRAMES, 2);
     set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAMES, 1);
     set_window_value(AT_NSPECIAL, 2, AG_WINDOW_ANIM_FRAME_START, 2);
@@ -44,6 +45,7 @@ else //Restore Nozomi Data
     jump_sound = asset_get("sfx_jumpground");
     land_sound = asset_get("sfx_land_light");
     landing_lag_sound = asset_get("sfx_land");
+    waveland_sound = asset_get("sfx_waveland_zet");
 
     set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utilt"));
     set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));

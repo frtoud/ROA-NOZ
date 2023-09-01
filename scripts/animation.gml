@@ -324,7 +324,36 @@ if (anim_reflector_shockwave_frame > 0)
     { anim_reflector_shockwave_frame -= 1; }
 if (anim_fakeparry_timer > 0) 
     { anim_fakeparry_timer -= 1; }
-   
+
+//===========================================================
+// JE7k alt switch -- thx Muno
+if (joke_explainer_mode)
+{
+    //See structure in init.gml
+    for (var i = 0; i < array_length(noz_joke_explainer_sprites); i++)
+    {
+        if (sprite_index == noz_joke_explainer_sprites[i].noz)
+        {
+            sprite_index = noz_joke_explainer_sprites[i].jex;
+
+            //Manually looping animations
+            switch (noz_joke_explainer_sprites[i].loops)
+            {
+                case PS_IDLE:
+                    image_index = floor(state_timer * idle_anim_speed) % image_number; 
+                break;
+                case PS_WALK:
+                    image_index = floor(state_timer * walk_anim_speed) % image_number; 
+                break;
+                case PS_DASH:
+                    image_index = floor(state_timer * dash_anim_speed) % image_number; 
+                break;
+                default: break;
+            } break;
+        }
+    }
+}
+
 //===========================================================     
 #define spawn_twinkle(vfx, pos_x, pos_y, width, front)
 {

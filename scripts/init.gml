@@ -348,3 +348,29 @@ uhc_victory_quote = "sno whalation remix (2014 ver) subsribe 4 more amv ^_^";
 sprite_change_offset("cmp_uhc", 11, 8);
 uhc_taunt_videos[0] = { sprite:sprite_get("cmp_uhc"), song:sound_get("cmp_uhc"), fps:12 };
 
+//==========================================================
+// Joke Explainer Costume-like structure
+// The rest are handled by setting the sprites in the attack grid!
+var spritelist = [ "idle", "jumpstart", "jump", "doublejump", "walljump", "land", "crouch", 
+"walk", "walkturn", "dashstart", "dash", "dashturn", "dashstop", 
+"pratfall", "pratland", "hurt" ];
+noz_joke_explainer_sprites[array_length(spritelist)-1] = {};
+
+for (var i = 0; i < array_length(spritelist); i++)
+{
+    var loopval = 0;
+    switch (spritelist[i])
+    {
+        //certain replacements requires the animation to loop manually. 
+        //tag them for animation.gml
+        case "idle": loopval = PS_IDLE; break;
+        case "walk": loopval = PS_WALK; break;
+        case "dash": loopval = PS_DASH; break;
+        default: break;
+    }
+
+    noz_joke_explainer_sprites[i] = { 
+          noz: sprite_get(spritelist[i]), 
+          jex: sprite_get("jex_"+spritelist[i]),
+          loops: loopval }
+}

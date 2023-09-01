@@ -99,3 +99,29 @@ set_victory_bg(sprite_get("victory"));
 sprite_change_offset("cmp_miiverse", 60, 30);
 sprite_change_offset("cmp_trial_grounds", 31, 0);
 sprite_change_offset("cmp_kirby", 36, 76);
+
+//================================================================
+// Joke Explainer Mode
+sprite_change_offset("jex_idle", 12, 30);
+sprite_change_offset("jex_jumpstart", 12, 25);
+sprite_change_offset("jex_jump", 11, 32);
+sprite_change_offset("jex_doublejump", 11, 31);
+
+sprite_change_offset("jex_walljump", 15, 31);
+sprite_change_offset("jex_land", 12, 27);
+sprite_change_offset("jex_crouch", 12, 29);
+sprite_change_offset("jex_walk", 13, 30);
+sprite_change_offset("jex_walkturn", 12, 29);
+sprite_change_offset("jex_dashstart", 19, 28);
+sprite_change_offset("jex_dash", 27, 26);
+sprite_change_offset("jex_dashturn", 22, 27);
+sprite_change_offset("jex_dashstop", 33, 28);
+
+sprite_change_offset("jex_airdodge", 14, 31);
+
+sprite_change_offset("jex_pratfall", 11, 26);
+sprite_change_offset("jex_pratland", 12, 25);
+
+sprite_change_offset("jex_hurt", 11, 30);
+
+sprite_change_offset("jex_nspecial", 12, 30);
