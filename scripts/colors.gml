@@ -122,6 +122,7 @@ set_color_profile_slot( 7, 3,  83, 122,  62); //Shirt
 set_color_profile_slot( 7, 4, 167, 186,  74); //Skirt
 set_color_profile_slot( 7, 5,  35,  67,  49); //Leggings
 set_color_profile_slot( 7, 6, 211, 226, 154); //VFX
+set_color_profile_slot( 7, 7, 211, 226, 154); //Lights
 
 //Motteke! Sailor Fuku
 set_color_profile_slot( 8, 0, 181, 156, 202 ); //Hair
@@ -195,3 +196,4 @@ set_color_profile_slot(15, 3, 120,  15,   0); //Shirt
 set_color_profile_slot(15, 4, 255, 140, 100); //Skirt
 set_color_profile_slot(15, 5, 255, 140, 100); //Leggings
 set_color_profile_slot(15, 6, 240, 160,  30); //VFX
+set_color_profile_slot(15, 7, 240, 160,  30); //Lights
