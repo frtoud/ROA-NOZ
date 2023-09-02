@@ -22,6 +22,7 @@ case AT_JAB:
         {
             has_hit = false; //reset for this to be accurate about the infinite
             at_jab_timesthrough = 0;
+            at_jab_true_total_timesthrough = 0; //not reset; max jabloop for Je7k
         } break;
         //INFINITES
         case 5: case 6: case 7:
@@ -33,17 +34,25 @@ case AT_JAB:
             if (window_timer == get_window_value(AT_JAB, window, AG_WINDOW_LENGTH))
             {
                 at_jab_timesthrough++;
+                at_jab_true_total_timesthrough++;
+
+                if (joke_explainer_mode)
+                {
+                    hsp = clamp(hsp + (right_down - left_down), -dash_speed, dash_speed)
+                }
+                
                 if (attack_down || attack_pressed) && !was_parried
                 {
                     //Force loop back
                     at_jab_timesthrough = min(at_jab_timesthrough, 2);
                 }
-                else if (at_jab_timesthrough >= 4)
+                
+                if (at_jab_timesthrough >= 4)
+                || (joke_explainer_mode && at_jab_true_total_timesthrough >= 9)
                 {
                     window = 11; window_timer = 0;
                 }
-                
-                if (window == 10) 
+                else if (window == 10) 
                 {
                     window = 5; window_timer = 0;
                 }
@@ -55,7 +64,7 @@ case AT_JAB:
             move_cooldown[AT_JAB] = 1;
 
             if (window_timer > get_window_value(AT_JAB, window, AG_WINDOW_CANCEL_FRAME))
-            && (has_hit || was_parried)
+            && (has_hit || was_parried || joke_explainer_mode)
             {
                 window++;
                 window_timer = 1;

@@ -8,10 +8,28 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     landing_lag_sound = asset_get("sfx_land_heavy");
     waveland_sound = asset_get("sfx_waveland_gus");
     
+    set_attack_value(AT_JAB, AG_SPRITE, sprite_get("jex_jab"));
+    set_window_value(AT_JAB, 4, AG_WINDOW_HSPEED, 3.4);
+    set_hitbox_value(AT_JAB, 2, HG_EXTRA_HITPAUSE, 0);
+    //Defines WINDOWS 5-10
+    for (var i = 0; i < 6; i++)
+    {
+        var w = 5+i;
+        var h = 2+i;
+        set_window_value(AT_JAB, w, AG_WINDOW_LENGTH, 6);
+        set_window_value(AT_JAB, w, AG_WINDOW_ANIM_FRAMES, 4);
+        set_window_value(AT_JAB, w, AG_WINDOW_ANIM_FRAME_START, 6+4*(i % 2) );
+        set_window_value(AT_JAB, w, AG_WINDOW_SFX, asset_get("sfx_swipe_weak" + string(1 + (i % 2))));
+        set_window_value(AT_JAB, w, AG_WINDOW_HAS_CUSTOM_FRICTION, true);
+        set_window_value(AT_JAB, w, AG_WINDOW_CUSTOM_GROUND_FRICTION, 0.08);
+        set_hitbox_value(AT_JAB, h, HG_EXTRA_HITPAUSE, 2);
+    }
+
     //set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("jex_utilt"));
     set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_med"));
     set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 125);
     set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
+    set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 0);
 
     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("jex_nspecial"))
     set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("jex_nspecial"));
@@ -49,10 +67,25 @@ else //Restore Nozomi Data
     landing_lag_sound = asset_get("sfx_land");
     waveland_sound = asset_get("sfx_waveland_zet");
 
+    set_attack_value(AT_JAB, AG_SPRITE, sprite_get("jab"));
+    set_window_value(AT_JAB, 4, AG_WINDOW_HSPEED, 4.4);
+    set_hitbox_value(AT_JAB, 2, HG_EXTRA_HITPAUSE, 2);
+    //Defines WINDOWS 5-10
+    for (var i = 0; i < 6; i++)
+    {
+        var w = 5+i;
+        set_window_value(AT_JAB, w, AG_WINDOW_LENGTH, 5);
+        set_window_value(AT_JAB, w, AG_WINDOW_ANIM_FRAMES, 2);
+        set_window_value(AT_JAB, w, AG_WINDOW_ANIM_FRAME_START, 6+2*i);
+        set_window_value(AT_JAB, w, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
+        set_window_value(AT_JAB, w, AG_WINDOW_HAS_CUSTOM_FRICTION, false);
+    }
+
     set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utilt"));
     set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
     set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 0);
     set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+    set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 4);
 
     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
     set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air"));

@@ -125,4 +125,6 @@ sprite_change_offset("jex_pratland", 12, 25);
 
 sprite_change_offset("jex_hurt", 11, 30);
 
+sprite_change_offset("jex_jab", 15, 28);
+
 sprite_change_offset("jex_nspecial", 12, 30);
