@@ -106,7 +106,7 @@ sprite_change_offset("jex_idle", 12, 30);
 sprite_change_offset("jex_jumpstart", 12, 25);
 sprite_change_offset("jex_jump", 11, 32);
 sprite_change_offset("jex_doublejump", 11, 31);
-
+sprite_change_offset("jex_doublejump_back", 16, 31);
 sprite_change_offset("jex_walljump", 15, 31);
 sprite_change_offset("jex_land", 12, 27);
 sprite_change_offset("jex_crouch", 12, 29);
@@ -116,8 +116,9 @@ sprite_change_offset("jex_dashstart", 19, 28);
 sprite_change_offset("jex_dash", 27, 26);
 sprite_change_offset("jex_dashturn", 22, 27);
 sprite_change_offset("jex_dashstop", 33, 28);
+sprite_change_offset("jex_parry", 17, 29);
 
-sprite_change_offset("jex_airdodge", 14, 31);
+sprite_change_offset("jex_airdodge", 15, 31);
 
 sprite_change_offset("jex_pratfall", 11, 26);
 sprite_change_offset("jex_pratland", 12, 25);
