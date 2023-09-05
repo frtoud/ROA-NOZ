@@ -25,6 +25,37 @@ if (state == PS_PARRY && window == 1)
     draw_sprite_ext(sprite_index, image_index, x, y, spr_dir*scale, scale, 0, c_white, 1);
 }
 
+//==============================================================================
+// Offscreen bubble overwrite (THX-TSTR)
+var view_left = view_get_xview() + 34; //0, y
+var view_right = view_get_wview() + view_get_xview() - 34; //screenborder, y
+var view_up = view_get_yview() + 32; //x, 0
+var view_down = view_get_hview() + view_get_yview() - 86; //x, screenborder
+
+if joke_explainer_mode
+&& (object_index != asset_get("oTestPlayer"))
+&& !(x >= view_left - 64 && x <= view_right + 64 && y >= view_up - 32 && y <= view_down + 86)
+{
+    var offscreen_x_pos;
+    var offscreen_y_pos;
+
+    //screen limits x - this decides how far the indicator should follow the article on the X axis
+    if (x <= view_left - 65) offscreen_x_pos = view_left;
+    else if (x >= view_right + 65) offscreen_x_pos = view_right;
+    else offscreen_x_pos = x;
+
+    offscreen_x_pos += 1;
+
+    //screen limits y - this decides how far the indicator should follow the article on the Y axis
+    if (y <= view_up + 24) offscreen_y_pos = view_up;
+    else if (y >= view_down + 24) offscreen_y_pos = view_down;
+    else offscreen_y_pos = y - 54 + 32;
+
+    offscreen_y_pos += 1;
+
+    draw_sprite_ext(sprite_get("jex_offscreen"), 0, offscreen_x_pos, offscreen_y_pos, spr_dir, 1, 0, c_white, 1);
+}
+
 shader_end();
 
 //Skip drawing indicators if not needed

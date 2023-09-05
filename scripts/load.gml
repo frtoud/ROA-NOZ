@@ -128,3 +128,8 @@ sprite_change_offset("jex_hurt", 11, 30);
 sprite_change_offset("jex_jab", 15, 28);
 
 sprite_change_offset("jex_nspecial", 12, 30);
+
+
+sprite_change_offset("jex_hud", 0, -2);
+sprite_change_offset("jex_hudhurt", 0, -2);
+sprite_change_offset("jex_offscreen", 17, 17);
