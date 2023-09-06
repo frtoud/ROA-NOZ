@@ -48,7 +48,7 @@ set_color_profile_slot_range(5,  8,  5, 10);
 //208:238:238 - 180: 12: 93
 //232:247:247 - 180:  6: 96
 set_color_profile_slot(0, 6, 162, 211, 211); //VFX
-set_color_profile_slot_range(6,  8, 60, 25);
+set_color_profile_slot_range(6,  12, 80, 25);
 
 //RGB HSV
 //233:148: 19 -  36: 91: 91

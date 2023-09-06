@@ -129,6 +129,10 @@ switch (state)
         if (noz_anim_back_flipping)
         { sprite_index = noz_anim_backflip_spr; }
     } break;
+    case PS_LANDING_LAG:
+    {
+        sprite_index = sprite_get("land");
+    } break;
     case PS_WALL_JUMP:
     {
         if (state_timer < 4)

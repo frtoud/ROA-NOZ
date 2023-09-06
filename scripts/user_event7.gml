@@ -28,11 +28,19 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
         set_hitbox_value(AT_JAB, h, HG_EXTRA_HITPAUSE, 2);
     }
 
-    //set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("jex_utilt"));
+    set_attack_value(AT_DTILT, AG_SPRITE, sprite_get("jex_dtilt"));
+    set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("jex_dtilt_hurt"));
+    set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_absa_new_whip1"));
+    set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, HFX_ABS_ZAP_SMALL);
+    set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
+
+    set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("jex_utilt"));
     set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_med"));
     set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 125);
     set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
     set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 0);
+
+    set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("jex_dair"));
 
     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("jex_nspecial"))
     set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("jex_nspecial"));
@@ -84,11 +92,19 @@ else //Restore Nozomi Data
         set_window_value(AT_JAB, w, AG_WINDOW_HAS_CUSTOM_FRICTION, false);
     }
 
+    set_attack_value(AT_DTILT, AG_SPRITE, sprite_get("dtilt"));
+    set_attack_value(AT_DTILT, AG_HURTBOX_SPRITE, sprite_get("dtilt_hurt"));
+    set_window_value(AT_DTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
+    set_hitbox_value(AT_DTILT, 1, HG_VISUAL_EFFECT, 0);
+    set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+
     set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("utilt"));
     set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
     set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 0);
     set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
     set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 4);
+
+    set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair"));
 
     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
     set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air"));
