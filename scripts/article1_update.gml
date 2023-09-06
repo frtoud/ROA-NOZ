@@ -91,13 +91,15 @@ if !instance_exists(left_segment)
         {
             if (noz_snowimmune_timer < 1)
             {
-                noz_snowstack_timer = min(noz_snowstack_timer + 5, other.player_id.noz_snowstack_timer_max)
+                noz_snowstack_timer = min(noz_snowstack_timer + other.player_id.noz_snowstack_increment, 
+                                        other.player_id.noz_snowstack_timer_max)
                 noz_handler_id = other.player_id;
             }
         }
         else if (url == other.player_id.url)
         {
-            noz_frostzone_timer = min(noz_frostzone_timer + 5, noz_frostzone_timer_max)
+            noz_frostzone_timer = min(noz_frostzone_timer + noz_frostzone_increment, 
+                                    noz_frostzone_timer_max)
         }
     }
 }
