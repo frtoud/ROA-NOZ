@@ -252,7 +252,7 @@ else
     set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 6);
     set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, -1);
     set_hitbox_value(AT_FAIR, 2, HG_IGNORES_PROJECTILES, 0);
-    set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_PARRY_STUN, 0);
+    set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_PARRY_STUN, 1);
     set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_UNBASHABLE, 0);
     set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 
@@ -280,7 +280,7 @@ else
     set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 6);
     set_hitbox_value(AT_BAIR, 2, HG_HITBOX_GROUP, -1);
     set_hitbox_value(AT_BAIR, 2, HG_IGNORES_PROJECTILES, 0);
-    set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_PARRY_STUN, 0);
+    set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_PARRY_STUN, 1);
     set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_UNBASHABLE, 0);
     set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 }
