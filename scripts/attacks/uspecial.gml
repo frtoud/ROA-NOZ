@@ -42,6 +42,7 @@ set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_CUSTOM_GRAVITY, 0.3);
 
+//Secret Tap-hover window
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 6);

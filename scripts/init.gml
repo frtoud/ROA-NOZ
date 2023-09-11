@@ -273,7 +273,6 @@ at_fspecial_started_free = false;
 at_fspecial_on_soft_cooldown = 0;
 at_fspecial_soft_cooldown_timer = 0;
 
-at_uspecial_long = false;
 at_uspecial_hovering = false;
 at_uspecial_was_hovering = false;
 at_uspecial_exhausted = false;

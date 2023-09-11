@@ -445,7 +445,7 @@ case AT_USPECIAL:
         case 1:
         {
             anim_hover_hair_frame = 0;
-            at_uspecial_long = true;
+            set_window_value(AT_USPECIAL, 2, AG_WINDOW_GOTO, 0);
             if (!special_down || at_uspecial_was_hovering)
             {
                 if (window_timer < 8) && 
@@ -467,9 +467,9 @@ case AT_USPECIAL:
                 {
                     window = 2;
                     window_timer = 0;
-                    at_uspecial_long = false;
-                    if (free)
-                    { at_uspecial_hover_meter -= noz_uspecial_short_cost; }
+                    //Shorter version: Skip middle window
+                    set_window_value(AT_USPECIAL, 2, AG_WINDOW_GOTO, 4);
+                    if (free) { at_uspecial_hover_meter -= noz_uspecial_short_cost; }
                 }
             }
             //special was held; transitions normally to the longest attack
@@ -492,15 +492,6 @@ case AT_USPECIAL:
                 {
                     reset_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE);
                 }
-            }
-        } break;
-        case 3:
-        {
-            //Skip window for shorter variant
-            if (!at_uspecial_long)
-            {
-                window = 4;
-                window_timer = 0;
             }
         } break;
         case 4:
