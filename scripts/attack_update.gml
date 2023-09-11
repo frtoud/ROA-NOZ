@@ -229,7 +229,6 @@ case AT_FAIR:
     {
         if (noz_rune_flags.aerial_strongs)
         {
-            set_num_hitboxes(AT_FAIR, 2);
             if (strong_charge > 5) && !(at_uspecial_hovering)
             {
                 can_move = false;
@@ -239,7 +238,7 @@ case AT_FAIR:
         }
         else
         {
-            set_num_hitboxes(AT_FAIR, noz_frostzone_empowered ? 2 : 1);
+            set_hitbox_value(AT_FAIR, 2, HG_WINDOW, noz_frostzone_empowered ? 3 : 0);
         }
     }
 
@@ -257,7 +256,6 @@ case AT_BAIR:
     {
         if (noz_rune_flags.aerial_strongs)
         {
-            set_num_hitboxes(AT_BAIR, 2);
             if (strong_charge > 5) && !(at_uspecial_hovering)
             {
                 can_move = false;
@@ -267,7 +265,7 @@ case AT_BAIR:
         }
         else
         {
-            set_num_hitboxes(AT_BAIR, noz_frostzone_empowered ? 2 : 1);
+            set_hitbox_value(AT_BAIR, 2, HG_WINDOW, noz_frostzone_empowered ? 3 : 0);
         }
     }
 } break;

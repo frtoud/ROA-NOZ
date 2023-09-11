@@ -4,22 +4,16 @@ is_a_cloud = false;
 // Lingering projectile cloud hitboxes
 if (attack == AT_DTILT && hbox_num == 2)
 || (attack == AT_DATTACK && hbox_num == 2)
+|| (attack == AT_FAIR && hbox_num == 2)
+|| (attack == AT_BAIR && hbox_num == 2)
 {
     is_a_cloud = true;
 }
-else if (attack == AT_FAIR && hbox_num == 2)
-     || (attack == AT_BAIR && hbox_num == 2)
+else if (attack == AT_FAIR && hbox_num == 3)
+     || (attack == AT_BAIR && hbox_num == 3)
 {
-    is_a_cloud = !player_id.noz_rune_flags.aerial_strongs;
-
-    // Lingering projectile for BAIR needs to be flipped
-    if (attack == AT_BAIR) spr_dir *= -1;
-
-    if (!is_a_cloud)
-    {
-       //still inherit Nozomi's speed
-       hsp += player_id.hsp;
-    }
+    //still inherit Nozomi's speed
+    hsp += player_id.hsp;
 }
 
 if (is_a_cloud)
@@ -32,6 +26,8 @@ if (is_a_cloud)
 
     //DATTACK cloud needs some help on platforms
     if (attack == AT_DATTACK) { dattack_speedcheck_timer = 20; }
+    // Lingering projectile for BAIR needs to be flipped
+    else if (attack == AT_BAIR) spr_dir *= -1;
 
     // Kicking clouds
     is_kickable = player_id.noz_rune_flags.cloud_explode;

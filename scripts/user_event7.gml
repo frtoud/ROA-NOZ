@@ -180,23 +180,8 @@ if (noz_rune_flags.aerial_strongs)
     set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter"));
     set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 199);
 
-    set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 9);
-    set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 60);
-    set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 60);
-    set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_SPRITE, sprite_get("vfx_ice_big"));
-    set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_ANIM_SPEED, (3.0 / get_hitbox_value(AT_FAIR, 2, HG_LIFETIME)) );
-    set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 6);
-    set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 55);
-    set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 6);
-    set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, .8);
-    set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .5);
-    set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
-    set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 28);
-    set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, 1);
-    set_hitbox_value(AT_FAIR, 2, HG_IGNORES_PROJECTILES, 0);
-    set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_PARRY_STUN, 1);
-    set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_UNBASHABLE, 1);
-    set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+    set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 0);
+    set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 3);
 
     //BAIR
     set_attack_value(AT_BAIR, AG_STRONG_CHARGE_WINDOW, 1);
@@ -208,23 +193,8 @@ if (noz_rune_flags.aerial_strongs)
     set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter"));
     set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 199);
 
-    set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 9);
-    set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 60);
-    set_hitbox_value(AT_BAIR, 2, HG_HEIGHT, 60);
-    set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_SPRITE, sprite_get("vfx_ice_big"));
-    set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ANIM_SPEED, (3.0 / get_hitbox_value(AT_BAIR, 2, HG_LIFETIME)) );
-    set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 6);
-    set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 55);
-    set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 6);
-    set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, .8);
-    set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .5);
-    set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
-    set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 28);
-    set_hitbox_value(AT_BAIR, 2, HG_HITBOX_GROUP, 1);
-    set_hitbox_value(AT_BAIR, 2, HG_IGNORES_PROJECTILES, 0);
-    set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_PARRY_STUN, 1);
-    set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_UNBASHABLE, 1);
-    set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+    set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 0);
+    set_hitbox_value(AT_BAIR, 3, HG_WINDOW, 3);
 }
 else
 {
@@ -238,23 +208,8 @@ else
     set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
     set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 0);
 
-    set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 36);
-    set_hitbox_value(AT_FAIR, 2, HG_WIDTH, 40);
-    set_hitbox_value(AT_FAIR, 2, HG_HEIGHT, 40);
-    set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_SPRITE, sprite_get("cloud_proj_big"));
-    set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_ANIM_SPEED, (8.0 / get_hitbox_value(AT_BAIR, 2, HG_LIFETIME)) );
-    set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 3);
-    set_hitbox_value(AT_FAIR, 2, HG_ANGLE, 90);
-    set_hitbox_value(AT_FAIR, 2, HG_BASE_KNOCKBACK, 1.5);
-    set_hitbox_value(AT_FAIR, 2, HG_KNOCKBACK_SCALING, 0);
-    set_hitbox_value(AT_FAIR, 2, HG_HITPAUSE_SCALING, .1);
-    set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
-    set_hitbox_value(AT_FAIR, 2, HG_VISUAL_EFFECT, 6);
-    set_hitbox_value(AT_FAIR, 2, HG_HITBOX_GROUP, -1);
-    set_hitbox_value(AT_FAIR, 2, HG_IGNORES_PROJECTILES, 0);
-    set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_PARRY_STUN, 1);
-    set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_UNBASHABLE, 0);
-    set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+    set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 3);
+    set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 0);
 
     //BAIR
     set_attack_value(AT_BAIR, AG_STRONG_CHARGE_WINDOW, 0);
@@ -266,41 +221,24 @@ else
     set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
     set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 0);
 
-    set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 36);
-    set_hitbox_value(AT_BAIR, 2, HG_WIDTH, 40);
-    set_hitbox_value(AT_BAIR, 2, HG_HEIGHT, 40);
-    set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_SPRITE, sprite_get("cloud_proj_big"));
-    set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ANIM_SPEED, (8.0 / get_hitbox_value(AT_BAIR, 2, HG_LIFETIME)) );
-    set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 3);
-    set_hitbox_value(AT_BAIR, 2, HG_ANGLE, 90);
-    set_hitbox_value(AT_BAIR, 2, HG_BASE_KNOCKBACK, 1.5);
-    set_hitbox_value(AT_BAIR, 2, HG_KNOCKBACK_SCALING, 0);
-    set_hitbox_value(AT_BAIR, 2, HG_HITPAUSE_SCALING, .1);
-    set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
-    set_hitbox_value(AT_BAIR, 2, HG_VISUAL_EFFECT, 6);
-    set_hitbox_value(AT_BAIR, 2, HG_HITBOX_GROUP, -1);
-    set_hitbox_value(AT_BAIR, 2, HG_IGNORES_PROJECTILES, 0);
-    set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_PARRY_STUN, 1);
-    set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_UNBASHABLE, 0);
-    set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+    set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 3);
+    set_hitbox_value(AT_BAIR, 3, HG_WINDOW, 0);
 }
 //===========================================================================
 // RUNE: Exploding Clouds
 if (noz_rune_flags.cloud_explode)
 {
-    if !(noz_rune_flags.aerial_strongs)
-    {
-        //FAIR
-        set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 0);
-        set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-        set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_heavy1"));
-        set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 36 + noz_long_cloud_big);
-        //BAIR
-        set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 0);
-        set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
-        set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_heavy1"));
-        set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 36 + noz_long_cloud_big);
-    }
+    //FAIR
+    set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 0);
+    set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+    set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_heavy1"));
+    set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 36 + noz_long_cloud_big);
+    //BAIR
+    set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 0);
+    set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
+    set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_heavy1"));
+    set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 36 + noz_long_cloud_big);
+
     //DTILT
     set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 0);
     set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
@@ -314,19 +252,17 @@ if (noz_rune_flags.cloud_explode)
 }
 else
 {
-    if !(noz_rune_flags.aerial_strongs)
-    {
-        //FAIR
-        set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 3);
-        set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-        set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
-        set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 36);
-        //BAIR
-        set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 3);
-        set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
-        set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
-        set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 36);
-    }
+    //FAIR
+    set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 3);
+    set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+    set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
+    set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 36);
+    //BAIR
+    set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 3);
+    set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+    set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
+    set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 36);
+
     //DTILT
     set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 2);
     set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);

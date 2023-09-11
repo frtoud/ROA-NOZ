@@ -70,8 +70,8 @@ if ( is_a_cloud )
     spawn_twinkle();
 }
 //still needs snow flickers
-else if (attack == AT_FAIR && hbox_num == 2)
-     || (attack == AT_BAIR && hbox_num == 2)
+else if (attack == AT_FAIR && hbox_num == 3)
+     || (attack == AT_BAIR && hbox_num == 3)
 {
     spawn_twinkle();
 }
