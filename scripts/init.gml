@@ -375,6 +375,7 @@ for (var i = 0; i < array_length(spritelist); i++)
         case "idle": loopval = PS_IDLE; break;
         case "walk": loopval = PS_WALK; break;
         case "dash": loopval = PS_DASH; break;
+        case "pratfall": loopval = PS_PRATFALL; break;
         default: break;
     }
 

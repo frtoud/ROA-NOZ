@@ -415,6 +415,9 @@ if (joke_explainer_mode)
                 case PS_DASH:
                     image_index = floor(state_timer * dash_anim_speed) % image_number; 
                 break;
+                case PS_PRATFALL:
+                    image_index = floor(state_timer * pratfall_anim_speed) % image_number; 
+                break;
                 default: break;
             } break;
         }
