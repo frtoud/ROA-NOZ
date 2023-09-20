@@ -22,18 +22,32 @@ var scale = 1 + small_sprites;
 
 //===================================================================
 // Hovering hair
-if (at_uspecial_hovering && state != PS_PRATFALL &&
-        //Attack with exceptions to the Hover Hair drawing.
-      !(state == PS_ATTACK_AIR && 
-     ( (attack == AT_USPECIAL && !(image_index > 12 && image_index < 16) && image_index != 22)
-    || (attack == AT_UAIR && image_index > 0 && image_index < 5 )
-    || (attack == AT_NAIR && at_uspecial_exhausted)) ))
+
+//frames with exceptions to the Hover Hair drawing.
+var attack_exceptions = (state == PS_ATTACK_AIR) && (
+(attack == AT_USPECIAL && !(image_index > 12 && image_index < 16) && image_index != 22)
+|| (attack == AT_USPECIAL_2)
+|| (attack == AT_UAIR && image_index > 0 && image_index < 5 )
+|| (attack == AT_NAIR && at_uspecial_exhausted && !joke_explainer_mode) )
+
+if (at_uspecial_hovering && state != PS_PRATFALL) && !attack_exceptions
 {
-    shader_start();
-    draw_sprite_ext(at_uspecial_exhausted ? vfx_hair_exhausted_spr : vfx_hair_hover_spr, 
-                    floor(anim_hover_hair_frame), x - (spr_dir * 4), y - 44, 
-                    spr_dir*scale, scale, 0, c_white, 1);
-    shader_end();
+    if (joke_explainer_mode)
+    {
+        shader_start();
+        draw_sprite_ext(vfx_thrusters_spr, 
+                        floor(anim_hover_hair_frame), x, y,
+                        spr_dir*scale, scale, 0, c_white, 1);
+        shader_end();
+    }
+    else
+    {
+        shader_start();
+        draw_sprite_ext(at_uspecial_exhausted ? vfx_hair_exhausted_spr : vfx_hair_hover_spr, 
+                        floor(anim_hover_hair_frame), x - (spr_dir * 4), y - 44, 
+                        spr_dir*scale, scale, 0, c_white, 1);
+        shader_end();
+    }
 }
 
 //===================================================================

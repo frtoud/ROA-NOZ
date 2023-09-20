@@ -132,7 +132,10 @@ sprite_change_offset("jex_utilt", 20, 37);
 sprite_change_offset("jex_dair", 13, 33);
 
 sprite_change_offset("jex_nspecial", 12, 30);
-
+sprite_change_offset("jex_uspecial", 18, 28);
+sprite_change_offset("jex_hover", 9, 32);
+sprite_change_offset("jex_thrusters", 13, 17);
+sprite_change_offset("vfx_smokepuff", 16, 16);
 
 sprite_change_offset("jex_hud", 0, -2);
 sprite_change_offset("jex_hudhurt", 0, -2);

@@ -74,7 +74,25 @@ if (at_uspecial_hovering)
         !( state == PS_ATTACK_AIR && attack == AT_USPECIAL && 
           (window == 5 || (window == 6 && window_timer < 6))) )
     {
-        if (special_pressed)
+        if (joke_explainer_mode)
+        {
+            //Hovermode movement logic! now ROB-FLAVORED!
+
+            var hover_cost_mult = 0.5;
+
+            if (up_down)
+            {
+                hover_cost_mult += 2;
+                vsp -= noz_uspecial_hover_vstrength * 1.2;
+            }
+
+            if (y < 0) //penalty if above camera view
+            { hover_cost_mult -= (y / 16.0); }
+
+            at_uspecial_hover_meter -= hover_cost_mult * 2;
+            vsp = clamp(vsp, -noz_uspecial_hover_vspeed * 0.95, (fast_falling ? fast_fall : 0.75*max_fall));
+        }
+        else if (special_pressed)
         {
             at_uspecial_exhausted = true;
             at_nair_hover_need_grid_adjust = true;
@@ -139,7 +157,8 @@ else if (!at_uspecial_was_hovering
        (at_uspecial_hover_meter >= noz_uspecial_hover_max) ? 
         noz_uspecial_hover_max : at_uspecial_hover_meter + recharge;
 }
-else if (!free || state == PS_HITSTUN || state == PS_WALL_JUMP)
+
+if (!free || state == PS_HITSTUN || state == PS_WALL_JUMP)
 {
     //reallows specials in those circumstances
     at_uspecial_cooldown_override = false;
@@ -159,16 +178,24 @@ if (at_uspecial_hover_meter < 0)
 {
     at_uspecial_hover_meter = 0;
     at_uspecial_exhausted = true;
-    at_nair_hover_need_grid_adjust = true; 
+    at_nair_hover_need_grid_adjust = true;
+ 
+    if (joke_explainer_mode)   //exhausted fuel sfx
+    {
+        sound_play(asset_get("sfx_abyss_despawn"), false, noone, 0.5, 1.2);
+        sound_play(asset_get("sfx_ell_dspecial_explosion_2"), false, noone, 1, 0.8);
+    }
 }
 
 //Hover ran out
 if (at_uspecial_exhausted && at_uspecial_hover_meter == 0)
     && !noz_rune_flags.enhanced_hover
+    && !joke_explainer_mode
     && at_uspecial_hovering && (state != PS_PRATFALL)
     && !(state == PS_ATTACK_AIR && attack == AT_USPECIAL)
 {
     set_state(PS_PRATFALL);
+    at_uspecial_hovering = false;
 }
 
 //==============================================================================
@@ -198,9 +225,15 @@ if (at_uspecial_cooldown_override)
     move_cooldown[AT_FSPECIAL] += (move_cooldown[AT_FSPECIAL] > 2) ? 0 : 2;
     
     //Enhanced hover: can reactivate USPECIAL if not hovering/has hover
-    if !(noz_rune_flags.enhanced_hover && at_uspecial_hover_meter > 0 
-         && (!at_uspecial_hovering || at_uspecial_exhausted) )
+    if !(noz_rune_flags.enhanced_hover && at_uspecial_hover_meter > 0 )
+         && !(at_uspecial_hovering && at_uspecial_exhausted) 
+    {
         move_cooldown[AT_USPECIAL] += (move_cooldown[AT_USPECIAL] > 2) ? 0 : 2;
+    }
+    if (joke_explainer_mode && at_uspecial_hovering)
+    {
+        move_cooldown[AT_USPECIAL_2] += (move_cooldown[AT_USPECIAL_2] > 2) ? 0 : 2;
+    }
 }
 if (at_fspecial_cooldown_override)
 {

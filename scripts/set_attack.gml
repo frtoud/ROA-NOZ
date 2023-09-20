@@ -3,4 +3,5 @@
 if (joke_explainer_mode)
 {
     //attack variants
+    if (attack == AT_USPECIAL) attack = AT_USPECIAL_2;
 }

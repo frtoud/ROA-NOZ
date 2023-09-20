@@ -537,6 +537,32 @@ case AT_USPECIAL:
     }
 } break;
 //==============================================================
+case AT_USPECIAL_2: 
+{
+    if (window == 1)
+    {
+        if (vsp > 0) vsp *= 0.7;
+    }
+    if (window == 2)
+    {
+        //initiate HoverMode!
+        //See update.gml for the rest of this logic
+        if (window_timer <= 1)
+        {
+            if (at_uspecial_was_hovering)
+            {
+                at_uspecial_hover_meter -= noz_uspecial_short_cost; 
+            }
+
+            at_uspecial_hovering = true;
+            at_uspecial_was_hovering = true;
+            at_uspecial_cooldown_override = true;
+            clear_button_buffer(PC_SPECIAL_PRESSED);
+        }
+        
+    }
+} break;
+//==============================================================
 case AT_DSPECIAL: 
 {
     if (window == 1)

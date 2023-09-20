@@ -138,6 +138,12 @@ idle_hover_spr = sprite_get("idle_hover");
 vfx_hair_hover_spr = sprite_get("vfx_hair_hover");
 vfx_hair_exhausted_spr = sprite_get("vfx_hair_exhausted");
 
+jex_hover_spr = sprite_get("jex_hover");
+jex_hover_frame_counter = 0; //determines image_index of above sprite
+vfx_thrusters_spr = sprite_get("jex_thrusters");
+vfx_thrusters_empty = hit_fx_create(sprite_get("vfx_smokepuff"), 12);
+thrusters_sfx = noone;
+
 vfx_reflect_shine_spr = sprite_get("reflect_shine");
 vfx_reflect_shockwave_spr = sprite_get("reflect_shock");
 
@@ -273,9 +279,9 @@ at_fspecial_started_free = false;
 at_fspecial_on_soft_cooldown = 0;
 at_fspecial_soft_cooldown_timer = 0;
 
-at_uspecial_hovering = false;
-at_uspecial_was_hovering = false;
-at_uspecial_exhausted = false;
+at_uspecial_hovering = false;     // currently in hoverstate. removed on land, hitstun, walljump, airdodge, djump, dair, or on death
+at_uspecial_was_hovering = false; // if you have ever hovered this airtime. only removed on true stage ground (or death)
+at_uspecial_exhausted = false;    // if you ran out of hover (or canceled it early) 
 at_uspecial_hover_meter = noz_uspecial_hover_max;
 
 at_fspecial_cooldown_override = false;

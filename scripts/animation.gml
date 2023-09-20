@@ -28,40 +28,84 @@ if (anim_indicatorflash_timer > 0)
     anim_indicatorflash_timer--;
 }
 
-//Hair hoverframe calculation
+//Hair hoverframe calculation + sound effect
 //==============================================================================
+var needs_sfx = 0; //0 - remove, 1 - low, 2 - high
 if (at_uspecial_hovering)
 {
-    var hair_animspeed_index = 0;
-
-    if (at_uspecial_exhausted)
-    { hair_animspeed_index = 0; }
-    else if (0.33 > at_uspecial_hover_meter/noz_uspecial_hover_max)
-    { hair_animspeed_index = 1; }
-    else if (0.66 > at_uspecial_hover_meter/noz_uspecial_hover_max) 
-    { hair_animspeed_index = 2; }
-    else 
-    { hair_animspeed_index = 3; }
-
-    if (!at_uspecial_exhausted && !joy_pad_idle 
-     && !(state == PS_ATTACK_AIR && attack == AT_USPECIAL))
+    if (joke_explainer_mode)
     {
-        if ( (joy_dir >  40 && joy_dir < 140)
-         || (state == PS_ATTACK_AIR && attack == AT_NAIR))
-        { hair_animspeed_index++; }
-        else if (joy_dir > 220 && joy_dir < 310) 
-        { hair_animspeed_index--; }
+        if (!at_uspecial_exhausted && up_down) || (vsp < -2)
+             jex_hover_frame_counter -= 2;
+        else jex_hover_frame_counter += 1;
+        jex_hover_frame_counter = clamp(jex_hover_frame_counter, 0, 20);
+
+        if (at_uspecial_exhausted)
+        {   //empty
+            if (get_gameplay_time() % 4 == 0)
+                spawn_twinkle(vfx_thrusters_empty, x, y - 24, 24, false);
+            
+            anim_hover_hair_frame = 7;
+        }
+        else if (up_down || up_pressed)
+        {   //active
+            needs_sfx = 2;
+            anim_hover_hair_frame = floor(get_gameplay_time() / 3) % 4;
+        }
+        else
+        {   //idle
+            needs_sfx = 1;
+            anim_hover_hair_frame = 4 + floor(get_gameplay_time() / 2) % 3;
+        }
+
     }
-
-    anim_hover_hair_frame += anim_hover_hair_rates[hair_animspeed_index];
-
-    if (anim_hover_hair_frame >= 4)
+    else
     {
-        anim_hover_hair_frame %= 4;
-        //Sound effect tied to animation
-        sound_play(asset_get("sfx_birdflap"), false, noone, 1, 
-        0.75 + anim_hover_hair_rates[hair_animspeed_index]);
+        var hair_animspeed_index = 0;
+
+        if (at_uspecial_exhausted)
+        { hair_animspeed_index = 0; }
+        else if (0.33 > at_uspecial_hover_meter/noz_uspecial_hover_max)
+        { hair_animspeed_index = 1; }
+        else if (0.66 > at_uspecial_hover_meter/noz_uspecial_hover_max) 
+        { hair_animspeed_index = 2; }
+        else 
+        { hair_animspeed_index = 3; }
+
+        if (!at_uspecial_exhausted && !joy_pad_idle
+        && !(state == PS_ATTACK_AIR && attack == AT_USPECIAL))
+        {
+            if ( (joy_dir >  40 && joy_dir < 140)
+            || (state == PS_ATTACK_AIR && attack == AT_NAIR))
+            { hair_animspeed_index++; }
+            else if (joy_dir > 220 && joy_dir < 310)
+            { hair_animspeed_index--; }
+        }
+
+        anim_hover_hair_frame += anim_hover_hair_rates[hair_animspeed_index];
+
+        if (anim_hover_hair_frame >= 4)
+        {
+            anim_hover_hair_frame %= 4;
+            //Sound effect tied to animation
+            sound_play(asset_get("sfx_birdflap"), false, noone, 1, 
+            0.75 + anim_hover_hair_rates[hair_animspeed_index]);
+        }
     }
+}
+
+if (needs_sfx)
+{
+    if (noone == thrusters_sfx)
+        thrusters_sfx = sound_play(asset_get("sfx_ell_hover"), true, noone);
+    
+    sound_pitch(thrusters_sfx, 0.3 + 0.4 * needs_sfx);
+    sound_volume(thrusters_sfx, 0.3 + 0.4 * needs_sfx, 250);
+}
+else if (noone != thrusters_sfx)
+{
+    sound_stop(thrusters_sfx);
+    thrusters_sfx = noone;
 }
 
 //Bonus
@@ -94,27 +138,35 @@ switch (state)
     {
         if (at_uspecial_hovering)
         {
-            sprite_index = idle_hover_spr;
-            
-            //Exhausted -> Uses DOWNWARD
-            if (at_uspecial_exhausted) 
-                    { image_index = 4; }
-            //NEUTRAL
-            else if (joy_pad_idle) 
-                    { image_index = 0; }
-            //BACKWARD
-            else if ( (spr_dir > 0 && (joy_dir >= 130 && joy_dir <= 230))
-                   || (spr_dir < 0 && (joy_dir <=  50 || joy_dir >= 310)) )
-                    { image_index = 1; }
-            //UPWARD
-            else if (joy_dir >  50 && joy_dir < 130) 
-                    { image_index = 2; }
-            //FORWARD
-            else if ( (spr_dir > 0 && (joy_dir <=  50 || joy_dir >= 310))
-                   || (spr_dir < 0 && (joy_dir >= 130 && joy_dir <= 230)) )
-                    { image_index = 3; }
-            //DOWNWARD
-            else    { image_index = 4; }
+            if (joke_explainer_mode)
+            {
+                sprite_index = jex_hover_spr;
+                image_index = floor(jex_hover_frame_counter/5);
+            }
+            else
+            {
+                sprite_index = idle_hover_spr;
+                
+                //Exhausted -> Uses DOWNWARD
+                if (at_uspecial_exhausted)
+                        { image_index = 4; }
+                //NEUTRAL
+                else if (joy_pad_idle)
+                        { image_index = 0; }
+                //BACKWARD
+                else if ( (spr_dir > 0 && (joy_dir >= 130 && joy_dir <= 230))
+                    || (spr_dir < 0 && (joy_dir <=  50 || joy_dir >= 310)) )
+                        { image_index = 1; }
+                //UPWARD
+                else if (joy_dir >  50 && joy_dir < 130)
+                        { image_index = 2; }
+                //FORWARD
+                else if ( (spr_dir > 0 && (joy_dir <=  50 || joy_dir >= 310))
+                    || (spr_dir < 0 && (joy_dir >= 130 && joy_dir <= 230)) )
+                        { image_index = 3; }
+                //DOWNWARD
+                else    { image_index = 4; }
+            }
         }
         else if (prev_state == PS_ATTACK_AIR)
         { 
@@ -248,9 +300,20 @@ switch (state)
                         strong_flashing = true;
                     }
                 }
-                else if (image_index == 15
-                && get_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE) == 7) 
+                else if (image_index == 15)
+                && (get_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE) == 7) 
                 { image_index = 22; } //Exhausted frame; going to pratfall
+            }break;
+//==================================================================
+            case AT_USPECIAL_2: //JEX
+            {
+                jex_hover_frame_counter = 0;
+
+                if (window == 2) && (window_timer == 0) && !hitpause 
+                {
+                    sound_play(get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_SFX),
+                        false, noone, 0.7, 2.5);
+                }
             }break;
 //==================================================================
             case AT_NAIR:
