@@ -58,39 +58,49 @@ else if (color_alt == ALT_ROBOTIC)
 }
 //==========================================================================
 //Hair color effects (only for Madeline)
-if ( ("at_uspecial_was_hovering" in self)
-  && (color_alt == ALT_CELESTE) )
+if ("at_uspecial_was_hovering" in self)
 {
     var hair_color = [get_color_profile_slot_r(color_alt, 0),
-                      get_color_profile_slot_g(color_alt, 0), 
-                      get_color_profile_slot_b(color_alt, 0)];
-    if (at_uspecial_was_hovering)
+                        get_color_profile_slot_g(color_alt, 0), 
+                        get_color_profile_slot_b(color_alt, 0)];
+
+    if (color_alt == ALT_CELESTE)
     {
-        //Fade to blue
-        hair_color[0] = ease_linear(hair_color[0], 60, 
-           anim_hairblink_timer, anim_hairblink_max); //R
-        hair_color[1] = ease_linear(hair_color[1], 240, 
-           anim_hairblink_timer, anim_hairblink_max); //G
-        hair_color[2] = ease_linear(hair_color[2], 255, 
-           anim_hairblink_timer, anim_hairblink_max); //B
+        if (at_uspecial_was_hovering)
+        {
+            //Fade to blue
+            hair_color[0] = ease_linear(hair_color[0], 60, 
+            anim_hairblink_timer, anim_hairblink_max); //R
+            hair_color[1] = ease_linear(hair_color[1], 240, 
+            anim_hairblink_timer, anim_hairblink_max); //G
+            hair_color[2] = ease_linear(hair_color[2], 255, 
+            anim_hairblink_timer, anim_hairblink_max); //B
+        }
+        else
+        {
+            //White flash 
+            hair_color[0] = ease_linear(hair_color[0], 250, 
+            anim_hairblink_timer, anim_hairblink_max); //R
+            hair_color[1] = ease_linear(hair_color[1], 255, 
+            anim_hairblink_timer, anim_hairblink_max); //G
+            hair_color[2] = ease_linear(hair_color[2], 255, 
+            anim_hairblink_timer, anim_hairblink_max); //B
+        }
     }
-    else
+    else if (joke_explainer_mode && at_uspecial_exhausted)
     {
-        //White flash 
-        hair_color[0] = ease_linear(hair_color[0], 250, 
-           anim_hairblink_timer, anim_hairblink_max); //R
-        hair_color[1] = ease_linear(hair_color[1], 255, 
-           anim_hairblink_timer, anim_hairblink_max); //G
-        hair_color[2] = ease_linear(hair_color[2], 255, 
-           anim_hairblink_timer, anim_hairblink_max); //B
+        hair_color[0] *= 0.5;
+        hair_color[1] *= 0.5;
+        hair_color[2] *= 0.5;
     }
-    
+
     set_character_color_slot( 0, floor(hair_color[0]), 
                                  floor(hair_color[1]), 
                                  floor(hair_color[2]));
     set_article_color_slot( 0, floor(hair_color[0]), 
                                floor(hair_color[1]), 
                                floor(hair_color[2]));
+
 }
 //==========================================================================
 

@@ -30,7 +30,7 @@ if (anim_indicatorflash_timer > 0)
 
 //Hair hoverframe calculation + sound effect
 //==============================================================================
-var needs_sfx = 0; //0 - remove, 1 - low, 2 - high
+var thruster_sfx_strength = 0; //set to zero or below to remove sfx
 if (at_uspecial_hovering)
 {
     if (joke_explainer_mode)
@@ -42,19 +42,19 @@ if (at_uspecial_hovering)
 
         if (at_uspecial_exhausted)
         {   //empty
-            if (get_gameplay_time() % 4 == 0)
-                spawn_twinkle(vfx_thrusters_empty, x, y - 24, 24, false);
+            if (get_gameplay_time() % 3 == 0)
+                spawn_twinkle(vfx_thrusters_empty, x, y - 14, 40, false);
             
             anim_hover_hair_frame = 7;
         }
         else if (up_down || up_pressed)
         {   //active
-            needs_sfx = 2;
+            thruster_sfx_strength = 2;
             anim_hover_hair_frame = floor(get_gameplay_time() / 3) % 4;
         }
         else
         {   //idle
-            needs_sfx = 1;
+            thruster_sfx_strength = 1;
             anim_hover_hair_frame = 4 + floor(get_gameplay_time() / 2) % 3;
         }
 
@@ -94,13 +94,15 @@ if (at_uspecial_hovering)
     }
 }
 
-if (needs_sfx)
+
+if (thruster_sfx_strength > 0)
 {
     if (noone == thrusters_sfx)
         thrusters_sfx = sound_play(asset_get("sfx_ell_hover"), true, noone);
     
-    sound_pitch(thrusters_sfx, 0.3 + 0.4 * needs_sfx);
-    sound_volume(thrusters_sfx, 0.3 + 0.4 * needs_sfx, 250);
+    var exhaust_pitch = 1 - 0.01 * ease_expoOut(0, 100, floor(at_uspecial_hover_meter), noz_uspecial_hover_max);
+    sound_pitch(thrusters_sfx, 0.3 + 0.4 * thruster_sfx_strength  + exhaust_pitch);
+    sound_volume(thrusters_sfx, 0.25 + 0.25 * thruster_sfx_strength, 250);
 }
 else if (noone != thrusters_sfx)
 {
