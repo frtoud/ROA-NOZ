@@ -94,6 +94,14 @@ if (at_uspecial_hovering)
     }
 }
 
+//piggybacking on this system for Dash thrusters
+if (joke_explainer_mode)
+{
+    if (state == PS_DASH || state == PS_DASH_TURN)
+        thruster_sfx_strength = 0.9;
+    else if (state == PS_DASH_STOP)
+        thruster_sfx_strength = 0.3;
+}
 
 if (thruster_sfx_strength > 0)
 {
@@ -123,6 +131,14 @@ else if (anim_hairblink_timer > 0 && !at_uspecial_was_hovering)
 //==============================================================================
 switch (state)
 {
+    case PS_DASH_START:
+    {
+        if (joke_explainer_mode) && (state_timer == initial_dash_time - 3)
+        {
+            sound_play(get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_SFX),
+                       false, noone, 0.3, 3.7);
+        }
+    } break;
     case PS_PRATLAND:
     {
         if (!was_parried)
