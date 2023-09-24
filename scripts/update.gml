@@ -201,7 +201,7 @@ if (at_uspecial_exhausted && at_uspecial_hover_meter == 0)
 //==============================================================================
 //Reflector recharging
 if ( (at_reflector_damage_block <= noz_reflector_damage_max) &&
-    !((attack == AT_NTHROW) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)))
+    !((attack == AT_NSPECIAL_2) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND)))
 {
     at_reflector_damage_block += noz_reflector_recharge_rate;
 }
@@ -209,7 +209,7 @@ if ( (at_reflector_damage_block <= noz_reflector_damage_max) &&
 if (noz_rune_flags.reflector) && shield_down 
 && (state == PS_PARRY) && (window == 2) && (window_timer == 0)
 {
-    set_attack(AT_NTHROW);
+    set_attack(AT_NSPECIAL_2);
     window = 1; window_timer = 1;
     at_reflector_damage_block = max(noz_reflector_damage_min, 
                                     floor(at_reflector_damage_block));

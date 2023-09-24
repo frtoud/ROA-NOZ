@@ -4,7 +4,7 @@ var scale = 1 + small_sprites;
 shader_start();
 //=============================================================================
 //Reflector Rune
-if (attack == AT_NTHROW && (window != 2)
+if (attack == AT_NSPECIAL_2 && (window != 2)
    && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND) )
 {
     var vfxframe = (get_gameplay_time() / 3 ) % 4;

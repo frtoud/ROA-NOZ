@@ -375,7 +375,7 @@ switch (state)
                 use_hover_sprite();
             }break;
 //==================================================================
-            case AT_NTHROW: //Reflector Rune
+            case AT_NSPECIAL_2: //Reflector Rune
             {
                 if free && ((image_index == 5) || (image_index == 6))
                 {

@@ -584,7 +584,7 @@ case AT_DSPECIAL:
     }
 } break;
 //==============================================================
-case AT_NTHROW: //Reflector
+case AT_NSPECIAL_2: //Reflector
 {
     can_jump = (window <= 2);
     switch (window)
@@ -600,7 +600,7 @@ case AT_NTHROW: //Reflector
                 window = 2;
                 window_timer = 0; 
             }
-            else if (window_timer == get_window_value(AT_NTHROW, 2, AG_WINDOW_LENGTH))
+            else if (window_timer == get_window_value(AT_NSPECIAL_2, 2, AG_WINDOW_LENGTH))
             {
                 window_timer = 0; 
             }

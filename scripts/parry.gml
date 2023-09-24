@@ -1,5 +1,5 @@
 
-if ((attack == AT_NTHROW) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
+if ((attack == AT_NSPECIAL_2) && (state == PS_ATTACK_AIR || state == PS_ATTACK_GROUND))
 {
     if (enemy_hitboxID.type == 1)
     {
