@@ -8,6 +8,14 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
         hit_player_obj.orig_knock += abs(old_hsp);
     }
 
+    if (my_hitboxID.attack == AT_FSPECIAL_2)
+    {
+        hsp *= -0.2;
+        old_hsp *= -0.2;
+        window = 6; window_timer = 0;
+        my_hitboxID.destroyed = true;
+    }
+
     var is_a_cloud = ("is_a_cloud" in my_hitboxID) && my_hitboxID.is_a_cloud;
     // Lingering projectile hitboxes: applies snow effects
     if (( ( is_a_cloud )

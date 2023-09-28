@@ -223,6 +223,7 @@ if (at_uspecial_cooldown_override)
     move_cooldown[AT_DSPECIAL] += (move_cooldown[AT_DSPECIAL] > 2) ? 0 : 2;
     move_cooldown[AT_NSPECIAL] += (move_cooldown[AT_NSPECIAL] > 2) ? 0 : 2;
     move_cooldown[AT_FSPECIAL] += (move_cooldown[AT_FSPECIAL] > 2) ? 0 : 2;
+    move_cooldown[AT_FSPECIAL_2] += (move_cooldown[AT_FSPECIAL_2] > 2) ? 0 : 2;
     
     //Enhanced hover: can reactivate USPECIAL if not hovering/has hover
     if !(noz_rune_flags.enhanced_hover && at_uspecial_hover_meter > 0 )

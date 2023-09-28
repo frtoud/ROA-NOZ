@@ -143,6 +143,8 @@ jex_hover_frame_counter = 0; //determines image_index of above sprite
 vfx_thrusters_spr = sprite_get("jex_thrusters");
 vfx_thrusters_empty = hit_fx_create(sprite_get("vfx_smokepuff"), 12);
 thrusters_sfx = noone;
+//for FSPECIAL
+vfx_thrusters_charge = hit_fx_create(sprite_get("vfx_fspecial_charge"), 8);
 
 vfx_reflect_shine_spr = sprite_get("reflect_shine");
 vfx_reflect_shockwave_spr = sprite_get("reflect_shock");
@@ -239,6 +241,11 @@ noz_fspecial_cooldown = 180;
 noz_fspecial_ylock_max = 160; //lower value means higher position -- Y=0 is at the top of the screen
 noz_fspecial_soft_cooldown_max = 240 * (!noz_rune_flags.ice_longer); //platforms created during this cooldown have no colliders
 
+//joke explainer skull bash version
+noz_fspecial_chargetime = 120;
+noz_fspecial_misfire_frame = 7;
+noz_fspecial_misfire_bonus = 0x99;
+
 noz_uspecial_hover_max = 480 * (1 + noz_rune_flags.enhanced_hover);
 noz_uspecial_short_cost = 60; // 1/8
 noz_uspecial_long_cost = 120; // 1/4
@@ -278,6 +285,8 @@ at_reflector_damage_block = noz_reflector_damage_max;
 at_fspecial_started_free = false;
 at_fspecial_on_soft_cooldown = 0;
 at_fspecial_soft_cooldown_timer = 0;
+
+at_fspecial_missile_charge = 0;
 
 at_uspecial_hovering = false;     // currently in hoverstate. removed on land, hitstun, walljump, airdodge, djump, dair, or on death
 at_uspecial_was_hovering = false; // if you have ever hovered this airtime. only removed on true stage ground (or death)

@@ -438,6 +438,91 @@ case AT_FSPECIAL:
 
 } break;
 //==============================================================
+case AT_FSPECIAL_2: 
+{
+    can_move = (window == 7);
+    can_fastfall = false;
+    can_wall_jump = (window > 3) && !was_parried;
+
+    if (window == 1)
+    {
+        at_fspecial_missile_charge = 0;
+        if (vsp > 0) vsp *= 0.5;
+    }
+    else if (window == 2)
+    {
+        //hold to charge
+        if (window_timer == 5) && special_down
+        && (at_fspecial_missile_charge < noz_fspecial_chargetime)
+        {
+            window_timer--;
+            at_fspecial_missile_charge++;
+        }
+    }
+    else if (window == 3)
+    {
+        if (at_fspecial_missile_charge == noz_fspecial_misfire_frame) 
+        && (window_timer == 1)
+        {
+            //"misfire"!
+            at_fspecial_missile_charge += noz_fspecial_misfire_bonus;
+
+            white_flash_timer = 12;
+            hitpause = true;
+            hitstop = 15;
+            hitstop_full = 15;
+            old_vsp = 0;
+            old_hsp = 0;
+            sound_play(asset_get("sfx_ell_dspecial_explosion_1"), false, noone, 1.6);
+            sound_play(asset_get("sfx_panda_taunt_vote"), false, noone, 1, 1.5);
+            spawn_hit_fx(x - spr_dir*20, y-16, HFX_ELL_NSPEC_BREAK);
+        }
+
+        if (window_timer == 4)
+        {
+            //Setup distance boost
+            var hspeed_granted = 8 + at_fspecial_missile_charge * 0.1;
+            set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_HSPEED, hspeed_granted);
+            set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_VSPEED, free ? -0.5 : -2.2 );
+
+            var friction_required = (hspeed_granted - get_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_CUSTOM_AIR_FRICTION)
+                                                    * get_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_LENGTH) )
+                                                    / get_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_LENGTH);
+            set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_CUSTOM_AIR_FRICTION, friction_required);
+            
+            var bonus_anim = (at_fspecial_missile_charge > noz_fspecial_chargetime/2);
+            set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_ANIM_FRAMES,      bonus_anim ?  3 :  1 );
+            set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_ANIM_FRAME_START, bonus_anim ?  8 : 14 );
+            set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_ANIM_FRAMES,      bonus_anim ?  4 :  1 );
+            set_window_value(AT_FSPECIAL_2, 5, AG_WINDOW_ANIM_FRAME_START, bonus_anim ? 11 : 14 );
+            set_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_SFX, bonus_anim ? asset_get("sfx_ell_arc_small_missile_ground") 
+                                                                         : asset_get("sfx_ori_spirit_flame_hit_1"));
+
+            //Setup damage boost
+            var effective_charge = clamp(1.0 * at_fspecial_missile_charge/noz_fspecial_chargetime, 0, 1)
+            set_hitbox_value(AT_FSPECIAL_2, 1, HG_DAMAGE, 6 + effective_charge*14);
+            set_hitbox_value(AT_FSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 0.6 + effective_charge*0.5);
+        }
+    }
+    else if (window == 4)
+    {
+        vsp *= 0.95;
+    }
+
+    if !free && (window > 4)
+    {
+        if (window == 7)
+        {
+            set_state(PS_LAND);
+        }
+        else 
+        {
+            set_state(PS_LANDING_LAG);
+            landing_lag_time = get_attack_value(AT_FSPECIAL_2, AG_LANDING_LAG);
+        }
+    }
+} break;
+//==============================================================
 case AT_USPECIAL: 
 {
     switch (window)
