@@ -341,6 +341,7 @@ switch (state)
                     if (anim_hover_hair_frame >= 4) || (at_fspecial_missile_charge == 1)
                     {
                         sound_play(asset_get("sfx_shovel_dig"), false, noone, 0.2, 1.2 + 1.3*index_mult);
+                        strong_flashing = true;
                     }
                     anim_hover_hair_frame %= 4;
                     image_index = 3 + anim_hover_hair_frame;
@@ -357,9 +358,9 @@ switch (state)
                         fx.draw_angle = 90 * -spr_dir;
                         spawn_unshaded_hit_fx(x - spr_dir*20, y-16, HFX_ZET_FIRE);
                     }
-                    else if (window_timer % window == 0)
+                    else if (window_timer % (abs(hsp) > 7 ? 2 : 4) == 0)
                     {
-                        var fx = spawn_unshaded_hit_fx(x - spr_dir*20, y-16, HFX_ELL_STEAM_HIT);
+                        spawn_unshaded_hit_fx(x - spr_dir*20, y-16, vfx_steam_hit_mini);
                     }
                 }
             }break;

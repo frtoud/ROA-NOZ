@@ -145,6 +145,7 @@ vfx_thrusters_empty = hit_fx_create(sprite_get("vfx_smokepuff"), 12);
 thrusters_sfx = noone;
 //for FSPECIAL
 vfx_thrusters_charge = hit_fx_create(sprite_get("vfx_fspecial_charge"), 8);
+vfx_steam_hit_mini = hit_fx_create(sprite_get("steam_hit_spr_mini"), 16);
 
 vfx_reflect_shine_spr = sprite_get("reflect_shine");
 vfx_reflect_shockwave_spr = sprite_get("reflect_shock");

@@ -136,8 +136,10 @@ sprite_change_offset("jex_fspecial", 19, 29, true);
 sprite_change_offset("jex_uspecial", 18, 28);
 sprite_change_offset("jex_hover", 9, 32);
 sprite_change_offset("jex_thrusters", 13, 17);
+
 sprite_change_offset("vfx_smokepuff", 16, 16);
 sprite_change_offset("vfx_fspecial_charge", 48, 4);
+sprite_change_offset("steam_hit_spr_mini", 20, 20);
 
 sprite_change_offset("jex_hud", 0, -2);
 sprite_change_offset("jex_hudhurt", 0, -2);
