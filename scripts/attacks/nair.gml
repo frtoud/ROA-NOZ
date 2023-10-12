@@ -9,15 +9,14 @@ set_attack_value(AT_NAIR, AG_NOZ_HOVER_SPRITE, sprite_get("nair_hover"));
 set_window_value(AT_NAIR, 1, AG_WINDOW_TYPE, 0);
 set_window_value(AT_NAIR, 1, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_NAIR, 1, AG_WINDOW_ANIM_FRAMES, 2);
-set_window_value(AT_NAIR, 1, AG_WINDOW_SFX_FRAME, 2);
 
 set_window_value(AT_NAIR, 2, AG_WINDOW_TYPE, 0);
 set_window_value(AT_NAIR, 2, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAMES, 6);
-set_window_value(AT_NAIR, 2, AG_WINDOW_HAS_SFX, 1);
-set_window_value(AT_NAIR, 2, AG_WINDOW_VSPEED, -1);
-set_window_value(AT_NAIR, 2, AG_WINDOW_SFX, asset_get("sfx_spin"));
 set_window_value(AT_NAIR, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_NAIR, 2, AG_WINDOW_VSPEED, -1);
+set_window_value(AT_NAIR, 2, AG_WINDOW_HAS_SFX, 1);
+set_window_value(AT_NAIR, 2, AG_WINDOW_SFX, asset_get("sfx_spin"));
 
 set_window_value(AT_NAIR, 3, AG_WINDOW_TYPE, 0);
 set_window_value(AT_NAIR, 3, AG_WINDOW_LENGTH, 10);

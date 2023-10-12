@@ -158,6 +158,7 @@ case AT_NAIR:
     {
         //Adjust NAIR's data values to make the "hover" variants
         if (at_uspecial_hovering && !at_uspecial_exhausted)
+        && !joke_explainer_mode
         {
             set_hitbox_value(AT_NAIR, 1, HG_HITBOX_Y, -46);
             set_hitbox_value(AT_NAIR, 2, HG_HITBOX_Y, -46);

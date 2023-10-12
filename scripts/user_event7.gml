@@ -40,6 +40,13 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
     set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 0);
 
+    set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("jex_nair"));
+    set_attack_value(AT_NAIR, AG_NOZ_HOVER_SPRITE, sprite_get("jex_nair_hover"));
+    set_window_value(AT_NAIR, 2, AG_WINDOW_SFX, asset_get("sfx_clairen_spin"));
+    set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
+    set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
+    set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_clairen_tip_med"));
+
     set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("jex_dair"));
 
     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("jex_nspecial"))
@@ -103,6 +110,13 @@ else //Restore Nozomi Data
     set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 0);
     set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
     set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 4);
+
+    set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
+    set_attack_value(AT_NAIR, AG_NOZ_HOVER_SPRITE, sprite_get("nair_hover"));
+    set_window_value(AT_NAIR, 2, AG_WINDOW_SFX, asset_get("sfx_spin"));
+    set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+    set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+    set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
     set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair"));
 
