@@ -229,6 +229,7 @@ case AT_FAIR:
     {
         if (noz_rune_flags.aerial_strongs)
         {
+            attack_down |= (down_stick_down || right_stick_down || left_stick_down || up_stick_down);
             if (strong_charge > 5) && !(at_uspecial_hovering)
             {
                 can_move = false;
@@ -256,6 +257,7 @@ case AT_BAIR:
     {
         if (noz_rune_flags.aerial_strongs)
         {
+            attack_down |= (down_stick_down || right_stick_down || left_stick_down || up_stick_down);
             if (strong_charge > 5) && !(at_uspecial_hovering)
             {
                 can_move = false;
