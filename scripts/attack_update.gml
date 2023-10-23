@@ -455,8 +455,8 @@ case AT_FSPECIAL_2:
     else if (window == 2)
     {
         //hold to charge
-        if (window_timer == 5) && special_down
-        && (at_fspecial_missile_charge < noz_fspecial_chargetime)
+        if (window_timer == get_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_LENGTH) - 1)
+         && special_down && (at_fspecial_missile_charge < noz_fspecial_chargetime)
         {
             window_timer--;
             at_fspecial_missile_charge++;
