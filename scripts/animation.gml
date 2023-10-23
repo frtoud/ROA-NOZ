@@ -435,6 +435,7 @@ switch (state)
             case AT_NSPECIAL_2: //Reflector Rune
             {
                 if free && ((image_index == 5) || (image_index == 6))
+                && !joke_explainer_mode
                 {
                     //Aerial sprites
                     image_index += 2;

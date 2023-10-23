@@ -63,6 +63,7 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX, sound_get("sfx_noz_bot_todo"));
     set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX, sound_get("sfx_noz_bot_kete"));
 
+    set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("jex_reflect"));
     //==========================================
     //Pokémon Stadium
     pkmn_stadium_name_override = "JK-EX-7000";
@@ -134,6 +135,7 @@ else //Restore Nozomi Data
     set_window_value(AT_NSPECIAL, 2, AG_WINDOW_SFX, sound_get("sfx_noz_true_todo"));
     set_window_value(AT_NSPECIAL, 4, AG_WINDOW_SFX, sound_get("sfx_noz_true_kete"));
 
+    set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("reflect"));
     //==========================================
     //Pokémon Stadium
     pkmn_stadium_name_override = "Nozomi";

@@ -117,6 +117,7 @@ sprite_change_offset("jex_dash", 27, 26);
 sprite_change_offset("jex_dashturn", 22, 27);
 sprite_change_offset("jex_dashstop", 33, 28);
 sprite_change_offset("jex_parry", 17, 29);
+sprite_change_offset("jex_reflect", 24, 29);
 
 sprite_change_offset("jex_airdodge", 15, 31);
 
