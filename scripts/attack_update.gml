@@ -226,22 +226,19 @@ case AT_DAIR:
 //==============================================================
 case AT_FAIR:
 {
-    if (window == 1)
+    if (noz_rune_flags.aerial_strongs) && (window <= 3)
     {
-        if (noz_rune_flags.aerial_strongs)
+        attack_down |= (down_stick_down || right_stick_down || left_stick_down || up_stick_down);
+        if (strong_charge > 5) && !(at_uspecial_hovering)
         {
-            attack_down |= (down_stick_down || right_stick_down || left_stick_down || up_stick_down);
-            if (strong_charge > 5) && !(at_uspecial_hovering)
-            {
-                can_move = false;
-                hsp *= 0.7;
-                vsp = min(vsp*0.7, 0);
-            }
+            can_move = false;
+            hsp *= 0.7;
+            vsp = min(vsp*0.7, 0);
         }
-        else
-        {
-            set_hitbox_value(AT_FAIR, 2, HG_WINDOW, noz_frostzone_empowered ? 3 : 0);
-        }
+    }
+    else if (window == 1)
+    {
+        set_hitbox_value(AT_FAIR, 2, HG_WINDOW, noz_frostzone_empowered ? 3 : noone);
     }
 
     //recovery animation can be skipped (unless parried)
@@ -254,22 +251,19 @@ case AT_FAIR:
 //==============================================================
 case AT_BAIR:
 {
-    if (window == 1)
+    if (noz_rune_flags.aerial_strongs) && (window <= 3)
     {
-        if (noz_rune_flags.aerial_strongs)
+        attack_down |= (down_stick_down || right_stick_down || left_stick_down || up_stick_down);
+        if (strong_charge > 5) && !(at_uspecial_hovering)
         {
-            attack_down |= (down_stick_down || right_stick_down || left_stick_down || up_stick_down);
-            if (strong_charge > 5) && !(at_uspecial_hovering)
-            {
-                can_move = false;
-                hsp *= 0.7;
-                vsp = min(vsp*0.7, 0);
-            }
+            can_move = false;
+            hsp *= 0.7;
+            vsp = min(vsp*0.7, 0);
         }
-        else
-        {
-            set_hitbox_value(AT_BAIR, 2, HG_WINDOW, noz_frostzone_empowered ? 3 : 0);
-        }
+    }
+    else if (window == 1)
+    {
+        set_hitbox_value(AT_BAIR, 2, HG_WINDOW, noz_frostzone_empowered ? 3 : noone);
     }
 } break;
 //==============================================================

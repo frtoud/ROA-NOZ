@@ -83,7 +83,7 @@ set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
 //Strong-BAIR hitbox (replaces hitbox #2)
 set_hitbox_value(AT_BAIR, 3, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_BAIR, 3, HG_WINDOW, 0); //see user_event7
+set_hitbox_value(AT_BAIR, 3, HG_WINDOW, noone); //see user_event7
 set_hitbox_value(AT_BAIR, 3, HG_WINDOW_CREATION_FRAME, 2);
 set_hitbox_value(AT_BAIR, 3, HG_LIFETIME, 9);
 set_hitbox_value(AT_BAIR, 3, HG_HITBOX_X, -35);

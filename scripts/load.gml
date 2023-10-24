@@ -132,6 +132,8 @@ sprite_change_offset("jex_utilt", 20, 37);
 
 sprite_change_offset("jex_nair", 23, 30);
 sprite_change_offset("jex_nair_hover", 23, 30);
+sprite_change_offset("jex_fair", 12, 30);
+sprite_change_offset("jex_fair_hover", 11, 30);
 sprite_change_offset("jex_dair", 13, 33);
 
 sprite_change_offset("jex_nspecial", 12, 30);

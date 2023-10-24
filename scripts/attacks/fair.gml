@@ -23,6 +23,9 @@ set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
 set_window_value(AT_FAIR, 3, AG_WINDOW_LENGTH, 5);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_FAIR, 3, AG_WINDOW_ANIM_FRAME_START, 2);
+set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_SFX, 0); //JEX only
+set_window_value(AT_FAIR, 3, AG_WINDOW_SFX_FRAME, 1);
+set_window_value(AT_FAIR, 3, AG_WINDOW_SFX, asset_get("sfx_absa_new_whip2"));
 
 set_window_value(AT_FAIR, 4, AG_WINDOW_LENGTH, 9);
 set_window_value(AT_FAIR, 4, AG_WINDOW_ANIM_FRAMES, 3);
@@ -34,7 +37,7 @@ set_window_value(AT_FAIR, 5, AG_WINDOW_ANIM_FRAMES, 4);
 set_window_value(AT_FAIR, 5, AG_WINDOW_ANIM_FRAME_START, 7);
 set_window_value(AT_FAIR, 5, AG_WINDOW_CANCEL_FRAME, 4); //used for IASA if not parried
 
-set_num_hitboxes(AT_FAIR, 3);
+set_num_hitboxes(AT_FAIR, 5);
 
 set_hitbox_value(AT_FAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 3);
@@ -88,7 +91,7 @@ set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
 //Strong-FAIR hitbox (replaces hitbox #2)
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 0); //see user_event7
+set_hitbox_value(AT_FAIR, 3, HG_WINDOW, noone); //see user_event7
 set_hitbox_value(AT_FAIR, 3, HG_WINDOW_CREATION_FRAME, 3);
 set_hitbox_value(AT_FAIR, 3, HG_LIFETIME, 9);
 set_hitbox_value(AT_FAIR, 3, HG_HITBOX_X, 35);
@@ -116,9 +119,46 @@ set_hitbox_value(AT_FAIR, 3, HG_PROJECTILE_GROUND_FRICTION, 0.3);
 set_hitbox_value(AT_FAIR, 3, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_FAIR, 3, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_FAIR, 3, HG_PROJECTILE_PARRY_STUN, 1);
-set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_UNBASHABLE, 1);
-set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
-set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_FAIR, 3, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_FAIR, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+set_hitbox_value(AT_FAIR, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+
+//JEX-Fair (Clap)
+set_hitbox_value(AT_FAIR, 4, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FAIR, 4, HG_WINDOW, noone); //3
+set_hitbox_value(AT_FAIR, 4, HG_LIFETIME, 2);
+set_hitbox_value(AT_FAIR, 4, HG_HITBOX_X, 12);
+set_hitbox_value(AT_FAIR, 4, HG_HITBOX_Y, -15);
+set_hitbox_value(AT_FAIR, 4, HG_WIDTH, 32);
+set_hitbox_value(AT_FAIR, 4, HG_HEIGHT, 28);
+set_hitbox_value(AT_FAIR, 4, HG_PRIORITY, 6);
+set_hitbox_value(AT_FAIR, 4, HG_DAMAGE, 10);
+set_hitbox_value(AT_FAIR, 4, HG_ANGLE, 45);
+set_hitbox_value(AT_FAIR, 4, HG_BASE_KNOCKBACK, 7);
+set_hitbox_value(AT_FAIR, 4, HG_KNOCKBACK_SCALING, .8);
+set_hitbox_value(AT_FAIR, 4, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_FAIR, 4, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_FAIR, 4, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+set_hitbox_value(AT_FAIR, 4, HG_HITBOX_GROUP, 2);
+
+//JEX-Fair (Shock)
+set_hitbox_value(AT_FAIR, 5, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_FAIR, 5, HG_WINDOW, noone); //3
+set_hitbox_value(AT_FAIR, 5, HG_WINDOW_CREATION_FRAME, 2);
+set_hitbox_value(AT_FAIR, 5, HG_LIFETIME, 3);
+set_hitbox_value(AT_FAIR, 5, HG_HITBOX_X, 24);
+set_hitbox_value(AT_FAIR, 5, HG_HITBOX_Y, -10);
+set_hitbox_value(AT_FAIR, 5, HG_WIDTH, 55);
+set_hitbox_value(AT_FAIR, 5, HG_HEIGHT, 55);
+set_hitbox_value(AT_FAIR, 5, HG_PRIORITY, 4);
+set_hitbox_value(AT_FAIR, 5, HG_DAMAGE, 9);
+set_hitbox_value(AT_FAIR, 5, HG_ANGLE, 45);
+set_hitbox_value(AT_FAIR, 5, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_FAIR, 5, HG_KNOCKBACK_SCALING, .5);
+set_hitbox_value(AT_FAIR, 5, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_FAIR, 5, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_FAIR, 5, HG_HIT_SFX, asset_get("sfx_absa_dattack"));
+set_hitbox_value(AT_FAIR, 5, HG_HITBOX_GROUP, 2);
 
 
 //Only for exploding cloud rune

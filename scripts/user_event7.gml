@@ -47,6 +47,13 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
     set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_clairen_tip_med"));
 
+    //FAIR and BAIR are tangled in a rune-variant problem; handled below.
+    set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("jex_fair"));
+    set_attack_value(AT_FAIR, AG_NOZ_HOVER_SPRITE, sprite_get("jex_fair_hover"));
+    set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 7);
+    set_window_value(AT_FAIR, 2, AG_WINDOW_SFX_FRAME, 6);
+    set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_SFX, 1);
+
     set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("jex_dair"));
 
     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("jex_nspecial"))
@@ -119,6 +126,13 @@ else //Restore Nozomi Data
     set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
     set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 
+    //FAIR and BAIR are also tangled in a rune-variant problem; handled below.
+    set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fair"));
+    set_attack_value(AT_FAIR, AG_NOZ_HOVER_SPRITE, sprite_get("fair_hover"));
+    set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 4);
+    set_window_value(AT_FAIR, 2, AG_WINDOW_SFX_FRAME, 3);
+    set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_SFX, 0);
+
     set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair"));
 
     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
@@ -184,61 +198,112 @@ else
 }
 //===========================================================================
 // RUNE: Air-Strongs
-if (noz_rune_flags.aerial_strongs)
+if (joke_explainer_mode) //gets complicated otherwise
 {
-    //FAIR
-    set_attack_value(AT_FAIR, AG_STRONG_CHARGE_WINDOW, 1);
-    set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, sound_get("sfx_noz_ice_medium"));
+    set_hitbox_value(AT_FAIR, 1, HG_WINDOW, noone);
+    set_hitbox_value(AT_FAIR, 2, HG_WINDOW, noone);
+    set_hitbox_value(AT_FAIR, 3, HG_WINDOW, noone);
+    set_hitbox_value(AT_FAIR, 4, HG_WINDOW, 3);
+    set_hitbox_value(AT_FAIR, 5, HG_WINDOW, 3);
+    set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_birdclap"));
 
-    set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);
-    set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 8);
-    set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 1);
-    set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter"));
-    set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 199);
+    set_hitbox_value(AT_BAIR, 1, HG_WINDOW, noone);
+    set_hitbox_value(AT_BAIR, 2, HG_WINDOW, noone);
+    set_hitbox_value(AT_BAIR, 3, HG_WINDOW, noone);
+    set_hitbox_value(AT_BAIR, 4, HG_WINDOW, 3);
+    set_hitbox_value(AT_BAIR, 5, HG_WINDOW, 3);
 
-    set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 0);
-    set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 3);
+    if (noz_rune_flags.aerial_strongs)
+    {
+        //FAIR
+        set_attack_value(AT_FAIR, AG_STRONG_CHARGE_WINDOW, 1);
+        set_hitbox_value(AT_FAIR, 4, HG_BASE_KNOCKBACK, 8);
+        set_hitbox_value(AT_FAIR, 4, HG_KNOCKBACK_SCALING, 1);
+        set_hitbox_value(AT_FAIR, 4, HG_HIT_SFX, asset_get("sfx_absa_uair"));
+        set_hitbox_value(AT_FAIR, 5, HG_BASE_KNOCKBACK, 7);
+        set_hitbox_value(AT_FAIR, 5, HG_KNOCKBACK_SCALING, .9);
+        set_hitbox_value(AT_FAIR, 5, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+        //BAIR
+    }
+    else
+    {
+        //FAIR
+        set_attack_value(AT_FAIR, AG_STRONG_CHARGE_WINDOW, 0);
+        set_hitbox_value(AT_FAIR, 4, HG_BASE_KNOCKBACK, 7);
+        set_hitbox_value(AT_FAIR, 4, HG_KNOCKBACK_SCALING, .8);
+        set_hitbox_value(AT_FAIR, 4, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+        set_hitbox_value(AT_FAIR, 5, HG_BASE_KNOCKBACK, 5);
+        set_hitbox_value(AT_FAIR, 5, HG_KNOCKBACK_SCALING, .5);
+        set_hitbox_value(AT_FAIR, 5, HG_HIT_SFX, asset_get("sfx_absa_dattack"));
+        //BAIR
 
-    //BAIR
-    set_attack_value(AT_BAIR, AG_STRONG_CHARGE_WINDOW, 1);
-    set_window_value(AT_BAIR, 2, AG_WINDOW_SFX, sound_get("sfx_noz_ice_medium"));
-
-    set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 145);
-    set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 8);
-    set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 1);
-    set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter"));
-    set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 199);
-
-    set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 0);
-    set_hitbox_value(AT_BAIR, 3, HG_WINDOW, 3);
+    }
 }
 else
 {
-    //FAIR
-    set_attack_value(AT_FAIR, AG_STRONG_CHARGE_WINDOW, 0);
-    set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
+    set_hitbox_value(AT_FAIR, 1, HG_WINDOW, 3);
+    set_hitbox_value(AT_FAIR, 4, HG_WINDOW, noone);
+    set_hitbox_value(AT_FAIR, 5, HG_WINDOW, noone);
+    set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 3);
+    set_hitbox_value(AT_BAIR, 4, HG_WINDOW, noone);
+    set_hitbox_value(AT_BAIR, 5, HG_WINDOW, noone);
 
-    set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);
-    set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 7);
-    set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .8);
-    set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
-    set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 0);
+    if (noz_rune_flags.aerial_strongs)
+    {
+        //FAIR
+        set_attack_value(AT_FAIR, AG_STRONG_CHARGE_WINDOW, 1);
+        set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, sound_get("sfx_noz_ice_medium"));
 
-    set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 3);
-    set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 0);
+        set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);
+        set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 8);
+        set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, 1);
+        set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter"));
+        set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 199);
 
-    //BAIR
-    set_attack_value(AT_BAIR, AG_STRONG_CHARGE_WINDOW, 0);
-    set_window_value(AT_BAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
+        set_hitbox_value(AT_FAIR, 2, HG_WINDOW, noone);
+        set_hitbox_value(AT_FAIR, 3, HG_WINDOW, 3);
 
-    set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 105);
-    set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);
-    set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .5);
-    set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
-    set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 0);
+        //BAIR
+        set_attack_value(AT_BAIR, AG_STRONG_CHARGE_WINDOW, 1);
+        set_window_value(AT_BAIR, 2, AG_WINDOW_SFX, sound_get("sfx_noz_ice_medium"));
 
-    set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 3);
-    set_hitbox_value(AT_BAIR, 3, HG_WINDOW, 0);
+        set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 145);
+        set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 8);
+        set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, 1);
+        set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter"));
+        set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 199);
+
+        set_hitbox_value(AT_BAIR, 2, HG_WINDOW, noone);
+        set_hitbox_value(AT_BAIR, 3, HG_WINDOW, 3);
+    }
+    else
+    {
+        //FAIR
+        set_attack_value(AT_FAIR, AG_STRONG_CHARGE_WINDOW, 0);
+        set_window_value(AT_FAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
+
+        set_hitbox_value(AT_FAIR, 1, HG_ANGLE, 45);
+        set_hitbox_value(AT_FAIR, 1, HG_BASE_KNOCKBACK, 7);
+        set_hitbox_value(AT_FAIR, 1, HG_KNOCKBACK_SCALING, .8);
+        set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+        set_hitbox_value(AT_FAIR, 1, HG_VISUAL_EFFECT, 0);
+
+        set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 3);
+        set_hitbox_value(AT_FAIR, 3, HG_WINDOW, noone);
+
+        //BAIR
+        set_attack_value(AT_BAIR, AG_STRONG_CHARGE_WINDOW, 0);
+        set_window_value(AT_BAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
+
+        set_hitbox_value(AT_BAIR, 1, HG_ANGLE, 105);
+        set_hitbox_value(AT_BAIR, 1, HG_BASE_KNOCKBACK, 6);
+        set_hitbox_value(AT_BAIR, 1, HG_KNOCKBACK_SCALING, .5);
+        set_hitbox_value(AT_BAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
+        set_hitbox_value(AT_BAIR, 1, HG_VISUAL_EFFECT, 0);
+
+        set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 3);
+        set_hitbox_value(AT_BAIR, 3, HG_WINDOW, noone);
+    }
 }
 //===========================================================================
 // RUNE: Exploding Clouds
@@ -290,6 +355,7 @@ else
     set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
     set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 32);
 }
+
 //===========================================================================
 //Keep in sync across CSS and userevent 7
 #define set_UI(jex)
