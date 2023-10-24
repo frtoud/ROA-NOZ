@@ -91,7 +91,7 @@ set_attack_value(AT_FSPECIAL_2, AG_LANDING_LAG, 25); //applied manually. see att
 set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 3);
-set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_CUSTOM_GRAVITY, 1.5);
+set_window_value(AT_FSPECIAL_2, 1, AG_WINDOW_CUSTOM_GRAVITY, 2);
 
 //charge
 set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_TYPE, 1);
