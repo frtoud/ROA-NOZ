@@ -129,6 +129,7 @@ sprite_change_offset("jex_hurt", 11, 30);
 sprite_change_offset("jex_jab", 15, 28);
 sprite_change_offset("jex_dtilt", 10, 27, true);
 sprite_change_offset("jex_utilt", 20, 37);
+sprite_change_offset("jex_dattack", 18, 27, true);
 
 sprite_change_offset("jex_nair", 23, 30);
 sprite_change_offset("jex_nair_hover", 23, 30);

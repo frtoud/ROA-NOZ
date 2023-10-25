@@ -40,6 +40,23 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
     set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 0);
 
+    set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("jex_dattack"));
+    set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("jex_dattack_hurt"));
+    set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 3);
+    set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 12);
+    set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_heavy2"));
+    set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 11);
+    set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 2);
+    set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 3);
+    set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+    set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_Y, -14);
+    set_hitbox_value(AT_DATTACK, 1, HG_WIDTH, 36);
+    set_hitbox_value(AT_DATTACK, 1, HG_HEIGHT, 36);
+    set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 7);
+    set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, .6);
+    set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 8);
+    set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 0.6);
+
     set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("jex_nair"));
     set_attack_value(AT_NAIR, AG_NOZ_HOVER_SPRITE, sprite_get("jex_nair_hover"));
     set_window_value(AT_NAIR, 2, AG_WINDOW_SFX, asset_get("sfx_clairen_spin"));
@@ -118,6 +135,23 @@ else //Restore Nozomi Data
     set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 0);
     set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
     set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 4);
+
+    set_attack_value(AT_DATTACK, AG_SPRITE, sprite_get("dattack"));
+    set_attack_value(AT_DATTACK, AG_HURTBOX_SPRITE, sprite_get("dattack_hurt"));
+    set_window_value(AT_DATTACK, 1, AG_WINDOW_ANIM_FRAMES, 2);
+    set_window_value(AT_DATTACK, 1, AG_WINDOW_LENGTH, 9);
+    set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_medium2"));
+    set_window_value(AT_DATTACK, 1, AG_WINDOW_SFX_FRAME, 8);
+    set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAMES, 3);
+    set_window_value(AT_DATTACK, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+    set_hitbox_value(AT_DATTACK, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+    set_hitbox_value(AT_DATTACK, 1, HG_HITBOX_Y, -8);
+    set_hitbox_value(AT_DATTACK, 1, HG_WIDTH, 50);
+    set_hitbox_value(AT_DATTACK, 1, HG_HEIGHT, 24);
+    set_hitbox_value(AT_DATTACK, 1, HG_DAMAGE, 5);
+    set_hitbox_value(AT_DATTACK, 1, HG_KNOCKBACK_SCALING, .3);
+    set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 6);
+    set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 0.3);
 
     set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
     set_attack_value(AT_NAIR, AG_NOZ_HOVER_SPRITE, sprite_get("nair_hover"));
