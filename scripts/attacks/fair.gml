@@ -139,6 +139,7 @@ set_hitbox_value(AT_FAIR, 4, HG_KNOCKBACK_SCALING, .8);
 set_hitbox_value(AT_FAIR, 4, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FAIR, 4, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_FAIR, 4, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
+set_hitbox_value(AT_FAIR, 4, HG_VISUAL_EFFECT, HFX_ABS_ZAP_BIG);
 set_hitbox_value(AT_FAIR, 4, HG_HITBOX_GROUP, 2);
 
 //JEX-Fair (Shock)
@@ -158,6 +159,7 @@ set_hitbox_value(AT_FAIR, 5, HG_KNOCKBACK_SCALING, .5);
 set_hitbox_value(AT_FAIR, 5, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FAIR, 5, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_FAIR, 5, HG_HIT_SFX, asset_get("sfx_absa_dattack"));
+set_hitbox_value(AT_FAIR, 5, HG_VISUAL_EFFECT, HFX_ABS_ZAP_BIG);
 set_hitbox_value(AT_FAIR, 5, HG_HITBOX_GROUP, 2);
 
 
