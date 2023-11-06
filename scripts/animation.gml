@@ -246,7 +246,7 @@ switch (state)
                                       y - 20, 10, true);
                     }
                 }
-                else if !hitstop && (window == 3) && (window_timer == 0)
+                else if !hitpause && (window == 3) && (window_timer == 0)
                 {
                     var xpos = x + get_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X) * spr_dir;
                     var ypos = y + get_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y);
@@ -267,7 +267,7 @@ switch (state)
                 {
                     spawn_twinkle(vfx_snow_twinkle, x, y - 6, 10, true);
                 }
-                if (!hitstop && window == 2 && window_timer == 
+                if (!hitpause && window == 2 && window_timer == 
                 (get_hitbox_value(AT_USTRONG, 1, HG_WINDOW_CREATION_FRAME)) )
                 { 
                     spawn_hit_fx(x, y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y), vfx_ice_big);
