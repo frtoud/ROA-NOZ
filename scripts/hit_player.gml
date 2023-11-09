@@ -42,7 +42,7 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
             //Standing on ice forces freeze on victims (if not immune)
              (hit_player_obj.noz_snowimmune_timer == 0 && noz_frostzone_timer > 0) )
             &&((my_hitboxID.attack == AT_USTRONG)
-            || (my_hitboxID.attack == AT_FSTRONG && (my_hitboxID.hbox_num == 2))
+            || (my_hitboxID.attack == AT_FSTRONG && (my_hitboxID.hbox_num == 4))
             || (my_hitboxID.attack == AT_DSTRONG && (my_hitboxID.hbox_num != 1))
             // RUNE: Aerials with STRONG effects
             || (my_hitboxID.attack == AT_BAIR && noz_rune_flags.aerial_strongs)
@@ -61,5 +61,8 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
         hit_player_obj.noz_freeze_anim_index = hit_player_obj.image_index;
         hit_player_obj.noz_freeze_anim_rotate = 0;
         hit_player_obj.noz_freeze_anim_rotate_speed = 2 + random_func(2, 10, true);
+
+        //bonus
+        sound_play(sound_get("sfx_freezie"));
     }
 }

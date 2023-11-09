@@ -99,13 +99,13 @@ case AT_DATTACK:
 //==============================================================
 case AT_FSTRONG:
 {
-    if (window == 2 && window_timer < 6)
+    if (window == 2)
     {
         //first windbox does not count as a "hit"
         has_hit = false;
         has_hit_player = false;
     }
-    else if (window == 3 && has_hit_player) && !was_parried
+    else if (window >= 4 && has_hit_player) && !was_parried
     {
         can_jump = true;
     }

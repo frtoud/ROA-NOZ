@@ -246,16 +246,33 @@ switch (state)
                                       y - 20, 10, true);
                     }
                 }
-                else if !hitpause && (window == 3) && (window_timer == 0)
+                else if (!hitpause)
                 {
-                    var xpos = x + get_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X) * spr_dir;
-                    var ypos = y + get_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y);
-                    spawn_hit_fx(xpos, ypos, vfx_ice_big);
+                    if (window == 3) && (window_timer == 0)
+                    {
+                        var xpos = x + (get_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X) - 10) * spr_dir;
+                        var ypos = y + get_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y);
+                        spawn_hit_fx(xpos, ypos + 6*anim_rand_y, vfx_ice_small);
+                    }
+                    else if (window == 3) && (window_timer == get_hitbox_value(AT_FSTRONG, 3, HG_WINDOW_CREATION_FRAME))
+                    {
+                        var xpos = x + (get_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_X) + 10) * spr_dir;
+                        var ypos = y + get_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_Y);
+                        spawn_hit_fx(xpos, ypos - 6*anim_rand_y, vfx_ice_small);
+                        sound_play(get_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX), false, noone, 0.8, 1.05)
+                    }
+                    else if (window == 4) && (window_timer == 0)
+                    {
+                        var xpos = x + get_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_X) * spr_dir;
+                        var ypos = y + get_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_Y);
+                        spawn_hit_fx(xpos, ypos, vfx_ice_big);
+                    }
                 }
-                else if (get_gameplay_time() % 2 == 0) && (window == 3)
+
+                if (get_gameplay_time() % 2 == 0) && (window == 4)
                 {
                     spawn_twinkle(vfx_snow_twinkle, x + (32 * spr_dir), y - 20, 
-                                  get_hitbox_value(AT_FSTRONG, 2, HG_WIDTH), false);
+                                  get_hitbox_value(AT_FSTRONG, 4, HG_WIDTH), false);
                 }
                 
             }break;
