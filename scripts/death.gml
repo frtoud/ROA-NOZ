@@ -16,17 +16,73 @@ move_cooldown[AT_USPECIAL] = 0;
 at_uspecial_cooldown_override = false;
 at_fspecial_cooldown_override = false;
 
+//===========================================================================
+// Merci Mawral
+if (noz_rune_flags.climber_mode) 
+&& instance_exists(noz_climber_twin) //paranoia
+{
+    noz_climber_is_dead = true;
 
+    //first death:
+    if (!noz_climber_twin.noz_climber_is_dead)
+    {
+        if (noz_climber_is_master)
+        {
+            //if main dies, allow clone to be independent
+            noz_climber_twin.custom_clone = false;
+        }
+        else
+        {
+            //if clone dies, must prevent it from being deleted
+            custom_clone = false;
+        }
+
+        //in either case, must prevent the death from taking out a stock
+        set_player_stocks(player, get_player_stocks(player) + 1);
+
+        noz_climber_damage_restore = get_player_damage(player);
+    }
+    else
+    {
+        //second death:
+        //protocol continues normally, both will respawn
+        clear_articles(self);
+        clear_articles(noz_climber_twin);
+
+        //except if this is the final stock; the twin was waiting in Respawn.
+        //this messes with match-end.
+        if (get_player_stocks(player) == 1)
+        {
+            set_state(PS_DEAD);
+            with (noz_climber_twin) set_state(PS_DEAD);
+        }
+
+    }
+
+}
+else
+{
+   //just destroy articles
+   clear_articles(self);
+}
+
+
+
+
+//===========================================================================
 //destroy articles
-with (obj_article1) if (player_id == other)
+#define clear_articles(dead_owner)
 {
-    should_die = true;
-}
-with (obj_article_platform) if (player_id == other)
-{
-    should_die = true;
-}
-with (obj_article2) if (player_id == other)
-{
-    should_die = true;
+    with (obj_article1) if (player_id == dead_owner)
+    {
+        should_die = true;
+    }
+    with (obj_article_platform) if (player_id == dead_owner)
+    {
+        should_die = true;
+    }
+    with (obj_article2) if (player_id == dead_owner)
+    {
+        should_die = true;
+    }
 }

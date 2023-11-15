@@ -190,11 +190,13 @@ noz_rune_flags =
     frostbite: has_rune("G"),
     jumpcancels: has_rune("J"),
 
-    ice_longer: has_rune("O"),
+    ice_longer: has_rune("X"),
 
     cloud_explode: has_rune("M"),
 
-    enhanced_hover: has_rune("N")
+    enhanced_hover: has_rune("N"),
+
+    climber_mode: has_rune("O")
 }
 
 //=================================================
@@ -299,6 +301,13 @@ at_uspecial_cooldown_override = false;
 
 noz_frostzone_timer = 0; //wether you are empowered by the ice
 noz_frostzone_empowered = false; //for individual attacks to track empowered properties
+
+noz_climber_twin = noone; //master has the twin, twin has the master
+noz_climber_is_master = !custom_clone; //wether it's the main one (custom_clone gets fiddled with)
+noz_climber_is_dead = false; //wether a twin is waiting to respawn.
+noz_climber_damage_restore = 0; //on death, damage returns to zero. surviving twin needs to restore the damage.
+
+
 
 //=================================================
 // Copy of other_init

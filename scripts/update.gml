@@ -9,6 +9,7 @@ if (at_dtilt_proj_cooldown > 0)
     }
 }
 
+// Runes & Robots
 //==============================================================================
 if (request_stats_update)
 {
@@ -16,6 +17,30 @@ if (request_stats_update)
     request_stats_update = false;
 }
 
+// Climbing Zone
+//==============================================================================
+if (noz_rune_flags.climber_mode) && (noz_climber_is_dead)
+{
+    if (noz_climber_is_master && noz_climber_twin.noz_climber_is_dead)
+    {
+        //both are dead, prep respawn
+        noz_climber_twin.custom_clone = true;
+
+        noz_climber_twin.noz_climber_is_dead = false;
+        noz_climber_is_dead = false;
+    }
+    else if (state == PS_RESPAWN)
+    {
+        //stall in respawn state
+        state_timer = 0;
+    }
+}
+//should only be relevant for this rune
+if (noz_climber_damage_restore > 0)
+{
+    set_player_damage(player, noz_climber_damage_restore);
+    noz_climber_damage_restore = 0;
+}
 
 
 //Frostzone (Ice, Cloud) bonus

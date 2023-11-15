@@ -1,6 +1,6 @@
 //USER EVENT 7 - Stat Update
 
-//if (!custom_clone)
+if (!custom_clone)
    set_UI(joke_explainer_mode)
 
 if (joke_explainer_mode) //Enable JokeExplainer Echo
@@ -388,6 +388,16 @@ else
     set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
     set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
     set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 32);
+}
+
+
+if (noz_rune_flags.climber_mode && (noz_climber_twin == noone))
+{
+    noz_climber_twin = instance_create(x, y, "oPlayer");
+    noz_climber_twin.joke_explainer_mode = !joke_explainer_mode;
+    noz_climber_twin.noz_climber_twin = self;
+    noz_climber_twin.noz_climber_is_master = false;
+    noz_climber_twin.clone = false; //experimental. seems to not cause too much side effects.
 }
 
 //===========================================================================
