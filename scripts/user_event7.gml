@@ -398,6 +398,9 @@ if (noz_rune_flags.climber_mode && (noz_climber_twin == noone))
     noz_climber_twin.noz_climber_twin = self;
     noz_climber_twin.noz_climber_is_master = false;
     noz_climber_twin.clone = false; //experimental. seems to not cause too much side effects.
+
+    noz_climber_twin.state = state;
+    noz_climber_twin.state_timer = state_timer;
 }
 
 //===========================================================================

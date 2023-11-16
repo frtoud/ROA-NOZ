@@ -19,7 +19,7 @@ if (request_stats_update)
 
 // Climbing Zone
 //==============================================================================
-if (noz_rune_flags.climber_mode) && (noz_climber_is_dead)
+if instance_exists(noz_climber_twin) && (noz_climber_is_dead)
 {
     if (noz_climber_is_master && noz_climber_twin.noz_climber_is_dead)
     {

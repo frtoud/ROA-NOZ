@@ -18,8 +18,7 @@ at_fspecial_cooldown_override = false;
 
 //===========================================================================
 // Merci Mawral
-if (noz_rune_flags.climber_mode) 
-&& instance_exists(noz_climber_twin) //paranoia
+if instance_exists(noz_climber_twin)
 {
     noz_climber_is_dead = true;
 
