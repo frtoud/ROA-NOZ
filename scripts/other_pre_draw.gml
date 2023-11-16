@@ -1,5 +1,10 @@
 // other_pre_draw
-if ("other_player_id" in self && other_player_id != noz_handler_id) exit;
+if ("other_player_id" in self && (other_player_id != noz_handler_id) ) 
+//for some reason, climber-mode doesnt allow this to run from the POV of the main Nozomi... hmm
+&& (other_player_id.noz_climber_twin != noz_handler_id)
+exit;
+
+
 
 //frozen or about-to-be
 var is_frozen = (noz_freeze_timer > 0) || (noz_freeze_timer == -8);
