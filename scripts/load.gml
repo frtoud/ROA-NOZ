@@ -118,15 +118,18 @@ sprite_change_offset("jex_dashturn", 22, 27);
 sprite_change_offset("jex_dashstop", 33, 28);
 sprite_change_offset("jex_parry", 17, 29);
 sprite_change_offset("jex_reflect", 24, 29);
-
 sprite_change_offset("jex_airdodge", 15, 31);
-
+sprite_change_offset("jex_waveland", 14, 27);
+sprite_change_offset("jex_tech", 9, 27);
 sprite_change_offset("jex_pratfall", 11, 26);
 sprite_change_offset("jex_pratland", 12, 25);
-
+sprite_change_offset("jex_roll_forward", 14, 27);
+sprite_change_offset("jex_roll_backward", 14, 28);
 sprite_change_offset("jex_hurt", 11, 30);
+sprite_change_offset("jex_spinhurt", 14, 28);
 
 sprite_change_offset("jex_jab", 15, 28);
+
 sprite_change_offset("jex_dtilt", 10, 27, true);
 sprite_change_offset("jex_utilt", 20, 37);
 sprite_change_offset("jex_dattack", 18, 27, true);

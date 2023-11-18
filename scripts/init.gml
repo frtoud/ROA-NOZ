@@ -379,9 +379,10 @@ uhc_taunt_videos[0] = { sprite:sprite_get("cmp_uhc"), song:sound_get("cmp_uhc"),
 //==========================================================
 // Joke Explainer Costume-like structure
 // The rest are handled by setting the sprites in the attack grid!
+
 var spritelist = [ "idle", "jumpstart", "jump", "doublejump", "doublejump_back", "walljump", "land", 
-"crouch", "walk", "walkturn", "dashstart", "dash", "dashturn", "dashstop", "parry", "airdodge",
-"pratfall", "pratland", "hurt" ];
+"crouch", "walk", "walkturn", "dashstart", "dash", "dashturn", "dashstop", "parry", "airdodge", "waveland", 
+"pratfall", "pratland", "hurt", "spinhurt", "tech", "roll_forward", "roll_backward" ];
 noz_joke_explainer_sprites[array_length(spritelist)-1] = {};
 
 for (var i = 0; i < array_length(spritelist); i++)
