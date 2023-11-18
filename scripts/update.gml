@@ -45,10 +45,16 @@ if (noz_climber_damage_restore > 0)
 
 //Frostzone (Ice, Cloud) bonus
 //==============================================================================
-if (noz_frostzone_timer > 0)
+if (noz_is_in_frost_zone && !joke_explainer_mode)
+{
+    noz_frostzone_timer = min(noz_frostzone_timer + noz_frostzone_increment, 
+                            noz_frostzone_timer_max)
+}
+else if (noz_frostzone_timer > 0)
 {
     noz_frostzone_timer--;
 }
+noz_is_in_frost_zone = false;
 
 //FSPECIAL soft cooldown
 //==============================================================================

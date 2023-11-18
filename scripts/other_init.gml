@@ -1,5 +1,6 @@
 //other_init
 noz_handler_id = noone;
+noz_is_in_snow_zone = false;
 noz_snowstack_timer = 0;
 noz_snow_frostbite_timer = 0;
 noz_snowimmune_timer = 0;

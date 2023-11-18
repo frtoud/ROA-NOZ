@@ -211,7 +211,7 @@ noz_snowstack_timer_max = 60 * 6;
 noz_snowimmune_timer_max = 60 * 2;
 noz_frostzone_timer_max = 120; //maximum length of empoweredness
 noz_snowstack_increment = 2; //ticks of chill per tick spent in zone
-noz_frostzone_increment = 4; //ticks of empoweredness per tick spent in zone
+noz_frostzone_increment = 3; //ticks of empoweredness per tick spent in zone
 
 noz_freeze_grav = 0.1;
 noz_freeze_base_stun = 45;
@@ -299,6 +299,8 @@ at_uspecial_hover_meter = noz_uspecial_hover_max;
 at_fspecial_cooldown_override = false;
 at_uspecial_cooldown_override = false;
 
+
+noz_is_in_frost_zone = false; //if you are this exact frame in a snow zone (for buff reasons)
 noz_frostzone_timer = 0; //wether you are empowered by the ice
 noz_frostzone_empowered = false; //for individual attacks to track empowered properties
 
@@ -314,6 +316,7 @@ noz_climber_damage_restore = 0; //on death, damage returns to zero. surviving tw
 // Ensures Nozomi can apply debuffs to herself
 // Looking at you, Kirby >:]
 noz_handler_id = noone;
+noz_is_in_snow_zone = false;
 noz_snowstack_timer = 0;
 noz_snow_frostbite_timer = 0;
 noz_snowimmune_timer = 0;

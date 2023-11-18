@@ -2,6 +2,14 @@
 
 with (oPlayer)
 {
+    // Doesnt matter who does this operation. do as soon as possible
+    if (noz_is_in_snow_zone)
+    {
+        noz_snowstack_timer = min(noz_snowstack_timer + other.noz_snowstack_increment, 
+                                                        other.noz_snowstack_timer_max)
+        noz_is_in_snow_zone = false;
+    }
+
     // Runs from each opponent's perspective
     // if multiple Nozomis are in a match, this code is only executed by the
     // latest Nozomi to have applied an effect to you.

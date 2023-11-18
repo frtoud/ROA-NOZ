@@ -52,15 +52,13 @@ with (oPlayer) if collision_rectangle(other.x - other.snow_column_width, other.s
     {
         if (noz_snowimmune_timer < 1)
         {
-            noz_snowstack_timer = min(noz_snowstack_timer + other.player_id.noz_snowstack_increment, 
-                                      other.player_id.noz_snowstack_timer_max)
+            noz_is_in_snow_zone = true;
             noz_handler_id = other.player_id;
         }
     }
     else if (url == other.player_id.url)
     {
-        noz_frostzone_timer = min(noz_frostzone_timer + noz_frostzone_increment, 
-                                  noz_frostzone_timer_max)
+        noz_is_in_frost_zone = true;
     }
 }
 
