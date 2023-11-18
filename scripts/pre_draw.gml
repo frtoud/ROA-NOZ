@@ -27,7 +27,8 @@ var scale = 1 + small_sprites;
 var attack_exceptions = (state == PS_ATTACK_AIR) && (
 (attack == AT_USPECIAL && !(image_index > 12 && image_index < 16) && image_index != 22)
 || (attack == AT_USPECIAL_2)
-|| (attack == AT_UAIR && image_index > 0 && image_index < 5 )
+|| (attack == AT_UAIR && image_index >= (joke_explainer_mode ? 0 : 1)
+                      && image_index <  (joke_explainer_mode ? 6 : 5) )
 || (attack == AT_NAIR && (at_uspecial_exhausted  || joke_explainer_mode) ) )
 
 if (at_uspecial_hovering && state != PS_PRATFALL) && !attack_exceptions

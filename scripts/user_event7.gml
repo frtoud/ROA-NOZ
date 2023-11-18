@@ -36,7 +36,7 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
 
     set_attack_value(AT_UTILT, AG_SPRITE, sprite_get("jex_utilt"));
     set_window_value(AT_UTILT, 1, AG_WINDOW_SFX, asset_get("sfx_clairen_swing_med"));
-    set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, 125);
+    set_hitbox_value(AT_UTILT, 1, HG_VISUAL_EFFECT, HFX_ABS_ZAP_BIG);
     set_hitbox_value(AT_UTILT, 1, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
     set_window_value(AT_UTILT, 1, AG_WINDOW_SFX_FRAME, 0);
 
@@ -70,6 +70,16 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 7);
     set_window_value(AT_FAIR, 2, AG_WINDOW_SFX_FRAME, 6);
     set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_SFX, 1);
+
+    set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("jex_uair"));
+    set_attack_value(AT_UAIR, AG_NOZ_HOVER_SPRITE, sprite_get("jex_uair_hover"));
+    set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, asset_get("sfx_waveland_abs"));
+    set_window_value(AT_UAIR, 2, AG_WINDOW_SFX, asset_get("sfx_waveland_abs"));
+    set_window_value(AT_UAIR, 3, AG_WINDOW_SFX, asset_get("sfx_waveland_abs"));
+    set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
+    set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
+    set_hitbox_value(AT_UAIR, 1, HG_VISUAL_EFFECT, HFX_ABS_ZAP_SMALL);
+    set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, HFX_ABS_ZAP_BIG);
 
     set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("jex_dair"));
 
@@ -166,6 +176,15 @@ else //Restore Nozomi Data
     set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 4);
     set_window_value(AT_FAIR, 2, AG_WINDOW_SFX_FRAME, 3);
     set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_SFX, 0);
+
+    set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair"));
+    set_attack_value(AT_UAIR, AG_NOZ_HOVER_SPRITE, sprite_get("uair_hover"));
+    set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
+    set_window_value(AT_UAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_weak1"));
+    set_window_value(AT_UAIR, 3, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
+    set_hitbox_value(AT_UAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
+    set_hitbox_value(AT_UAIR, 3, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+    set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 0);
 
     set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair"));
 
