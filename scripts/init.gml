@@ -181,21 +181,22 @@ noz_anim_backflip_spr = sprite_get("doublejump_back");
 //Rune flags
 noz_rune_flags = 
 {
-    nair_boost: has_rune("A"),
-    aerial_strongs: has_rune("B"),
-    dstrong_spread: has_rune("C"),
-    reflector: has_rune("D"),
-    air_control: has_rune("E"),
-    air_sleep: has_rune("L"),
+    dstrong_spread: has_rune("A"),
+    reflector: has_rune("B"),
+
+    air_control: has_rune("D"),
+    nair_boost: has_rune("E"),
+    aerial_strongs: has_rune("F"),
+
     frostbite: has_rune("G"),
+    ice_longer: has_rune("H"),
+
     jumpcancels: has_rune("J"),
 
-    ice_longer: has_rune("X"),
 
-    cloud_explode: has_rune("M"),
-
-    enhanced_hover: has_rune("N"),
-
+    cloud_explode: has_rune("L"),
+    enhanced_sleep: has_rune("N"),
+    enhanced_hover: has_rune("M"),
     climber_mode: has_rune("O")
 }
 

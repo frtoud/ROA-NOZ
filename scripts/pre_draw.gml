@@ -62,9 +62,11 @@ if (attack == AT_NSPECIAL && (window > 1) &&
                        get_window_value(AT_NSPECIAL, 5, AG_WINDOW_LENGTH)) 
              : 100);
 
+    var radius_mult = scale * (noz_rune_flags.enhanced_sleep ? 1.6 : 1);
+
     shader_start();
     draw_sprite_ext(vfx_nspecial_spr, 
-                    floor(get_gameplay_time() / 5 ) % 4, x, y-(char_height/2), scale, scale, 
+                    floor(get_gameplay_time() / 5 ) % 4, x, y-(char_height/2), radius_mult, radius_mult, 
                     floor(get_gameplay_time() * 5 ) % 360, c_white,
                     (alpha) * 0.01 * 0.7 );
     shader_end();

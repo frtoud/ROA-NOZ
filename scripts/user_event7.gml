@@ -249,6 +249,18 @@ else
 {
     noz_uspecial_hover_max = 480;
 }
+
+//===========================================================================
+// RUNE: Enhanced Sleep
+if (noz_rune_flags.enhanced_sleep)
+{
+    noz_nspecial_radius = floor(50 * 1.6);
+}
+else
+{
+    noz_nspecial_radius = 50;
+}
+
 //===========================================================================
 // RUNE: Air-Strongs
 if (joke_explainer_mode) //gets complicated otherwise

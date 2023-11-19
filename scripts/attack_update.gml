@@ -283,7 +283,7 @@ case AT_NSPECIAL:
         with (oPlayer)
         {
             if (self != other && (get_player_team(self.player) != get_player_team(other.player))
-                && (!free || other.noz_rune_flags.air_sleep) && noz_sleepimmune_timer == 0 && 
+                && (!free || other.noz_rune_flags.enhanced_sleep) && noz_sleepimmune_timer == 0 && 
                 hurtboxID == collision_circle(sleep_zone_x, sleep_zone_y,
                              other.noz_nspecial_radius, hurtboxID, true, false))
             {
