@@ -29,7 +29,7 @@ set_window_value(AT_BAIR, 4, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_BAIR, 4, AG_WINDOW_ANIM_FRAME_START, 5);
 set_window_value(AT_BAIR, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
 
-set_num_hitboxes(AT_BAIR, 3);
+set_num_hitboxes(AT_BAIR, 5);
 
 set_hitbox_value(AT_BAIR, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 1, HG_WINDOW, 3);
@@ -115,6 +115,41 @@ set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_BAIR, 3, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
+//JEX hitboxes
+set_hitbox_value(AT_BAIR, 4, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_BAIR, 4, HG_WINDOW, 3);
+set_hitbox_value(AT_BAIR, 4, HG_LIFETIME, 3);
+set_hitbox_value(AT_BAIR, 4, HG_HITBOX_X, -18);
+set_hitbox_value(AT_BAIR, 4, HG_HITBOX_Y, -16);
+set_hitbox_value(AT_BAIR, 4, HG_WIDTH, 50);
+set_hitbox_value(AT_BAIR, 4, HG_HEIGHT, 24);
+set_hitbox_value(AT_BAIR, 4, HG_PRIORITY, 2);
+set_hitbox_value(AT_BAIR, 4, HG_DAMAGE, 11);
+set_hitbox_value(AT_BAIR, 4, HG_ANGLE, 115);
+set_hitbox_value(AT_BAIR, 4, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_BAIR, 4, HG_KNOCKBACK_SCALING, .6);
+set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 8);
+set_hitbox_value(AT_BAIR, 4, HG_HITPAUSE_SCALING, .7);
+set_hitbox_value(AT_BAIR, 4, HG_HIT_SFX, asset_get("sfx_absa_dattack"));
+set_hitbox_value(AT_BAIR, 4, HG_VISUAL_EFFECT, HFX_ABS_ZAP_BIG);
+
+set_hitbox_value(AT_BAIR, 5, HG_HITBOX_TYPE, 1);
+set_hitbox_value(AT_BAIR, 5, HG_WINDOW, 3);
+set_hitbox_value(AT_BAIR, 5, HG_WINDOW_CREATION_FRAME, 3);
+set_hitbox_value(AT_BAIR, 5, HG_LIFETIME, 3);
+set_hitbox_value(AT_BAIR, 5, HG_HITBOX_X, -28);
+set_hitbox_value(AT_BAIR, 5, HG_HITBOX_Y, -16);
+set_hitbox_value(AT_BAIR, 5, HG_WIDTH, 36);
+set_hitbox_value(AT_BAIR, 5, HG_HEIGHT, 36);
+set_hitbox_value(AT_BAIR, 5, HG_PRIORITY, 2);
+set_hitbox_value(AT_BAIR, 5, HG_DAMAGE, 8);
+set_hitbox_value(AT_BAIR, 5, HG_ANGLE, 105);
+set_hitbox_value(AT_BAIR, 5, HG_BASE_KNOCKBACK, 5);
+set_hitbox_value(AT_BAIR, 5, HG_KNOCKBACK_SCALING, .5);
+set_hitbox_value(AT_BAIR, 5, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_BAIR, 5, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(AT_BAIR, 5, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
+set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT, HFX_ABS_ZAP_SMALL);
 
 //Only for exploding cloud rune
 set_hitbox_value(AT_BAIR, 9, HG_HITBOX_TYPE, 2);

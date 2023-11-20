@@ -417,14 +417,11 @@ switch (state)
             case AT_FAIR:
             {
                 use_hover_sprite();
-                if (get_num_hitboxes(AT_FAIR) == 1)
-                && (window == get_hitbox_value(AT_FAIR, 2, HG_WINDOW))
-                && (window_timer <= get_hitbox_value(AT_FAIR, 2, HG_WINDOW_CREATION_FRAME))
+                if (window == 3) && ! joke_explainer_mode && !noz_frostzone_empowered
                 {
                     spawn_twinkle(vfx_snow_twinkle, x + (spr_dir * 32), y - 24, 24, false)
                 }
-
-                if (window == 1 && strong_charge > 0)
+                else if (window == 1 && strong_charge > 0)
                 {
                     image_index = get_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START);
                 }
@@ -432,14 +429,22 @@ switch (state)
             case AT_BAIR:
             {
                 use_hover_sprite();
-                if (get_num_hitboxes(AT_BAIR) == 1)
-                && (window == get_hitbox_value(AT_BAIR, 2, HG_WINDOW))
-                && (window_timer <= get_hitbox_value(AT_BAIR, 2, HG_WINDOW_CREATION_FRAME))
+                if (window == 3)
                 {
-                    spawn_twinkle(vfx_snow_twinkle, x + (spr_dir * -32), y - 24, 24, false)
+                    if (joke_explainer_mode)
+                    {
+                        var k = spawn_twinkle(vfx_electric_twinkle, x - (spr_dir * 32),
+                                                                    y - 16, 32, false);
+                        k.draw_angle = 45 * random_func(1, 8, true);
+                        k.hsp = hsp;
+                        k.vsp = vsp;
+                    }
+                    else if (!noz_frostzone_empowered)
+                    {
+                        spawn_twinkle(vfx_snow_twinkle, x + (spr_dir * -32), y - 24, 24, false)
+                    }
                 }
-
-                if (window == 1 && strong_charge > 0)
+                else if (window == 1 && strong_charge > 0)
                 {
                     image_index = get_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAME_START);
                 }
@@ -528,6 +533,7 @@ if (joke_explainer_mode)
     {
         k.depth = depth - 1;
     }
+    return k;
 }
 //===========================================================
 #define use_hover_sprite()

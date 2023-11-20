@@ -71,6 +71,11 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     set_window_value(AT_FAIR, 2, AG_WINDOW_SFX_FRAME, 6);
     set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_SFX, 1);
 
+    set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("jex_bair"));
+    set_attack_value(AT_BAIR, AG_NOZ_HOVER_SPRITE, sprite_get("jex_bair_hover"));
+    set_window_value(AT_BAIR, 2, AG_WINDOW_SFX, asset_get("sfx_absa_new_whip2"));
+    set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 6);
+
     set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("jex_uair"));
     set_attack_value(AT_UAIR, AG_NOZ_HOVER_SPRITE, sprite_get("jex_uair_hover"));
     set_window_value(AT_UAIR, 1, AG_WINDOW_SFX, asset_get("sfx_waveland_abs"));
@@ -176,6 +181,11 @@ else //Restore Nozomi Data
     set_window_value(AT_FAIR, 2, AG_WINDOW_LENGTH, 4);
     set_window_value(AT_FAIR, 2, AG_WINDOW_SFX_FRAME, 3);
     set_window_value(AT_FAIR, 3, AG_WINDOW_HAS_SFX, 0);
+
+    set_attack_value(AT_BAIR, AG_SPRITE, sprite_get("bair"));
+    set_attack_value(AT_BAIR, AG_NOZ_HOVER_SPRITE, sprite_get("bair_hover"));
+    set_window_value(AT_BAIR, 2, AG_WINDOW_SFX, asset_get("sfx_swipe_weak2"));
+    set_window_value(AT_BAIR, 3, AG_WINDOW_LENGTH, 5);
 
     set_attack_value(AT_UAIR, AG_SPRITE, sprite_get("uair"));
     set_attack_value(AT_UAIR, AG_NOZ_HOVER_SPRITE, sprite_get("uair_hover"));
@@ -289,6 +299,13 @@ if (joke_explainer_mode) //gets complicated otherwise
         set_hitbox_value(AT_FAIR, 5, HG_KNOCKBACK_SCALING, .9);
         set_hitbox_value(AT_FAIR, 5, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
         //BAIR
+        set_attack_value(AT_BAIR, AG_STRONG_CHARGE_WINDOW, 1);
+        set_hitbox_value(AT_BAIR, 4, HG_BASE_KNOCKBACK, 8);
+        set_hitbox_value(AT_BAIR, 4, HG_KNOCKBACK_SCALING, 1);
+        set_hitbox_value(AT_BAIR, 4, HG_HIT_SFX, asset_get("sfx_absa_uair"));
+        set_hitbox_value(AT_BAIR, 5, HG_BASE_KNOCKBACK, 7);
+        set_hitbox_value(AT_BAIR, 5, HG_KNOCKBACK_SCALING, .9);
+        set_hitbox_value(AT_BAIR, 5, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
     }
     else
     {
@@ -301,6 +318,13 @@ if (joke_explainer_mode) //gets complicated otherwise
         set_hitbox_value(AT_FAIR, 5, HG_KNOCKBACK_SCALING, .5);
         set_hitbox_value(AT_FAIR, 5, HG_HIT_SFX, asset_get("sfx_absa_dattack"));
         //BAIR
+        set_attack_value(AT_BAIR, AG_STRONG_CHARGE_WINDOW, 0);
+        set_hitbox_value(AT_BAIR, 4, HG_BASE_KNOCKBACK, 6);
+        set_hitbox_value(AT_BAIR, 4, HG_KNOCKBACK_SCALING, .6);
+        set_hitbox_value(AT_BAIR, 4, HG_HIT_SFX, asset_get("sfx_absa_dattack"));
+        set_hitbox_value(AT_BAIR, 5, HG_BASE_KNOCKBACK, 5);
+        set_hitbox_value(AT_BAIR, 5, HG_KNOCKBACK_SCALING, .5);
+        set_hitbox_value(AT_BAIR, 5, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
 
     }
 }
