@@ -57,12 +57,24 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 8);
     set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 0.6);
 
+    set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 2);
+    set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 2);
+
+    set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 2);
+    set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, 2);
+
     set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("jex_nair"));
     set_attack_value(AT_NAIR, AG_NOZ_HOVER_SPRITE, sprite_get("jex_nair_hover"));
     set_window_value(AT_NAIR, 2, AG_WINDOW_SFX, asset_get("sfx_clairen_spin"));
     set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
     set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
     set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_clairen_tip_med"));
+    set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, 4);
+    set_hitbox_value(AT_NAIR, 5, HG_HITBOX_GROUP, 4);
+    set_hitbox_value(AT_NAIR, 2, HG_HITBOX_GROUP, 5);
+    set_hitbox_value(AT_NAIR, 6, HG_HITBOX_GROUP, 5);
+    set_hitbox_value(AT_NAIR, 3, HG_HITBOX_GROUP, 6);
+    set_hitbox_value(AT_NAIR, 7, HG_HITBOX_GROUP, 6);
 
     //FAIR and BAIR are tangled in a rune-variant problem; handled below.
     set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("jex_fair"));
@@ -87,6 +99,9 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, HFX_ABS_ZAP_BIG);
 
     set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("jex_dair"));
+    set_hitbox_value(AT_DAIR, 1, HG_HITBOX_GROUP, 3);
+    set_hitbox_value(AT_DAIR, 2, HG_HITBOX_GROUP, 3);
+    set_hitbox_value(AT_DAIR, 3, HG_HITBOX_GROUP, 3);
 
     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("jex_nspecial"))
     set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("jex_nspecial"));
@@ -168,12 +183,24 @@ else //Restore Nozomi Data
     set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 6);
     set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 0.3);
 
+    set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
+    set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 1);
+
+    set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 1);
+    set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, 1);
+
     set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
     set_attack_value(AT_NAIR, AG_NOZ_HOVER_SPRITE, sprite_get("nair_hover"));
     set_window_value(AT_NAIR, 2, AG_WINDOW_SFX, asset_get("sfx_spin"));
     set_hitbox_value(AT_NAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
     set_hitbox_value(AT_NAIR, 5, HG_HIT_SFX, asset_get("sfx_blow_weak2"));
     set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
+    set_hitbox_value(AT_NAIR, 1, HG_HITBOX_GROUP, 1);
+    set_hitbox_value(AT_NAIR, 5, HG_HITBOX_GROUP, 1);
+    set_hitbox_value(AT_NAIR, 2, HG_HITBOX_GROUP, 2);
+    set_hitbox_value(AT_NAIR, 6, HG_HITBOX_GROUP, 2);
+    set_hitbox_value(AT_NAIR, 3, HG_HITBOX_GROUP, 3);
+    set_hitbox_value(AT_NAIR, 7, HG_HITBOX_GROUP, 3);
 
     //FAIR and BAIR are also tangled in a rune-variant problem; handled below.
     set_attack_value(AT_FAIR, AG_SPRITE, sprite_get("fair"));
@@ -197,6 +224,9 @@ else //Restore Nozomi Data
     set_hitbox_value(AT_UAIR, 3, HG_VISUAL_EFFECT, 0);
 
     set_attack_value(AT_DAIR, AG_SPRITE, sprite_get("dair"));
+    set_hitbox_value(AT_DAIR, 1, HG_HITBOX_GROUP, 1);
+    set_hitbox_value(AT_DAIR, 2, HG_HITBOX_GROUP, 1);
+    set_hitbox_value(AT_DAIR, 3, HG_HITBOX_GROUP, 1);
 
     set_attack_value(AT_NSPECIAL, AG_SPRITE, sprite_get("nspecial"));
     set_attack_value(AT_NSPECIAL, AG_AIR_SPRITE, sprite_get("nspecial_air"));

@@ -132,6 +132,8 @@ set_hitbox_value(AT_BAIR, 4, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_BAIR, 4, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_BAIR, 4, HG_HIT_SFX, asset_get("sfx_absa_dattack"));
 set_hitbox_value(AT_BAIR, 4, HG_VISUAL_EFFECT, HFX_ABS_ZAP_BIG);
+set_hitbox_value(AT_BAIR, 4, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_BAIR, 4, HG_HIT_LOCKOUT, 4);
 
 set_hitbox_value(AT_BAIR, 5, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_BAIR, 5, HG_WINDOW, 3);
@@ -150,6 +152,7 @@ set_hitbox_value(AT_BAIR, 5, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_BAIR, 5, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_BAIR, 5, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
 set_hitbox_value(AT_BAIR, 5, HG_VISUAL_EFFECT, HFX_ABS_ZAP_SMALL);
+set_hitbox_value(AT_BAIR, 5, HG_HITBOX_GROUP, 2);
 
 //Only for exploding cloud rune
 set_hitbox_value(AT_BAIR, 9, HG_HITBOX_TYPE, 2);

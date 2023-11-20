@@ -115,3 +115,4 @@ set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, 199);
 set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT_Y_OFFSET, -10);
 set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_ice_shatter"));
 set_hitbox_value(AT_FSTRONG, 4, HG_MUNO_OBJECT_LAUNCH_ANGLE, 1);
+set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_GROUP, -1);
