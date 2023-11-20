@@ -272,6 +272,17 @@ else
 }
 
 //===========================================================================
+// RUNE: Enhanced Dodge
+if (noz_rune_flags.enhanced_dodge)
+{
+    air_dodge_speed = 9;
+}
+else
+{
+    air_dodge_speed = 7.5;
+}
+
+//===========================================================================
 // RUNE: Air-Strongs
 if (joke_explainer_mode) //gets complicated otherwise
 {

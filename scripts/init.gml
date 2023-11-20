@@ -191,7 +191,7 @@ noz_rune_flags =
 
     frostbite: has_rune("G"),
     ice_longer: has_rune("H"),
-
+    enhanced_dodge: has_rune("I"),
     jumpcancels: has_rune("J"),
 
 
@@ -286,6 +286,11 @@ at_dair_need_landing_lag_hitbox = false;
 
 //reflector rune
 at_reflector_damage_block = noz_reflector_damage_max;
+
+//Airdash rune
+at_airdash_prev_hsp = 0;
+at_airdash_prev_vsp = 0;
+
 
 at_fspecial_started_free = false;
 at_fspecial_on_soft_cooldown = 0;

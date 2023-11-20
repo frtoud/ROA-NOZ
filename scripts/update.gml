@@ -247,6 +247,31 @@ if (noz_rune_flags.reflector) && shield_down
     user_event(1);
 }
 
+//==============================================================================
+//Super-Airdodge Rune 
+if (state == PS_AIR_DODGE) && (noz_rune_flags.enhanced_dodge)
+{
+    if (window == 2)
+    {
+        if (at_airdash_prev_vsp < 0)
+            at_airdash_prev_vsp += gravity_speed;
+        hsp = at_airdash_prev_hsp;
+        vsp = at_airdash_prev_vsp;
+
+        window_timer += 1;
+        if (window_timer > 8)
+        {
+            state = PS_IDLE_AIR;
+            state_timer = 2;
+        }
+    }
+    else if (window == 1)
+    {
+        at_airdash_prev_hsp = hsp;
+        at_airdash_prev_vsp = vsp;
+    }
+}
+
 //Cooldown overrides
 //==============================================================================
 if (at_uspecial_cooldown_override)
