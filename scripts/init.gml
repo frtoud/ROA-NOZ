@@ -213,7 +213,7 @@ noz_snowstack_timer_max = 60 * 6;
 noz_snowimmune_timer_max = 60 * 2;
 noz_frostzone_timer_max = 120; //maximum length of empoweredness
 noz_snowstack_increment = 2; //ticks of chill per tick spent in zone
-noz_frostzone_increment = 3; //ticks of empoweredness per tick spent in zone
+noz_frostzone_increment = noz_frostzone_timer_max; //ticks of empoweredness per tick spent in zone
 
 noz_freeze_grav = 0.1;
 noz_freeze_base_stun = 45;
