@@ -641,7 +641,10 @@ case AT_USPECIAL_2:
             at_uspecial_cooldown_override = true;
             clear_button_buffer(PC_SPECIAL_PRESSED);
         }
-        
+
+        //prevents update.gml from removing the hover status too early.
+        //this can be important when landing DURING window 2; resetting hover prematurely. 
+        free = true;
     }
 } break;
 //==============================================================
