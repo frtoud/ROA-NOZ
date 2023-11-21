@@ -280,6 +280,30 @@ noz_uspecial_hover_hspeed = 1.5 + air_max_speed;
 noz_uspecial_hover_hstrength = 1.5 * air_accel;
 
 //===========================================================================
+// RUNE: Bonus Friction
+if (noz_rune_flags.low_friction)
+{
+    walk_speed = 5;
+    walk_accel = 0.1;
+    dash_turn_time = 16;
+    dash_turn_accel = 0.5;
+    dash_stop_percent = 0.9;
+    ground_friction = .15;
+    wave_land_adj = 1.35;
+    wave_friction = -.15;
+}
+else
+{
+    walk_speed = 3.25;
+    walk_accel = 0.2;
+    dash_turn_time = 10;
+    dash_turn_accel = 1.5;
+    dash_stop_percent = 0.55;
+    ground_friction = .45;
+    wave_friction = .04;
+}
+
+//===========================================================================
 // RUNE: Enhanced Hover
 if (noz_rune_flags.enhanced_hover)
 {

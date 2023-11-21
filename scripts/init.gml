@@ -184,7 +184,7 @@ noz_rune_flags =
 {
     dstrong_spread: has_rune("A"),
     reflector: has_rune("B"),
-
+    low_friction: has_rune("C"),
     air_control: has_rune("D"),
     nair_boost: has_rune("E"),
     aerial_strongs: has_rune("F"),
@@ -193,7 +193,7 @@ noz_rune_flags =
     ice_longer: has_rune("H"),
     enhanced_dodge: has_rune("I"),
     jumpcancels: has_rune("J"),
-
+    wide_strongs: has_rune("K"),
 
     cloud_explode: has_rune("L"),
     enhanced_sleep: has_rune("N"),
