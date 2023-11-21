@@ -47,7 +47,7 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
             // RUNE: Aerials with STRONG effects
             || (my_hitboxID.attack == AT_BAIR && noz_rune_flags.aerial_strongs)
             || (my_hitboxID.attack == AT_BAIR && noz_rune_flags.aerial_strongs)
-            ))
+            )) && !joke_explainer_mode
     {
         hit_player_obj.should_make_shockwave = false;
         hit_player_obj.orig_knock = 3;
