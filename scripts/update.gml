@@ -26,13 +26,16 @@ if instance_exists(noz_climber_twin) && (noz_climber_is_dead)
         //both are dead, prep respawn
         noz_climber_twin.custom_clone = true;
 
+        death_unstall();
+        with (noz_climber_twin) death_unstall();
+
         noz_climber_twin.noz_climber_is_dead = false;
         noz_climber_is_dead = false;
     }
-    else if (state == PS_RESPAWN)
+    else
     {
-        //stall in respawn state
-        state_timer = 0;
+        //can't stall in respawn state; it confuses CPUs
+        death_stall();
     }
 }
 //should only be relevant for this rune
@@ -397,3 +400,37 @@ return !free &&
     noone != collision_rectangle( bbox_left, bbox_bottom, bbox_right, bbox_bottom + 1, asset_get("obj_stage_article_platform"), false, true) ||
     noone != collision_rectangle( bbox_left, bbox_bottom, bbox_right, bbox_bottom + 1, asset_get("jumpthrough_32_obj"), false, true) );
 
+//==============================================================================
+#define death_stall()
+{
+    visible = false;
+    state = PS_ATTACK_AIR;
+    state_timer = 0;
+    attack = AT_EXTRA_4;
+    window = 1;
+    window_timer = 0;
+    hitstop = 2;
+
+    //to have the CPUs focus on the same location
+    //note: condition to avoid both climbers teleporting to the death location after respawn
+    if (!noz_climber_twin.noz_climber_is_dead)
+    {
+        x = clamp(noz_climber_twin.x, get_stage_data(SD_LEFT_BLASTZONE_X) + 50, 
+                                    get_stage_data(SD_RIGHT_BLASTZONE_X) - 50);
+        y = clamp(noz_climber_twin.y, get_stage_data(SD_TOP_BLASTZONE_Y) + 50, 
+                                    get_stage_data(SD_BOTTOM_BLASTZONE_Y) - 50);
+    }
+    can_fast_fall = false;
+}
+#define death_unstall()
+{
+    if (attack == AT_EXTRA_4) && (state == PS_ATTACK_AIR)
+    {
+        spr_dir = noz_climber_twin.spr_dir;
+        x = noz_climber_twin.x + spr_dir * (custom_clone ? -20 : 20);
+        y = noz_climber_twin.y;
+        set_state(PS_RESPAWN);
+        state_timer = -1;
+        attack = AT_JAB;
+    }
+}
