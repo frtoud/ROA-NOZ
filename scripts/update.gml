@@ -42,6 +42,27 @@ if (noz_climber_damage_restore > 0)
     noz_climber_damage_restore = 0;
 }
 
+//bonus physics
+if instance_exists(noz_climber_twin) && (!noz_climber_twin.noz_climber_is_dead)
+{
+    var clone_distance = point_distance(x, y, noz_climber_twin.x, noz_climber_twin.y);
+
+    //no jostling if close enough
+    go_through = clone_distance < 40;
+    //manual jostle when TOO close, tho
+    if (clone_distance < 12) && !free && !noz_climber_twin.free
+    && (state != PS_ATTACK_GROUND)
+    {
+        x += (!custom_clone - 0.5) * 2 * spr_dir;
+    }
+
+    //always draw partner behind master
+    if (custom_clone)
+    {
+        force_depth = true;
+        depth = noz_climber_twin.depth + 1;
+    }
+}
 
 //Frostzone (Ice, Cloud) bonus
 //==============================================================================
