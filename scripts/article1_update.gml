@@ -106,6 +106,10 @@ if !instance_exists(left_segment)
 image_index = clamp(article_timer/3, 0, 3) + 4*neighborflags;
 article_timer++;
 
+//infinite duration
+if (player_id.noz_rune_flags.ice_longer)
+    article_timer = min(article_timer, 16);
+
 //sparkles randomly
 if (player_id.anim_do_draw_twinkle &&
     player_id.anim_rand_twinkle == random_twinkle)
