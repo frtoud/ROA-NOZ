@@ -198,8 +198,8 @@ noz_rune_flags =
     wide_strongs: has_rune("K"),
 
     cloud_explode: has_rune("L"),
-    enhanced_sleep: has_rune("N"),
     enhanced_hover: has_rune("M"),
+    enhanced_sleep: has_rune("N"),
     climber_mode: has_rune("O")
 }
 
