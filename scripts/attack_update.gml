@@ -329,6 +329,10 @@ case AT_FSPECIAL:
                 {
                     should_die = true;
                 }
+                with (obj_article_platform) if (player_id == other)
+                {
+                    should_die = true;
+                }
             }
         }
         else if (free)
