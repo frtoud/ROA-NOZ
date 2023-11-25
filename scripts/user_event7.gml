@@ -57,6 +57,17 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 8);
     set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 0.6);
 
+    set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("jex_ustrong"));
+    set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, -1); //yes this is silly
+    set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAME_START, 4);
+    set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 5);
+    set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 6);
+    set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 0);
+    set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_clairen_hit_strong"));
+    set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_absa_uair"));
+    set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
+    set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, HFX_ABS_SWEET_BIG);
+    set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, HFX_ABS_ZAP_BIG);
     set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 2);
     set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 2);
 
@@ -183,6 +194,17 @@ else //Restore Nozomi Data
     set_hitbox_value(AT_DATTACK, 1, HG_BASE_HITPAUSE, 6);
     set_hitbox_value(AT_DATTACK, 1, HG_HITPAUSE_SCALING, 0.3);
 
+    set_attack_value(AT_USTRONG, AG_SPRITE, sprite_get("ustrong"));
+    set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAMES, 2);
+    set_window_value(AT_USTRONG, 1, AG_WINDOW_ANIM_FRAME_START, 0);
+    set_window_value(AT_USTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 2);
+    set_window_value(AT_USTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 3);
+    set_window_value(AT_USTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 6);
+    set_window_value(AT_USTRONG, 2, AG_WINDOW_SFX, sound_get("sfx_noz_ice_medium"));
+    set_hitbox_value(AT_USTRONG, 1, HG_HIT_SFX, asset_get("sfx_ice_shatter"));
+    set_hitbox_value(AT_USTRONG, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
+    set_hitbox_value(AT_USTRONG, 1, HG_VISUAL_EFFECT, 199);
+    set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 28);
     set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
     set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 1);
 

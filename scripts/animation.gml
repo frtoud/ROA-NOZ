@@ -282,20 +282,35 @@ switch (state)
                 if (window == 1 && strong_charge > 0
                      && (get_gameplay_time() % 4 == 0) )
                 {
-                    spawn_twinkle(vfx_snow_twinkle, x, y - 6, 10, true);
+                    if (joke_explainer_mode)
+                    {
+                        var k = spawn_twinkle(vfx_electric_twinkle, x - (spr_dir*8), y - 32, 40, false);
+                        k.draw_angle = 45 * random_func(5, 8, true);
+                        k.hsp = hsp;
+                        k.vsp = vsp;
+                    }
+                    else spawn_twinkle(vfx_snow_twinkle, x, y - 6, 10, true);
                 }
-                if (!hitpause && window == 2 && window_timer == 
+                else if (!hitpause && window == 3 && window_timer == 
                 (get_hitbox_value(AT_USTRONG, 1, HG_WINDOW_CREATION_FRAME)) )
-                { 
-                    spawn_hit_fx(x, y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y), vfx_ice_big);
+                {
+                    if (joke_explainer_mode)
+                         spawn_hit_fx(x + spr_dir*4, y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y) - 8, vfx_spark_big);
+                    else
+                         spawn_hit_fx(x, y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y), vfx_ice_big);
                 }
                 else if ((get_gameplay_time() % 2 == 0)
-                 && window == 2 && window_timer > 
+                 && window == 3 && window_timer > 
                 get_hitbox_value(AT_USTRONG, 1, HG_WINDOW_CREATION_FRAME))
                 {
-                    spawn_twinkle(vfx_snow_twinkle, x,
-                                  y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y), 
+                    var k = spawn_twinkle(joke_explainer_mode ? vfx_electric_twinkle : vfx_snow_twinkle,
+                                  x, y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y), 
                                   get_hitbox_value(AT_USTRONG, 2, HG_WIDTH), false);
+
+                    if (joke_explainer_mode)
+                    {
+                        k.draw_angle = 45 * random_func(5, 8, true);
+                    }
                 }
             }break;
 //==================================================================

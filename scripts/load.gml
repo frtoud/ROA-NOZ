@@ -134,6 +134,7 @@ sprite_change_offset("jex_dtilt", 10, 27, true);
 sprite_change_offset("jex_utilt", 20, 37);
 sprite_change_offset("jex_dattack", 18, 27, true);
 
+sprite_change_offset("jex_ustrong", 14, 49);
 sprite_change_offset("jex_nair", 23, 30);
 sprite_change_offset("jex_nair_hover", 23, 30);
 sprite_change_offset("jex_fair", 12, 30);
@@ -151,6 +152,7 @@ sprite_change_offset("jex_hover", 9, 32);
 sprite_change_offset("jex_thrusters", 13, 17);
 
 sprite_change_offset("vfx_electric_twinkle", 7, 10);
+sprite_change_offset("vfx_spark_big", 34, 34);
 sprite_change_offset("vfx_smokepuff", 16, 16);
 sprite_change_offset("vfx_fspecial_charge", 48, 4);
 sprite_change_offset("steam_hit_spr_mini", 20, 20);

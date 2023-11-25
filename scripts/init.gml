@@ -120,11 +120,13 @@ anim_rand_twinkle = 0;
 anim_rand_x = 0;
 anim_rand_y = 0;
 
-vfx_electric_twinkle = hit_fx_create(sprite_get("vfx_electric_twinkle"), 9);
 vfx_snow_twinkle = hit_fx_create(sprite_get("vfx_snow_twinkle"), 9);
 vfx_snow_falling = hit_fx_create(sprite_get("vfx_snow_twinkle_falling"), 9);
 vfx_ice_small = hit_fx_create(sprite_get("vfx_ice_small"), 4);
 vfx_ice_big = hit_fx_create(sprite_get("vfx_ice_big"), 20);
+
+vfx_electric_twinkle = hit_fx_create(sprite_get("vfx_electric_twinkle"), 9);
+vfx_spark_big = hit_fx_create(sprite_get("vfx_spark_big"), 20);
 
 vfx_nspecial_spr = sprite_get("vfx_nspecial");
 vfx_sleep = hit_fx_create(sprite_get("vfx_sleep"), 25);
