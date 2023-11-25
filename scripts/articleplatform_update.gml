@@ -52,13 +52,13 @@ if !instance_exists(left_segment)
         {
             if (noz_snowimmune_timer < 1)
             {
-                noz_snowstack_timer = max(noz_snowstack_timer, 5)
+                noz_is_in_snow_zone = true;
                 noz_handler_id = other.player_id;
             }
         }
         else if (url == other.player_id.url)
         {
-            noz_frostzone_timer = 15;
+            noz_is_in_frost_zone = true;
         }
     }
 }
