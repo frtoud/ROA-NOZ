@@ -359,6 +359,21 @@ else
 }
 
 //===========================================================================
+// RUNE: Enhanced FSPECIAL (Ice)
+if (noz_rune_flags.ice_longer)
+{
+    noz_fspecial_soft_cooldown_max = 1; //so indicator still works
+
+    set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.02);
+}
+else
+{
+    noz_fspecial_soft_cooldown_max = 240;
+
+    set_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.08);
+}
+
+//===========================================================================
 // RUNE: Air-Strongs
 if (joke_explainer_mode) //gets complicated otherwise
 {
@@ -532,6 +547,8 @@ else
     set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 32);
 }
 
+//debug
+if (shield_down) noz_rune_flags.climber_mode = true;
 
 if (noz_rune_flags.climber_mode && (noz_climber_twin == noone))
 {

@@ -366,17 +366,24 @@ switch (state)
                     }
 
                     //slowly accelerating animation
-                    var index_mult = 0.01 * ease_linear(0, 100, at_fspecial_missile_charge, 150)
+                    var index_mult = 0.01 * ease_linear(0, 100, at_fspecial_missile_charge, 150);
 
                     //hijacking this variable. I'm sure I won't mind.
-                    anim_hover_hair_frame += 0.25 + index_mult * 0.6;
+                    anim_hover_hair_frame += 0.25 + min(index_mult * 0.6, 1);
                     if (anim_hover_hair_frame >= 4) || (at_fspecial_missile_charge == 1)
                     {
-                        sound_play(asset_get("sfx_shovel_dig"), false, noone, 0.2, 1.2 + 1.3*index_mult);
+                        sound_play(asset_get("sfx_shovel_dig"), false, noone, 0.2, 1.2 + 1.3*min(index_mult, 2.2));
                         strong_flashing = true;
                     }
                     anim_hover_hair_frame %= 4;
                     image_index = 3 + anim_hover_hair_frame;
+
+                    if (at_fspecial_missile_charge > noz_fspecial_chargetime)
+                    {
+                        var excess_charge = at_fspecial_missile_charge - noz_fspecial_chargetime;
+                        var camshake = clamp(ease_linear(0, 3, excess_charge, 2*noz_fspecial_chargetime), 0, 2);
+                        shake_camera(floor(camshake), 2);
+                    }
                 }
                 else if (window == 3) && (window_timer == 0)
                 {

@@ -358,7 +358,8 @@ case AT_FSPECIAL:
             at_fspecial_on_soft_cooldown = at_fspecial_soft_cooldown_timer > 0;
             at_fspecial_started_free = free;
             
-            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, free ? 24 : 32);
+            set_window_value(AT_FSPECIAL, 3, AG_WINDOW_LENGTH, 
+                            (free && !noz_rune_flags.ice_longer) ? 24 : 32);
             if (!at_fspecial_on_soft_cooldown)
             {
                 at_fspecial_soft_cooldown_timer = noz_fspecial_soft_cooldown_max;
@@ -448,13 +449,14 @@ case AT_FSPECIAL_2:
     if (window == 1)
     {
         at_fspecial_missile_charge = 0;
-        if (vsp > 0) vsp *= 0.5;
+        if (vsp > 0) vsp *= noz_rune_flags.ice_longer ? 0.3 : 0.5;
     }
     else if (window == 2)
     {
         //hold to charge
         if (window_timer == get_window_value(AT_FSPECIAL_2, 2, AG_WINDOW_LENGTH) - 1)
-         && special_down && (at_fspecial_missile_charge < noz_fspecial_chargetime)
+         && special_down && ( (at_fspecial_missile_charge < noz_fspecial_chargetime)
+                            || noz_rune_flags.ice_longer ) //can go beyond normal charge times
         {
             window_timer--;
             at_fspecial_missile_charge++;
@@ -481,8 +483,14 @@ case AT_FSPECIAL_2:
 
         if (window_timer == 4)
         {
+            var effective_charge = clamp(1.0 * at_fspecial_missile_charge/noz_fspecial_chargetime, 0, 1)
+            if (noz_rune_flags.ice_longer)
+            {
+                var excess_charge = at_fspecial_missile_charge - noz_fspecial_chargetime;
+                effective_charge += clamp(0.01 * ease_cubeOut(0, 100, excess_charge, noz_fspecial_chargetime), 0, 1);
+            }
             //Setup distance boost
-            var hspeed_granted = 8 + at_fspecial_missile_charge * 0.1;
+            var hspeed_granted = 8 + effective_charge * 12;
             set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_HSPEED, hspeed_granted);
             set_window_value(AT_FSPECIAL_2, 4, AG_WINDOW_VSPEED, free ? -0.5 : -2.2 );
 
@@ -500,7 +508,6 @@ case AT_FSPECIAL_2:
                                                                          : asset_get("sfx_ori_spirit_flame_hit_1"));
 
             //Setup damage boost
-            var effective_charge = clamp(1.0 * at_fspecial_missile_charge/noz_fspecial_chargetime, 0, 1)
             set_hitbox_value(AT_FSPECIAL_2, 1, HG_DAMAGE, 6 + effective_charge*14);
             set_hitbox_value(AT_FSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 0.6 + effective_charge*0.5);
         }
