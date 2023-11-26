@@ -246,7 +246,7 @@ noz_fspecial_airtime = 150;
 noz_fspecial_lifetime = 800;
 noz_fspecial_cooldown = 180;
 noz_fspecial_ylock_max = 160; //lower value means higher position -- Y=0 is at the top of the screen
-noz_fspecial_soft_cooldown_max = 240 * (!noz_rune_flags.ice_longer); //platforms created during this cooldown have no colliders
+noz_fspecial_soft_cooldown_max = 240; //platforms created during this cooldown have no colliders
 
 //joke explainer skull bash version
 noz_fspecial_chargetime = 120;
