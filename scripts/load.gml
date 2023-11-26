@@ -52,7 +52,6 @@ sprite_change_offset("idle_hover", 10, 25);
 sprite_change_offset("vfx_hair_hover", 18, 8);
 sprite_change_offset("vfx_hair_exhausted", 18, 12);
 sprite_change_offset("hovermeter", 15, 0);
-sprite_change_offset("indicator_triangle", 3, 3);
 
 sprite_change_offset("nspecial", 13, 24, true);
 sprite_change_offset("nspecial_air", 14, 28);
@@ -73,8 +72,6 @@ sprite_change_offset("article1_spike", 3, 8);
 sprite_change_offset("cloud_proj_small", 32, 32);
 sprite_change_offset("cloud_proj_big", 28, 26);
 sprite_change_collision_mask( "cloud_proj_big", false, 2, 18, 18, 36, 36, 1 );
-sprite_change_offset("shard_proj", 14, 7);
-sprite_change_offset("drip_proj", 5, 11);
 sprite_change_offset("vfx_snow_twinkle", 3, 3);
 sprite_change_offset("vfx_snow_twinkle_falling", 3, 3);
 sprite_change_offset("vfx_scraping", 2, 24);

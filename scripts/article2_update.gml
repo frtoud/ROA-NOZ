@@ -66,7 +66,9 @@ with (oPlayer) if collision_rectangle(other.x - other.snow_column_width, other.s
 var height = (snow_column_bottom - snow_column_top);
 if (get_gameplay_time() % max(1, floor(4 - height/160)) == 0)
 {
-    var kx = x - (snow_column_width) + player_id.anim_rand_x * 2 * snow_column_width;
+    var kx = x - (snow_column_width) + player_id.anim_rand_x * 2 * snow_column_width - 5;
     var ky = snow_column_top + player_id.anim_rand_y * height;
-    spawn_hit_fx(kx, ky, vfx_snow_falling);
+    var k = spawn_hit_fx(kx, ky, vfx_snow_twinkle);
+    k.vsp = 2;
+    k.hsp = 1;
 }

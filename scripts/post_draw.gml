@@ -65,16 +65,16 @@ shader_start();
 
 //=============================================================================
 //FSPECIAL cooldown on indicator
-var indicator_x = x + 1;
-var indicator_y = y - char_height - hud_offset - 20;
+var indicator_x = x;
+var indicator_y = y - char_height - hud_offset - 30;
 if (at_fspecial_soft_cooldown_timer > 0)
 {
-    draw_sprite_ext(indicator_spr, 0, indicator_x, indicator_y, 2, 2, 0, c_black, 0.5);
+    draw_sprite_ext(asset_get("triangle_spr"), 0, indicator_x, indicator_y, 1, 1, 0, c_black, 0.7);
 }
 else if (anim_indicatorflash_timer > 0)
 {
     var indic_alpha = (1.0 * anim_indicatorflash_timer) / anim_indicatorflash_max;
-    draw_sprite_ext(indicator_spr, 0, indicator_x, indicator_y, 2, 2, 0, c_white, indic_alpha);
+    draw_sprite_ext(asset_get("triangle_spr"), 0, indicator_x, indicator_y, 1, 1, 0, c_white, indic_alpha);
 }
 
 //=============================================================================

@@ -6,7 +6,7 @@ image_index = 0;
 spr_dir = player_id.spr_dir;
 uses_shader = true;
 
-vfx_snow_falling = player_id.vfx_snow_falling;
+vfx_snow_twinkle = player_id.vfx_snow_twinkle;
 
 //Physics
 hitstop = 0;

@@ -96,14 +96,6 @@ if ( player_id.anim_do_draw_twinkle)
     k.depth = depth - 1;
 }
 //====================================================================
-#define spawn_falling_twinkle(_width, _height)
-{
-    var kx = x - _width + player_id.anim_rand_x * 2 * _width;
-    var ky = y + player_id.anim_rand_y * _height;
-
-    var k = spawn_hit_fx(kx, ky, player_id.vfx_snow_falling);
-}
-//====================================================================
 #define try_getting_kicked()
 {
     var top_priority = 0;
