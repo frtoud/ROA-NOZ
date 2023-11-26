@@ -127,6 +127,7 @@ sprite_change_offset("jex_roll_forward", 14, 27);
 sprite_change_offset("jex_roll_backward", 14, 28);
 sprite_change_offset("jex_hurt", 11, 30);
 sprite_change_offset("jex_spinhurt", 14, 28);
+sprite_change_offset("jex_taunt", 14, 30);
 
 sprite_change_offset("jex_jab", 15, 28);
 

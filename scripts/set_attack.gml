@@ -5,6 +5,7 @@ if (joke_explainer_mode)
     //robotic attack variants
          if (attack == AT_USPECIAL) attack = AT_USPECIAL_2;
     else if (attack == AT_FSPECIAL) attack = AT_FSPECIAL_2;
+    else if (attack == AT_TAUNT)    attack = AT_TAUNT_2;
 }
 
 

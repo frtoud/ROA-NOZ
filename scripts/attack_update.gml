@@ -730,6 +730,23 @@ case AT_TAUNT:
     }
 } break;
 //==============================================================
+case AT_TAUNT_2:
+{
+    can_move = false;
+    if (window == 3 && window_timer == get_window_value(AT_TAUNT_2, 3, AG_WINDOW_LENGTH)
+    && !respawn_taunt)
+    {
+        //This taunt preserves momentum or could be performed on a moving platform.
+        //Joke Explainer should usually reach the ground before the end of this window.
+        set_state(PS_IDLE_AIR);
+    }
+    else if (0 != get_window_value(AT_TAUNT_2, window, AG_WINDOW_CANCEL_FRAME))
+     && (window_timer >= get_window_value(AT_TAUNT_2, window, AG_WINDOW_CANCEL_FRAME))
+    {
+        iasa_script();
+    }
+} break;
+//==============================================================
 default: break;
 }
 
