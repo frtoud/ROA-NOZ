@@ -476,6 +476,16 @@ switch (state)
                 use_hover_sprite();
             }break;
 //==================================================================
+            case AT_TAUNT:
+            case AT_TAUNT_2:
+            {
+                if (!hitpause) && (window > 1) && (window_timer == 1)
+                && (8 == get_window_value(attack, window - 1, AG_WINDOW_TYPE))
+                {
+                    spawn_base_dust(x, y, "land")
+                }
+            }break;
+//==================================================================
             case AT_NSPECIAL_2: //Reflector Rune
             {
                 if free && ((image_index == 5) || (image_index == 6))
