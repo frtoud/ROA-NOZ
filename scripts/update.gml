@@ -265,6 +265,8 @@ if (noz_rune_flags.reflector) && shield_down
 && (state == PS_PARRY) && (window == 2) && (window_timer == 0)
 {
     set_attack(AT_NSPECIAL_2);
+    hurtboxID.sprite_index = get_attack_value(attack, AG_HURTBOX_SPRITE);
+
     window = 1; window_timer = 1;
     at_reflector_damage_block = max(noz_reflector_damage_min, 
                                     floor(at_reflector_damage_block));
