@@ -680,6 +680,27 @@ case AT_DSPECIAL:
     }
 } break;
 //==============================================================
+case AT_DSPECIAL_2: 
+{
+    if (window == 2)
+    {
+         if (window_timer == 1) && !hitpause
+         {
+            var article_pos = { x:x, y:(y - noz_dspecial_target_spawn_height) };
+            if (at_dspecial_thunder_feeler_pos.y < (y - noz_dspecial_minimum_spawn_height) )
+            {
+                article_pos = at_dspecial_thunder_feeler_pos;
+            }
+            var cloud = instance_create(floor(article_pos.x), floor(article_pos.y), "obj_article3");
+         }
+         else if (window_timer == get_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH))
+         {
+            window = 4;
+            window_timer = 0;
+         }
+    }
+} break;
+//==============================================================
 case AT_NSPECIAL_2: //Reflector
 {
     can_jump = (window <= 2);

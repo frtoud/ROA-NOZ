@@ -264,6 +264,10 @@ noz_uspecial_hover_hstrength = 1.5 * air_accel;
 
 noz_dspecial_cooldown = 180;
 
+//joke explainer thunder version
+noz_dspecial_target_spawn_height = 400;
+noz_dspecial_minimum_spawn_height = 160;
+
 //Cloudkick
 noz_cloudkick_mult = 0.33;
 noz_cloudkick_scale = 50;
@@ -306,6 +310,7 @@ at_uspecial_hover_meter = noz_uspecial_hover_max;
 at_fspecial_cooldown_override = false;
 at_uspecial_cooldown_override = false;
 
+at_dspecial_thunder_feeler_pos = { x:x, y:y } //feeler will update this position.
 
 noz_is_in_frost_zone = false; //if you are this exact frame in a snow zone (for buff reasons)
 noz_frostzone_timer = 0; //wether you are empowered by the ice

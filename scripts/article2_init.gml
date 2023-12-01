@@ -2,6 +2,7 @@
 
 //Rendering
 sprite_index = sprite_get("reflect_hurt");
+mask_index = sprite_get("smol_mask");
 image_index = 0;
 spr_dir = player_id.spr_dir;
 uses_shader = true;

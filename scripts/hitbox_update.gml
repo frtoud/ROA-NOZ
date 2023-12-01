@@ -77,11 +77,89 @@ else if (attack == AT_FAIR && hbox_num == 3)
 }
 //==================================================================
 //Decorative skid effect (needs depth)
-else if ( (attack == AT_DATTACK && hbox_num == 5) )
+else if (attack == AT_DATTACK && hbox_num == 5)
 {
     depth = player_id.depth - 3;
     x = player_id.x + spr_dir * 28;
     if (player_id.state_cat == SC_HITSTUN) destroyed = true;
+}
+//==================================================================
+//Thunder 
+else if (attack == AT_DSPECIAL_2)
+{
+    if (hbox_num == 1) //upwards feeler
+    {
+        visible = get_match_setting(SET_HITBOX_VIS);
+        if (get_gameplay_time() > dspecial_timing_limiter)
+        {
+            instance_destroy(self); exit;
+        }
+
+        x = player_id.x;
+        hsp = player_id.hsp;
+        player_id.at_dspecial_thunder_feeler_pos.x = x;
+        player_id.at_dspecial_thunder_feeler_pos.y = y;
+
+        //speed corresponds to remaining distance towards target
+        vsp = lerp(0, player_id.y - player_id.noz_dspecial_target_spawn_height - y, 0.25 + (hitbox_timer/length)*0.75);
+
+        if (abs(player_id.y - y) > player_id.noz_dspecial_minimum_spawn_height)
+        {
+            //switch to slide-behavior
+            grounds = 55;
+            walls = 55; 
+        }
+    }
+    else if (hbox_num == 4) //downwards feeler
+    {
+        vsp = abs(vsp);
+        hsp = 0;
+        if !instance_exists(article_nuage)
+        {
+            //become consistent with thundershock (hitbox 6)
+            if (damage < 1)
+            {
+                hit_priority = 6;
+                damage = 12;
+                kb_angle = 90;
+                kb_value = 8;
+                kb_scale = 1;
+                hitpause = 8;
+                hitpause_growth = 3;
+                hit_flipper = 0;
+                no_other_hit = 3;
+                hit_effect = HFX_ABS_SWEET_BIG;
+                sound_effect = asset_get("sfx_absa_uair");
+                stop_effect = false;
+            }
+            if (!free) || (y > get_stage_data(SD_BOTTOM_BLASTZONE_Y))
+            {
+                destroyed = true;
+            }
+        }
+        else if (point_distance(x, y, orig_player_id.x, orig_player_id.y - 20) < 30)
+        && (article_nuage.foudre_appartenance == orig_player_id) && (!was_parried)
+        && (orig_player_id.state == PS_ATTACK_AIR || orig_player_id.state == PS_ATTACK_GROUND)
+        {
+            with (orig_player_id)
+            {
+                x = lerp(x, other.x, 0.5);
+                attack = AT_DSPECIAL_2;
+                window = 3; //shockwave 
+                window_timer = 0;
+                vsp = get_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_VSPEED);
+            }
+            article_nuage.foudre_destination_y = orig_player_id.y - (orig_player_id.free ? 20 : 0);
+            article_nuage.nouvel_etat = 9; //POW
+            destroyed = true;
+        }
+        else if (!free) || (y > get_stage_data(SD_BOTTOM_BLASTZONE_Y))
+        {
+            article_nuage.foudre_destination_y = y;
+            article_nuage.nouvel_etat = 9; //POW
+            destroyed = true;
+        }
+    }
 }
 
 //====================================================================

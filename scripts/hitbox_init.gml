@@ -15,6 +15,16 @@ else if (attack == AT_FAIR && hbox_num == 3)
     //still inherit Nozomi's speed
     hsp += player_id.hsp;
 }
+//====================================================================
+// Feeler for thunder positioning
+else if (attack == AT_DSPECIAL_2 && hbox_num == 1)
+{
+    hsp = player_id.hsp;
+    player_id.at_dspecial_thunder_feeler_pos.x = x;
+    player_id.at_dspecial_thunder_feeler_pos.y = y;
+    dspecial_timing_limiter = get_gameplay_time() + 2 * length;
+}
+
 
 if (is_a_cloud)
 {
