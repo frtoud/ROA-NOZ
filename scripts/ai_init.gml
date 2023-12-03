@@ -27,9 +27,11 @@ neutral_attacks[3] = AT_BAIR;
 neutral_attacks[4] = AT_DSPECIAL;
 
 //climbers-AI data structures
+noz_climber_input_delay = 4;
 noz_climber_input_buffer_size = 32;
 noz_climber_input_buffer = array_create(noz_climber_input_buffer_size, 0);
 noz_climber_input_pointer = 20;
+noz_climber_master_spr_dir = spr_dir;
 
 noz_climber_input_names = 
 [
@@ -43,4 +45,5 @@ noz_climber_input_names =
     "special_down", "special_pressed",
     "shield_down", "shield_pressed",
     "taunt_down", "taunt_pressed",
+    "spr_dir"
 ]

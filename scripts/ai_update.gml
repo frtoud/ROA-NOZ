@@ -6,13 +6,61 @@ if (custom_clone && instance_exists(noz_climber_twin))
     //Priority list:
     // 1. recover to stage
     // 2. return to master
+
+    //distance checks:
+    // - always prefer being y == master.y when grounded
+    // - mini radius where you don't attempt drifts and you have no jostling
+    // - radius where you drift subtly back towards master
+    // - larger radius where you ignore the movement inputs entirely
+    // - in this radius, if recovery is necessary, ignore attacks also
+
     // 3. delayed-input-copy master's inputs
+    // special considerations required to follow master while Uspecial is in play
+    //
+
+
+    //noz climbers problems:
+    //they share hitbox groups. if one hits, other can't (unless its using group -1)
+    //FAIR and BAIR notably have trouble as group can get reset by the other landing
+    /*
+    DSTRONG: 1w, 2&3 -- need split groups
+    USTRONG: 1&2 -- need split groups
+
+    */
+
+
     transfer_inputs();
+
+    //Partner wants to move closer to master
+    var distance_to_master = abs(noz_climber_twin.x - x);
+    //but in cases where the joystick input is important, we must not do it
+    if (distance_to_master > 40)
+    && !is_joystick_input_critical()
+    {
+        if (noz_climber_twin.x > x)
+        {
+            left_down = false;
+            left_hard_pressed = false;
+            right_down = true;
+        }
+        else
+        {
+            right_down = false;
+            right_hard_pressed = false;
+            left_down = true;
+        }
+    }
+
 
     fix_corrolary_inputs();
 
-    //if (noz_climber_twin.shield_pressed) shield_pressed = true;
-    //left_down = true;
+    //fudging spr_dir in cases that allow it to go unnoticed
+    if (state_cat == SC_GROUND_NEUTRAL) && (distance_to_master <= 40) && joy_pad_idle
+    || (state == PS_JUMPSQUAT)
+    {
+        spr_dir = noz_climber_master_spr_dir;
+    }
+
 }
 else
 {
@@ -61,8 +109,10 @@ else
 #define transfer_inputs()
 {
     var latest_write = 0;
-    var early_read  =  noz_climber_input_buffer[(noz_climber_input_pointer + 4) % noz_climber_input_buffer_size];
-    var normal_read =  noz_climber_input_buffer[(noz_climber_input_pointer + 4) % noz_climber_input_buffer_size];
+    var delay_slot = (noz_climber_input_pointer + noz_climber_input_delay) % noz_climber_input_buffer_size;
+    var delayed_read = noz_climber_input_buffer[delay_slot];
+
+    var current_spr_dir = spr_dir;
 
     for (var i = 0; i < array_length(noz_climber_input_names); i++)
     {
@@ -71,21 +121,12 @@ else
         latest_write += ((variable_instance_get(noz_climber_twin, name) > 0) << i);
 
         //use storage from X frames before to apply
-        switch (i)
-        {
-            case 0: case 1: case 2: case 3: //direction
-            case 4: case 5: case 6: case 7: //hard_direction
-            case 12: case 13: //jump
-            case 14: case 15: //run
-            case 25: case 26: //shield
-                //variable_instance_set(self, name, (early_read & (1 << i)) != 0);
-                //break;
-            default:
-                variable_instance_set(self, name, (normal_read & (1 << i)) != 0);
-                break;
-        }
+        variable_instance_set(self, name, (delayed_read & (1 << i)) != 0);
     }
 
+    //special case: spr_dir. not applied directly, only applied in cases where it's wanted
+    noz_climber_master_spr_dir = spr_dir ? 1 : -1;
+    spr_dir = current_spr_dir;
 
     //write out
     noz_climber_input_buffer[(noz_climber_input_pointer % noz_climber_input_buffer_size)] = latest_write;
@@ -103,8 +144,23 @@ else
     joy_dir = point_direction(0, 0, (right_down - left_down), (down_down - up_down) );
     joy_pad_idle = !(left_down || right_down || up_down || down_down);
 
-    if !joy_pad_idle && (angle_difference(noz_climber_twin.joy_dir, joy_dir) < 30)
-    {
-        joy_dir = noz_climber_twin.joy_dir;
-    }
+}
+
+//================================================================================
+#define is_joystick_input_critical()
+{
+    return (
+    //if there is a possibility that an attack starts this frame; joystick direction is important
+       (can_attack && attack_pressed)
+    || (can_strong && (left_strong_pressed || right_strong_pressed))
+    || (can_special && special_pressed)
+    //airdodge and rolls as well
+    || (state == PS_AIR_DODGE)
+    || (state == PS_PARRY_START)
+    //During certain attacks, joystick direction is important
+    || (  (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
+       && ( (attack == AT_JAB) || (attack == AT_FSPECIAL) )
+       )
+
+    );
 }
