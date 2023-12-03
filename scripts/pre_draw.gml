@@ -20,6 +20,12 @@ outline_color = [0, 0, 0];
 
 var scale = 1 + small_sprites;
 
+//Debug Climber link visual
+if get_match_setting(SET_HITBOX_VIS) && instance_exists(noz_climber_twin)
+{
+    draw_line_color(x, y, noz_climber_twin.x, noz_climber_twin.y, c_red, c_red);
+}
+
 //===================================================================
 // Hovering hair
 
