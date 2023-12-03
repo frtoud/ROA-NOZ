@@ -19,53 +19,71 @@ if (request_stats_update)
 
 // Climbing Zone
 //==============================================================================
-if instance_exists(noz_climber_twin) && (noz_climber_is_dead)
+if instance_exists(noz_climber_twin)
 {
-    if (noz_climber_is_master && noz_climber_twin.noz_climber_is_dead)
+    if (noz_climber_is_dead)
     {
-        //both are dead, prep respawn
-        noz_climber_twin.custom_clone = true;
+        if (noz_climber_is_master && noz_climber_twin.noz_climber_is_dead)
+        {
+            //both are dead, prep respawn
+            noz_climber_twin.custom_clone = true;
 
-        death_unstall();
-        with (noz_climber_twin) death_unstall();
+            death_unstall();
+            with (noz_climber_twin) death_unstall();
 
-        noz_climber_twin.noz_climber_is_dead = false;
-        noz_climber_is_dead = false;
+            noz_climber_twin.noz_climber_is_dead = false;
+            noz_climber_is_dead = false;
+        }
+        else
+        {
+            //can't stall in respawn state; it confuses CPUs
+            death_stall();
+        }
+    }
+
+    //should only be relevant for this rune
+    if (noz_climber_damage_restore > 0)
+    {
+        set_player_damage(player, noz_climber_damage_restore);
+        noz_climber_damage_restore = 0;
+    }
+
+    var clone_distance = point_distance(x, y, noz_climber_twin.x, noz_climber_twin.y);
+
+    //bonus physics
+    if (!noz_climber_twin.noz_climber_is_dead)
+    {
+
+        //no jostling if close enough
+        go_through = clone_distance < 40;
+        //manual jostle when TOO close, tho
+        if (clone_distance < 12) && !free && !noz_climber_twin.free
+        && (state != PS_ATTACK_GROUND)
+        {
+            x += (!custom_clone - 0.5) * 2 * spr_dir;
+        }
+
+        //always draw partner behind master
+        if (custom_clone)
+        {
+            force_depth = true;
+            depth = noz_climber_twin.depth + 1;
+        }
+    }
+
+    // being hit by the same attack twice for double damage is unfun.
+    // ramping bonus to incoming damage depending on how close you are to the other climber.
+    if (noz_climber_is_dead || noz_climber_twin.noz_climber_is_dead)
+    {
+        damage_scaling = 1;
     }
     else
     {
-        //can't stall in respawn state; it confuses CPUs
-        death_stall();
-    }
-}
-//should only be relevant for this rune
-if (noz_climber_damage_restore > 0)
-{
-    set_player_damage(player, noz_climber_damage_restore);
-    noz_climber_damage_restore = 0;
-}
-
-//bonus physics
-if instance_exists(noz_climber_twin) && (!noz_climber_twin.noz_climber_is_dead)
-{
-    var clone_distance = point_distance(x, y, noz_climber_twin.x, noz_climber_twin.y);
-
-    //no jostling if close enough
-    go_through = clone_distance < 40;
-    //manual jostle when TOO close, tho
-    if (clone_distance < 12) && !free && !noz_climber_twin.free
-    && (state != PS_ATTACK_GROUND)
-    {
-        x += (!custom_clone - 0.5) * 2 * spr_dir;
+        damage_scaling = clamp((clone_distance + 20)/120, 0.5, 1);
     }
 
-    //always draw partner behind master
-    if (custom_clone)
-    {
-        force_depth = true;
-        depth = noz_climber_twin.depth + 1;
-    }
 }
+
 
 //Frostzone (Ice, Cloud) bonus
 //==============================================================================
