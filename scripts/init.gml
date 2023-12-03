@@ -265,8 +265,8 @@ noz_uspecial_hover_hstrength = 1.5 * air_accel;
 noz_dspecial_cooldown = 180;
 
 //joke explainer thunder version
-noz_dspecial_target_spawn_height = 400;
-noz_dspecial_minimum_spawn_height = 160;
+noz_dspecial_target_spawn_height = 350;
+noz_dspecial_minimum_spawn_height = 150;
 
 //Cloudkick
 noz_cloudkick_mult = 0.33;

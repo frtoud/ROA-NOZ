@@ -8,6 +8,8 @@ spr_dir = player_id.spr_dir;
 uses_shader = true;
 
 effet_electrique = player_id.vfx_electric_twinkle;
+image_pre_foudre = sprite_get("vfx_thunder_trail");
+image_foudre = sprite_get("vfx_thunder_strike");
 
 //Attributs physique
 hitstop = 0;
@@ -31,4 +33,4 @@ foudre_destination_y = y;
 foudre_appartenance = player_id;
 
 //si le projectile finit inexplicablement trop loin de la position x originale, déconnection
-foudre_tolerance_horizontale = 40;
+foudre_tolerance_horizontale = 20;

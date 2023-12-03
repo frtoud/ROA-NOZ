@@ -116,7 +116,7 @@ temps_etat++;
     var distance = abs(y - foudre_destination_y);
     var nombre_points = distance / 30;
 
-    for (var i = 0; i <= nombre_points; i++)
+    for (var i = 0; i < nombre_points; i++)
     {
         var fraction = i/nombre_points;
         creer_coup(AT_DSPECIAL_2, 6, x, lerp(y - 10, 10 + foudre_destination_y, fraction));

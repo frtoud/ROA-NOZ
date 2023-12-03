@@ -149,6 +149,9 @@ sprite_change_offset("jex_uspecial", 18, 28);
 sprite_change_offset("jex_hover", 9, 32);
 sprite_change_offset("jex_thrusters", 13, 17);
 
+sprite_change_offset("thunder_proj", 8, 40);
+sprite_change_offset("vfx_thunder_trail", 3, 63);
+sprite_change_offset("vfx_thunder_strike", 15, 79);
 sprite_change_offset("vfx_electric_twinkle", 7, 10);
 sprite_change_offset("vfx_spark_big", 34, 34);
 sprite_change_offset("vfx_smokepuff", 16, 16);

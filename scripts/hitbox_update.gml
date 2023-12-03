@@ -119,6 +119,7 @@ else if (attack == AT_DSPECIAL_2)
             //become consistent with thundershock (hitbox 6)
             if (damage < 1)
             {
+                hitbox_timer = 0;
                 hit_priority = 6;
                 damage = 12;
                 kb_angle = 90;
@@ -155,7 +156,7 @@ else if (attack == AT_DSPECIAL_2)
         }
         else if (!free) || (y > get_stage_data(SD_BOTTOM_BLASTZONE_Y))
         {
-            article_nuage.foudre_destination_y = y;
+            article_nuage.foudre_destination_y = y + 18;
             article_nuage.nouvel_etat = 9; //POW
             destroyed = true;
         }
