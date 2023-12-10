@@ -71,6 +71,19 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 2);
     set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 2);
 
+    set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("jex_fstrong"));
+    set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 7);
+    set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 2);
+    set_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX, asset_get("sfx_absa_new_whip1"));
+    set_window_value(AT_FSTRONG, 4, AG_WINDOW_SFX, asset_get("sfx_absa_harderhit"));
+    set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, noone);
+    set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 40);
+    set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_X, 40);
+    set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, HFX_ABS_ZAP_SMALL);
+    set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, HFX_ABS_ZAP_BIG);
+    set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
+    set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_absa_uair"));
+
     set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 2);
     set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, 2);
 
@@ -207,6 +220,19 @@ else //Restore Nozomi Data
     set_hitbox_value(AT_USTRONG, 2, HG_VISUAL_EFFECT, 28);
     set_hitbox_value(AT_USTRONG, 1, HG_HITBOX_GROUP, 1);
     set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_GROUP, 1);
+
+    set_attack_value(AT_FSTRONG, AG_SPRITE, sprite_get("fstrong"));
+    set_window_value(AT_FSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 6);
+    set_window_value(AT_FSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 3);
+    set_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX, sound_get("sfx_noz_ice_small"));
+    set_window_value(AT_FSTRONG, 4, AG_WINDOW_SFX, sound_get("sfx_noz_ice_medium"));
+    set_hitbox_value(AT_FSTRONG, 1, HG_WINDOW, 2);
+    set_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X, 25);
+    set_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_X, 25);
+    set_hitbox_value(AT_FSTRONG, 2, HG_VISUAL_EFFECT, 28);
+    set_hitbox_value(AT_FSTRONG, 4, HG_VISUAL_EFFECT, 199);
+    set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
+    set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_ice_shatter"));
 
     set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 1);
     set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, 1);

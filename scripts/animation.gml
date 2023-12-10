@@ -242,19 +242,26 @@ switch (state)
                     
                     if (get_gameplay_time() % 4 == 0)
                     {
-                        spawn_twinkle(vfx_snow_twinkle, x - (20 * spr_dir),
-                                      y - 20, 10, true);
+                        if (joke_explainer_mode)
+                        {
+                            var k = spawn_twinkle(vfx_electric_twinkle, x - (spr_dir*16), y - 42, 24, false);
+                            k.draw_angle = 45 * random_func(5, 8, true);
+                        }
+                        else spawn_twinkle(vfx_snow_twinkle, x - (20 * spr_dir),
+                                           y - 20, 10, true);
                     }
                 }
                 else if (!hitpause)
                 {
                     if (window == 3) && (window_timer == 0)
+                    && !joke_explainer_mode
                     {
                         var xpos = x + (get_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X) - 10) * spr_dir;
                         var ypos = y + get_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y);
                         spawn_hit_fx(xpos, ypos + 6*anim_rand_y, vfx_ice_small);
                     }
                     else if (window == 3) && (window_timer == get_hitbox_value(AT_FSTRONG, 3, HG_WINDOW_CREATION_FRAME))
+                    && !joke_explainer_mode 
                     {
                         var xpos = x + (get_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_X) + 10) * spr_dir;
                         var ypos = y + get_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_Y);
@@ -265,14 +272,20 @@ switch (state)
                     {
                         var xpos = x + get_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_X) * spr_dir;
                         var ypos = y + get_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_Y);
-                        spawn_hit_fx(xpos, ypos, vfx_ice_big);
+                        spawn_hit_fx(xpos, ypos, joke_explainer_mode ? vfx_spark_big
+                                                                     : vfx_ice_big  );
                     }
                 }
 
                 if (get_gameplay_time() % 2 == 0) && (window == 4)
                 {
-                    spawn_twinkle(vfx_snow_twinkle, x + (32 * spr_dir), y - 20, 
-                                  get_hitbox_value(AT_FSTRONG, 4, HG_WIDTH), false);
+                    var k = spawn_twinkle(joke_explainer_mode ? vfx_electric_twinkle : vfx_snow_twinkle,
+                                           x + (32 * spr_dir), y - 20, 
+                                           get_hitbox_value(AT_FSTRONG, 4, HG_WIDTH), false);
+                    if (joke_explainer_mode)
+                    {
+                        k.draw_angle = 45 * random_func(5, 8, true);
+                    }
                 }
                 
             }break;
@@ -286,8 +299,6 @@ switch (state)
                     {
                         var k = spawn_twinkle(vfx_electric_twinkle, x - (spr_dir*8), y - 32, 40, false);
                         k.draw_angle = 45 * random_func(5, 8, true);
-                        k.hsp = hsp;
-                        k.vsp = vsp;
                     }
                     else spawn_twinkle(vfx_snow_twinkle, x, y - 6, 10, true);
                 }
