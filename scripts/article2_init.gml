@@ -1,7 +1,7 @@
 //article2_init
 
 //Rendering
-sprite_index = sprite_get("reflect_hurt");
+sprite_index = sprite_get("cloud_article");
 mask_index = sprite_get("smol_mask");
 image_index = 0;
 spr_dir = player_id.spr_dir;
@@ -27,7 +27,8 @@ lifetime_max = 3000;
 snow_column_step = 2;
 snow_column_solid_distance = 120;
 snow_column_plat_distance = 80;
-snow_column_width = 45; //doubled; distance in both directions
+snow_column_width = 0; //current witdh (doubles)
+snow_column_width_max = 45; //doubled; distance in both directions
 snow_column_top = y; 
 snow_column_bottom = y; 
 

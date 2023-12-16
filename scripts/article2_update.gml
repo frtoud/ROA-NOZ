@@ -2,6 +2,13 @@
 
 if (should_die)
 {
+    //animate disparition
+    image_index = clamp(image_index + 0.2, 8, 12);
+    if (image_index > 11)
+    {
+        sprite_index = asset_get("empty_sprite");
+    }
+
     //Slowly fade away, reduce frost zone downwards to nothing
     snow_column_top += 1.6 * snow_column_step;
 
@@ -12,6 +19,14 @@ if (should_die)
 }
 else
 {
+    //animate apparition & looping
+    image_index += 0.15;
+    if (image_index > 8) image_index = 4;
+
+    //expand sideways
+    snow_column_width = min(snow_column_width + snow_column_step, snow_column_width_max);
+
+
     snow_column_top = y; 
     //Try expanding frost zone down 
     if (snow_column_bottom < max(y + 500, get_stage_data(SD_BOTTOM_BLASTZONE_Y)))
