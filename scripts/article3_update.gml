@@ -24,6 +24,9 @@ switch (etat)
     case ETAT_ACTIF:
     {
         //animer l'apparition
+        sprite_index = image_nuage_normal;
+        image_index += (image_index > 5 ? .2 : .4);
+        if (image_index > 8) image_index = 5;
 
         if (temps_etat == 0) && !instance_exists(foudre_projectile)
         {
@@ -42,7 +45,8 @@ switch (etat)
     case ETAT_FOUDRE:
     {
         //animer l'electrocution
-        //image_index = ...
+        sprite_index = image_nuage_foudroyant;
+        image_index = min(temps_etat / 5, 2);
 
         if (temps_etat == 1) 
         {
@@ -55,7 +59,8 @@ switch (etat)
     case ETAT_ETEINT:
     {
         //animer la dissipation
-        //image_index = ...
+        sprite_index = image_nuage_normal;
+        image_index = min(12 + temps_etat / 4, 15);
 
         if (temps_etat > 20)
         {

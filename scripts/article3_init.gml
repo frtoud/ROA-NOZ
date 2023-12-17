@@ -1,8 +1,11 @@
 //article3_init
 
 //Dessin
-sprite_index = sprite_get("reflect_hurt");
-mask_index = sprite_get("smol_mask");
+image_nuage_normal = sprite_get("thunder_cloud");
+image_nuage_foudroyant = sprite_get("thunder_cloud_burst");
+
+sprite_index = image_nuage_normal;
+mask_index = sprite_get("thunder_cloud_hurt");
 image_index = 0;
 spr_dir = player_id.spr_dir;
 uses_shader = true;
