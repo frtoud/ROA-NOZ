@@ -595,23 +595,23 @@ if (noz_rune_flags.cloud_explode)
 else
 {
     //FAIR
-    set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 3);
+    set_hitbox_value(AT_FAIR, 2, HG_DAMAGE, 1);
     set_hitbox_value(AT_FAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
     set_hitbox_value(AT_FAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
     set_hitbox_value(AT_FAIR, 2, HG_LIFETIME, 36);
     //BAIR
-    set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 3);
+    set_hitbox_value(AT_BAIR, 2, HG_DAMAGE, 1);
     set_hitbox_value(AT_BAIR, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
     set_hitbox_value(AT_BAIR, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
     set_hitbox_value(AT_BAIR, 2, HG_LIFETIME, 36);
 
     //DTILT
-    set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 2);
+    set_hitbox_value(AT_DTILT, 2, HG_DAMAGE, 1);
     set_hitbox_value(AT_DTILT, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
     set_hitbox_value(AT_DTILT, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
     set_hitbox_value(AT_DTILT, 2, HG_LIFETIME, 32);
     //DATTACK
-    set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 2);
+    set_hitbox_value(AT_DATTACK, 2, HG_DAMAGE, 1);
     set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
     set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
     set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 32);
