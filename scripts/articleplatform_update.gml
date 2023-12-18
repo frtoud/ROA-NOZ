@@ -58,7 +58,8 @@ if !instance_exists(left_segment)
         }
         else if (url == other.player_id.url)
         {
-            noz_is_in_frost_zone = true;
+            //ice plats count as temporary buff only
+            noz_frostzone_timer = max(noz_frostzone_timer, 6);
         }
     }
 }
