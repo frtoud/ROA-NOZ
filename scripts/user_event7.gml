@@ -84,8 +84,30 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_clairen_hit_weak"));
     set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_absa_uair"));
 
+    set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("jex_dstrong"));
+    set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("jex_dstrong_hurt"));
+    set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 4);
+    set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 9);
+    set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 3);
+    set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_clairen_uspecial_swing"));
+    set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 9);
+    set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 3);
+    set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 6);
+    set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, noone);
+    set_num_hitboxes(AT_DSTRONG, 3);
     set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 2);
+    set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 40);
+    set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, -20);
+    set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 12);
+    set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, HFX_ABS_ZAP_BIG);
+    set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_absa_harderhit"));
     set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, 2);
+    set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW_CREATION_FRAME, 6);
+    set_hitbox_value(AT_DSTRONG, 3, HG_LIFETIME, 3);
+    set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_X, 0);
+    set_hitbox_value(AT_DSTRONG, 3, HG_DAMAGE, 10);
+    set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, HFX_ABS_ZAP_BIG);
+    set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_clairen_tip_med"));
 
     set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("jex_nair"));
     set_attack_value(AT_NAIR, AG_NOZ_HOVER_SPRITE, sprite_get("jex_nair_hover"));
@@ -234,8 +256,30 @@ else //Restore Nozomi Data
     set_hitbox_value(AT_FSTRONG, 2, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
     set_hitbox_value(AT_FSTRONG, 4, HG_HIT_SFX, asset_get("sfx_ice_shatter"));
 
+    set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
+    set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
+    set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 3);
+    set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 6);
+    set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 2);
+    set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_ice_shatter_big"));
+    set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 20);
+    set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 5);
+    set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 4);
+    set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 2);
+    set_num_hitboxes(AT_DSTRONG, 4);
     set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_GROUP, 1);
+    set_hitbox_value(AT_DSTRONG, 2, HG_WIDTH, 50);
+    set_hitbox_value(AT_DSTRONG, 2, HG_HITBOX_X, 5);
+    set_hitbox_value(AT_DSTRONG, 2, HG_DAMAGE, 15);
+    set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 199);
+    set_hitbox_value(AT_DSTRONG, 2, HG_HIT_SFX, asset_get("sfx_icehit_heavy1"));
     set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_GROUP, 1);
+    set_hitbox_value(AT_DSTRONG, 3, HG_WINDOW_CREATION_FRAME, 4);
+    set_hitbox_value(AT_DSTRONG, 3, HG_LIFETIME, 8);
+    set_hitbox_value(AT_DSTRONG, 3, HG_HITBOX_X, 5);
+    set_hitbox_value(AT_DSTRONG, 3, HG_DAMAGE, 8);
+    set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 199);
+    set_hitbox_value(AT_DSTRONG, 3, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
 
     set_attack_value(AT_NAIR, AG_SPRITE, sprite_get("nair"));
     set_attack_value(AT_NAIR, AG_NOZ_HOVER_SPRITE, sprite_get("nair_hover"));
