@@ -148,6 +148,7 @@ sprite_change_offset("jex_dair", 13, 33);
 sprite_change_offset("jex_nspecial", 12, 30);
 sprite_change_offset("jex_fspecial", 19, 29, true);
 sprite_change_offset("jex_uspecial", 18, 28);
+sprite_change_offset("jex_dspecial", 24, 36);
 sprite_change_offset("jex_hover", 9, 32);
 sprite_change_offset("jex_thrusters", 13, 17);
 

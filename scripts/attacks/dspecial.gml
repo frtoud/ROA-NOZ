@@ -1,9 +1,6 @@
 set_attack_value(AT_DSPECIAL, AG_CATEGORY, 2);
 set_attack_value(AT_DSPECIAL, AG_SPRITE, sprite_get("dspecial"));
 set_attack_value(AT_DSPECIAL, AG_NUM_WINDOWS, 3);
-set_attack_value(AT_DSPECIAL, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_DSPECIAL, AG_LANDING_LAG, 6);
-set_attack_value(AT_DSPECIAL, AG_OFF_LEDGE, 1);
 set_attack_value(AT_DSPECIAL, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
 set_attack_value(AT_DSPECIAL, AG_USES_CUSTOM_GRAVITY, 1);
 
@@ -31,39 +28,36 @@ set_num_hitboxes(AT_DSPECIAL, 0);
 //==============================================================
 //Joke Explainer mode
 set_attack_value(AT_DSPECIAL_2, AG_CATEGORY, 2);
-set_attack_value(AT_DSPECIAL_2, AG_SPRITE, sprite_get("dspecial"));
+set_attack_value(AT_DSPECIAL_2, AG_SPRITE, sprite_get("jex_dspecial"));
 set_attack_value(AT_DSPECIAL_2, AG_NUM_WINDOWS, 3);
-set_attack_value(AT_DSPECIAL_2, AG_HAS_LANDING_LAG, 1);
-set_attack_value(AT_DSPECIAL_2, AG_LANDING_LAG, 6);
-set_attack_value(AT_DSPECIAL_2, AG_OFF_LEDGE, 1);
-set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("dspecial_hurt"));
+set_attack_value(AT_DSPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("idle_hurt"));
 set_attack_value(AT_DSPECIAL_2, AG_USES_CUSTOM_GRAVITY, 1);
 
 set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH, 15);
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_CUSTOM_GRAVITY, 1.5);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_CUSTOM_GRAVITY, 0.8);
 
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH, 32);
 set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 4);
-set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.5);
+set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 3);
+set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_CUSTOM_GRAVITY, 0.6);
 
 //Shock
-set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_LENGTH, 40);
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_LENGTH, 35);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HSPEED_TYPE, 1);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_VSPEED_TYPE, 2);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_VSPEED, -2);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_SFX_FRAME, 0);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_SFX, sound_get("sfx_thunderstruck"));
-set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 7);
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAMES, 7);
+set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DSPECIAL_2, 3, AG_WINDOW_CUSTOM_GRAVITY, 0.2);
 
 //Whiffed
 set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_LENGTH, 16);
-set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_ANIM_FRAMES, 1);
-set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_ANIM_FRAME_START, 4);
+set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_ANIM_FRAME_START, 11);
 set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_CUSTOM_GRAVITY, 1);
 
 set_num_hitboxes(AT_DSPECIAL_2, 3);
@@ -73,7 +67,7 @@ set_num_hitboxes(AT_DSPECIAL_2, 3);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_TYPE, 2);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_WINDOW, 1);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_WINDOW_CREATION_FRAME, 1);
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_LIFETIME, get_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH));
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_LIFETIME, 1 + get_window_value(AT_DSPECIAL_2, 1, AG_WINDOW_LENGTH));
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_X, 0);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_HITBOX_Y, -40);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_WIDTH, 0);
@@ -90,7 +84,7 @@ set_hitbox_value(AT_DSPECIAL_2, 1, HG_VISUAL_EFFECT, 1); //none
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_FORCE_FLINCH, 2); //none
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_THROWS_ROCK, 2); //ignore
 
-set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_SPRITE, sprite_get("thunder_cloud"));
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_COLLISION_SPRITE, sprite_get("smol_mask"));
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_ANIM_SPEED, 0);
 set_hitbox_value(AT_DSPECIAL_2, 1, HG_PROJECTILE_VSPEED, -50);
