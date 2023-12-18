@@ -57,6 +57,7 @@ if (custom_clone && instance_exists(noz_climber_twin))
     //fudging spr_dir in cases that allow it to go unnoticed
     if (state_cat == SC_GROUND_NEUTRAL) && (distance_to_master <= 40) && joy_pad_idle
     || (state == PS_JUMPSQUAT)
+    || (state == PS_SPAWN)
     {
         spr_dir = noz_climber_master_spr_dir;
     }
