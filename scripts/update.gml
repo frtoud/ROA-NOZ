@@ -87,7 +87,11 @@ if instance_exists(noz_climber_twin)
 
 //Frostzone (Ice, Cloud) bonus
 //==============================================================================
-if (noz_is_in_frost_zone && !joke_explainer_mode)
+if (joke_explainer_mode)
+{
+    noz_frostzone_timer = 0;
+}
+else if (noz_is_in_frost_zone)
 {
     noz_frostzone_timer = min(noz_frostzone_timer + noz_frostzone_increment, 
                               noz_frostzone_timer_max)

@@ -10,7 +10,7 @@ if (window == 1) && (window_timer <= 1)
 {
     noz_frostzone_empowered = false;
 }
-noz_frostzone_empowered |= (noz_frostzone_timer > 0);
+noz_frostzone_empowered |= (noz_frostzone_timer > 0) && !joke_explainer_mode;
 
 switch (attack) {
 //==============================================================
