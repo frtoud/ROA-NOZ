@@ -327,11 +327,22 @@ switch (state)
 //==================================================================
             case AT_DSTRONG:
             {
-                if (window == 1 && strong_charge > 0
-                    && (get_gameplay_time() % 4 == 0) )
+                if (window == 1 && strong_charge > 0)
                 {
-                    spawn_twinkle(vfx_snow_twinkle, x - (spr_dir * 20),
-                                                    y - 48, 10, true);
+                    if (get_gameplay_time() % 4 == 0)
+                    {
+                        if (joke_explainer_mode)
+                        {
+                            var k = spawn_twinkle(vfx_electric_twinkle, x + (spr_dir * 20), y - 12, 30, false);
+
+                            k.draw_angle = 45 * random_func(5, 8, true);
+                        }
+                        else spawn_twinkle(vfx_snow_twinkle, x - (spr_dir * 20), y - 48, 10, true);
+                    }
+                    if (get_gameplay_time() % 8 > 4) && joke_explainer_mode
+                    {
+                        image_index--;
+                    }
                 }
             }break;
 //==================================================================
