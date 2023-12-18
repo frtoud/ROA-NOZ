@@ -21,7 +21,7 @@ through_platforms = true;
 
 should_die = false;
 lifetime_timer = 0;
-lifetime_max = 3000;
+lifetime_max = 20 * 60;
 
 //Snowbox parameters
 snow_column_step = 2;
