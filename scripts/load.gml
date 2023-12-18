@@ -67,7 +67,9 @@ sprite_change_offset("article1", 18, 0);
 sprite_change_collision_mask( "article1", false, 2, 10, -2, 26, 0, 1 );
 sprite_change_offset("article1_despawn", 8, 0);
 sprite_change_offset("article1_col", 8, 0);
-sprite_change_offset("article1_spike", 3, 8);
+sprite_change_offset("proj_spike", 6, 16);
+sprite_change_offset("proj_spike_hurt", 6, 16);
+sprite_change_collision_mask( "proj_spike", false, 2, 0, 0, 18, 16, 1 );
 
 sprite_change_offset("cloud_proj_small", 32, 32);
 sprite_change_offset("cloud_proj_big", 28, 26);
@@ -76,6 +78,7 @@ sprite_change_collision_mask( "cloud_proj_big", false, 2, 18, 18, 36, 36, 1 );
 sprite_change_offset("vfx_snow_twinkle", 3, 3);
 sprite_change_offset("vfx_snow_twinkle_falling", 3, 3);
 sprite_change_offset("vfx_scraping", 2, 24);
+sprite_change_collision_mask( "vfx_scraping", false, 2, 0, 0, 4, 36, 1 );
 sprite_change_offset("vfx_ice_small", 26, 24);
 sprite_change_offset("vfx_ice_big", 33, 36);
 sprite_change_offset("vfx_ice_dstrong", 56, 30);

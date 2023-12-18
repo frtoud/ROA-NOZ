@@ -84,6 +84,32 @@ else if (attack == AT_DATTACK && hbox_num == 5)
     if (player_id.state_cat == SC_HITSTUN) destroyed = true;
 }
 //==================================================================
+//Spreading-Dstrong rune
+else if (attack == AT_DSTRONG && hbox_num == 5)
+{
+    if (hitbox_timer == 3)
+    {
+        var depth_check = 10;
+        var next_posx = round(x) + (spr_dir*16)
+        var ground_test = (noone != collision_line(next_posx, y, next_posx, y+depth_check, 
+                                    asset_get("par_block"), true, true))
+                       || (noone != collision_line(next_posx, y, next_posx, y+depth_check, 
+                                    asset_get("par_jumpthrough"), true, true));
+        
+        if (ground_test)
+        {
+            var hb = create_hitbox(AT_DSTRONG, 5, next_posx, floor(y));
+            hb.spr_dir = spr_dir;
+            hb.draw_xscale = spr_dir;
+        }
+    }
+}
+else if (attack == AT_DSTRONG && hbox_num == 6)
+{
+    draw_xscale = spr_dir;
+    if (free) destroyed = true;
+}
+//==================================================================
 //Thunder 
 else if (attack == AT_DSPECIAL_2)
 {

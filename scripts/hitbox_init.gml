@@ -24,6 +24,12 @@ else if (attack == AT_DSPECIAL_2 && hbox_num == 1)
     player_id.at_dspecial_thunder_feeler_pos.y = y;
     dspecial_timing_limiter = get_gameplay_time() + 2 * length;
 }
+//====================================================================
+// Correction for spreader-dstrong hitbox
+else if (attack == AT_DSTRONG && hbox_num == 6)
+{
+    hsp = abs(hsp) * -spr_dir;
+}
 
 
 if (is_a_cloud)

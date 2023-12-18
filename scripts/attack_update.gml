@@ -123,26 +123,41 @@ case AT_DSTRONG:
     if (has_hit_player && !was_parried) { can_jump = true; }
     
     //dstrong spreads through ice
-    if (noz_rune_flags.dstrong_spread
+    if (noz_rune_flags.dstrong_spread && !hitpause
     && window ==  get_hitbox_value(AT_DSTRONG, 3, HG_WINDOW)
     && window_timer == get_hitbox_value(AT_DSTRONG, 3, HG_WINDOW_CREATION_FRAME))
     {
-        var half_width = get_hitbox_value(AT_DSTRONG, 3, HG_WIDTH) / 2;
-        //try finding ice
-        var left_ice = collision_line(x - half_width, y+2, x - half_width, y-2, 
-                                      obj_article1, false, true);
-        if (left_ice != noone && left_ice.player_id == self)
-        {
-            left_ice.spike_timer = left_ice.spike_timer_max;
-            left_ice.spike_dir = -1;
-        }
+        var half_width = floor(get_hitbox_value(AT_DSTRONG, 3, HG_WIDTH) / 2);
+        var depth_check = 8;
+        var rounded_x = round(x) &~7;
+        //send out projectiles if it has ground
 
-        var right_ice = collision_line(x + half_width, y+2, x + half_width, y-2, 
-                                       obj_article1, false, true);
-        if (right_ice != noone && right_ice.player_id == self)
+        //left side?
+        var left_test = (noone != collision_line(rounded_x-half_width, y, rounded_x-half_width, y+depth_check, 
+                                  asset_get("par_block"), true, true))
+                     || (noone != collision_line(rounded_x-half_width, y, rounded_x-half_width, y+depth_check, 
+                                  asset_get("par_jumpthrough"), true, true));
+                                    
+        //right side?
+        var right_test = (noone != collision_line(rounded_x+half_width, y, rounded_x+half_width, y+depth_check, 
+                                   asset_get("par_block"), true, true))
+                      || (noone != collision_line(rounded_x+half_width, y, rounded_x+half_width, y+depth_check, 
+                                   asset_get("par_jumpthrough"), true, true));
+
+        var hitbox_number = joke_explainer_mode ? 6 : 5;
+        var orientation = joke_explainer_mode ? 1 : -1;
+
+        if (left_test)
         {
-            right_ice.spike_timer = right_ice.spike_timer_max;
-            right_ice.spike_dir = +1;
+            var hb = create_hitbox(AT_DSTRONG, hitbox_number, rounded_x-half_width, floor(y));
+            hb.spr_dir = orientation;
+            hb.draw_xscale = orientation;
+        }
+        if (right_test)
+        {
+            var hb = create_hitbox(AT_DSTRONG, hitbox_number, rounded_x+half_width, floor(y));
+            hb.spr_dir = -orientation;
+            hb.draw_xscale = -orientation;
         }
     }
 } break;
