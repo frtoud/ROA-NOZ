@@ -23,7 +23,7 @@ with (oPlayer)
             noz_freeze_timer = 0;
             noz_freeze_anim_rotate = 0;
             noz_snowstack_timer = 0;
-            noz_snow_frostbite_timer = 0;
+            noz_snow_frostbite = false;
             noz_sleep_timer = 0;
             noz_sleep_anim_timer = 0;
             noz_sleep_interrupt_timer = 0;
@@ -47,7 +47,7 @@ with (oPlayer)
             noz_freeze_anim_rotate = 0;
             noz_sleep_anim_timer = 0;
             noz_sleep_interrupt_timer = 0;
-            noz_snow_frostbite_timer = 0;
+            noz_snow_frostbite = false;
             noz_handler_id = noone;
         }
         else
@@ -61,17 +61,15 @@ with (oPlayer)
                     noz_snowstack_timer--;
 
                     // Frostbite debuff
-                    noz_snow_frostbite_timer = min(noz_snowstack_timer, 
-                                                   noz_snow_frostbite_timer--);
-                    if (noz_snow_frostbite_timer > 0 &&
-                        (get_gameplay_time() % 30 == 0))
+                    if (noz_snow_frostbite) 
+                    && (get_gameplay_time() % 30 == noz_snow_frostbite_dot_tick)
                     {
                         take_damage(player, other.player, 1);
                     }
                 }
                 if (noz_snowstack_timer == 0)
                 {
-                    noz_snow_frostbite_timer = 0;
+                    noz_snow_frostbite = false;
                     sound_play(asset_get("sfx_ice_uspecial_jump"), 
                                false, noone, 0.6, 1.5);
                 }
@@ -189,7 +187,7 @@ with (oPlayer)
             // Grace period
             else if (noz_snowimmune_timer > 0)
             {
-                noz_snow_frostbite_timer = 0;
+                noz_snow_frostbite = false;
                 noz_snowimmune_timer--;
             }
 

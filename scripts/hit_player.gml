@@ -28,7 +28,11 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
             hit_player_obj.noz_handler_id = self;
 
             if (noz_rune_flags.frostbite) // Frostbite debuff
-            { hit_player_obj.noz_snow_frostbite_timer = noz_snowstack_timer_max; }
+            {
+                if !hit_player_obj.noz_snow_frostbite
+                    hit_player_obj.noz_snow_frostbite_dot_tick = (get_gameplay_time() % 30 + 1);
+                hit_player_obj.noz_snow_frostbite = true; 
+            }
         }
 
         // Exploding clouds

@@ -54,6 +54,13 @@ if !instance_exists(left_segment)
             {
                 noz_is_in_snow_zone = true;
                 noz_handler_id = other.player_id;
+
+                if (other.player_id.noz_rune_flags.frostbite) // Frostbite debuff
+                {
+                    if !noz_snow_frostbite
+                        noz_snow_frostbite_dot_tick = (get_gameplay_time() % 30 + 1);
+                    noz_snow_frostbite = true; 
+                }
             }
         }
         else if (url == other.player_id.url)
