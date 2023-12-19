@@ -69,4 +69,11 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
         //bonus
         sound_play(sound_get("sfx_freezie"));
     }
+    //static DoT 
+    else if joke_explainer_mode && noz_rune_flags.frostbite
+         && ( (my_hitboxID.attack == AT_DSPECIAL_2) || (my_hitboxID.attack == AT_FSPECIAL_2) )
+    {
+        hit_player_obj.jex_thunder_static_timer = 300;
+        hit_player_obj.noz_handler_id = self;
+    }
 }

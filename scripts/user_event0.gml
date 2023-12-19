@@ -27,6 +27,7 @@ with (oPlayer)
             noz_sleep_timer = 0;
             noz_sleep_anim_timer = 0;
             noz_sleep_interrupt_timer = 0;
+            jex_thunder_static_timer = 0;
             if (state == PS_RESPAWN)
             {
                 //Reset immunities only on death
@@ -42,6 +43,7 @@ with (oPlayer)
          && 0 == noz_snowimmune_timer
          && 0 == noz_sleep_timer
          && 0 == noz_sleepimmune_timer
+         && 0 == jex_thunder_static_timer
          && !noz_has_kirby_ability)
         {
             noz_freeze_anim_rotate = 0;
@@ -302,6 +304,31 @@ with (oPlayer)
                 noz_sleepimmune_timer--;
                 noz_sleep_anim_timer = 0;
                 noz_sleep_interrupt_timer = 0;
+            }
+
+            //===========================================================
+            // thunder DoT
+            if (jex_thunder_static_timer > 0) && !hitpause
+            {
+                jex_thunder_static_timer--;
+                if (jex_thunder_static_timer % 30 == 15)
+                {
+                    take_damage(player, other.player, 1);
+                }
+
+                if (other.anim_do_draw_twinkle)
+                {
+                    var kx = x + other.anim_rand_x * char_height - (char_height / 2);
+                    var ky = y - other.anim_rand_y * char_height;
+
+                    //Back to Nozomi's perspective
+                    with (other) 
+                    {
+                        var k = spawn_hit_fx(kx, ky, vfx_electric_twinkle); 
+                        k.depth = depth + 1;
+                        k.draw_angle = 45 * random_func(5, 8, true);
+                    }
+                }
             }
 
             //===========================================================

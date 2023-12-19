@@ -616,6 +616,19 @@ else
     set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
     set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 32);
 }
+//===========================================================================
+// RUNE: Damage Over Time
+if (noz_rune_flags.frostbite)
+{
+    set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT, HFX_ABS_ZAP_BIG);
+    set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, sound_get("sfx_thunder"));
+}
+else
+{
+    set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT, HFX_GEN_BIG);
+    set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_tow_anchor_land"));
+}
+
 
 //debug
 if (shield_down) noz_rune_flags.climber_mode = true;

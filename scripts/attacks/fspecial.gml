@@ -174,6 +174,7 @@ set_hitbox_value(AT_FSPECIAL_2, 1, HG_ANGLE, 361);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_KNOCKBACK_SCALING, 1.1); //dynamic
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_BASE_HITPAUSE, 12);
+set_hitbox_value(AT_FSPECIAL_2, 1, HG_HITPAUSE_SCALING, 0.8);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_VISUAL_EFFECT, HFX_GEN_BIG);
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_tow_anchor_land"));
 set_hitbox_value(AT_FSPECIAL_2, 1, HG_IGNORES_PROJECTILES, 1);
