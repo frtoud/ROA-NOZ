@@ -659,7 +659,7 @@ case AT_USPECIAL_2:
         {
             if (at_uspecial_was_hovering)
             {
-                at_uspecial_hover_meter -= noz_uspecial_short_cost; 
+                at_uspecial_hover_meter -= noz_uspecial_medium_cost; 
             }
 
             at_uspecial_hovering = true;

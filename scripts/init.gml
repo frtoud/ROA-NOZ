@@ -253,6 +253,7 @@ noz_fspecial_misfire_bonus = 0x99;
 
 noz_uspecial_hover_max = 480 * (1 + noz_rune_flags.enhanced_hover);
 noz_uspecial_short_cost = 60; // 1/8
+noz_uspecial_medium_cost = 90; // 1/6
 noz_uspecial_long_cost = 120; // 1/4
 noz_uspecial_hover_recharge = 2;
 noz_uspecial_hover_recharge_air = 0.5;
