@@ -531,6 +531,30 @@ case AT_FSPECIAL_2:
     {
         vsp *= 0.95;
     }
+    
+    //mishap prevention: bounce off blastzones if supercharged
+    if (window == 4 || window == 5)
+    && (at_fspecial_missile_charge > noz_fspecial_chargetime/2)
+    {
+        var predicted_pos = round(x + hsp);
+        if (predicted_pos != clamp(predicted_pos, get_stage_data(SD_LEFT_BLASTZONE_X) + 20, 
+                                                  get_stage_data(SD_RIGHT_BLASTZONE_X) - 20) )
+        {
+            hsp *= -1; vsp = -4;
+            hsp = clamp(hsp, -8, 8);
+
+            //some hitpause for good measure
+            old_hsp = hsp; old_vsp = vsp;
+            hitpause = true; hitstop = 8;
+            hitstop_full = hitstop;
+
+            window = 6; window_timer = 0;
+            sound_stop(get_window_value(AT_FSPECIAL_2, 3, AG_WINDOW_SFX));
+            sound_play(asset_get("sfx_clairen_arc_bounce"), false, noone, 3);
+            destroy_hitboxes();
+        }
+
+    }
 
     if !free && (window > 4)
     {
