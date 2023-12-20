@@ -7,6 +7,7 @@ image_index = 0;
 spr_dir = player_id.spr_dir;
 uses_shader = true;
 
+aura_spr = sprite_get("cloud_aura");
 vfx_snow_twinkle = player_id.vfx_snow_twinkle;
 
 //Physics

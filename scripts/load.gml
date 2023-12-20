@@ -73,8 +73,9 @@ sprite_change_collision_mask( "proj_spike", false, 2, 0, 0, 18, 16, 1 );
 
 sprite_change_offset("cloud_proj_small", 32, 32);
 sprite_change_offset("cloud_proj_big", 28, 26);
-sprite_change_offset("cloud_article", 56, 66);
 sprite_change_collision_mask( "cloud_proj_big", false, 2, 18, 18, 36, 36, 1 );
+sprite_change_offset("cloud_article", 56, 66);
+sprite_change_offset("cloud_aura", 22, 0);
 sprite_change_offset("vfx_snow_twinkle", 3, 3);
 sprite_change_offset("vfx_snow_twinkle_falling", 3, 3);
 sprite_change_offset("vfx_scraping", 2, 24);
