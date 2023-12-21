@@ -39,3 +39,8 @@ with (asset_get("obj_article2")) if (self != other)
 {
     should_die = true;
 }
+
+//Rune: Explosive cloud
+//this is a cloud too! ...unfortunately.
+cloud_is_explosive = player_id.noz_rune_flags.cloud_explode;
+explosion_hitbox = noone;

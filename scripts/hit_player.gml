@@ -18,9 +18,9 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
 
     var is_a_cloud = ("is_a_cloud" in my_hitboxID) && my_hitboxID.is_a_cloud;
     // Lingering projectile hitboxes: applies snow effects
-    if (( ( is_a_cloud )
+    if is_a_cloud
     // Plus some specials!
-       || (my_hitboxID.attack == AT_FSPECIAL) ))
+    || (my_hitboxID.attack == AT_FSPECIAL)
     {
         if (hit_player_obj.noz_snowimmune_timer == 0)
         {
@@ -41,6 +41,16 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
             create_hitbox(my_hitboxID.attack, 9, my_hitboxID.x, my_hitboxID.y);
         }
     }
+    //Explosive DSpecs special exception (hitboxes only exist if rune is active anyways)
+    else if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 1)
+    {
+        hit_player_obj.noz_snowstack_timer = noz_snowstack_timer_max; //guarantee freeze
+        create_hitbox(my_hitboxID.attack, 9, my_hitboxID.x, my_hitboxID.y);
+        if instance_exists(my_hitboxID.cloud_article)
+        {
+            my_hitboxID.cloud_article.should_die = true;
+        }
+    }
     // Strong attacks: apply ice effects
     else if ((hit_player_obj.noz_snowstack_timer > 0  || 
             //Standing on ice forces freeze on victims (if not immune)
@@ -51,6 +61,8 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
             // RUNE: Aerials with STRONG effects
             || (my_hitboxID.attack == AT_BAIR && noz_rune_flags.aerial_strongs)
             || (my_hitboxID.attack == AT_BAIR && noz_rune_flags.aerial_strongs)
+            // RUNE: Exploding dspec cloud
+            || (my_hitboxID.attack == AT_DSPECIAL && (my_hitboxID.hbox_num == 9))
             )) && !joke_explainer_mode
     {
         hit_player_obj.should_make_shockwave = false;

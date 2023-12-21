@@ -217,3 +217,32 @@ set_hitbox_value(AT_DSPECIAL_2, 6, HG_PROJECTILE_WALL_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL_2, 6, HG_PROJECTILE_GROUND_BEHAVIOR, 1);
 set_hitbox_value(AT_DSPECIAL_2, 6, HG_PROJECTILE_PARRY_STUN, 1);
 set_hitbox_value(AT_DSPECIAL_2, 6, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+
+
+//Only for exploding cloud rune
+set_hitbox_value(AT_DSPECIAL, 9, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSPECIAL, 9, HG_LIFETIME, 8);
+set_hitbox_value(AT_DSPECIAL, 9, HG_WIDTH, 120);
+set_hitbox_value(AT_DSPECIAL, 9, HG_HEIGHT, 120);
+set_hitbox_value(AT_DSPECIAL, 9, HG_PRIORITY, 5);
+set_hitbox_value(AT_DSPECIAL, 9, HG_DAMAGE, 16);
+set_hitbox_value(AT_DSPECIAL, 9, HG_ANGLE, 55);
+set_hitbox_value(AT_DSPECIAL, 9, HG_ANGLE_FLIPPER, 3);
+set_hitbox_value(AT_DSPECIAL, 9, HG_BASE_KNOCKBACK, 10);
+set_hitbox_value(AT_DSPECIAL, 9, HG_KNOCKBACK_SCALING, 1);
+set_hitbox_value(AT_DSPECIAL, 9, HG_BASE_HITPAUSE, 16);
+set_hitbox_value(AT_DSPECIAL, 9, HG_HITPAUSE_SCALING, .5);
+set_hitbox_value(AT_DSPECIAL, 9, HG_HIT_SFX, sound_get("sfx_noz_ice_medium"));
+set_hitbox_value(AT_DSPECIAL, 9, HG_VISUAL_EFFECT, 1);
+
+set_hitbox_value(AT_DSPECIAL, 9, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
+set_hitbox_value(AT_DSPECIAL, 9, HG_PROJECTILE_ANIM_SPEED, 0.5);
+set_hitbox_value(AT_DSPECIAL, 9, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DSPECIAL, 9, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_DSPECIAL, 9, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_DSPECIAL, 9, HG_PROJECTILE_PARRY_STUN, 0);
+set_hitbox_value(AT_DSPECIAL, 9, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_DSPECIAL, 9, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
+set_hitbox_value(AT_DSPECIAL, 9, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_DSPECIAL, 9, HG_MUNO_OBJECT_LAUNCH_ANGLE, -2);
+

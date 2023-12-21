@@ -2,6 +2,7 @@
 
 if (should_die)
 {
+    cloud_is_explosive = false;
     //animate disparition
     image_index = clamp(image_index + 0.2, 8, 12);
     if (image_index > 11)
@@ -52,6 +53,27 @@ else
 hsp *= 0.94;
 vsp *= 0.94;
 
+if (lifetime_timer > 10) && cloud_is_explosive
+{
+    try_getting_kicked();
+    if instance_exists(explosion_hitbox)
+    {
+        explosion_hitbox.hitbox_timer = 0;
+        explosion_hitbox.hsp = hsp;
+        explosion_hitbox.vsp = vsp;
+        explosion_hitbox.x = x;
+        explosion_hitbox.y = y - 20;
+    }
+    else
+    {
+        explosion_hitbox = create_hitbox(AT_DSPECIAL, 1, x, y - 20);
+        explosion_hitbox.cloud_article = self;
+        explosion_hitbox.is_the_cloud = true;
+    }
+
+}
+
+
 //frost zone checks
 //distance check
 if collision_line(x, snow_column_top, x, snow_column_bottom, asset_get("par_block"), false, false)
@@ -93,4 +115,81 @@ if (get_gameplay_time() % max(1, floor(4 - height/160)) == 0)
     var k = spawn_hit_fx(kx, ky, vfx_snow_twinkle);
     k.vsp = 2;
     k.hsp = 1;
+}
+
+//====================================================================
+#define try_getting_kicked()
+{
+    var top_priority = 0;
+    var top_damage = 0;
+    var top_hitbox = noone;
+    with (pHitBox)
+    {
+        if (self != other && (top_priority < hit_priority || 
+            top_priority == hit_priority && top_damage < damage)
+            && (("is_a_cloud" not in self) || (!is_a_cloud))
+            && ((kb_value > 0.1) || (kb_scale > 0))
+            && place_meeting(x, y, other) )
+        {
+            top_priority = hit_priority;
+            top_damage = damage;
+            top_hitbox = self;
+        }
+    }
+
+    //best hitbox for being kicked
+    if instance_exists(top_hitbox)
+    {
+        var angle = get_muno_angle(top_hitbox);
+        //simulating kb calculations with cloud
+        var force = player_id.noz_cloudkick_mult * 
+         (top_hitbox.kb_value + player_id.noz_cloudkick_scale * top_hitbox.kb_scale * 0.12)
+
+        hsp += lengthdir_x(force, angle);
+        vsp += lengthdir_y(force/3, angle);
+        //recalculated additive force clamped to a maximum
+        force = clamp(point_distance(0, 0, hsp, vsp), 0, player_id.noz_cloudkick_speed/2);
+        angle = point_direction(0, 0, hsp, vsp);
+        hsp = lengthdir_x(force, angle);
+        vsp = lengthdir_y(force, angle);
+
+        //boosts friction!
+        kick_boosted = 8;
+    }
+}
+
+//==============================================================================
+// returns the angle of an hitbox while considering HG_MUNO_OBJECT_LAUNCH_ANGLE
+#define get_muno_angle(hitbox)
+{
+    var angle = 0;
+    //MUNO compat
+    if ("HG_MUNO_OBJECT_LAUNCH_ANGLE" in hitbox.player_id) with (hitbox.player_id) 
+    {
+        angle = get_hitbox_value(hitbox.attack, hitbox.hbox_num, HG_MUNO_OBJECT_LAUNCH_ANGLE); 
+    }
+    switch(angle)
+    {
+        // Special values:
+        //  0: use normal angles
+        // -1: Horizontal Away (simulates Angle 0 flipper 3)
+        // -2: Radial Away (resembles flipper 8)
+        case 0:
+            angle = get_hitbox_angle(hitbox);
+            break;
+        case -1:
+            angle = (x > hitbox.x) ? 0 : 180;
+            break;
+        case -2:
+            angle = point_direction(hitbox.x, hitbox.y, x, y);
+            break;
+        default:
+            // flips angle horizontally based on spr_dir
+            // ±90° rotates the angle and cancel themselves
+            // negative spr_dir flips it vertically (but rotated back)
+            // modulo 360 to stay in usual ranges
+            angle = ((hitbox.spr_dir * (angle - 90)) + 90 + 360) % 360;
+            break;
+    }
+    return angle;
 }

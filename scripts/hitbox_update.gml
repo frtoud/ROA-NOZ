@@ -211,6 +211,7 @@ if ( player_id.anim_do_draw_twinkle)
         if (self != other && (top_priority < hit_priority || 
             top_priority == hit_priority && top_damage < damage)
             && (("is_a_cloud" not in self) || (!is_a_cloud))
+            && ((kb_value > 0.1) || (kb_scale > 0))
             && place_meeting(x, y, other) )
         {
             top_priority = hit_priority;
