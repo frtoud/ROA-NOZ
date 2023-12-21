@@ -22,20 +22,15 @@ if instance_exists(noz_climber_twin)
 {
     noz_climber_is_dead = true;
 
+    if (custom_clone)
+    {
+        //if clone dies, must prevent it from being deleted
+        custom_clone = false; //(temporary or crashes on reload)
+    }
+
     //first death:
     if (!noz_climber_twin.noz_climber_is_dead)
     {
-        if (noz_climber_is_master)
-        {
-            //if main dies, allow clone to be independent
-            noz_climber_twin.custom_clone = false;
-        }
-        else
-        {
-            //if clone dies, must prevent it from being deleted
-            custom_clone = false;
-        }
-
         //in either case, must prevent the death from taking out a stock
         set_player_stocks(player, get_player_stocks(player) + 1);
 

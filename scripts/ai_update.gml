@@ -2,6 +2,12 @@
 
 if (custom_clone && instance_exists(noz_climber_twin))
 {
+    if (noz_climber_twin.noz_climber_is_dead)
+    {
+        //manual mode
+        instant_transfer_inputs();
+        exit;
+    }
     //disable_ai = true;
     //Priority list:
     // 1. recover to stage
@@ -28,6 +34,40 @@ if (custom_clone && instance_exists(noz_climber_twin))
 
     */
 
+
+    //what P&M does:
+    /*
+      check distance (x, y)
+      artificial_dash ??
+
+      SDI towards master, no DI at all, Drift towards master
+
+    if pratfall: drift towards stage if offstage (see get_floor_from(x,y)) 
+                                     else towards player
+
+    if dash: predicted routine
+    unless moonwalk
+
+    jump adjusts height if the partner is too high & can doublejump in necessary
+
+    will need specialized logic for USpecial to make both Nozs stick together with two different kinds of hover
+
+"predicted routine"
+      if lower y and grounded, try falling
+      if higher y and grounded, try jumping
+  
+
+"recovery routine"
+  should_recover: not hitpause, free, going down or teammate above djump height, state isnt jumps, and no floor
+  if so, dont attempt aerials and prep a recovery
+
+  recovery is djumping towards room center if no ground below us
+  using airdodge upwards when necessary
+  walljumping too
+  then uspecialing (see required logic for Noz, but with a target point)
+
+
+     */
 
     transfer_inputs();
 
@@ -137,6 +177,18 @@ else
     if (noz_climber_input_pointer < 0) 
         noz_climber_input_pointer = noz_climber_input_buffer_size - 1;
 }
+#define instant_transfer_inputs()
+{
+    for (var i = 0; i < array_length(noz_climber_input_names); i++)
+    {
+        var name = noz_climber_input_names[i];
+        //get inputs and use directly
+        if (name != "spr_dir")
+            variable_instance_set(self, name, variable_instance_get(noz_climber_twin, name));
+    }
+
+    fix_corrolary_inputs();
+}
 
 #define fix_corrolary_inputs()
 {
@@ -153,7 +205,8 @@ else
     return (
     //if there is a possibility that an attack starts this frame; joystick direction is important
        (can_attack && attack_pressed)
-    || (can_strong && (left_strong_pressed || right_strong_pressed))
+    || (can_strong && (left_strong_pressed || right_strong_pressed || down_strong_pressed))
+    || (can_ustrong && (up_strong_pressed))
     || (can_special && special_pressed)
     //airdodge and rolls as well
     || (state == PS_AIR_DODGE)

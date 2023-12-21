@@ -53,18 +53,17 @@ if instance_exists(noz_climber_twin)
     //bonus physics
     if (!noz_climber_twin.noz_climber_is_dead)
     {
-
         //no jostling if close enough
         go_through = clone_distance < 40;
         //manual jostle when TOO close, tho
         if (clone_distance < 12) && !free && !noz_climber_twin.free
         && (state != PS_ATTACK_GROUND)
         {
-            x += (!custom_clone - 0.5) * 2 * spr_dir;
+            x += (noz_climber_is_master - 0.5) * 2 * spr_dir;
         }
 
         //always draw partner behind master
-        if (custom_clone)
+        if (!noz_climber_is_master)
         {
             force_depth = true;
             depth = noz_climber_twin.depth + 1;
@@ -84,6 +83,8 @@ if instance_exists(noz_climber_twin)
 
 }
 
+//hopefully simpler
+custom_clone = !noz_climber_is_master;
 
 //Frostzone (Ice, Cloud) bonus
 //==============================================================================
@@ -456,7 +457,7 @@ return !free &&
     if (attack == AT_EXTRA_4) && (state == PS_ATTACK_AIR)
     {
         spr_dir = noz_climber_twin.spr_dir;
-        x = noz_climber_twin.x + spr_dir * (custom_clone ? -20 : 20);
+        x = noz_climber_twin.x + spr_dir * (noz_climber_is_master ? 20 : -20);
         y = noz_climber_twin.y;
         set_state(PS_RESPAWN);
         state_timer = -1;

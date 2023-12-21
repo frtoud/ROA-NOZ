@@ -1,6 +1,6 @@
 //USER EVENT 7 - Stat Update
 
-if (!custom_clone)
+if (!custom_clone) //too early to use noz_climber_is_master? odd
    set_UI(joke_explainer_mode)
 
 if (joke_explainer_mode) //Enable JokeExplainer Echo
