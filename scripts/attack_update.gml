@@ -12,6 +12,8 @@ if (window == 1) && (window_timer <= 1)
 }
 noz_frostzone_empowered |= (noz_frostzone_timer > 0) && !joke_explainer_mode;
 
+var can_have_clouds = (noz_frostzone_empowered || noz_rune_flags.cloud_explode) && !joke_explainer_mode;
+
 switch (attack) {
 //==============================================================
 case AT_JAB:
@@ -80,8 +82,7 @@ case AT_DTILT:
 {
     if (window == 1)
     {
-        set_num_hitboxes(AT_DTILT, 
-        (noz_rune_flags.cloud_explode || noz_frostzone_empowered) ? 2 : 1);
+        set_num_hitboxes(AT_DTILT, can_have_clouds ? 2 : 1);
     }
     else if (has_hit && window == 3) && !was_parried
     {
@@ -94,8 +95,7 @@ case AT_DATTACK:
 {
     if (window == 1)
     {
-        set_num_hitboxes(AT_DATTACK, 
-        (noz_rune_flags.cloud_explode || noz_frostzone_empowered) ? 2 : 1);
+        set_num_hitboxes(AT_DATTACK, can_have_clouds ? 2 : 1);
     }
 } break;
 //==============================================================
@@ -255,8 +255,7 @@ case AT_FAIR:
     }
     else if (window == 1)
     {
-        set_hitbox_value(AT_FAIR, 2, HG_WINDOW, 
-        (noz_rune_flags.cloud_explode || noz_frostzone_empowered) ? 3 : noone);
+        set_hitbox_value(AT_FAIR, 2, HG_WINDOW, can_have_clouds ? 3 : noone);
     }
 
     //recovery animation can be skipped (unless parried)
@@ -281,8 +280,7 @@ case AT_BAIR:
     }
     else if (window == 1)
     {
-        set_hitbox_value(AT_BAIR, 2, HG_WINDOW, 
-        (noz_rune_flags.cloud_explode || noz_frostzone_empowered) ? 3 : noone);
+        set_hitbox_value(AT_BAIR, 2, HG_WINDOW, can_have_clouds ? 3 : noone);
     }
 } break;
 //==============================================================
