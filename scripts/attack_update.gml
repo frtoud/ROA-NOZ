@@ -723,12 +723,13 @@ case AT_DSPECIAL:
 //==============================================================
 case AT_DSPECIAL_2: 
 {
-    if (window == 2)
+    if (window == 2) 
     {
         if (vsp > 0) vsp *= 0.95;
         can_move = false;
 
          if (window_timer == 1) && !hitpause
+         && !noz_rune_flags.cloud_explode
          {
             var article_pos = { x:x, y:(y - noz_dspecial_target_spawn_height) };
             if (at_dspecial_thunder_feeler_pos.y < (y - noz_dspecial_minimum_spawn_height) )

@@ -51,6 +51,10 @@ if (my_hitboxID.orig_player == player) //ONLY CHECK WITH YOUR OWN HITBOXES!!
             my_hitboxID.cloud_article.should_die = true;
         }
     }
+    else if (my_hitboxID.attack == AT_DSPECIAL_2 && my_hitboxID.hbox_num == 2)
+    {
+        create_hitbox(my_hitboxID.attack, 9, my_hitboxID.x, my_hitboxID.y);
+    }
     // Strong attacks: apply ice effects
     else if ((hit_player_obj.noz_snowstack_timer > 0  || 
             //Standing on ice forces freeze on victims (if not immune)

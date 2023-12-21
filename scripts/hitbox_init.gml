@@ -24,6 +24,19 @@ else if (attack == AT_DSPECIAL_2 && hbox_num == 1)
     player_id.at_dspecial_thunder_feeler_pos.y = y;
     dspecial_timing_limiter = get_gameplay_time() + 2 * length;
 }
+//Explosive cloud
+else if (attack == AT_DSPECIAL_2 && hbox_num == 2)
+{
+    //becomes kind-of-a-cloud...
+    hsp = player_id.hsp;
+    loop_frame = 5;
+    anim_fade_frames = 8;
+    saved_friction = frict;
+    boosted_friction = frict * player_id.noz_cloudkick_friction;
+
+    kick_cooldown = 8;
+    kick_boosted = 0;
+}
 //====================================================================
 // Correction for spreader-dstrong hitbox
 else if (attack == AT_DSTRONG && hbox_num == 6)
@@ -56,6 +69,5 @@ if (is_a_cloud)
         kick_cooldown = 8;
         kick_boosted = 0;
     }
-    restore_hit_timer = 0;
 }
 

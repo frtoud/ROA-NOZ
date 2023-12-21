@@ -35,24 +35,6 @@ if ( is_a_cloud )
                 air_friction = frict;
             }
         }
-        //try restoring can_hit if nothing is close for long enough
-        if (has_hit && !place_meeting(x, y, oPlayer))
-        {
-            restore_hit_timer++;
-            if (restore_hit_timer >= player_id.noz_cloud_hit_restore_time)
-            {
-                has_hit = false;
-                for (var p = 0; p < array_length(can_hit); p++)
-                {
-                    can_hit[p] = true;
-                }
-                restore_hit_timer = 0;
-            }
-        }
-        else
-        {
-            restore_hit_timer = 0;
-        }
     }
 
     // Animating cloud
@@ -185,6 +167,42 @@ else if (attack == AT_DSPECIAL_2)
             article_nuage.foudre_destination_y = y + 18;
             article_nuage.nouvel_etat = 9; //POW
             destroyed = true;
+        }
+    }
+    else if (hbox_num == 2) //exploder
+    {
+        // Air friction needs to apply vertically (in case of bashing or other shenans)
+        vsp = (vsp < 0) ? min( 0.001, vsp + frict)
+                        : max(-0.001, vsp - frict);
+
+        if (kick_cooldown > 0)
+        {
+            kick_cooldown--;
+        }
+        else
+        {
+            try_getting_kicked();
+
+            if (kick_boosted > 0)
+            {
+                kick_boosted--;
+                frict = boosted_friction;
+                air_friction = frict;
+            }
+            else
+            {
+                frict = saved_friction;
+                air_friction = frict;
+            }
+        }
+
+        if (hitbox_timer >= length - (3/img_spd) )
+        {
+            image_index = 16 - img_spd*(length - hitbox_timer)
+        }
+        else if (image_index >= 13)
+        {
+            image_index = loop_frame;
         }
     }
 }

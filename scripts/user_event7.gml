@@ -591,6 +591,12 @@ if (noz_rune_flags.cloud_explode)
     set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 0);
     set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_icehit_heavy1"));
     set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 32 + noz_long_cloud_small);
+
+    //JEX-DSPECIAL
+    set_hitbox_value(AT_DSPECIAL_2, 1, HG_WINDOW, noone);
+    set_hitbox_value(AT_DSPECIAL_2, 2, HG_WINDOW, 2);
+    set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH, 12);
+    set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_LENGTH, 12);
 }
 else
 {
@@ -615,6 +621,12 @@ else
     set_hitbox_value(AT_DATTACK, 2, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
     set_hitbox_value(AT_DATTACK, 2, HG_HIT_SFX, asset_get("sfx_icehit_weak1"));
     set_hitbox_value(AT_DATTACK, 2, HG_LIFETIME, 32);
+
+    //JEX-DSPECIAL
+    set_hitbox_value(AT_DSPECIAL_2, 1, HG_WINDOW, 1);
+    set_hitbox_value(AT_DSPECIAL_2, 2, HG_WINDOW, noone);
+    set_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH, 32);
+    set_window_value(AT_DSPECIAL_2, 4, AG_WINDOW_LENGTH, 16);
 }
 //===========================================================================
 // RUNE: Damage Over Time
