@@ -63,7 +63,7 @@ case AT_JAB:
         case 11: 
         {
             can_attack = true;
-            move_cooldown[AT_JAB] = 1;
+            move_cooldown[AT_JAB] = 2;
 
             if (window_timer > get_window_value(AT_JAB, window, AG_WINDOW_CANCEL_FRAME))
             && (has_hit || was_parried || joke_explainer_mode)

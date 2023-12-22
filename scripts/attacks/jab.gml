@@ -17,7 +17,7 @@ set_window_value(AT_JAB, 3, AG_WINDOW_LENGTH, 10);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_JAB, 3, AG_WINDOW_ANIM_FRAME_START, 3);
 set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_TYPE, 1);
-set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_FRAME, 5);
+set_window_value(AT_JAB, 3, AG_WINDOW_CANCEL_FRAME, 7);
 
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_JAB, 1, HG_WINDOW, 2);
