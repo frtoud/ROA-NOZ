@@ -253,6 +253,7 @@ switch (state)
                 }
                 else if (!hitpause)
                 {
+
                     if (window == 3) && (window_timer == 0)
                     && !joke_explainer_mode
                     {
@@ -270,10 +271,18 @@ switch (state)
                     }
                     else if (window == 4) && (window_timer == 0)
                     {
+                        var vfx_to_use = joke_explainer_mode ? vfx_spark_big
+                                                             : vfx_ice_big;
+                        if (noz_rune_flags.wide_strongs && strong_charge >= 30)
+                        {
+                            vfx_to_use = joke_explainer_mode ? vfx_spark_huge
+                                                             : vfx_ice_huge;
+                            sound_play(asset_get(joke_explainer_mode ? "sfx_absa_uair" : "sfx_icehit_heavy2"));
+                        }
+
                         var xpos = x + get_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_X) * spr_dir;
                         var ypos = y + get_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_Y);
-                        spawn_hit_fx(xpos, ypos, joke_explainer_mode ? vfx_spark_big
-                                                                     : vfx_ice_big  );
+                        spawn_hit_fx(xpos, ypos, vfx_to_use);
                     }
                 }
 
@@ -305,10 +314,20 @@ switch (state)
                 else if (!hitpause && window == 3 && window_timer == 
                 (get_hitbox_value(AT_USTRONG, 1, HG_WINDOW_CREATION_FRAME)) )
                 {
+
+                    var vfx_to_use = joke_explainer_mode ? vfx_spark_big
+                                                         : vfx_ice_big;
+                    if (noz_rune_flags.wide_strongs && strong_charge >= 30)
+                    {
+                        vfx_to_use = joke_explainer_mode ? vfx_spark_huge
+                                                         : vfx_ice_huge;
+                        sound_play(asset_get(joke_explainer_mode ? "sfx_absa_uair" : "sfx_icehit_heavy2"));
+                    }
+
                     if (joke_explainer_mode)
-                         spawn_hit_fx(x + spr_dir*4, y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y) - 8, vfx_spark_big);
+                         spawn_hit_fx(x + spr_dir*4, y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y) - 8, vfx_to_use);
                     else
-                         spawn_hit_fx(x, y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y), vfx_ice_big);
+                         spawn_hit_fx(x, y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y), vfx_to_use);
                 }
                 else if ((get_gameplay_time() % 2 == 0)
                  && window == 3 && window_timer > 

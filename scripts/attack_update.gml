@@ -106,6 +106,24 @@ case AT_FSTRONG:
         //first windbox does not count as a "hit"
         has_hit = false;
         has_hit_player = false;
+
+        if (window_timer == 1) 
+        {
+            if (noz_rune_flags.wide_strongs && strong_charge >= 30)
+            {
+                set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_X, 52);
+                set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_Y, -22);
+                set_hitbox_value(AT_FSTRONG, 4, HG_WIDTH, 130);
+                set_hitbox_value(AT_FSTRONG, 4, HG_HEIGHT, 130);
+            }
+            else //restore stats
+            {
+                set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_X, 44);
+                set_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_Y, -20);
+                set_hitbox_value(AT_FSTRONG, 4, HG_WIDTH, 68);
+                set_hitbox_value(AT_FSTRONG, 4, HG_HEIGHT, 64);
+            }
+        }
     }
     else if (window >= 4 && has_hit_player) && !was_parried
     {
@@ -166,7 +184,22 @@ case AT_DSTRONG:
 //==============================================================
 case AT_USTRONG:
 {
-    if (has_hit_player && !was_parried) { can_jump = true; }
+    if (window == 2) && (window_timer == 1) 
+    {
+        if (noz_rune_flags.wide_strongs && strong_charge >= 30)
+        {
+            set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -68);
+            set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 130);
+            set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 130);
+        }
+        else //restore stats
+        {
+            set_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y, -60);
+            set_hitbox_value(AT_USTRONG, 2, HG_WIDTH, 80);
+            set_hitbox_value(AT_USTRONG, 2, HG_HEIGHT, 75);
+        }
+    }
+    else if (has_hit_player && !was_parried) { can_jump = true; }
 } break;
 //==============================================================
 case AT_NAIR: 
