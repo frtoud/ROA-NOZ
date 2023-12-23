@@ -104,7 +104,7 @@ with (asset_get("pHitBox"))
             //Manual reflection
             vsp *= -1;
             hsp *= -1;
-            spr_dir *= -1;
+            spr_dir *= -1; //has some issues
             hitbox_timer = 0;
             can_hit_self = true;
             can_hit[other.player] = false;
