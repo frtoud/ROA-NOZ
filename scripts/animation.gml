@@ -505,7 +505,7 @@ switch (state)
                                                                     y - 16, 32, false);
                         k.draw_angle = 45 * random_func(1, 8, true);
                         k.hsp = hsp;
-                        k.vsp = vsp;
+                        k.vsp = clamp(vsp, -10, 6);
                     }
                     else if (!noz_frostzone_empowered)
                     {
