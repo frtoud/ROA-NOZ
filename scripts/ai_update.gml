@@ -8,68 +8,43 @@ if (custom_clone && instance_exists(noz_climber_twin))
         instant_transfer_inputs();
         exit;
     }
-    //disable_ai = true;
-    //Priority list:
-    // 1. recover to stage
-    // 2. return to master
 
-    //distance checks:
-    // - always prefer being y == master.y when grounded
-    // - mini radius where you don't attempt drifts and you have no jostling
-    // - radius where you drift subtly back towards master
-    // - larger radius where you ignore the movement inputs entirely
-    // - in this radius, if recovery is necessary, ignore attacks also
-
-    // 3. delayed-input-copy master's inputs
-    // special considerations required to follow master while Uspecial is in play
-    //
-
-    //what P&M does:
-    /*
-      check distance (x, y)
-      artificial_dash ??
-
-      SDI towards master, no DI at all, Drift towards master
-
-    if pratfall: drift towards stage if offstage (see get_floor_from(x,y)) 
-                                     else towards player
-
-    if dash: predicted routine
-    unless moonwalk
-
-    jump adjusts height if the partner is too high & can doublejump in necessary
-
-    will need specialized logic for USpecial to make both Nozs stick together with two different kinds of hover
-
-"predicted routine"
-      if lower y and grounded, try falling
-      if higher y and grounded, try jumping
-  
-
-"recovery routine"
-  should_recover: not hitpause, free, going down or teammate above djump height, state isnt jumps, and no floor
-  if so, dont attempt aerials and prep a recovery
-
-  recovery is djumping towards room center if no ground below us
-  using airdodge upwards when necessary
-  walljumping too
-  then uspecialing (see required logic for Noz, but with a target point)
-
-
-     */
-
-    transfer_inputs();
-
-    //Partner wants to move closer to master
-    var distance_to_master = point_distance(noz_climber_twin.x, noz_climber_twin.y, x, y);
+    //Partner wants to move closer to master    
     //but in cases where the joystick input is important, we must not do it
 
-    if (at_uspecial_hovering)
-    {
+    var distance_to_master = point_distance(noz_climber_twin.x, noz_climber_twin.y, x, y);
 
+    if (ai_recovering && distance_to_master > 120)
+    {
+        //let the AI do its thing
+        storeonly_inputs();
+        if (at_uspecial_hovering)
+        {
+            pilot_hovering(noz_climber_twin.x, noz_climber_twin.y);
+        }
+        exit;
+    }
+    //else
+    transfer_inputs();
+
+
+
+    if (state_cat == SC_HITSTUN) && hitpause
+    {
+        //no DI.
+        joy_dir = 90;
+        joy_pad_idle = true;
+        exit;
     }
     else if !is_joystick_input_critical()
     {
+        if (at_uspecial_hovering)
+        {
+            if (distance_to_master > 40)
+            pilot_hovering(noz_climber_twin.x, noz_climber_twin.y);
+            exit;
+        }
+    
         if (abs(noz_climber_twin.x - x) > 40)
         {
             if (noz_climber_twin.x > x)
@@ -91,12 +66,12 @@ if (custom_clone && instance_exists(noz_climber_twin))
         {
             down_hard_pressed = true;
         }
-        else if (noz_climber_twin.y < (y - 40)) && (vsp > -1)
+        else if !jump_pressed && (noz_climber_twin.y < (y - 40)) && (vsp > -1)
         //heh. edgecase where we don't want to interrupt a taunt
         && !(!free && noz_climber_twin.taunt_pressed)
         {
             jump_pressed = true;
-            jump_down = true;
+            jump_down |= (noz_climber_twin.y < y - noz_climber_estimated_shorthop_height);
         }
     }
 
@@ -109,7 +84,6 @@ if (custom_clone && instance_exists(noz_climber_twin))
     {
         spr_dir = noz_climber_master_spr_dir;
     }
-
 }
 else
 {
@@ -142,7 +116,43 @@ else
 }
 
 //================================================================================
+#define pilot_hovering(target_x, target_y)
+{
+    //guide to location...
+    joy_pad_idle = false;
+    joy_dir = point_direction(x, y, target_x, target_y);
+
+    if (joke_explainer_mode)
+    {
+        //this version must gain height explicitly with up_down
+        up_down = (target_y < y + vsp)
+
+        if (target_x > x)
+        {
+            left_down = false;
+            left_hard_pressed = false;
+            right_down = true;
+        }
+        else
+        {
+            right_down = false;
+            right_hard_pressed = false;
+            left_down = true;
+        }
+    }
+}
+
+//================================================================================
+#define storeonly_inputs()
+{
+    return parse_inputs(false);
+}
 #define transfer_inputs()
+{
+    return parse_inputs(true);
+}
+//================================================================================
+#define parse_inputs(apply_now)
 {
     var latest_write = 0;
     var delay_slot = (noz_climber_input_pointer + noz_climber_input_delay) % noz_climber_input_buffer_size;
@@ -157,7 +167,7 @@ else
         latest_write += ((variable_instance_get(noz_climber_twin, name) > 0) << i);
 
         //use storage from X frames before to apply
-        variable_instance_set(self, name, (delayed_read & (1 << i)) != 0);
+        if (apply_now) variable_instance_set(self, name, (delayed_read & (1 << i)) != 0);
     }
 
     //special case: spr_dir. not applied directly, only applied in cases where it's wanted
@@ -172,6 +182,7 @@ else
     if (noz_climber_input_pointer < 0) 
         noz_climber_input_pointer = noz_climber_input_buffer_size - 1;
 }
+//==============================================================================================
 #define instant_transfer_inputs()
 {
     for (var i = 0; i < array_length(noz_climber_input_names); i++)
@@ -184,7 +195,6 @@ else
 
     fix_corrolary_inputs();
 }
-
 #define fix_corrolary_inputs()
 {
     //these inputs are determined in a second step (some moves depend on them, notably USPEC and airdodge)
