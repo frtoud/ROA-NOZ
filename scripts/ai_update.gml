@@ -113,19 +113,6 @@ if (custom_clone && instance_exists(noz_climber_twin))
 }
 else
 {
-    if (get_training_cpu_action() == CPU_ROLL)
-    {
-        //Reflector debug mode
-        if (state == PS_IDLE || state == PS_PARRY_START)
-        { 
-            set_attack(AT_DSPECIAL); 
-        }
-        else
-        {
-            special_down = true;
-        }
-    }
-
     if (at_uspecial_hovering)
     {
         joy_pad_idle = false;
