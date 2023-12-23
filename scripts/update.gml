@@ -1,13 +1,4 @@
 
-// Lingering projectile for DTILT has a cooldown; avoids spamming too many at once
-if (at_dtilt_proj_cooldown > 0)
-{
-    at_dtilt_proj_cooldown--;
-    if (at_dtilt_proj_cooldown == 0)
-    {
-        set_num_hitboxes(AT_DTILT, 2); 
-    }
-}
 
 // Runes & Robots
 //==============================================================================

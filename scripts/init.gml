@@ -286,7 +286,6 @@ noz_cloud_hit_restore_time = 30;
 
 at_jab_timesthrough = 0;
 at_jab_true_total_timesthrough = 0;
-at_dtilt_proj_cooldown = 0;
 at_nair_hover_need_grid_adjust = false;
 at_dair_early_cancel = false;
 at_dair_need_landing_lag_hitbox = false;
