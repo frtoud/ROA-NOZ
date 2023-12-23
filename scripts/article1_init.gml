@@ -2,75 +2,70 @@
 
 //Rendering
 sprite_index = player_id.article1_spr;
+mask_index = player_id.article1_spr;
 image_index = 3;
 spr_dir = player_id.spr_dir;
 uses_shader = true;
 
-sprite_spawn = player_id.article1_spawn_spr;
-sprite_spike = player_id.article1_spike_spr;
+despawn_vfx = player_id.vfx_article_despawn;
 
 //Physics
 hitstop = 0;
 hsp = 0;
-vsp = 0.00001;
+vsp = 0;
 can_be_grounded = true;
 //free = true;
 ignores_walls = false;
 hit_wall = false;
 through_platforms = false;
 
-//partnered Platform collider & flag
-plat_collider = noone;
-
-anim_timer = 0;
+//platform-variables
+should_die = false; //set to trigger removal
 article_timer = 0;
+
+left_segment = noone;
+right_segment = noone;
+
+prev_x = x; //detects movement
+
 random_twinkle = player_id.anim_rand_twinkle;
 
-//death flags
-should_die = false; //set to trigger death animation
-dying = false; //is this in the process of dying?
-
-//Runes
-does_not_decay = false;
-was_airborne = false;
-random_proj_timer = 0;
-has_proj = false; //set to spawn the falling projectile on death
-
-spike_timer = 0; //controls the DSTRONG spike; going down
-spike_timer_max = 3 * 8; 
-spike_hitbox_frame = spike_timer_max - 3;
-spike_spread_frame = spike_timer_max - 1;
-spike_dir = 1; //direction (-1 for left 1 for right)
-
-//find & greet neighbors
-
-var overlapping = instance_place(x, y, obj_article1);
-if (overlapping != noone && overlapping.player_id != player_id
-    && overlapping.player_id.url == player_id.url //only check for Nozomi Snow
-    && !overlapping.dying && !overlapping.should_die)
-{ 
-    with (overlapping)
+//check neighbors on creation
+var needleft = true; 
+var needright = true;
+with (asset_get("obj_article1")) if (self != other)
+&& (player_id == other.player_id) && (abs(y - other.y) < 2)
+{
+    if (needleft) && ((x + 16) == other.x)
     {
-        //farewell to the neighbors
-        if (instance_exists(left_plat))
-        { left_plat.right_plat = noone; }
-        if (instance_exists(right_plat))
-        { right_plat.left_plat = noone; }
-        
-        instance_destroy(plat_collider);
+        needleft = false;
+        other.left_segment = self;
+        right_segment = other;
     }
-    instance_destroy(overlapping);
+    else if (needright) && ((x - 16) == other.x)
+    {
+        needright = false;
+        other.right_segment = self;
+        left_segment = other;
+    }
+}
+with (asset_get("obj_article_platform")) if (self != other)
+&& (player_id == other.player_id) && (abs(y - other.y) < 2)
+{
+    if (needleft) && ((x + 16) == other.x)
+    {
+        needleft = false;
+        other.left_segment = self;
+        right_segment = other;
+    }
+    else if (needright) && ((x - 16) == other.x)
+    {
+        needright = false;
+        other.right_segment = self;
+        left_segment = other;
+    }
 }
 
-left_plat = noone;
-left_plat = instance_place(x-1, y, obj_article1);
-if (left_plat != noone && left_plat.player_id == player_id
-    && !left_plat.dying && !left_plat.should_die)
-{ left_plat.right_plat = id; }
-
-right_plat = noone;
-right_plat = instance_place(x+1, y, obj_article1);
-if (right_plat != noone && right_plat.player_id == player_id
-    && !right_plat.dying && !right_plat.should_die)
-{ right_plat.left_plat = id; }
-
+//animation sync
+image_index = 3 + 4* (spr_dir ? (2*(!needleft) + (!needright))
+                              : ((!needleft) + 2*(!needright)) );

@@ -42,6 +42,7 @@ set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAMES, 3);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_ANIM_FRAME_START, 13);
 set_window_value(AT_USPECIAL, 5, AG_WINDOW_CUSTOM_GRAVITY, 0.3);
 
+//Secret Tap-hover window
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_TYPE, 1);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_LENGTH, 18);
 set_window_value(AT_USPECIAL, 6, AG_WINDOW_ANIM_FRAMES, 6);
@@ -138,3 +139,25 @@ set_hitbox_value(AT_USPECIAL, 8, HG_VISUAL_EFFECT, 199);
 set_hitbox_value(AT_USPECIAL, 8, HG_HIT_SFX, asset_get("sfx_blow_medium1"));
 set_hitbox_value(AT_USPECIAL, 8, HG_HITBOX_GROUP, -1);
 
+//==============================================================
+//Joke Explainer mode
+set_attack_value(AT_USPECIAL_2, AG_CATEGORY, 2);
+set_attack_value(AT_USPECIAL_2, AG_SPRITE, sprite_get("jex_uspecial"));
+set_attack_value(AT_USPECIAL_2, AG_HURTBOX_SPRITE, sprite_get("idle_hurt")); //unremarkable hurtbox
+set_attack_value(AT_USPECIAL_2, AG_NUM_WINDOWS, 2);
+set_attack_value(AT_USPECIAL_2, AG_OFF_LEDGE, 1);
+set_attack_value(AT_USPECIAL_2, AG_USES_CUSTOM_GRAVITY, 1);
+
+set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_TYPE, 1);
+set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_LENGTH, 6);
+set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_ANIM_FRAMES, 3);
+set_window_value(AT_USPECIAL_2, 1, AG_WINDOW_VSPEED, -1);
+
+set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_TYPE, 1);
+set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_LENGTH, 12);
+set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_ANIM_FRAME_START, 3);
+//handled manually in animation.gml
+set_window_value(AT_USPECIAL_2, 2, AG_WINDOW_SFX, asset_get("sfx_ell_explosion_medium"));
+
+set_num_hitboxes(AT_USPECIAL_2, 0);

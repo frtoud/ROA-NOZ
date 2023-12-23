@@ -2,66 +2,72 @@ is_a_cloud = false;
 
 //====================================================================
 // Lingering projectile cloud hitboxes
-if (hbox_num == 2) && ( (attack == AT_FAIR)
-                     || (attack == AT_DTILT)
-                     || (attack == AT_DATTACK))
+if (attack == AT_DTILT && hbox_num == 2)
+|| (attack == AT_DATTACK && hbox_num == 2)
+|| (attack == AT_FAIR && hbox_num == 2)
+|| (attack == AT_BAIR && hbox_num == 2)
 {
     is_a_cloud = true;
 }
-else if ( (attack == AT_BAIR && hbox_num == 2) )
+else if (attack == AT_FAIR && hbox_num == 3)
+     || (attack == AT_BAIR && hbox_num == 3)
 {
-    is_a_cloud = !player_id.noz_rune_flags.bair_strong;
-    // Lingering projectile for BAIR needs to be flipped
-    spr_dir *= -1;
-    if (!is_a_cloud)
-    {
-       //still inherit Nozomi's speed
-       hsp += player_id.hsp; 
-    }
+    //still inherit Nozomi's speed
+    hsp += player_id.hsp;
 }
+//====================================================================
+// Feeler for thunder positioning
+else if (attack == AT_DSPECIAL_2 && hbox_num == 1)
+{
+    hsp = player_id.hsp;
+    player_id.at_dspecial_thunder_feeler_pos.x = x;
+    player_id.at_dspecial_thunder_feeler_pos.y = y;
+    dspecial_timing_limiter = get_gameplay_time() + 2 * length;
+}
+//Explosive cloud
+else if (attack == AT_DSPECIAL_2 && hbox_num == 2)
+{
+    //becomes kind-of-a-cloud...
+    hsp = player_id.hsp;
+    loop_frame = 5;
+    anim_fade_frames = 8;
+    saved_friction = frict;
+    boosted_friction = frict * player_id.noz_cloudkick_friction;
+
+    kick_cooldown = 8;
+    kick_boosted = 0;
+}
+//====================================================================
+// Correction for spreader-dstrong hitbox
+else if (attack == AT_DSTRONG && hbox_num == 6)
+{
+    hsp = abs(hsp) * -spr_dir;
+}
+
 
 if (is_a_cloud)
 {
     //Save length (in timer) of 2 frames of animation
     anim_fade_frames = (2.0 / img_spd);
-    
+
     //inherit Nozomi's speed
     hsp += player_id.hsp * ((attack == AT_DTILT) ? 0.75 : 1);
-    
+
     //DATTACK cloud needs some help on platforms
     if (attack == AT_DATTACK) { dattack_speedcheck_timer = 20; }
+    // Lingering projectile for BAIR needs to be flipped
+    else if (attack == AT_BAIR) spr_dir *= -1;
 
     // Kicking clouds
-    is_kickable = player_id.noz_rune_flags.cloud_kick;
+    is_kickable = player_id.noz_rune_flags.cloud_explode;
     if (is_kickable)
     {
         //save friction
         saved_friction = frict;
         boosted_friction = frict * player_id.noz_cloudkick_friction;
-    
+
         kick_cooldown = 8;
         kick_boosted = 0;
     }
-    //Extended clouds
-    is_extended = player_id.noz_rune_flags.cloud_longer;
-    snow_width = (attack == AT_FAIR || attack == AT_BAIR)? 20 : 12;
-    snow_depth = 0;
-    restore_hit_timer = 0;
 }
-//====================================================================
-// Lingering projectile for DTILT has a cooldown; avoids spamming too many at once
-if ( (attack == AT_DTILT && hbox_num == 2) )
-{ 
-    with (player_id)
-    {
-        at_dtilt_proj_cooldown = noz_dtilt_proj_cooldown_max; 
-        set_num_hitboxes(AT_DTILT, 1);
-    }
-}
-//DSPECIAL's counter shards
-if (attack == AT_DSPECIAL && hbox_num == 4)
-{
-	do_homing = true;
-	if ("homing_target" not in self) 
-       { homing_target = noone; }
-}
+

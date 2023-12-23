@@ -1,0 +1,6 @@
+anim/outputs/*
+anim/n_outputs/*
+anim/j_outputs/*
+*.gif
+.gitignore
+anim/old_outputs/*

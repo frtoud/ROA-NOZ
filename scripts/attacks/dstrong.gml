@@ -1,14 +1,11 @@
 set_attack_value(AT_DSTRONG, AG_SPRITE, sprite_get("dstrong"));
 set_attack_value(AT_DSTRONG, AG_NUM_WINDOWS, 3);
-set_attack_value(AT_DSTRONG, AG_HAS_LANDING_LAG, 3);
 set_attack_value(AT_DSTRONG, AG_STRONG_CHARGE_WINDOW, 1);
 set_attack_value(AT_DSTRONG, AG_HURTBOX_SPRITE, sprite_get("dstrong_hurt"));
 
-set_window_value(AT_DSTRONG, 1, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_LENGTH, 12);
 set_window_value(AT_DSTRONG, 1, AG_WINDOW_ANIM_FRAMES, 3);
 
-set_window_value(AT_DSTRONG, 2, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_LENGTH, 6);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAMES, 2);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_ANIM_FRAME_START, 3);
@@ -16,17 +13,21 @@ set_window_value(AT_DSTRONG, 2, AG_WINDOW_HAS_SFX, 1);
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX, asset_get("sfx_ice_shatter_big"));
 set_window_value(AT_DSTRONG, 2, AG_WINDOW_SFX_FRAME, 2);
 
-set_window_value(AT_DSTRONG, 3, AG_WINDOW_TYPE, 1);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_LENGTH, 20);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAMES, 5);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_ANIM_FRAME_START, 4);
 set_window_value(AT_DSTRONG, 3, AG_WINDOW_HAS_WHIFFLAG, 1);
 
+//JEX-only anim-assist
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_LENGTH, 10);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAMES, 2);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_ANIM_FRAME_START, 8);
+set_window_value(AT_DSTRONG, 4, AG_WINDOW_HAS_WHIFFLAG, 1);
+
 
 set_num_hitboxes(AT_DSTRONG, 4);
 
 //hitbox to catch opponents above
-set_hitbox_value(AT_DSTRONG, 1, HG_PARENT_HITBOX, 0);
 set_hitbox_value(AT_DSTRONG, 1, HG_HITBOX_TYPE, 1);
 set_hitbox_value(AT_DSTRONG, 1, HG_WINDOW, 2);
 set_hitbox_value(AT_DSTRONG, 1, HG_LIFETIME, 2);
@@ -65,7 +66,7 @@ set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE, 85);
 set_hitbox_value(AT_DSTRONG, 2, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_DSTRONG, 2, HG_BASE_KNOCKBACK, 7.5);
 set_hitbox_value(AT_DSTRONG, 2, HG_KNOCKBACK_SCALING, 1.25);
-set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_DSTRONG, 2, HG_BASE_HITPAUSE, 10);
 set_hitbox_value(AT_DSTRONG, 2, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT, 199);
 set_hitbox_value(AT_DSTRONG, 2, HG_VISUAL_EFFECT_X_OFFSET, 10);
@@ -87,7 +88,7 @@ set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE, 70);
 set_hitbox_value(AT_DSTRONG, 3, HG_ANGLE_FLIPPER, 3);
 set_hitbox_value(AT_DSTRONG, 3, HG_BASE_KNOCKBACK, 6);
 set_hitbox_value(AT_DSTRONG, 3, HG_KNOCKBACK_SCALING, 1.0);
-set_hitbox_value(AT_DSTRONG, 3, HG_BASE_HITPAUSE, 7);
+set_hitbox_value(AT_DSTRONG, 3, HG_BASE_HITPAUSE, 8);
 set_hitbox_value(AT_DSTRONG, 3, HG_HITPAUSE_SCALING, .9);
 set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT, 199);
 set_hitbox_value(AT_DSTRONG, 3, HG_VISUAL_EFFECT_X_OFFSET, 10);
@@ -127,7 +128,7 @@ set_hitbox_value(AT_DSTRONG, 4, HG_PROJECTILE_IS_TRANSCENDENT, 1);
 
 //DSTRONG spikes spread
 set_hitbox_value(AT_DSTRONG, 5, HG_HITBOX_TYPE, 2);
-set_hitbox_value(AT_DSTRONG, 5, HG_LIFETIME, 3);
+set_hitbox_value(AT_DSTRONG, 5, HG_LIFETIME, 24);
 set_hitbox_value(AT_DSTRONG, 5, HG_WIDTH, 8);
 set_hitbox_value(AT_DSTRONG, 5, HG_HEIGHT, 20);
 set_hitbox_value(AT_DSTRONG, 5, HG_SHAPE, 2);
@@ -142,10 +143,39 @@ set_hitbox_value(AT_DSTRONG, 5, HG_IGNORES_PROJECTILES, 1);
 set_hitbox_value(AT_DSTRONG, 5, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
 set_hitbox_value(AT_DSTRONG, 5, HG_HIT_LOCKOUT, 9);
 
-set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_SPRITE, asset_get("empty_sprite"));
-set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_MASK, -1);
-set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_WALL_BEHAVIOR, 1);
+set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_SPRITE, sprite_get("proj_spike"));
+set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_MASK, sprite_get("proj_spike_hurt"));
+set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_ANIM_SPEED, (8 / get_hitbox_value(AT_DSTRONG, 5, HG_LIFETIME)));
+set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_WALL_BEHAVIOR, 0);
 set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
 set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_UNBASHABLE, 1);
 set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_DOES_NOT_REFLECT, 1);
 set_hitbox_value(AT_DSTRONG, 5, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+
+
+//DSTRONG plasma proj
+set_hitbox_value(AT_DSTRONG, 6, HG_HITBOX_TYPE, 2);
+set_hitbox_value(AT_DSTRONG, 6, HG_LIFETIME, 600);
+set_hitbox_value(AT_DSTRONG, 6, HG_WIDTH, 16);
+set_hitbox_value(AT_DSTRONG, 6, HG_HEIGHT, 16);
+set_hitbox_value(AT_DSTRONG, 6, HG_SHAPE, 1);
+set_hitbox_value(AT_DSTRONG, 6, HG_PRIORITY, 1);
+set_hitbox_value(AT_DSTRONG, 6, HG_DAMAGE, 6);
+set_hitbox_value(AT_DSTRONG, 6, HG_ANGLE, 135);
+set_hitbox_value(AT_DSTRONG, 6, HG_BASE_KNOCKBACK, 6);
+set_hitbox_value(AT_DSTRONG, 6, HG_KNOCKBACK_SCALING, 0.2);
+set_hitbox_value(AT_DSTRONG, 6, HG_BASE_HITPAUSE, 6);
+set_hitbox_value(AT_DSTRONG, 6, HG_HITPAUSE_SCALING, .4);
+set_hitbox_value(AT_DSTRONG, 6, HG_IGNORES_PROJECTILES, 1);
+set_hitbox_value(AT_DSTRONG, 6, HG_HIT_SFX, asset_get("sfx_clairen_tip_med"));
+
+set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_SPRITE, sprite_get("vfx_scraping"));
+set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_MASK, -1);
+set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_HSPEED, 6);
+set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_VSPEED, 0);
+set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_ANIM_SPEED, .25);
+set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_WALL_BEHAVIOR, 0);
+set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_ENEMY_BEHAVIOR, 1);
+set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_UNBASHABLE, 1);
+set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_IS_TRANSCENDENT, 1);
+set_hitbox_value(AT_DSTRONG, 6, HG_PROJECTILE_DESTROY_EFFECT, 1);

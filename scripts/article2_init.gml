@@ -1,35 +1,46 @@
 //article2_init
 
 //Rendering
-sprite_index = asset_get("empty_sprite");
+sprite_index = sprite_get("cloud_article");
+mask_index = sprite_get("smol_mask");
 image_index = 0;
 spr_dir = player_id.spr_dir;
 uses_shader = true;
 
-shine_spr = player_id.vfx_dspecial_shockwave_spr;
-flake_spr = player_id.vfx_dspecial_flake_spr;
-zone_spr = player_id.vfx_dspecial_zone_spr;
+aura_spr = sprite_get("cloud_aura");
+vfx_snow_twinkle = player_id.vfx_snow_twinkle;
 
 //Physics
 hitstop = 0;
 hsp = 0;
 vsp = 0;
 can_be_grounded = false;
-//free = true;
-ignores_walls = true;
+free = true;
+ignores_walls = false;
 hit_wall = false;
 through_platforms = true;
 
-//grab values from player
-anim_timer = player_id.at_dspecial_zone_timer;
-//constants
-max_radius = player_id.noz_dspecial_zone_radius;
-max_timer = player_id.noz_dspecial_zone_time;
-//calculated
-draw_angle = 0;
-radius = 0;
-x = 0;
-y = 0;
+should_die = false;
+lifetime_timer = 0;
+lifetime_max = 20 * 60;
 
-shine_cooldown = 0;
-shine_cooldown_max = player_id.noz_dspecial_remote_shine_cooldown;
+//Snowbox parameters
+snow_column_step = 2;
+snow_column_solid_distance = 120;
+snow_column_plat_distance = 80;
+snow_column_width = 0; //current witdh (doubles)
+snow_column_width_max = 45; //doubled; distance in both directions
+snow_column_top = y; 
+snow_column_bottom = y; 
+
+//one-cloud-limit per Nozomi!
+with (asset_get("obj_article2")) if (self != other)
+                                 && (player_id == other.player_id)
+{
+    should_die = true;
+}
+
+//Rune: Explosive cloud
+//this is a cloud too! ...unfortunately.
+cloud_is_explosive = player_id.noz_rune_flags.cloud_explode;
+explosion_hitbox = noone;

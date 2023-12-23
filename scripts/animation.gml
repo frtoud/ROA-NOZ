@@ -28,40 +28,94 @@ if (anim_indicatorflash_timer > 0)
     anim_indicatorflash_timer--;
 }
 
-//Hair hoverframe calculation
+//Hair hoverframe calculation + sound effect
 //==============================================================================
+var thruster_sfx_strength = 0; //set to zero or below to remove sfx
 if (at_uspecial_hovering)
 {
-    var hair_animspeed_index = 0;
-    
-    if (at_uspecial_exhausted)
-    { hair_animspeed_index = 0; }
-    else if (0.33 > at_uspecial_hover_meter/noz_uspecial_hover_max)
-    { hair_animspeed_index = 1; }
-    else if (0.66 > at_uspecial_hover_meter/noz_uspecial_hover_max) 
-    { hair_animspeed_index = 2; }
-    else 
-    { hair_animspeed_index = 3; }
-    
-    if (!at_uspecial_exhausted && !joy_pad_idle 
-     && !(state == PS_ATTACK_AIR && attack == AT_USPECIAL))
+    if (joke_explainer_mode)
     {
-        if ( (joy_dir >  40 && joy_dir < 140)
-         || (state == PS_ATTACK_AIR && attack == AT_NAIR))
-        { hair_animspeed_index++; }
-        else if (joy_dir > 220 && joy_dir < 310) 
-        { hair_animspeed_index--; }
+        if (!at_uspecial_exhausted && up_down) || (vsp < -2)
+             jex_hover_frame_counter -= 2;
+        else jex_hover_frame_counter += 1;
+        jex_hover_frame_counter = clamp(jex_hover_frame_counter, 0, 20);
+
+        if (at_uspecial_exhausted)
+        {   //empty
+            if (get_gameplay_time() % 3 == 0)
+                spawn_twinkle(vfx_thrusters_empty, x, y - 14, 40, false);
+            
+            anim_hover_hair_frame = 7;
+        }
+        else if (up_down || up_pressed)
+        {   //active
+            thruster_sfx_strength = 2;
+            anim_hover_hair_frame = floor(get_gameplay_time() / 3) % 4;
+        }
+        else
+        {   //idle
+            thruster_sfx_strength = 1;
+            anim_hover_hair_frame = 4 + floor(get_gameplay_time() / 2) % 3;
+        }
+
     }
-    
-    anim_hover_hair_frame += anim_hover_hair_rates[hair_animspeed_index];
-    
-    if (anim_hover_hair_frame >= 4)
+    else
     {
-        anim_hover_hair_frame %= 4;
-        //Sound effect tied to animation
-        sound_play(asset_get("sfx_birdflap"), false, noone, 1, 
-        0.75 + anim_hover_hair_rates[hair_animspeed_index]);
+        var hair_animspeed_index = 0;
+
+        if (at_uspecial_exhausted)
+        { hair_animspeed_index = 0; }
+        else if (0.33 > at_uspecial_hover_meter/noz_uspecial_hover_max)
+        { hair_animspeed_index = 1; }
+        else if (0.66 > at_uspecial_hover_meter/noz_uspecial_hover_max) 
+        { hair_animspeed_index = 2; }
+        else 
+        { hair_animspeed_index = 3; }
+
+        if (!at_uspecial_exhausted && !joy_pad_idle
+        && !(state == PS_ATTACK_AIR && attack == AT_USPECIAL))
+        {
+            if ( (joy_dir >  40 && joy_dir < 140)
+            || (state == PS_ATTACK_AIR && attack == AT_NAIR))
+            { hair_animspeed_index++; }
+            else if (joy_dir > 220 && joy_dir < 310)
+            { hair_animspeed_index--; }
+        }
+
+        anim_hover_hair_frame += anim_hover_hair_rates[hair_animspeed_index];
+
+        if (anim_hover_hair_frame >= 4)
+        {
+            anim_hover_hair_frame %= 4;
+            //Sound effect tied to animation
+            sound_play(asset_get("sfx_birdflap"), false, noone, 1, 
+            0.75 + anim_hover_hair_rates[hair_animspeed_index]);
+        }
     }
+}
+
+//piggybacking on this system for Dash thrusters
+if (joke_explainer_mode)
+{
+    if (state == PS_DASH || state == PS_DASH_TURN)
+        thruster_sfx_strength = 0.9;
+    else if (state == PS_DASH_STOP)
+        thruster_sfx_strength = 0.3;
+}
+
+if (thruster_sfx_strength > 0)
+{
+    if (noone == thrusters_sfx)
+        thrusters_sfx = sound_play(asset_get("sfx_ell_hover"), true, noone);
+    
+    var exhaust_pitch = 1 - 0.01 * ease_expoOut(0, 100, floor(at_uspecial_hover_meter), noz_uspecial_hover_max);
+    sound_pitch(thrusters_sfx, 0.3 + 0.4 * thruster_sfx_strength  + exhaust_pitch);
+    sound_volume(thrusters_sfx, 0.25 + 0.25 * thruster_sfx_strength, 250);
+}
+else if (noone != thrusters_sfx)
+{
+    sound_stop(thrusters_sfx);
+    thrusters_sfx = noone;
 }
 
 //Bonus
@@ -77,6 +131,14 @@ else if (anim_hairblink_timer > 0 && !at_uspecial_was_hovering)
 //==============================================================================
 switch (state)
 {
+    case PS_DASH_START:
+    {
+        if (joke_explainer_mode) && (state_timer == initial_dash_time - 3)
+        {
+            sound_play(get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_SFX),
+                       false, noone, 0.3, 3.7);
+        }
+    } break;
     case PS_PRATLAND:
     {
         if (!was_parried)
@@ -84,6 +146,11 @@ switch (state)
             sprite_index = pratland_spr;
             image_index = floor(image_number * (state_timer/prat_land_time));
         }
+    } break;
+    case PS_AIR_DODGE:
+    case PS_WAVELAND:
+    {
+        if (joke_explainer_mode) sound_stop(jump_sound);
     } break;
     case PS_HITSTUN:
     case PS_HITSTUN_LAND:
@@ -94,27 +161,35 @@ switch (state)
     {
         if (at_uspecial_hovering)
         {
-            sprite_index = idle_hover_spr;
-            
-            //Exhausted -> Uses DOWNWARD
-            if (at_uspecial_exhausted) 
-                    { image_index = 4; }
-            //NEUTRAL
-            else if (joy_pad_idle) 
-                    { image_index = 0; }
-            //BACKWARD
-            else if ( (spr_dir > 0 && (joy_dir >= 130 && joy_dir <= 230))
-                   || (spr_dir < 0 && (joy_dir <=  50 || joy_dir >= 310)) )
-                    { image_index = 1; }
-            //UPWARD
-            else if (joy_dir >  50 && joy_dir < 130) 
-                    { image_index = 2; }
-            //FORWARD
-            else if ( (spr_dir > 0 && (joy_dir <=  50 || joy_dir >= 310))
-                   || (spr_dir < 0 && (joy_dir >= 130 && joy_dir <= 230)) )
-                    { image_index = 3; }
-            //DOWNWARD
-            else    { image_index = 4; }
+            if (joke_explainer_mode)
+            {
+                sprite_index = jex_hover_spr;
+                image_index = floor(jex_hover_frame_counter/5);
+            }
+            else
+            {
+                sprite_index = idle_hover_spr;
+                
+                //Exhausted -> Uses DOWNWARD
+                if (at_uspecial_exhausted)
+                        { image_index = 4; }
+                //NEUTRAL
+                else if (joy_pad_idle)
+                        { image_index = 0; }
+                //BACKWARD
+                else if ( (spr_dir > 0 && (joy_dir >= 130 && joy_dir <= 230))
+                    || (spr_dir < 0 && (joy_dir <=  50 || joy_dir >= 310)) )
+                        { image_index = 1; }
+                //UPWARD
+                else if (joy_dir >  50 && joy_dir < 130)
+                        { image_index = 2; }
+                //FORWARD
+                else if ( (spr_dir > 0 && (joy_dir <=  50 || joy_dir >= 310))
+                    || (spr_dir < 0 && (joy_dir >= 130 && joy_dir <= 230)) )
+                        { image_index = 3; }
+                //DOWNWARD
+                else    { image_index = 4; }
+            }
         }
         else if (prev_state == PS_ATTACK_AIR)
         { 
@@ -125,9 +200,18 @@ switch (state)
     {
         if (state_timer <= 1) 
         { noz_anim_back_flipping = (hsp * spr_dir) < 0; }
-        
+
         if (noz_anim_back_flipping)
         { sprite_index = noz_anim_backflip_spr; }
+    } break;
+    case PS_LANDING_LAG:
+    {
+        sprite_index = sprite_get("land");
+        if (attack == AT_FSPECIAL_2)
+        {
+            sprite_index = pratland_spr;
+            image_index = floor(image_number * state_timer / landing_lag_time);
+        }
     } break;
     case PS_WALL_JUMP:
     {
@@ -143,20 +227,17 @@ switch (state)
         switch (attack)
         {
 //==================================================================
-            case AT_JAB:
+            case AT_DTILT:
+            case AT_DATTACK:
             {
-                if (window == 4 || window == 5 || window == 6)
+                if !hitpause && (window == 2) && (window_timer == 0)
+                && noz_frostzone_empowered
                 {
-                    var anim_window = 
-                        anim_jab_window_order[at_jab_timesthrough % array_length(anim_jab_window_order)];
-                    
-                    //borrow the target window's animation frames
-                    var start_frame = get_window_value(AT_JAB, anim_window, AG_WINDOW_ANIM_FRAME_START);
-                    var num_frames = get_window_value(AT_JAB, anim_window, AG_WINDOW_ANIM_FRAMES);
-                    var window_length = get_window_value(AT_JAB, window, AG_WINDOW_LENGTH);
-                    image_index = start_frame + floor(num_frames * window_timer / window_length);
+                    create_hitbox(AT_DATTACK, 5, x, y); //see hitbox_update for position
+                    sound_play(asset_get("sfx_waveland_eta"), false, noone, 1, 1.6);
                 }
-            } break;
+                
+            }break;
 //==================================================================
             case AT_FSTRONG:
             {
@@ -166,26 +247,59 @@ switch (state)
                     
                     if (get_gameplay_time() % 4 == 0)
                     {
-                        spawn_twinkle(vfx_snow_twinkle, x - (20 * spr_dir),
-                                      y - 20, 10, true);
+                        if (joke_explainer_mode)
+                        {
+                            var k = spawn_twinkle(vfx_electric_twinkle, x - (spr_dir*16), y - 42, 24, false);
+                            k.draw_angle = 45 * random_func(5, 8, true);
+                        }
+                        else spawn_twinkle(vfx_snow_twinkle, x - (20 * spr_dir),
+                                           y - 20, 10, true);
                     }
                 }
-                else if (window == 2 && 
-                (  window_timer == get_hitbox_value(AT_FSTRONG, 2, HG_WINDOW_CREATION_FRAME) -1
-                || window_timer == get_hitbox_value(AT_FSTRONG, 3, HG_WINDOW_CREATION_FRAME) -1 ))
-                { 
-                    spawn_hit_fx(x + (32 * spr_dir), y-20, vfx_ice_small);
-                    sound_play(sound_get("sfx_noz_ice_small"));
-                }
-                else if (!hitstop && window == 3 && window_timer == 0)
+                else if (!hitpause)
                 {
-                    spawn_hit_fx(x + (40 * spr_dir), y-20, vfx_ice_big);
+
+                    if (window == 3) && (window_timer == 0)
+                    && !joke_explainer_mode
+                    {
+                        var xpos = x + (get_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_X) - 10) * spr_dir;
+                        var ypos = y + get_hitbox_value(AT_FSTRONG, 2, HG_HITBOX_Y);
+                        spawn_hit_fx(xpos, ypos + 6*anim_rand_y, vfx_ice_small);
+                    }
+                    else if (window == 3) && (window_timer == get_hitbox_value(AT_FSTRONG, 3, HG_WINDOW_CREATION_FRAME))
+                    && !joke_explainer_mode 
+                    {
+                        var xpos = x + (get_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_X) + 10) * spr_dir;
+                        var ypos = y + get_hitbox_value(AT_FSTRONG, 3, HG_HITBOX_Y);
+                        spawn_hit_fx(xpos, ypos - 6*anim_rand_y, vfx_ice_small);
+                        sound_play(get_window_value(AT_FSTRONG, 3, AG_WINDOW_SFX), false, noone, 0.8, 1.05)
+                    }
+                    else if (window == 4) && (window_timer == 0)
+                    {
+                        var vfx_to_use = joke_explainer_mode ? vfx_spark_big
+                                                             : vfx_ice_big;
+                        if (noz_rune_flags.wide_strongs && strong_charge >= 30)
+                        {
+                            vfx_to_use = joke_explainer_mode ? vfx_spark_huge
+                                                             : vfx_ice_huge;
+                            sound_play(asset_get(joke_explainer_mode ? "sfx_absa_uair" : "sfx_icehit_heavy2"));
+                        }
+
+                        var xpos = x + get_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_X) * spr_dir;
+                        var ypos = y + get_hitbox_value(AT_FSTRONG, 4, HG_HITBOX_Y);
+                        spawn_hit_fx(xpos, ypos, vfx_to_use);
+                    }
                 }
-                else if ((get_gameplay_time() % 2 == 0) && ( window == 3 || (window == 2 && 
-                window_timer > get_hitbox_value(AT_FSTRONG, 2, HG_WINDOW_CREATION_FRAME)) ))
+
+                if (get_gameplay_time() % 2 == 0) && (window == 4)
                 {
-                    spawn_twinkle(vfx_snow_twinkle, x + (32 * spr_dir), y - 20, 
-                                  get_hitbox_value(AT_FSTRONG, 2, HG_WIDTH), false);
+                    var k = spawn_twinkle(joke_explainer_mode ? vfx_electric_twinkle : vfx_snow_twinkle,
+                                           x + (32 * spr_dir), y - 20, 
+                                           get_hitbox_value(AT_FSTRONG, 4, HG_WIDTH), false);
+                    if (joke_explainer_mode)
+                    {
+                        k.draw_angle = 45 * random_func(5, 8, true);
+                    }
                 }
                 
             }break;
@@ -195,30 +309,64 @@ switch (state)
                 if (window == 1 && strong_charge > 0
                      && (get_gameplay_time() % 4 == 0) )
                 {
-                    spawn_twinkle(vfx_snow_twinkle, x, y - 6, 10, true);
+                    if (joke_explainer_mode)
+                    {
+                        var k = spawn_twinkle(vfx_electric_twinkle, x - (spr_dir*8), y - 32, 40, false);
+                        k.draw_angle = 45 * random_func(5, 8, true);
+                    }
+                    else spawn_twinkle(vfx_snow_twinkle, x, y - 6, 10, true);
                 }
-                if (!hitstop && window == 2 && window_timer == 
+                else if (!hitpause && window == 3 && window_timer == 
                 (get_hitbox_value(AT_USTRONG, 1, HG_WINDOW_CREATION_FRAME)) )
-                { 
-                    spawn_hit_fx(x, y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y), vfx_ice_big);
+                {
+
+                    var vfx_to_use = joke_explainer_mode ? vfx_spark_big
+                                                         : vfx_ice_big;
+                    if (noz_rune_flags.wide_strongs && strong_charge >= 30)
+                    {
+                        vfx_to_use = joke_explainer_mode ? vfx_spark_huge
+                                                         : vfx_ice_huge;
+                        sound_play(asset_get(joke_explainer_mode ? "sfx_absa_uair" : "sfx_icehit_heavy2"));
+                    }
+
+                    if (joke_explainer_mode)
+                         spawn_hit_fx(x + spr_dir*4, y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y) - 8, vfx_to_use);
+                    else
+                         spawn_hit_fx(x, y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y), vfx_to_use);
                 }
                 else if ((get_gameplay_time() % 2 == 0)
-                 && window == 2 && window_timer > 
+                 && window == 3 && window_timer > 
                 get_hitbox_value(AT_USTRONG, 1, HG_WINDOW_CREATION_FRAME))
                 {
-                    spawn_twinkle(vfx_snow_twinkle, x,
-                                  y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y), 
+                    var k = spawn_twinkle(joke_explainer_mode ? vfx_electric_twinkle : vfx_snow_twinkle,
+                                  x, y + get_hitbox_value(AT_USTRONG, 2, HG_HITBOX_Y), 
                                   get_hitbox_value(AT_USTRONG, 2, HG_WIDTH), false);
+
+                    if (joke_explainer_mode)
+                    {
+                        k.draw_angle = 45 * random_func(5, 8, true);
+                    }
                 }
             }break;
 //==================================================================
             case AT_DSTRONG:
             {
-                if (window == 1 && strong_charge > 0
-                    && (get_gameplay_time() % 4 == 0) )
+                if (window == 1 && strong_charge > 0)
                 {
-                    spawn_twinkle(vfx_snow_twinkle, x - (spr_dir * 20),
-                                                    y - 48, 10, true);
+                    if (get_gameplay_time() % 4 == 0)
+                    {
+                        if (joke_explainer_mode)
+                        {
+                            var k = spawn_twinkle(vfx_electric_twinkle, x + (spr_dir * 20), y - 12, 30, false);
+
+                            k.draw_angle = 45 * random_func(5, 8, true);
+                        }
+                        else spawn_twinkle(vfx_snow_twinkle, x - (spr_dir * 20), y - 48, 10, true);
+                    }
+                    if (get_gameplay_time() % 8 > 4) && joke_explainer_mode
+                    {
+                        image_index--;
+                    }
                 }
             }break;
 //==================================================================
@@ -243,6 +391,65 @@ switch (state)
                 }
             }break;
 //==================================================================
+            case AT_FSPECIAL_2:
+            {
+                //animation of charge
+                if (window == 1)
+                {
+                    anim_hover_hair_frame = 0;
+                }
+                else if (window == 2 && at_fspecial_missile_charge > 0)
+                {
+                    //spawn vfxs
+                    if (state_timer % 2 == 0)
+                    {
+                        var fx = spawn_hit_fx(x -16*spr_dir, y - 16 + 3*vsp, vfx_thrusters_charge);
+                        fx.draw_angle = 90 - (180 * anim_rand_x);
+                    }
+                    if (state_timer % 12 == 9)
+                    {
+                        spawn_base_dust(x, y, "dash_start")
+                    }
+
+                    //slowly accelerating animation
+                    var index_mult = 0.01 * ease_linear(0, 100, at_fspecial_missile_charge, 150);
+
+                    //hijacking this variable. I'm sure I won't mind.
+                    anim_hover_hair_frame += 0.25 + min(index_mult * 0.6, 1);
+                    if (anim_hover_hair_frame >= 4) || (at_fspecial_missile_charge == 1)
+                    {
+                        sound_play(asset_get("sfx_shovel_dig"), false, noone, 0.2, 1.2 + 1.3*min(index_mult, 2.2));
+                        strong_flashing = true;
+                    }
+                    anim_hover_hair_frame %= 4;
+                    image_index = 3 + anim_hover_hair_frame;
+
+                    if (at_fspecial_missile_charge > noz_fspecial_chargetime)
+                    {
+                        var excess_charge = at_fspecial_missile_charge - noz_fspecial_chargetime;
+                        var camshake = clamp(ease_linear(0, 3, excess_charge, 2*noz_fspecial_chargetime), 0, 2);
+                        shake_camera(floor(camshake), 2);
+                    }
+                }
+                else if (window == 3) && (window_timer == 0)
+                {
+                    image_index = 3; //I blame dan for not letting attack_update run this frame
+                }
+                else if (window == 4 || window == 5) 
+                {
+                    if (window == 4 && window_timer == 0)
+                    {
+                        var fx = spawn_base_dust(x - 20*spr_dir, y-20, "djump");
+                        fx.draw_angle = 90 * -spr_dir;
+                        spawn_unshaded_hit_fx(x - spr_dir*20, y-16, HFX_ZET_FIRE);
+                    }
+                    else if (window_timer % (abs(hsp) > 7 ? 2 : 4) == 0)
+                    {
+                        spawn_unshaded_hit_fx(x - spr_dir*20, y-16, vfx_steam_hit_mini);
+                    }
+                }
+            }break;
+//==================================================================
             case AT_USPECIAL:
             {
                 if (window == 1) 
@@ -253,16 +460,20 @@ switch (state)
                         strong_flashing = true;
                     }
                 }
-                else if (image_index == 15
-                && get_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE) == 7) 
+                else if (image_index == 15)
+                && (get_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE) == 7) 
                 { image_index = 22; } //Exhausted frame; going to pratfall
             }break;
 //==================================================================
-            case AT_DSPECIAL:
+            case AT_USPECIAL_2: //JEX
             {
-                //Counter success hitpause frame
-                if (window == 5 && window_timer < 1) 
-                   { image_index = 8; }
+                jex_hover_frame_counter = 0;
+
+                if (window == 2) && (window_timer == 0) && !hitpause 
+                {
+                    sound_play(get_window_value(AT_USPECIAL_2, 2, AG_WINDOW_SFX),
+                        false, noone, 0.7, 2.5);
+                }
             }break;
 //==================================================================
             case AT_NAIR:
@@ -274,21 +485,36 @@ switch (state)
             case AT_FAIR:
             {
                 use_hover_sprite();
-                if (get_num_hitboxes(AT_FAIR) == 1)
-                && (window == get_hitbox_value(AT_FAIR, 2, HG_WINDOW))
-                && (window_timer <= get_hitbox_value(AT_FAIR, 2, HG_WINDOW_CREATION_FRAME))
+                if (window == 3) && ! joke_explainer_mode && !noz_frostzone_empowered
                 {
                     spawn_twinkle(vfx_snow_twinkle, x + (spr_dir * 32), y - 24, 24, false)
+                }
+                else if (window == 1 && strong_charge > 0)
+                {
+                    image_index = get_window_value(AT_FAIR, 2, AG_WINDOW_ANIM_FRAME_START);
                 }
             }break;
             case AT_BAIR:
             {
                 use_hover_sprite();
-                if (get_num_hitboxes(AT_BAIR) == 1)
-                && (window == get_hitbox_value(AT_BAIR, 2, HG_WINDOW))
-                && (window_timer <= get_hitbox_value(AT_BAIR, 2, HG_WINDOW_CREATION_FRAME))
+                if (window == 3)
                 {
-                    spawn_twinkle(vfx_snow_twinkle, x + (spr_dir * -32), y - 24, 24, false)
+                    if (joke_explainer_mode)
+                    {
+                        var k = spawn_twinkle(vfx_electric_twinkle, x - (spr_dir * 32),
+                                                                    y - 16, 32, false);
+                        k.draw_angle = 45 * random_func(1, 8, true);
+                        k.hsp = hsp;
+                        k.vsp = clamp(vsp, -10, 6);
+                    }
+                    else if (!noz_frostzone_empowered)
+                    {
+                        spawn_twinkle(vfx_snow_twinkle, x + (spr_dir * -32), y - 24, 24, false)
+                    }
+                }
+                else if (window == 1 && strong_charge > 0)
+                {
+                    image_index = get_window_value(AT_BAIR, 2, AG_WINDOW_ANIM_FRAME_START);
                 }
             }break;
             case AT_UAIR:
@@ -296,6 +522,25 @@ switch (state)
                 use_hover_sprite();
             }break;
 //==================================================================
+            case AT_TAUNT:
+            case AT_TAUNT_2:
+            {
+                if (!hitpause) && (window > 1) && (window_timer == 1)
+                && (8 == get_window_value(attack, window - 1, AG_WINDOW_TYPE))
+                {
+                    spawn_base_dust(x, y, "land")
+                }
+            }break;
+//==================================================================
+            case AT_NSPECIAL_2: //Reflector Rune
+            {
+                if free && ((image_index == 5) || (image_index == 6))
+                && !joke_explainer_mode
+                {
+                    //Aerial sprites
+                    image_index += 2;
+                }
+            }break;
             default:
             break;
         }
@@ -304,13 +549,57 @@ switch (state)
     break;
 };
 
+//===========================================================
+//Ice-empowered visuals
+if (noz_frostzone_timer > 0)
+|| (noz_frostzone_empowered && (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR))
+{
+    if (strong_flashing) manual_flash = 8;
+    if (get_gameplay_time() % 2 == 0)
+    {
+        spawn_twinkle(vfx_snow_twinkle, x, y - 24, 48, false)
+    }
+}
+
 //===========================================================    
-// DSPECIAL Reflect effects
-if (anim_dspecial_shockwave_frame > 0) 
-    { anim_dspecial_shockwave_frame -= 1; }
+// Reflector effects
+if (anim_reflector_shockwave_frame > 0) 
+    { anim_reflector_shockwave_frame -= 1; }
 if (anim_fakeparry_timer > 0) 
     { anim_fakeparry_timer -= 1; }
-   
+
+//===========================================================
+// JE7k alt switch -- thx Muno
+if (joke_explainer_mode)
+{
+    //See structure in init.gml
+    for (var i = 0; i < array_length(noz_joke_explainer_sprites); i++)
+    {
+        if (sprite_index == noz_joke_explainer_sprites[i].noz)
+        {
+            sprite_index = noz_joke_explainer_sprites[i].jex;
+
+            //Manually looping animations
+            switch (noz_joke_explainer_sprites[i].loops)
+            {
+                case PS_IDLE:
+                    image_index = floor(state_timer * idle_anim_speed) % image_number; 
+                break;
+                case PS_WALK:
+                    image_index = floor(state_timer * walk_anim_speed) % image_number; 
+                break;
+                case PS_DASH:
+                    image_index = floor(state_timer * dash_anim_speed) % image_number; 
+                break;
+                case PS_PRATFALL:
+                    image_index = floor(state_timer * pratfall_anim_speed) % image_number; 
+                break;
+                default: break;
+            } break;
+        }
+    }
+}
+
 //===========================================================     
 #define spawn_twinkle(vfx, pos_x, pos_y, width, front)
 {
@@ -322,6 +611,7 @@ if (anim_fakeparry_timer > 0)
     {
         k.depth = depth - 1;
     }
+    return k;
 }
 //===========================================================
 #define use_hover_sprite()
@@ -332,3 +622,53 @@ if (anim_fakeparry_timer > 0)
     if (at_uspecial_hovering && alt_sprite != 0) 
     { sprite_index = alt_sprite; }
 }
+
+//===========================================================     
+#define spawn_unshaded_hit_fx(kx, ky, vfx)
+{
+    var k = spawn_hit_fx(kx, ky, vfx);
+    k.player_id = noone;
+    return k;
+}
+//========================================================================================================
+#define spawn_base_dust
+///spawn_base_dust(x, y, name, dir = 0)
+///spawn_base_dust(x, y, name, ?dir)
+// originally by supersonic
+//This function spawns base cast dusts. Names can be found below.
+//========================================================================================================
+var x = argument[0], 
+    y = argument[1], 
+    name = argument[2];
+var dir = argument_count > 3 ? argument[3] : 0;
+
+var dlen; //dust_length value
+var dfx; //dust_fx value
+var dfg; //fg_sprite value
+var dfa = 0; //draw_angle value
+var dust_color = 0;
+
+switch (name) 
+{
+    default: 
+    // warning: sprite assets magic numbers
+    case "dash_start": dlen = 21; dfx = 3;  dfg = 2626; break;
+    case "dash":       dlen = 16; dfx = 4;  dfg = 2656; break;
+    case "jump":       dlen = 12; dfx = 11; dfg = 2646; break;
+    case "doublejump": 
+    case "djump":      dlen = 21; dfx = 2;  dfg = 2624; break;
+    case "walk":       dlen = 12; dfx = 5;  dfg = 2628; break;
+    case "land":       dlen = 24; dfx = 0;  dfg = 2620; break;
+    case "walljump":   dlen = 24; dfx = 0;  dfg = 2629; dfa = -90 *(dir != 0 ? dir : spr_dir); break;
+    case "n_wavedash": dlen = 24; dfx = 0;  dfg = 2620; dust_color = 1; break;
+    case "wavedash":   dlen = 16; dfx = 4;  dfg = 2656; dust_color = 1; break;
+}
+var newdust = spawn_dust_fx(round(x),round(y),asset_get("empty_sprite"),dlen);
+if (newdust == noone) return noone;
+
+newdust.draw_angle = dfa;
+newdust.dust_fx = dfx; //set the fx id
+newdust.dust_color = dust_color; //set the dust color
+if (dfg != -1) newdust.fg_sprite = dfg; //set the foreground sprite
+if (dir != 0) newdust.spr_dir = dir; //set the spr_dir
+return newdust;

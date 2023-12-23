@@ -1,7 +1,6 @@
 //on death
 //reset status
-at_dspecial_damage_block = noz_dspecial_damage_max;
-at_dspecial_zone_timer = 0;
+at_reflector_damage_block = noz_reflector_damage_max;
 
 at_fspecial_soft_cooldown_timer = 0;
 
@@ -17,9 +16,67 @@ move_cooldown[AT_USPECIAL] = 0;
 at_uspecial_cooldown_override = false;
 at_fspecial_cooldown_override = false;
 
-
-//destroy articles
-with (obj_article1) if (player_id == other)
+//===========================================================================
+// Merci Mawral
+if instance_exists(noz_climber_twin)
 {
-    should_die = true;
+    noz_climber_is_dead = true;
+
+    if (custom_clone)
+    {
+        //if clone dies, must prevent it from being deleted
+        custom_clone = false; //(temporary or crashes on reload)
+    }
+
+    //first death:
+    if (!noz_climber_twin.noz_climber_is_dead)
+    {
+        //in either case, must prevent the death from taking out a stock
+        set_player_stocks(player, get_player_stocks(player) + 1);
+
+        noz_climber_damage_restore = get_player_damage(player);
+    }
+    else
+    {
+        //second death:
+        //protocol continues normally, both will respawn
+        clear_articles(self);
+        clear_articles(noz_climber_twin);
+
+        //except if this is the final stock; the twin was waiting in Respawn.
+        //this messes with match-end.
+        if (get_player_stocks(player) == 1)
+        {
+            set_state(PS_DEAD);
+            with (noz_climber_twin) set_state(PS_DEAD);
+        }
+
+    }
+
+}
+else
+{
+   //just destroy articles
+   clear_articles(self);
+}
+
+
+
+
+//===========================================================================
+//destroy articles
+#define clear_articles(dead_owner)
+{
+    with (obj_article1) if (player_id == dead_owner)
+    {
+        should_die = true;
+    }
+    with (obj_article_platform) if (player_id == dead_owner)
+    {
+        should_die = true;
+    }
+    with (obj_article2) if (player_id == dead_owner)
+    {
+        should_die = true;
+    }
 }

@@ -5,18 +5,16 @@ if (my_hitboxID.attack == AT_USPECIAL)
     at_uspecial_hover_meter = -1;
     set_window_value(AT_USPECIAL, 5, AG_WINDOW_TYPE, 7);
 }
-else if (my_hitboxID.attack == AT_DSPECIAL && my_hitboxID.hbox_num == 4)
+
+//This hitbox can't put you in parrystun because you are not attacking... do it manually!
+else if (my_hitboxID.attack == AT_DAIR) && (state == PS_LANDING_LAG)
 {
-    with (pHitBox)
-    {
-        //reflects the whole group
-        if (orig_player_id == other && player == other.player
-            && attack == AT_DSPECIAL && hbox_num == 4)
-        {
-            hsp *= -1;
-            vsp *= -1;
-            do_homing = false;
-            player = other.hit_player;
-        }
-    }
+    set_state(PS_PRATLAND);
+}
+
+//Parrying the lighting strike makes you the owner of the strike
+else if (my_hitboxID.attack == AT_DSPECIAL_2) && ( (my_hitboxID.hbox_num == 4)
+                                                || (my_hitboxID.hbox_num == 5) )
+{
+    my_hitboxID.article_nuage.foudre_appartenance = hit_player_obj;
 }

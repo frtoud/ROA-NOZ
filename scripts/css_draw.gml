@@ -1,23 +1,13 @@
 //CSS_DRAW
-var temp_x = x + 12;
-var temp_y = y + 140;
+if ("joke_explainer_mode" not in self) exit;
 
-draw_set_halign(fa_left);
-draw_set_font(asset_get("fName"));
 
-var text = "v" + string(get_char_info(player, INFO_VER_MAJOR))
-         + "." + string(get_char_info(player, INFO_VER_MINOR));
-
-draw_set_color(c_black);
-for (i = -2; i <= 2; i += 2)
+if (joke_explainer_mode)
 {
-    for (j = -2; j <= 2; j += 2)
-    {
-        if !(i == 0 && j == 0)
-        {
-            draw_text_transformed(temp_x + i, temp_y + j, text, 1, 1, 0);
-        }
-    }
+    var temp_x = floor(x + 12);
+    var temp_y = floor(y + 140);
+
+    var color = get_player_color(player);
+    if (color < array_length(noz_alt_jokes))
+        draw_debug_text(temp_x, temp_y, noz_alt_jokes[color]);
 }
-draw_set_color(c_white);
-draw_text_transformed(temp_x, temp_y, text, 1, 1, 0);
