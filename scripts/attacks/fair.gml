@@ -55,6 +55,7 @@ set_hitbox_value(AT_FAIR, 1, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_FAIR, 1, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_FAIR, 1, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_FAIR, 1, HG_HIT_LOCKOUT, 12);
+set_hitbox_value(AT_FAIR, 1, HG_MUNO_OBJECT_LAUNCH_ANGLE, 1);
 
 //Lingering hitbox
 set_hitbox_value(AT_FAIR, 2, HG_HITBOX_TYPE, 2);
@@ -109,6 +110,7 @@ set_hitbox_value(AT_FAIR, 3, HG_HITPAUSE_SCALING, .5);
 set_hitbox_value(AT_FAIR, 3, HG_IGNORES_PROJECTILES, 0);
 set_hitbox_value(AT_FAIR, 3, HG_HIT_SFX, asset_get("sfx_icehit_medium2"));
 set_hitbox_value(AT_FAIR, 3, HG_VISUAL_EFFECT, 28);
+set_hitbox_value(AT_FAIR, 3, HG_MUNO_OBJECT_LAUNCH_ANGLE, 1);
 
 set_hitbox_value(AT_FAIR, 3, HG_PROJECTILE_SPRITE, sprite_get("vfx_ice_big"));
 set_hitbox_value(AT_FAIR, 3, HG_PROJECTILE_ANIM_SPEED, (3.0 / get_hitbox_value(AT_FAIR, 3, HG_LIFETIME)) );
@@ -142,6 +144,7 @@ set_hitbox_value(AT_FAIR, 4, HG_HIT_SFX, asset_get("sfx_absa_kickhit"));
 set_hitbox_value(AT_FAIR, 4, HG_VISUAL_EFFECT, HFX_ABS_ZAP_BIG);
 set_hitbox_value(AT_FAIR, 4, HG_HITBOX_GROUP, 2);
 set_hitbox_value(AT_FAIR, 4, HG_HIT_LOCKOUT, 4);
+set_hitbox_value(AT_FAIR, 4, HG_MUNO_OBJECT_LAUNCH_ANGLE, 1);
 
 //JEX-Fair (Shock)
 set_hitbox_value(AT_FAIR, 5, HG_HITBOX_TYPE, 1);
@@ -162,6 +165,7 @@ set_hitbox_value(AT_FAIR, 5, HG_HITPAUSE_SCALING, .7);
 set_hitbox_value(AT_FAIR, 5, HG_HIT_SFX, asset_get("sfx_absa_dattack"));
 set_hitbox_value(AT_FAIR, 5, HG_VISUAL_EFFECT, HFX_ABS_ZAP_BIG);
 set_hitbox_value(AT_FAIR, 5, HG_HITBOX_GROUP, 2);
+set_hitbox_value(AT_FAIR, 5, HG_MUNO_OBJECT_LAUNCH_ANGLE, 1);
 
 
 //Only for exploding cloud rune

@@ -39,6 +39,7 @@ set_hitbox_value(AT_DTILT, 1, HG_BASE_HITPAUSE, 5);
 set_hitbox_value(AT_DTILT, 1, HG_HITPAUSE_SCALING, .35);
 set_hitbox_value(AT_DTILT, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
 set_hitbox_value(AT_DTILT, 1, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_DTILT, 1, HG_MUNO_OBJECT_LAUNCH_ANGLE, 45);
 
 //Lingering hitbox
 set_hitbox_value(AT_DTILT, 2, HG_HITBOX_TYPE, 2);

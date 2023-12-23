@@ -84,6 +84,7 @@ set_hitbox_value(AT_NAIR, 4, HG_BASE_HITPAUSE, 7);
 set_hitbox_value(AT_NAIR, 4, HG_HITPAUSE_SCALING, .2);
 set_hitbox_value(AT_NAIR, 4, HG_HIT_SFX, asset_get("sfx_blow_medium2"));
 set_hitbox_value(AT_NAIR, 4, HG_HITBOX_GROUP, -1);
+set_hitbox_value(AT_NAIR, 4, HG_MUNO_OBJECT_LAUNCH_ANGLE, -1);
 
 //Feet hitboxes
 //Should mirror hitboxes 1 through 3; with a higher angle

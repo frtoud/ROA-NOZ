@@ -36,6 +36,7 @@ set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_X_OFFSET, 0);
 set_hitbox_value(AT_JAB, 1, HG_VISUAL_EFFECT_Y_OFFSET, -5);
 set_hitbox_value(AT_JAB, 1, HG_HITBOX_GROUP, -1);
 set_hitbox_value(AT_JAB, 1, HG_HIT_SFX, asset_get("sfx_blow_weak1"));
+set_hitbox_value(AT_JAB, 1, HG_MUNO_OBJECT_LAUNCH_ANGLE, 1);
 
 
 //Infinites
@@ -65,6 +66,7 @@ for (var i = 0; i < 6; i++)
     set_hitbox_value(AT_JAB, h, HG_HITBOX_X, 24);
     set_hitbox_value(AT_JAB, h, HG_HITBOX_Y, -20);
     set_hitbox_value(AT_JAB, h, HG_LIFETIME, 1);
+    set_hitbox_value(AT_JAB, h, HG_MUNO_OBJECT_LAUNCH_ANGLE, 1);
 
     if (i == 0)
     {
