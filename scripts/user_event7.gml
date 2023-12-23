@@ -673,10 +673,8 @@ else
     set_hitbox_value(AT_FSPECIAL_2, 1, HG_HIT_SFX, asset_get("sfx_tow_anchor_land"));
 }
 
-
-//debug
-if (shield_down) noz_rune_flags.climber_mode = true;
-
+//===========================================================================
+// RUNE: Climbers Mode
 if (noz_rune_flags.climber_mode && (noz_climber_twin == noone))
 {
     noz_climber_twin = instance_create(x, y, "oPlayer");
