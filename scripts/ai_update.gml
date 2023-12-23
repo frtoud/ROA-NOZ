@@ -24,17 +24,6 @@ if (custom_clone && instance_exists(noz_climber_twin))
     // special considerations required to follow master while Uspecial is in play
     //
 
-
-    //noz climbers problems:
-    //they share hitbox groups. if one hits, other can't (unless its using group -1)
-    //FAIR and BAIR notably have trouble as group can get reset by the other landing
-    /*
-    DSTRONG: 1w, 2&3 -- need split groups
-    USTRONG: 1&2 -- need split groups
-
-    */
-
-
     //what P&M does:
     /*
       check distance (x, y)
@@ -72,25 +61,44 @@ if (custom_clone && instance_exists(noz_climber_twin))
     transfer_inputs();
 
     //Partner wants to move closer to master
-    var distance_to_master = abs(noz_climber_twin.x - x);
+    var distance_to_master = point_distance(noz_climber_twin.x, noz_climber_twin.y, x, y);
     //but in cases where the joystick input is important, we must not do it
-    if (distance_to_master > 40)
-    && !is_joystick_input_critical()
+
+    if (at_uspecial_hovering)
     {
-        if (noz_climber_twin.x > x)
+
+    }
+    else if !is_joystick_input_critical()
+    {
+        if (abs(noz_climber_twin.x - x) > 40)
         {
-            left_down = false;
-            left_hard_pressed = false;
-            right_down = true;
+            if (noz_climber_twin.x > x)
+            {
+                left_down = false;
+                left_hard_pressed = false;
+                right_down = true;
+            }
+            else
+            {
+                right_down = false;
+                right_hard_pressed = false;
+                left_down = true;
+            }
         }
-        else
+
+        //want to stand at the same master's y
+        if (noz_climber_twin.y > (y + 40)) && !free
         {
-            right_down = false;
-            right_hard_pressed = false;
-            left_down = true;
+            down_hard_pressed = true;
+        }
+        else if (noz_climber_twin.y < (y - 40)) && (vsp > -1)
+        //heh. edgecase where we don't want to interrupt a taunt
+        && !(!free && noz_climber_twin.taunt_pressed)
+        {
+            jump_pressed = true;
+            jump_down = true;
         }
     }
-
 
     fix_corrolary_inputs();
 
@@ -212,9 +220,8 @@ else
     || (state == PS_AIR_DODGE)
     || (state == PS_PARRY_START)
     //During certain attacks, joystick direction is important
-    || (  (state == PS_ATTACK_GROUND || state == PS_ATTACK_AIR)
-       && ( (attack == AT_JAB) || (attack == AT_FSPECIAL) )
-       )
+    || (state == PS_ATTACK_GROUND)
+    || ( (state == PS_ATTACK_AIR) && (attack == AT_FSPECIAL) )
 
     );
 }

@@ -33,6 +33,10 @@ noz_climber_input_buffer = array_create(noz_climber_input_buffer_size, 0);
 noz_climber_input_pointer = 20;
 noz_climber_master_spr_dir = spr_dir;
 
+noz_climber_estimated_jump_height = grav_estimated_height(jump_speed);
+noz_climber_estimated_shorthop_height = grav_estimated_height(short_hop_speed);
+noz_climber_estimated_djump_height = grav_estimated_height(djump_speed);
+
 noz_climber_input_names = 
 [
     "left_down", "right_down", "up_down", "down_down",
@@ -47,3 +51,10 @@ noz_climber_input_names =
     "taunt_down", "taunt_pressed",
     "spr_dir"
 ]
+
+
+#define grav_estimated_height(init_speed)
+{
+    var t = (init_speed / gravity_speed);
+    return (init_speed -  gravity_speed * t / 2) * t;
+}
