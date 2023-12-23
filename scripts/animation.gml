@@ -147,6 +147,11 @@ switch (state)
             image_index = floor(image_number * (state_timer/prat_land_time));
         }
     } break;
+    case PS_AIR_DODGE:
+    case PS_WAVELAND:
+    {
+        if (joke_explainer_mode) sound_stop(jump_sound);
+    } break;
     case PS_HITSTUN:
     case PS_HITSTUN_LAND:
     {
