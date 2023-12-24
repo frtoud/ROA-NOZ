@@ -122,6 +122,11 @@ else if (attack == AT_DSPECIAL_2)
     {
         vsp = abs(vsp);
         hsp = 0;
+
+        // counters Playtest not having blast zones
+        var is_at_bottom_blast_zone = (get_stage_data(SD_BOTTOM_BLASTZONE_Y) > 0) 
+                                   && (y > get_stage_data(SD_BOTTOM_BLASTZONE_Y))
+
         if !instance_exists(article_nuage)
         {
             //become consistent with thundershock (hitbox 6)
@@ -141,7 +146,7 @@ else if (attack == AT_DSPECIAL_2)
                 sound_effect = asset_get("sfx_absa_uair");
                 stop_effect = false;
             }
-            if (!free) || (y > get_stage_data(SD_BOTTOM_BLASTZONE_Y))
+            if (!free || is_at_bottom_blast_zone)
             {
                 destroyed = true;
             }
@@ -162,7 +167,7 @@ else if (attack == AT_DSPECIAL_2)
             article_nuage.nouvel_etat = 9; //POW
             destroyed = true;
         }
-        else if (!free) || (y > get_stage_data(SD_BOTTOM_BLASTZONE_Y))
+        else if (!free || is_at_bottom_blast_zone)
         {
             article_nuage.foudre_destination_y = y + 18;
             article_nuage.nouvel_etat = 9; //POW
