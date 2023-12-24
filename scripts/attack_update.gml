@@ -750,7 +750,7 @@ case AT_DSPECIAL:
         cloud.vsp = clamp(vsp - 4, -9, -4);
         cloud.hsp = hsp;
         
-        move_cooldown[AT_DSPECIAL] = noz_dspecial_cooldown;
+        move_cooldown[attack] = noz_dspecial_cooldown;
     }
 } break;
 //==============================================================
@@ -771,7 +771,7 @@ case AT_DSPECIAL_2:
             }
             var cloud = instance_create(floor(article_pos.x), floor(article_pos.y), "obj_article3");
 
-            move_cooldown[attack] = 120;
+            move_cooldown[attack] = jex_dspecial_cooldown;
          }
          else if (window_timer == get_window_value(AT_DSPECIAL_2, 2, AG_WINDOW_LENGTH))
          {

@@ -265,7 +265,8 @@ noz_uspecial_hover_hspeed = 1.5 + air_max_speed;
 noz_uspecial_hover_vstrength = 0.80;
 noz_uspecial_hover_hstrength = 1.5 * air_accel;
 
-noz_dspecial_cooldown = 180;
+noz_dspecial_cooldown = 300;
+jex_dspecial_cooldown = 120;
 
 //joke explainer thunder version
 noz_dspecial_target_spawn_height = 350;
