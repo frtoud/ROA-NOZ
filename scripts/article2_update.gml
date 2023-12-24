@@ -153,8 +153,7 @@ if (get_gameplay_time() % max(1, floor(4 - height/160)) == 0)
         hsp = lengthdir_x(force, angle);
         vsp = lengthdir_y(force, angle);
 
-        //boosts friction!
-        kick_boosted = 8;
+        lifetime_timer = 0;
     }
 }
 
