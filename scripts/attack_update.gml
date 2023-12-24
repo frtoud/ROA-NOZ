@@ -574,6 +574,7 @@ case AT_FSPECIAL_2:
         var predicted_pos = round(x + hsp);
         if (predicted_pos != clamp(predicted_pos, get_stage_data(SD_LEFT_BLASTZONE_X) + 20, 
                                                   get_stage_data(SD_RIGHT_BLASTZONE_X) - 20) )
+        && (get_stage_data(SD_LEFT_BLASTZONE_X) != get_stage_data(SD_RIGHT_BLASTZONE_X))
         {
             hsp *= -1; vsp = -4;
             hsp = clamp(hsp, -8, 8);
