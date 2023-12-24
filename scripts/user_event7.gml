@@ -184,7 +184,9 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("jex_reflect"));
     //==========================================
     //Pokémon Stadium
-    pkmn_stadium_name_override = "JK-EX-7000";
+    pkmn_stadium_front_img = sprite_get("cmpjex_stadium_front");
+    pkmn_stadium_back_img = sprite_get("cmpjex_stadium_back");
+    pkmn_stadium_name_override = "JKEX7000";
     //Mt. Dedede Stadium
     arena_title = "Mechanical Assistant";
     arena_short_name = "JK-EX-7000";
@@ -195,6 +197,9 @@ if (joke_explainer_mode) //Enable JokeExplainer Echo
     ncode1 = "Compelled to explain 'The Joke' to the nearest person.";
     ncode2 = "Highly mobile, never seems to turn off.";
     ncode3 = "Capture and return to Dr. Andonuts immediately. ";
+
+    //Trial Grounds
+    guiltySprite = sprite_get("cmpjex_trial_grounds");
 }
 else //Restore Nozomi Data
 {
@@ -373,6 +378,8 @@ else //Restore Nozomi Data
     set_attack_value(AT_NSPECIAL_2, AG_SPRITE, sprite_get("reflect"));
     //==========================================
     //Pokémon Stadium
+    pkmn_stadium_front_img = sprite_get("cmp_stadium_front");
+    pkmn_stadium_back_img = sprite_get("cmp_stadium_back");
     pkmn_stadium_name_override = "Nozomi";
     //Mt. Dedede Stadium
     arena_title = "Idol Figment";
@@ -384,6 +391,9 @@ else //Restore Nozomi Data
     ncode1 = "Class: Figment     Reward: $1000";
     ncode2 = "Can fly with her twintails. Exhibits cryokinetic powers.";
     ncode3 = "Wanted by 'Haltmann Works' for 'being weaboo trash'...?";
+
+    //Trial grounds
+    guiltySprite = sprite_get("cmp_trial_grounds");
 
 }
 
