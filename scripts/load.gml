@@ -93,6 +93,9 @@ sprite_change_offset("vfx_sleep", 24, 38);
 sprite_change_offset("taunt", 20, 32);
 sprite_change_offset("plat", 18, 7);
 sprite_change_offset("smol_mask", 19, 44);
+//somehow fixes a weird issue with the Sans boss fight's diagonal blasters. go figure.
+sprite_change_collision_mask( "smol_mask", false, 0, 0, 0, 38, 44, 0 );
+
 
 set_victory_theme(sound_get("victory"));
 set_victory_bg(sprite_get("victory"));
