@@ -166,6 +166,14 @@ else
         //get inputs and store as latest entry
         latest_write += ((variable_instance_get(noz_climber_twin, name) > 0) << i);
 
+        //stupidly these are kept separate
+        if (name == "strong_down")
+        && ( noz_climber_twin.up_strong_down   || noz_climber_twin.down_strong_down
+          || noz_climber_twin.left_strong_down || noz_climber_twin.right_strong_down)
+        {
+            latest_write |= (1 << i);
+        }
+
         //use storage from X frames before to apply
         if (apply_now) variable_instance_set(self, name, (delayed_read & (1 << i)) != 0);
     }
