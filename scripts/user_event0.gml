@@ -216,6 +216,7 @@ with (oPlayer)
                         state = (free ? PS_PRATFALL : PS_PRATLAND);
                         //avoid sfx/vfx
                         state_timer = 1;
+                        attack_end(); //reset hitbox groups in case of interrupted attack
 
                         //prevent slippery fellas from being slid to their doom
                         if (abs(hsp) > 5) hsp *= 0.85;
